@@ -97,7 +97,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="9Po-TG-Y9X">
                                 <rect key="frame" x="40" y="338" width="334" height="220"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7I7-aX-iEG">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7I7-aX-iEG" userLabel="Email Field">
                                         <rect key="frame" x="0.0" y="0.0" width="334" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="mGj-i6-auU"/>
@@ -105,7 +105,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tQs-WF-Cxj">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tQs-WF-Cxj" userLabel="Email Label">
                                         <rect key="frame" x="0.0" y="60" width="334" height="40"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -167,12 +167,12 @@
                     </view>
                     <navigationItem key="navigationItem" id="7s1-e5-BR3"/>
                     <connections>
+                        <outlet property="emailField" destination="7I7-aX-iEG" id="eRk-Pm-Voi"/>
+                        <outlet property="emailLabel" destination="tQs-WF-Cxj" id="TsR-NH-XLb"/>
                         <outlet property="errorLabel" destination="jJZ-0K-9mp" id="nc3-Aw-ca9"/>
                         <outlet property="passwordField" destination="kaD-JP-fIM" id="MeC-a7-ab9"/>
                         <outlet property="passwordLabel" destination="RhC-7w-wdj" id="0Ur-8O-oL4"/>
                         <outlet property="signInButton" destination="egu-40-WdM" id="9zc-Nt-Qub"/>
-                        <outlet property="userNameField" destination="7I7-aX-iEG" id="9mw-tg-0YQ"/>
-                        <outlet property="userNameLabel" destination="tQs-WF-Cxj" id="pvL-gz-eQc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sYZ-8d-LAp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
