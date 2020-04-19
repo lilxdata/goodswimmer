@@ -49,8 +49,8 @@ class LoginViewController: UIViewController {
         /* style elements */
         
         //style text fields using utilities helper
-        Utilities.styleTextField(userNameField)
-        Utilities.styleTextField(passwordField)
+        Utilities.styleTextFieldRed(userNameField)
+        Utilities.styleTextFieldRed(passwordField)
         
         // style button
         Utilities.styleButton(signInButton)
