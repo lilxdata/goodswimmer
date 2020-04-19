@@ -23,6 +23,18 @@ class Utilities {
     
     }
     
+    static func styleTextFieldRed(_ textfield: UITextField) {
+
+    // create bottom line detail
+    
+    let bottomLine = CALayer()
+    bottomLine.frame = CGRect( x:0, y:textfield.frame.height - 2, width: textfield.frame.width, height: 2)
+        bottomLine.backgroundColor = UIColor.red.cgColor
+        
+        textfield.layer.addSublayer(bottomLine)
+    
+    }
+    
     static func styleHeader(_ label: UILabel){
         /* add code to style headers and make consistent across app */
     }
