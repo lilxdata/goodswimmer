@@ -289,15 +289,15 @@
                     </view>
                     <navigationItem key="navigationItem" id="4gv-2h-jID"/>
                     <connections>
-                        <outlet property="PasswordField" destination="OdW-Bj-KnX" id="nkt-3q-Gd5"/>
-                        <outlet property="SignUpNextButton" destination="xbx-Sh-8vl" id="rgH-di-VvZ"/>
                         <outlet property="emailField" destination="Ae1-A1-aRf" id="ovV-ZA-QqO"/>
                         <outlet property="emailLabel" destination="9rJ-4i-yuQ" id="bkf-3L-ri3"/>
                         <outlet property="errorLabel" destination="XLm-du-vgr" id="BjJ-TZ-uX1"/>
                         <outlet property="nameField" destination="6TT-cy-lcb" id="h4D-Pf-DhT"/>
                         <outlet property="nameLabel" destination="yjH-jk-tEe" id="Ck6-x9-dGF"/>
+                        <outlet property="passwordField" destination="OdW-Bj-KnX" id="c1C-Sg-o1c"/>
                         <outlet property="passwordLabel" destination="AG4-59-DuM" id="JwJ-fd-aeM"/>
                         <outlet property="signUpHeaderLabel" destination="udB-8g-fx2" id="8CM-91-jYa"/>
+                        <outlet property="signUpNextButton" destination="xbx-Sh-8vl" id="cGd-hV-n2O"/>
                         <outlet property="userNameField" destination="E3a-hc-qcd" id="2xa-X6-pMT"/>
                         <outlet property="userNameLabel" destination="BEh-89-X01" id="dcS-yk-bij"/>
                     </connections>
@@ -309,7 +309,7 @@
         <!--Home View Controller-->
         <scene sceneID="dXZ-Ug-S2D">
             <objects>
-                <viewController id="Yn1-b3-wBZ" customClass="HomeViewController" customModule="goodswimmer_logincwc" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="homeVC" id="Yn1-b3-wBZ" customClass="HomeViewController" customModule="goodswimmer_logincwc" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="CGB-Hc-zor">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

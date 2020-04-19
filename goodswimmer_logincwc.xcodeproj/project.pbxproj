@@ -3,12 +3,13 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		0417676A2432D4EF007AC791 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041767692432D4EF007AC791 /* Utilities.swift */; };
 		0417676C2433F160007AC791 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0417676B2433F160007AC791 /* GoogleService-Info.plist */; };
+		04BB10F9244CFD4D00BFF9A2 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BB10F8244CFD4D00BFF9A2 /* Constants.swift */; };
 		04EB0DEE24327B5000B532F8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EB0DED24327B5000B532F8 /* AppDelegate.swift */; };
 		04EB0DF024327B5000B532F8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EB0DEF24327B5000B532F8 /* SceneDelegate.swift */; };
 		04EB0DF224327B5000B532F8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EB0DF124327B5000B532F8 /* ViewController.swift */; };
@@ -24,6 +25,7 @@
 /* Begin PBXFileReference section */
 		041767692432D4EF007AC791 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		0417676B2433F160007AC791 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		04BB10F8244CFD4D00BFF9A2 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		04EB0DEA24327B5000B532F8 /* goodswimmer_logincwc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = goodswimmer_logincwc.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04EB0DED24327B5000B532F8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		04EB0DEF24327B5000B532F8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -56,6 +58,7 @@
 			isa = PBXGroup;
 			children = (
 				041767692432D4EF007AC791 /* Utilities.swift */,
+				04BB10F8244CFD4D00BFF9A2 /* Constants.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -119,7 +122,6 @@
 				3FC32C1E4887289763818880 /* Pods-goodswimmer_logincwc.debug.xcconfig */,
 				0549F3104F2DBE99B7C7D983 /* Pods-goodswimmer_logincwc.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -246,6 +248,7 @@
 				04EB0E0424327BB200B532F8 /* LoginViewController.swift in Sources */,
 				04EB0DF024327B5000B532F8 /* SceneDelegate.swift in Sources */,
 				04EB0E0624327BBD00B532F8 /* HomeViewController.swift in Sources */,
+				04BB10F9244CFD4D00BFF9A2 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
