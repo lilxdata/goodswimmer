@@ -7,16 +7,15 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class LoginViewController: UIViewController {
 
     
-    @IBOutlet weak var userNameField: UITextField!
-    
-    @IBOutlet weak var userNameLabel: UILabel!
+    @IBOutlet weak var emailField: UITextField!
+    @IBOutlet weak var emailLabel: UILabel!
     
     @IBOutlet weak var passwordField: UITextField!
-    
     @IBOutlet weak var passwordLabel: UILabel!
     
     @IBOutlet weak var signInButton: UIButton!
@@ -31,16 +30,6 @@ class LoginViewController: UIViewController {
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
     func setUpElements() {
         //hide error label
         
@@ -49,7 +38,7 @@ class LoginViewController: UIViewController {
         /* style elements */
         
         //style text fields using utilities helper
-        Utilities.styleTextFieldRed(userNameField)
+        Utilities.styleTextFieldRed(emailField)
         Utilities.styleTextFieldRed(passwordField)
         
         // style button
@@ -58,6 +47,29 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func signInTapped(_ sender: Any) {
+        
+        //TODO: Validate text fields are filled in
+        
+        //Create clean versions of text fields
+        
+        let email = emailField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+        let pw = passwordField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+        //Sign in
+        
+        Auth.auth().signIn(withEmail: email, password: pw) { (result, error) in
+            if error != nil {
+                self.errorLabel.text = error!.localizedDescription
+                self.errorLabel.alpha = 1
+            }
+            
+                //TODO: extract method
+            else {
+                let homeViewController = self.storyboard?.instantiateViewController(identifier: Constants.Storyboard.homeViewController)  as? HomeViewController
+                     
+                self.view.window?.rootViewController = homeViewController
+                self.view.window?.makeKeyAndVisible()
+            }
+        }
     }
     
 }
