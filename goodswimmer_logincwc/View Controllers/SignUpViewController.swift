@@ -26,6 +26,7 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var passwordLabel: UILabel!
     
     @IBOutlet weak var signUpNextButton: UIButton!
+    @IBOutlet weak var signUpBackButton: UIButton!
     @IBOutlet weak var signUpHeaderLabel: UILabel!
     
     @IBOutlet weak var errorLabel: UILabel!
@@ -82,6 +83,13 @@ class SignUpViewController: UIViewController {
         return nil //all good
     }
 
+    
+    @IBAction func backButtonTapped(_ sender: Any) {
+        
+        
+        
+    }
+    
     //handle sign up button tap
     @IBAction func signUpTapped(_ sender: Any) {
         
@@ -139,4 +147,6 @@ class SignUpViewController: UIViewController {
         view.window?.rootViewController = homeViewController
         view.window?.makeKeyAndVisible()
     }
+    
+
 }
