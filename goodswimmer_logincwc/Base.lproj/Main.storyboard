@@ -340,35 +340,100 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="WooHoo Home Screen" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8JS-0g-lKT">
-                                <rect key="frame" x="60" y="430" width="294" height="36"/>
+                            <tabBar contentMode="scaleToFill" verticalCompressionResistancePriority="751" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ft4-93-I8V">
+                                <rect key="frame" x="0.0" y="64" width="414" height="50"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="cDz-H9-p7n"/>
+                                </constraints>
+                                <items>
+                                    <tabBarItem image="plus" catalog="system" id="jxJ-KF-7zS">
+                                        <color key="badgeColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </tabBarItem>
+                                    <tabBarItem image="person.crop.circle.fill" catalog="system" id="3ls-fr-HDF"/>
+                                    <tabBarItem image="calendar" catalog="system" id="mVy-Dj-mME">
+                                        <color key="badgeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </tabBarItem>
+                                    <tabBarItem image="magnifyingglass" catalog="system" id="czx-R3-9iR">
+                                        <color key="badgeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </tabBarItem>
+                                </items>
+                                <color key="barTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="selectedImageTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tabBar>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="right" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="g-s-background2" translatesAutoresizingMaskIntoConstraints="NO" id="58u-nd-5It">
+                                <rect key="frame" x="0.0" y="114" width="414" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="XaT-bp-ect"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="rly cool event" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w4N-du-qrL" userLabel="event name">
+                                <rect key="frame" x="122" y="322" width="170.5" height="26"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <tabBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ft4-93-I8V">
-                                <rect key="frame" x="0.0" y="58" width="414" height="49"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <items>
-                                    <tabBarItem image="plus" catalog="system" id="jxJ-KF-7zS"/>
-                                    <tabBarItem title="Item" id="yCB-Fs-rY4"/>
-                                    <tabBarItem title="Item" id="HvP-f6-8QV"/>
-                                    <tabBarItem systemItem="more" id="czx-R3-9iR"/>
-                                </items>
-                            </tabBar>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="grb-5F-MoN">
+                                <rect key="frame" x="143" y="417" width="103" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="LeH-sf-WR4"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="g-s-background2" translatesAutoresizingMaskIntoConstraints="NO" id="l3x-Og-ymP">
+                                <rect key="frame" x="0.0" y="465" width="414" height="431"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Ur-gH-TAk" userLabel="location">
+                                <rect key="frame" x="156" y="356" width="102" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="j7Z-AB-VgP"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="04 20" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Koi-gV-ODN">
+                                <rect key="frame" x="20" y="311" width="79" height="134"/>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="38"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="8JS-0g-lKT" firstAttribute="centerX" secondItem="CGB-Hc-zor" secondAttribute="centerX" id="9rW-hN-ZwC"/>
-                            <constraint firstItem="8JS-0g-lKT" firstAttribute="centerY" secondItem="CGB-Hc-zor" secondAttribute="centerY" id="AgQ-hK-xL3"/>
+                            <constraint firstItem="58u-nd-5It" firstAttribute="leading" secondItem="yTW-II-dQr" secondAttribute="leading" id="82w-JD-bnz"/>
+                            <constraint firstItem="yTW-II-dQr" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="w4N-du-qrL" secondAttribute="trailing" symbolic="YES" id="EcT-1D-Dlw"/>
+                            <constraint firstItem="58u-nd-5It" firstAttribute="top" secondItem="ft4-93-I8V" secondAttribute="bottom" symbolic="YES" id="FdN-fs-jHx"/>
+                            <constraint firstItem="6Ur-gH-TAk" firstAttribute="top" secondItem="CGB-Hc-zor" secondAttribute="top" constant="351" id="GsG-aY-cAd"/>
+                            <constraint firstItem="w4N-du-qrL" firstAttribute="leading" secondItem="Koi-gV-ODN" secondAttribute="trailing" constant="52" id="H5D-4s-xlk"/>
+                            <constraint firstItem="Koi-gV-ODN" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="yTW-II-dQr" secondAttribute="leading" symbolic="YES" id="HnE-M4-SHh"/>
+                            <constraint firstItem="6Ur-gH-TAk" firstAttribute="leading" secondItem="w4N-du-qrL" secondAttribute="leading" constant="34" id="IGg-zO-KB6"/>
+                            <constraint firstItem="ft4-93-I8V" firstAttribute="trailing" secondItem="l3x-Og-ymP" secondAttribute="trailing" id="IzY-Vy-Lkv"/>
+                            <constraint firstItem="ft4-93-I8V" firstAttribute="top" secondItem="yTW-II-dQr" secondAttribute="top" constant="20" id="JdD-JC-JUh"/>
+                            <constraint firstItem="ft4-93-I8V" firstAttribute="leading" secondItem="l3x-Og-ymP" secondAttribute="leading" id="Jnd-V5-9Ux"/>
+                            <constraint firstItem="58u-nd-5It" firstAttribute="trailing" secondItem="yTW-II-dQr" secondAttribute="trailing" id="KMO-RT-EtL"/>
+                            <constraint firstAttribute="bottom" secondItem="l3x-Og-ymP" secondAttribute="bottom" id="Ncw-Vq-pb9"/>
+                            <constraint firstItem="l3x-Og-ymP" firstAttribute="top" secondItem="grb-5F-MoN" secondAttribute="bottom" constant="8" id="bSc-ES-v0R"/>
+                            <constraint firstItem="ft4-93-I8V" firstAttribute="trailing" secondItem="58u-nd-5It" secondAttribute="trailing" id="blS-t1-Qgs"/>
+                            <constraint firstItem="6Ur-gH-TAk" firstAttribute="top" secondItem="w4N-du-qrL" secondAttribute="bottom" constant="3" id="cBx-7t-NtK"/>
+                            <constraint firstItem="6Ur-gH-TAk" firstAttribute="centerY" secondItem="Koi-gV-ODN" secondAttribute="centerY" id="cY3-0v-yO0"/>
+                            <constraint firstItem="ft4-93-I8V" firstAttribute="leading" secondItem="58u-nd-5It" secondAttribute="leading" id="clK-i2-SaJ"/>
+                            <constraint firstItem="58u-nd-5It" firstAttribute="leading" secondItem="yTW-II-dQr" secondAttribute="leading" id="g9u-6g-1MM"/>
+                            <constraint firstItem="w4N-du-qrL" firstAttribute="top" secondItem="58u-nd-5It" secondAttribute="bottom" constant="8" id="krS-0Q-jGu"/>
+                            <constraint firstItem="yTW-II-dQr" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="grb-5F-MoN" secondAttribute="trailing" symbolic="YES" id="lzI-T0-eh1"/>
+                            <constraint firstItem="6Ur-gH-TAk" firstAttribute="leading" secondItem="grb-5F-MoN" secondAttribute="leading" constant="13" id="ocK-Aa-Udt"/>
+                            <constraint firstItem="yTW-II-dQr" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="6Ur-gH-TAk" secondAttribute="trailing" symbolic="YES" id="tOL-bn-fls"/>
+                            <constraint firstItem="yTW-II-dQr" firstAttribute="trailing" secondItem="58u-nd-5It" secondAttribute="trailing" id="wOX-wG-9q3"/>
+                            <constraint firstItem="grb-5F-MoN" firstAttribute="top" secondItem="6Ur-gH-TAk" secondAttribute="bottom" constant="46" id="zaN-Ey-Qhv"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="yTW-II-dQr"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6lt-js-sjX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2187" y="135"/>
+            <point key="canvasLocation" x="2186.9565217391305" y="134.59821428571428"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="wgp-mb-HGl">
@@ -389,7 +454,11 @@
         </scene>
     </scenes>
     <resources>
+        <image name="calendar" catalog="system" width="64" height="52"/>
         <image name="g-s-background" width="800" height="1200"/>
+        <image name="g-s-background2" width="800" height="1200"/>
+        <image name="magnifyingglass" catalog="system" width="64" height="56"/>
+        <image name="person.crop.circle.fill" catalog="system" width="64" height="60"/>
         <image name="plus" catalog="system" width="64" height="56"/>
     </resources>
 </document>
