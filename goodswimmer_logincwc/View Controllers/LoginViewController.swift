@@ -58,7 +58,8 @@ class LoginViewController: UIViewController {
         
         Auth.auth().signIn(withEmail: email, password: pw) { (result, error) in
             if error != nil {
-                self.errorLabel.text = error!.localizedDescription
+                self.errorLabel.text = "Whoops! Try that again."
+                self.errorLabel.numberOfLines = 0
                 self.errorLabel.alpha = 1
             }
             
