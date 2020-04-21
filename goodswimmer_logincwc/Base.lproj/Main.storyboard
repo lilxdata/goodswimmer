@@ -15,17 +15,21 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="bottomRight" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="g-s-background" translatesAutoresizingMaskIntoConstraints="NO" id="RBZ-aw-oL6">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                            </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="R6W-fI-0Sl">
                                 <rect key="frame" x="40" y="682" width="334" height="100"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lr0-iE-bGd">
                                         <rect key="frame" x="0.0" y="0.0" width="334" height="40"/>
-                                        <color key="backgroundColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="V7D-pc-JWe"/>
                                         </constraints>
+                                        <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="17"/>
                                         <state key="normal" title="Sign Up">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="titleColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
                                             <segue destination="cyL-OP-bJQ" kind="show" id="MI1-0h-dCb"/>
@@ -33,12 +37,13 @@
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zb9-cD-ZHq">
                                         <rect key="frame" x="0.0" y="60" width="334" height="40"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="backgroundColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="ZoT-9G-6ef"/>
                                         </constraints>
+                                        <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="17"/>
                                         <state key="normal" title="Sign In">
-                                            <color key="titleColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
                                             <segue destination="TAM-z9-QUX" kind="show" id="pJA-PS-QBa"/>
@@ -47,18 +52,15 @@
                                 </subviews>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Good Swimmer" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xAg-ff-PSy">
-                                <rect key="frame" x="40" y="124" width="208.5" height="115"/>
-                                <fontDescription key="fontDescription" name="Helvetica-Oblique" family="Helvetica" pointSize="50"/>
-                                <nil key="textColor"/>
+                                <rect key="frame" x="40" y="84" width="334" height="177.5"/>
+                                <fontDescription key="fontDescription" name="TimesNewRomanPS-BoldItalicMT" family="Times New Roman" pointSize="80"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Artists' organizing tool for the people. Not the Pigs!" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BCL-O1-hEc">
-                                <rect key="frame" x="40" y="279" width="197" height="115"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="115" id="lfn-WT-hl8"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Artists' organizing tool for the people. Not the Pigs!" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BCL-O1-hEc">
+                                <rect key="frame" x="40" y="301.5" width="280" height="57.5"/>
+                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="25"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -68,11 +70,17 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="xAg-ff-PSy" secondAttribute="trailing" symbolic="YES" id="8YS-dQ-dzB"/>
                             <constraint firstItem="BCL-O1-hEc" firstAttribute="top" secondItem="xAg-ff-PSy" secondAttribute="bottom" constant="40" id="ANh-Eo-Hnj"/>
                             <constraint firstItem="R6W-fI-0Sl" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="40" id="EMV-Uh-gMH"/>
+                            <constraint firstItem="RBZ-aw-oL6" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="GHS-yc-avp"/>
                             <constraint firstItem="xAg-ff-PSy" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="40" id="GxY-1C-w73"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="xAg-ff-PSy" secondAttribute="trailing" constant="40" id="Pdz-uH-mnq"/>
+                            <constraint firstItem="RBZ-aw-oL6" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="QSk-b7-r6x"/>
+                            <constraint firstItem="BCL-O1-hEc" firstAttribute="top" secondItem="xAg-ff-PSy" secondAttribute="bottom" constant="40" id="WU7-CI-iER"/>
+                            <constraint firstAttribute="bottom" secondItem="RBZ-aw-oL6" secondAttribute="bottom" id="YBF-IM-wiE"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="R6W-fI-0Sl" secondAttribute="bottom" constant="80" id="a1V-g3-ubG"/>
-                            <constraint firstItem="xAg-ff-PSy" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="80" id="i6v-ld-egP"/>
+                            <constraint firstItem="RBZ-aw-oL6" firstAttribute="centerX" secondItem="R6W-fI-0Sl" secondAttribute="centerX" id="edV-o6-dkJ"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="BCL-O1-hEc" secondAttribute="trailing" symbolic="YES" id="oqO-T9-ecu"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="R6W-fI-0Sl" secondAttribute="trailing" constant="40" id="wcX-gU-4tZ"/>
+                            <constraint firstItem="xAg-ff-PSy" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="40" id="zvc-dc-VrU"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -165,7 +173,6 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Smg-oH-CQC"/>
                     </view>
-                    <navigationItem key="navigationItem" id="7s1-e5-BR3"/>
                     <connections>
                         <outlet property="emailField" destination="7I7-aX-iEG" id="eRk-Pm-Voi"/>
                         <outlet property="emailLabel" destination="tQs-WF-Cxj" id="TsR-NH-XLb"/>
@@ -351,4 +358,7 @@
             <point key="canvasLocation" x="137.68115942028987" y="126.5625"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="g-s-background" width="800" height="1200"/>
+    </resources>
 </document>
