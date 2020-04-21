@@ -105,13 +105,14 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="9Po-TG-Y9X">
                                 <rect key="frame" x="40" y="338" width="334" height="220"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7I7-aX-iEG" userLabel="Email Field">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7I7-aX-iEG" userLabel="Email Field">
                                         <rect key="frame" x="0.0" y="0.0" width="334" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="mGj-i6-auU"/>
                                         </constraints>
+                                        <color key="textColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" textContentType="email"/>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tQs-WF-Cxj" userLabel="Email Label">
                                         <rect key="frame" x="0.0" y="60" width="334" height="40"/>
@@ -119,13 +120,14 @@
                                         <color key="textColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kaD-JP-fIM">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kaD-JP-fIM">
                                         <rect key="frame" x="0.0" y="120" width="334" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="c1o-ik-7k8"/>
                                         </constraints>
+                                        <color key="textColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" secureTextEntry="YES" textContentType="password"/>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RhC-7w-wdj">
                                         <rect key="frame" x="0.0" y="180" width="334" height="40"/>
@@ -233,7 +235,7 @@
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OdW-Bj-KnX" userLabel="Password">
                                         <rect key="frame" x="0.0" y="262.5" width="334" height="17"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" secureTextEntry="YES" textContentType="password"/>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AG4-59-DuM">
                                         <rect key="frame" x="0.0" y="304.5" width="334" height="20.5"/>
@@ -268,7 +270,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Error" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XLm-du-vgr">
-                                <rect key="frame" x="188" y="782" width="38" height="40"/>
+                                <rect key="frame" x="188" y="745" width="38" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="nuL-rJ-XB7"/>
                                 </constraints>
@@ -276,15 +278,31 @@
                                 <color key="textColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dJF-Af-9fV" userLabel="Sign Up Back">
+                                <rect key="frame" x="40" y="816" width="47" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="FI2-vP-p6H"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="17"/>
+                                <state key="normal" title="BACK">
+                                    <color key="titleColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="backButtonTapped:" destination="cyL-OP-bJQ" eventType="touchUpInside" id="aKx-T2-NVd"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="XLm-du-vgr" firstAttribute="centerX" secondItem="5yV-c5-WAT" secondAttribute="centerX" id="0Z8-bV-0CB"/>
                             <constraint firstItem="xbx-Sh-8vl" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="uLD-ll-cIc" secondAttribute="leading" symbolic="YES" id="1CA-aw-5VT"/>
-                            <constraint firstItem="uLD-ll-cIc" firstAttribute="bottom" secondItem="XLm-du-vgr" secondAttribute="bottom" constant="40" id="5hQ-s2-vdC"/>
+                            <constraint firstItem="uLD-ll-cIc" firstAttribute="bottom" secondItem="XLm-du-vgr" secondAttribute="bottom" constant="77" id="5hQ-s2-vdC"/>
+                            <constraint firstItem="uLD-ll-cIc" firstAttribute="bottom" secondItem="dJF-Af-9fV" secondAttribute="bottom" constant="6" id="CIZ-s0-5VO"/>
                             <constraint firstItem="OVW-66-kTA" firstAttribute="leading" secondItem="uLD-ll-cIc" secondAttribute="leading" constant="40" id="OWp-m1-9TF"/>
                             <constraint firstItem="uLD-ll-cIc" firstAttribute="trailing" secondItem="xbx-Sh-8vl" secondAttribute="trailing" constant="40" id="YV8-Qg-srD"/>
+                            <constraint firstItem="xbx-Sh-8vl" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="dJF-Af-9fV" secondAttribute="trailing" constant="8" symbolic="YES" id="bo0-W1-vlr"/>
                             <constraint firstItem="udB-8g-fx2" firstAttribute="leading" secondItem="uLD-ll-cIc" secondAttribute="leading" constant="40" id="cB5-wk-sgS"/>
+                            <constraint firstItem="dJF-Af-9fV" firstAttribute="leading" secondItem="OVW-66-kTA" secondAttribute="leading" id="f9w-VW-bse"/>
                             <constraint firstItem="udB-8g-fx2" firstAttribute="top" secondItem="uLD-ll-cIc" secondAttribute="top" constant="40" id="gLn-Sf-Rty"/>
                             <constraint firstItem="OVW-66-kTA" firstAttribute="top" secondItem="udB-8g-fx2" secondAttribute="bottom" constant="80" id="iCU-Ze-XAq"/>
                             <constraint firstItem="uLD-ll-cIc" firstAttribute="trailing" secondItem="OVW-66-kTA" secondAttribute="trailing" constant="40" id="lXd-FS-OeD"/>
@@ -303,6 +321,7 @@
                         <outlet property="nameLabel" destination="yjH-jk-tEe" id="Ck6-x9-dGF"/>
                         <outlet property="passwordField" destination="OdW-Bj-KnX" id="c1C-Sg-o1c"/>
                         <outlet property="passwordLabel" destination="AG4-59-DuM" id="JwJ-fd-aeM"/>
+                        <outlet property="signUpBackButton" destination="dJF-Af-9fV" id="Ovf-OB-qne"/>
                         <outlet property="signUpHeaderLabel" destination="udB-8g-fx2" id="8CM-91-jYa"/>
                         <outlet property="signUpNextButton" destination="xbx-Sh-8vl" id="cGd-hV-n2O"/>
                         <outlet property="userNameField" destination="E3a-hc-qcd" id="2xa-X6-pMT"/>
@@ -327,6 +346,17 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <tabBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ft4-93-I8V">
+                                <rect key="frame" x="0.0" y="58" width="414" height="49"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <items>
+                                    <tabBarItem image="plus" catalog="system" id="jxJ-KF-7zS"/>
+                                    <tabBarItem title="Item" id="yCB-Fs-rY4"/>
+                                    <tabBarItem title="Item" id="HvP-f6-8QV"/>
+                                    <tabBarItem systemItem="more" id="czx-R3-9iR"/>
+                                </items>
+                            </tabBar>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -360,5 +390,6 @@
     </scenes>
     <resources>
         <image name="g-s-background" width="800" height="1200"/>
+        <image name="plus" catalog="system" width="64" height="56"/>
     </resources>
 </document>
