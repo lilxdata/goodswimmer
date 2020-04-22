@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "6C67D7AF682270B741DDE0E8F2F5CBEE"
-               BuildableName = "Pods_goodswimmer_logincwc.framework"
-               BlueprintName = "Pods-goodswimmer_logincwc"
+               BlueprintIdentifier = "506E03385DF782118A0663C76ABF8A7E"
+               BuildableName = "Pods_goodswimmer.framework"
+               BlueprintName = "Pods-goodswimmer"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
