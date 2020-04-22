@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 50;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -20,7 +20,7 @@
 		04EB0E0224327BA700B532F8 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EB0E0124327BA600B532F8 /* SignUpViewController.swift */; };
 		04EB0E0424327BB200B532F8 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EB0E0324327BB200B532F8 /* LoginViewController.swift */; };
 		04EB0E0624327BBD00B532F8 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EB0E0524327BBD00B532F8 /* HomeViewController.swift */; };
-		72DDF8DC8FB64CF3437CF226 /* Pods_goodswimmer_logincwc.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99EE59A19F082BAC3903409D /* Pods_goodswimmer_logincwc.framework */; };
+		64870E85F93983CEBB9B319F /* Pods_goodswimmer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D09BF077A0B42778B27167B /* Pods_goodswimmer.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,9 +39,9 @@
 		04EB0E0124327BA600B532F8 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		04EB0E0324327BB200B532F8 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		04EB0E0524327BBD00B532F8 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
-		0549F3104F2DBE99B7C7D983 /* Pods-goodswimmer_logincwc.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-goodswimmer_logincwc.release.xcconfig"; path = "Target Support Files/Pods-goodswimmer_logincwc/Pods-goodswimmer_logincwc.release.xcconfig"; sourceTree = "<group>"; };
-		3FC32C1E4887289763818880 /* Pods-goodswimmer_logincwc.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-goodswimmer_logincwc.debug.xcconfig"; path = "Target Support Files/Pods-goodswimmer_logincwc/Pods-goodswimmer_logincwc.debug.xcconfig"; sourceTree = "<group>"; };
-		99EE59A19F082BAC3903409D /* Pods_goodswimmer_logincwc.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_goodswimmer_logincwc.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3D09BF077A0B42778B27167B /* Pods_goodswimmer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_goodswimmer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		955F4AAD75B92758752A5789 /* Pods-goodswimmer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-goodswimmer.debug.xcconfig"; path = "Target Support Files/Pods-goodswimmer/Pods-goodswimmer.debug.xcconfig"; sourceTree = "<group>"; };
+		99587D227CCE06C5BA0C26EE /* Pods-goodswimmer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-goodswimmer.release.xcconfig"; path = "Target Support Files/Pods-goodswimmer/Pods-goodswimmer.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -49,7 +49,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				72DDF8DC8FB64CF3437CF226 /* Pods_goodswimmer_logincwc.framework in Frameworks */,
+				64870E85F93983CEBB9B319F /* Pods_goodswimmer.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -68,10 +68,10 @@
 		04EB0DE124327B5000B532F8 = {
 			isa = PBXGroup;
 			children = (
-				04EB0DEC24327B5000B532F8 /* goodswimmer_logincwc */,
+				04EB0DEC24327B5000B532F8 /* goodswimmer */,
 				04EB0DEB24327B5000B532F8 /* Products */,
 				FA14938E7F2743884AD318A7 /* Pods */,
-				26C1FBDF556A9B0A65B73F0E /* Frameworks */,
+				8F27E9A48575CDAE9FEE4C32 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -83,7 +83,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		04EB0DEC24327B5000B532F8 /* goodswimmer_logincwc */ = {
+		04EB0DEC24327B5000B532F8 /* goodswimmer */ = {
 			isa = PBXGroup;
 			children = (
 				041767682432D4CF007AC791 /* Helpers */,
@@ -96,7 +96,7 @@
 				0417676B2433F160007AC791 /* GoogleService-Info.plist */,
 				04EB0DFB24327B5500B532F8 /* Info.plist */,
 			);
-			path = goodswimmer_logincwc;
+			path = goodswimmer;
 			sourceTree = "<group>";
 		};
 		04EB0E0724327BC200B532F8 /* View Controllers */ = {
@@ -111,10 +111,10 @@
 			path = "View Controllers";
 			sourceTree = "<group>";
 		};
-		26C1FBDF556A9B0A65B73F0E /* Frameworks */ = {
+		8F27E9A48575CDAE9FEE4C32 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				99EE59A19F082BAC3903409D /* Pods_goodswimmer_logincwc.framework */,
+				3D09BF077A0B42778B27167B /* Pods_goodswimmer.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -122,8 +122,8 @@
 		FA14938E7F2743884AD318A7 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				3FC32C1E4887289763818880 /* Pods-goodswimmer_logincwc.debug.xcconfig */,
-				0549F3104F2DBE99B7C7D983 /* Pods-goodswimmer_logincwc.release.xcconfig */,
+				955F4AAD75B92758752A5789 /* Pods-goodswimmer.debug.xcconfig */,
+				99587D227CCE06C5BA0C26EE /* Pods-goodswimmer.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -131,21 +131,21 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		04EB0DE924327B5000B532F8 /* goodswimmer_logincwc */ = {
+		04EB0DE924327B5000B532F8 /* goodswimmer */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 04EB0DFE24327B5500B532F8 /* Build configuration list for PBXNativeTarget "goodswimmer_logincwc" */;
+			buildConfigurationList = 04EB0DFE24327B5500B532F8 /* Build configuration list for PBXNativeTarget "goodswimmer" */;
 			buildPhases = (
-				4AE604775A4ECEF2BA0500E9 /* [CP] Check Pods Manifest.lock */,
+				99E070F1DB9D80630DC6B271 /* [CP] Check Pods Manifest.lock */,
 				04EB0DE624327B5000B532F8 /* Sources */,
 				04EB0DE724327B5000B532F8 /* Frameworks */,
 				04EB0DE824327B5000B532F8 /* Resources */,
-				13C19F998F35989FDB9048B0 /* [CP] Embed Pods Frameworks */,
+				AD5D0F4700172B863DD93ECB /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = goodswimmer_logincwc;
+			name = goodswimmer;
 			productName = goodswimmer_logincwc;
 			productReference = 04EB0DEA24327B5000B532F8 /* goodswimmer.app */;
 			productType = "com.apple.product-type.application";
@@ -165,7 +165,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 04EB0DE524327B5000B532F8 /* Build configuration list for PBXProject "goodswimmer_logincwc" */;
+			buildConfigurationList = 04EB0DE524327B5000B532F8 /* Build configuration list for PBXProject "goodswimmer" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -178,7 +178,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				04EB0DE924327B5000B532F8 /* goodswimmer_logincwc */,
+				04EB0DE924327B5000B532F8 /* goodswimmer */,
 			);
 		};
 /* End PBXProject section */
@@ -198,24 +198,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		13C19F998F35989FDB9048B0 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-goodswimmer_logincwc/Pods-goodswimmer_logincwc-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-goodswimmer_logincwc/Pods-goodswimmer_logincwc-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-goodswimmer_logincwc/Pods-goodswimmer_logincwc-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		4AE604775A4ECEF2BA0500E9 /* [CP] Check Pods Manifest.lock */ = {
+		99E070F1DB9D80630DC6B271 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -230,11 +213,28 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-goodswimmer_logincwc-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-goodswimmer-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AD5D0F4700172B863DD93ECB /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-goodswimmer/Pods-goodswimmer-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-goodswimmer/Pods-goodswimmer-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-goodswimmer/Pods-goodswimmer-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -394,11 +394,11 @@
 		};
 		04EB0DFF24327B5500B532F8 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3FC32C1E4887289763818880 /* Pods-goodswimmer_logincwc.debug.xcconfig */;
+			baseConfigurationReference = 955F4AAD75B92758752A5789 /* Pods-goodswimmer.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = goodswimmer_logincwc/Info.plist;
+				INFOPLIST_FILE = goodswimmer/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -412,11 +412,11 @@
 		};
 		04EB0E0024327B5500B532F8 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0549F3104F2DBE99B7C7D983 /* Pods-goodswimmer_logincwc.release.xcconfig */;
+			baseConfigurationReference = 99587D227CCE06C5BA0C26EE /* Pods-goodswimmer.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = goodswimmer_logincwc/Info.plist;
+				INFOPLIST_FILE = goodswimmer/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -431,7 +431,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		04EB0DE524327B5000B532F8 /* Build configuration list for PBXProject "goodswimmer_logincwc" */ = {
+		04EB0DE524327B5000B532F8 /* Build configuration list for PBXProject "goodswimmer" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				04EB0DFC24327B5500B532F8 /* Debug */,
@@ -440,7 +440,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		04EB0DFE24327B5500B532F8 /* Build configuration list for PBXNativeTarget "goodswimmer_logincwc" */ = {
+		04EB0DFE24327B5500B532F8 /* Build configuration list for PBXNativeTarget "goodswimmer" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				04EB0DFF24327B5500B532F8 /* Debug */,

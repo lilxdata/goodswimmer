@@ -11,6 +11,6 @@
 #endif
 
 
-FOUNDATION_EXPORT double Pods_goodswimmer_logincwcVersionNumber;
-FOUNDATION_EXPORT const unsigned char Pods_goodswimmer_logincwcVersionString[];
+FOUNDATION_EXPORT double Pods_goodswimmerVersionNumber;
+FOUNDATION_EXPORT const unsigned char Pods_goodswimmerVersionString[];
 
