@@ -10,7 +10,7 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="goodswimmer_logincwc" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="goodswimmer" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -97,7 +97,7 @@
         <!--Login View Controller-->
         <scene sceneID="JWH-fc-wAf">
             <objects>
-                <viewController id="TAM-z9-QUX" customClass="LoginViewController" customModule="goodswimmer_logincwc" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="TAM-z9-QUX" customClass="LoginViewController" customModule="goodswimmer" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="mwn-NO-N97">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -191,7 +191,7 @@
         <!--Sign Up View Controller-->
         <scene sceneID="lr9-q7-YU4">
             <objects>
-                <viewController id="cyL-OP-bJQ" customClass="SignUpViewController" customModule="goodswimmer_logincwc" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="cyL-OP-bJQ" customClass="SignUpViewController" customModule="goodswimmer" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5yV-c5-WAT">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -287,9 +287,6 @@
                                 <state key="normal" title="BACK">
                                     <color key="titleColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
-                                <connections>
-                                    <action selector="backButtonTapped:" destination="cyL-OP-bJQ" eventType="touchUpInside" id="aKx-T2-NVd"/>
-                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -332,10 +329,10 @@
             </objects>
             <point key="canvasLocation" x="1508" y="-174"/>
         </scene>
-        <!--Sign Up2 View Controller-->
+        <!--View Controller-->
         <scene sceneID="VTF-5u-zL7">
             <objects>
-                <viewController id="Nw3-Ze-JY8" customClass="SignUp2ViewController" sceneMemberID="viewController">
+                <viewController id="Nw3-Ze-JY8" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Huh-md-uDQ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -343,13 +340,13 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Bgn-Wp-I8o">
                                 <rect key="frame" x="39" y="84" width="336" height="200"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Where you at?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nWn-Gb-dRq">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Where you at?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nWn-Gb-dRq" userLabel="Sign Up2 Header Label">
                                         <rect key="frame" x="0.0" y="0.0" width="336" height="46"/>
                                         <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="40"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZCb-mA-6xQ">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZCb-mA-6xQ" userLabel="Sign Up2 Subheader">
                                         <rect key="frame" x="0.0" y="85" width="336" height="115"/>
                                         <string key="text">What city are you generally in? This helps identify what local events will fit  in your feed. (Note: This won't limit  the lists you can subscribe to--you can subscribe to any city's lists!)</string>
                                         <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="20"/>
@@ -383,6 +380,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="WI1-Qt-jkp"/>
                     </view>
+                    <navigationItem key="navigationItem" id="5Jr-lx-Xkr"/>
+                    <connections>
+                        <outlet property="headerLabel" destination="nWn-Gb-dRq" id="tYz-av-kF6"/>
+                        <outlet property="locationField" destination="H7H-1U-X0b" id="DXs-wy-Lg5"/>
+                        <outlet property="locationLabel" destination="fpc-7y-drv" id="d8a-bE-dwl"/>
+                        <outlet property="subHeaderLabel" destination="ZCb-mA-6xQ" id="K7r-RE-hcZ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bYD-cQ-VvP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -391,8 +395,7 @@
         <!--Home View Controller-->
         <scene sceneID="dXZ-Ug-S2D">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="6lt-js-sjX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <viewController storyboardIdentifier="homeVC" id="Yn1-b3-wBZ" customClass="HomeViewController" customModule="goodswimmer_logincwc" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="homeVC" id="Yn1-b3-wBZ" customClass="HomeViewController" customModule="goodswimmer" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="CGB-Hc-zor">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -409,6 +412,7 @@
                         <viewLayoutGuide key="safeArea" id="yTW-II-dQr"/>
                     </view>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6lt-js-sjX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2590" y="348"/>
         </scene>

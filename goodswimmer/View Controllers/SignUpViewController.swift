@@ -38,6 +38,7 @@ class SignUpViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    // TO DO: extract method
     func setUpElements() {
         //hide error label
         
