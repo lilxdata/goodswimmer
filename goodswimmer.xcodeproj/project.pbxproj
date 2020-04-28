@@ -3,10 +3,15 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0402831F2458C10A00071A1F /* LocViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0402831E2458C10A00071A1F /* LocViewController.swift */; };
+		040283232458CF7000071A1F /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040283222458CF7000071A1F /* Event.swift */; };
+		040283252458CFF400071A1F /* EventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040283242458CFF400071A1F /* EventCell.swift */; };
+		040283272458D03000071A1F /* EventModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040283262458D03000071A1F /* EventModel.swift */; };
+		040283292458D03B00071A1F /* EventService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040283282458D03B00071A1F /* EventService.swift */; };
 		0417676A2432D4EF007AC791 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041767692432D4EF007AC791 /* Utilities.swift */; };
 		045FAC98244FFF05008FA4D9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 045FAC97244FFF05008FA4D9 /* GoogleService-Info.plist */; };
 		04BB10F9244CFD4D00BFF9A2 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BB10F8244CFD4D00BFF9A2 /* Constants.swift */; };
@@ -23,6 +28,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0402831E2458C10A00071A1F /* LocViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocViewController.swift; sourceTree = "<group>"; };
+		040283222458CF7000071A1F /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
+		040283242458CFF400071A1F /* EventCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCell.swift; sourceTree = "<group>"; };
+		040283262458D03000071A1F /* EventModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventModel.swift; sourceTree = "<group>"; };
+		040283282458D03B00071A1F /* EventService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventService.swift; sourceTree = "<group>"; };
 		041767692432D4EF007AC791 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		045FAC97244FFF05008FA4D9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		04BB10F8244CFD4D00BFF9A2 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -88,6 +98,10 @@
 				04EB0E0724327BC200B532F8 /* View Controllers */,
 				04EB0DED24327B5000B532F8 /* AppDelegate.swift */,
 				04EB0DEF24327B5000B532F8 /* SceneDelegate.swift */,
+				040283222458CF7000071A1F /* Event.swift */,
+				040283242458CFF400071A1F /* EventCell.swift */,
+				040283262458D03000071A1F /* EventModel.swift */,
+				040283282458D03B00071A1F /* EventService.swift */,
 				04EB0DF324327B5000B532F8 /* Main.storyboard */,
 				04EB0DF624327B5500B532F8 /* Assets.xcassets */,
 				04EB0DF824327B5500B532F8 /* LaunchScreen.storyboard */,
@@ -104,6 +118,7 @@
 				04EB0E0324327BB200B532F8 /* LoginViewController.swift */,
 				04EB0E0524327BBD00B532F8 /* HomeViewController.swift */,
 				04EB0DF124327B5000B532F8 /* ViewController.swift */,
+				0402831E2458C10A00071A1F /* LocViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -242,12 +257,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				04EB0DF224327B5000B532F8 /* ViewController.swift in Sources */,
+				0402831F2458C10A00071A1F /* LocViewController.swift in Sources */,
 				04EB0DEE24327B5000B532F8 /* AppDelegate.swift in Sources */,
 				0417676A2432D4EF007AC791 /* Utilities.swift in Sources */,
+				040283232458CF7000071A1F /* Event.swift in Sources */,
 				04EB0E0224327BA700B532F8 /* SignUpViewController.swift in Sources */,
+				040283252458CFF400071A1F /* EventCell.swift in Sources */,
 				04EB0E0424327BB200B532F8 /* LoginViewController.swift in Sources */,
 				04EB0DF024327B5000B532F8 /* SceneDelegate.swift in Sources */,
 				04EB0E0624327BBD00B532F8 /* HomeViewController.swift in Sources */,
+				040283272458D03000071A1F /* EventModel.swift in Sources */,
+				040283292458D03B00071A1F /* EventService.swift in Sources */,
 				04BB10F9244CFD4D00BFF9A2 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
