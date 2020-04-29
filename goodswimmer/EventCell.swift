@@ -11,5 +11,5 @@ import Foundation
 //TODO
 //sub class either UITableViewCell or UICollectionViewCell
 class EventCell {
-    
+    func displayEventDetail( _ event: Event) {}
 }
