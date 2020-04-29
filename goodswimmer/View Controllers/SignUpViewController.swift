@@ -53,7 +53,7 @@ class SignUpViewController: UIViewController {
         Utilities.styleTextField(passwordField)
         
         // style button 
-        Utilities.styleButton(signUpNextButton)
+//        Utilities.styleButton(signUpNextButton)
         
     }
     
