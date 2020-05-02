@@ -60,5 +60,14 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>UIAppFonts</key>
+	<array>
+		<string>CutiveMono-Regular.ttf</string>
+		<string>standard-bold-italic.otf</string>
+		<string>standard-bold.otf</string>
+		<string>standard-book-italic.otf</string>
+		<string>standard-book.otf</string>
+		<string>Career_salle13_cursive.ttf</string>
+	</array>
 </dict>
 </plist>
