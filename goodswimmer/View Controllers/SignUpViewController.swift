@@ -13,9 +13,6 @@ import FirebaseFirestoreSwift
 
 class SignUpViewController: UIViewController {
  
-    @IBOutlet weak var nameField: UITextField!
-    @IBOutlet weak var nameLabel: UILabel!
-    
     @IBOutlet weak var userNameField: UITextField!
     @IBOutlet weak var userNameLabel: UILabel!
     
@@ -25,9 +22,11 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var passwordField: UITextField!
     @IBOutlet weak var passwordLabel: UILabel!
     
+    @IBOutlet weak var locationField: UITextField!
+    @IBOutlet weak var locationLabel: UILabel!
+    
     @IBOutlet weak var signUpNextButton: UIButton!
     @IBOutlet weak var signUpBackButton: UIButton!
-    @IBOutlet weak var signUpHeaderLabel: UILabel!
     
     @IBOutlet weak var errorLabel: UILabel!
     
@@ -47,13 +46,16 @@ class SignUpViewController: UIViewController {
         /* style elements */
         
         //style text fields using utilities helper
-        Utilities.styleTextField(nameField)
         Utilities.styleTextField(userNameField)
         Utilities.styleTextField(emailField)
         Utilities.styleTextField(passwordField)
+        Utilities.styleTextField(locationField)
         
-        // style button 
-//        Utilities.styleButton(signUpNextButton)
+        //style labels 
+//        Utilities.styleText(userNameLabel)
+//        Utilities.styleText(emailLabel)
+//        Utilities.styleText(passwordLabel)
+//        Utilities.styleText(locationLabel)
         
     }
     
@@ -65,11 +67,10 @@ class SignUpViewController: UIViewController {
         
         //Check that all fields are filled in
         //trimmingCharacters gets rid of all newlines & whitespace
-        if nameField.text?.trimmingCharacters(in: .whitespacesAndNewlines) ==  "" ||
-        userNameField.text?.trimmingCharacters(in: .whitespacesAndNewlines) ==  "" ||
+        if userNameField.text?.trimmingCharacters(in: .whitespacesAndNewlines) ==  "" ||
             emailField.text?.trimmingCharacters(in: .whitespacesAndNewlines) ==  "" ||
-            passwordField.text?.trimmingCharacters(in: .whitespacesAndNewlines) ==  "" {
-            return "Oops! You didn't fill everything in!"
+            passwordField.text?.trimmingCharacters(in: .whitespacesAndNewlines) ==  ""  || locationField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" {
+            return "Oops! You didn't \n fill everything in!"
         }
         //Check that pw is secure
         let cleanedPassword = passwordField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
@@ -77,7 +78,7 @@ class SignUpViewController: UIViewController {
         let secure = Utilities.isPasswordValid(cleanedPassword)
         
         if !secure {
-            return "Let's make that password more secure!"
+            return "Let's make that \n password more secure!"
         }
         //Check that email is an email format (with @ etc)
         
@@ -90,10 +91,8 @@ class SignUpViewController: UIViewController {
         
         
     }
-    
     //handle sign up button tap
     @IBAction func signUpTapped(_ sender: Any) {
-        
         //Validate fields
         
         let error = validateFields()
@@ -104,10 +103,10 @@ class SignUpViewController: UIViewController {
         else {
             
             //Create cleaned version of data (strip whitespace & newlines)
-            let name = nameField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
             let username = userNameField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
             let email = emailField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
             let password  = passwordField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+            let location = locationField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
             
             //Create user
             Auth.auth().createUser(withEmail: email, password: password) { (result, err) in
@@ -116,16 +115,16 @@ class SignUpViewController: UIViewController {
                     self.showError("Error creating user")
                 } else {
                     //User created
-                    //Store first name & last name
+                    //Store info
                     let db = Firestore.firestore()
                     // Add a new document with a generated ID
                    db.collection("users").addDocument(data: [
-                        "name": name,
                         "username": username,
+                        "location": location,
                         "uid": result!.user.uid
                     ]) { err in
                         if  err != nil {
-                            self.showError("Whoops! Something went wrong. Our bad. Try again?")
+                            self.showError("Whoops! Something went wrong. \n Our bad. Try again?")
                         }
                     }
                 }
@@ -139,6 +138,7 @@ class SignUpViewController: UIViewController {
     func showError(_ message:String)  {
         errorLabel.text! = message
         errorLabel.alpha = 1
+        Utilities.styleError(errorLabel)
     }
     
     func transitionToHome() {
