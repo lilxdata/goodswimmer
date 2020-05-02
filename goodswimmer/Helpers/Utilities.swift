@@ -14,9 +14,16 @@ class Utilities {
     static func styleTextField(_ textfield: UITextField) {
     // create bottom line detail
         let bottomLine = CALayer()
-        bottomLine.frame = CGRect( x:0, y:textfield.frame.height - 2, width: textfield.frame.width, height: 2)
+        bottomLine.frame = CGRect( x:0, y:textfield.frame.height + 5, width: textfield.frame.width, height: 1)
         bottomLine.backgroundColor = UIColor.black.cgColor
         textfield.layer.addSublayer(bottomLine)
+        textfield.textColor = UIColor.black
+        textfield.font = UIFont(name: "Standard-Book", size: 24)
+//        textfield.attributedPlaceholder.font = UIFont(name: "Standard-Book", size: 15)
+//        textfield.attributedText.text
+//        let placeholderText = NSAttributedString(string: textfield.placeholder!, attributes: [NS UIFont(name: "Standard-Book", size: 15))
+        
+//       textfield.attributedPlaceholder = placeholderText
     }
     
     static func styleTextFieldRed(_ textfield: UITextField) {

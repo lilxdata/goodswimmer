@@ -10,10 +10,18 @@ import UIKit
 
 class LocViewController: UIViewController {
 
+    
+    @IBOutlet weak var header: UILabel!
+    @IBOutlet weak var subHeader: UILabel!
+    @IBOutlet weak var locField: UITextField!
+    @IBOutlet weak var locLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        Utilities.styleTextField(locField)
+        Utilities.styleHeader(header)
+        Utilities.styleSubHeader(subHeader)
     }
     
 
