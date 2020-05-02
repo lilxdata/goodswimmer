@@ -10,13 +10,26 @@ import UIKit
 
 class SetInterestsViewController: UIViewController {
 
+    @IBOutlet weak var header: UILabel!
+    @IBOutlet weak var subHeader: UILabel!
+    
+    @IBOutlet weak var visArtButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        Utilities.styleHeader(header)
+        Utilities.styleSubHeader(subHeader)
     }
     
-
+    
+    @IBAction func boxChecked(_ sender: Any) {
+        //make box red
+        Utilities.styleBoxChecked(visArtButton)
+        
+        //send info to DB
+    }
+    
     /*
     // MARK: - Navigation
 

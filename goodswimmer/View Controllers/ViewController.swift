@@ -11,6 +11,10 @@ import UIKit
 class ViewController: UIViewController {
 
     
+    @IBOutlet weak var titleHeader: UILabel!
+    
+    @IBOutlet weak var descSubHeader: UILabel!
+    
     @IBOutlet weak var signUpButton: UIButton!
     
     @IBOutlet weak var signInButton: UIButton!
@@ -23,7 +27,8 @@ class ViewController: UIViewController {
 
 
     func setUpElements() {
-    
+        Utilities.styleHeader(titleHeader)
+        Utilities.styleSubHeader(descSubHeader)
         Utilities.styleButton(signUpButton)
         Utilities.styleButton(signInButton)
     }
