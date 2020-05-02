@@ -22,12 +22,17 @@ class SetInterestsViewController: UIViewController {
         Utilities.styleSubHeader(subHeader)
     }
     
-    
     @IBAction func boxChecked(_ sender: Any) {
         //make box red
         Utilities.styleBoxChecked(visArtButton)
         
         //send info to DB
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        // Do any additional setup after loading the view.
     }
     
     /*
