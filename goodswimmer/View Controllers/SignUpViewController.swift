@@ -120,6 +120,7 @@ class SignUpViewController: UIViewController {
                     // Add a new document with a generated ID
                    db.collection("users").addDocument(data: [
                         "username": username,
+                        "email": email,
                         "location": location,
                         "uid": result!.user.uid
                     ]) { err in
