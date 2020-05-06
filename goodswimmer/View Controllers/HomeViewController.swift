@@ -7,13 +7,36 @@
 //
 
 import UIKit
+import Firebase
 
 class HomeViewController: UIViewController {
 
+    @IBOutlet weak var tableView: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let db = Firestore.firestore()
 
-        // Do any additional setup after loading the view.
+       // read single document
+        db.collection("events").document("event2").getDocument { (docSnapshot, error) in
+            if error == nil && docSnapshot != nil && docSnapshot!.data() != nil {
+                //display document
+                
+            }
+        }
+        
+        //read collection of documents
+        db.collection("events").getDocuments { (querySnapshot, error) in
+            if error == nil && querySnapshot != nil {
+                for document in querySnapshot!.documents {
+                    // display data
+                }
+            }
+        }
+        
+        
+        
     }
     
 
