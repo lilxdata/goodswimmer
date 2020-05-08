@@ -352,7 +352,7 @@
                                 <rect key="frame" x="20" y="44" width="374" height="832"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="EventCell" rowHeight="533" id="gdN-qP-DCM">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="EventCell" rowHeight="533" id="gdN-qP-DCM" customClass="EventCell" customModule="goodswimmer" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="374" height="533"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="gdN-qP-DCM" id="2SH-rE-7nS">
@@ -384,6 +384,10 @@
                                         <constraints>
                                             <constraint firstItem="Xty-rE-bGd" firstAttribute="width" secondItem="gdN-qP-DCM" secondAttribute="width" multiplier="0.893048" id="BwO-gk-tA6"/>
                                         </constraints>
+                                        <connections>
+                                            <outlet property="eventImage" destination="G2Q-de-JJU" id="dnX-YK-gIC"/>
+                                            <outlet property="eventTitle" destination="Xty-rE-bGd" id="fwV-aL-XYB"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
