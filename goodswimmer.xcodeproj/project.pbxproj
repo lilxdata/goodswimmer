@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		0402831F2458C10A00071A1F /* LocViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0402831E2458C10A00071A1F /* LocViewController.swift */; };
 		040283232458CF7000071A1F /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040283222458CF7000071A1F /* Event.swift */; };
-		040283252458CFF400071A1F /* EventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040283242458CFF400071A1F /* EventCell.swift */; };
 		040283272458D03000071A1F /* EventModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040283262458D03000071A1F /* EventModel.swift */; };
 		040283292458D03B00071A1F /* EventService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040283282458D03B00071A1F /* EventService.swift */; };
 		0417676A2432D4EF007AC791 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041767692432D4EF007AC791 /* Utilities.swift */; };
@@ -22,6 +21,7 @@
 		045FAC98244FFF05008FA4D9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 045FAC97244FFF05008FA4D9 /* GoogleService-Info.plist */; };
 		04BB10F9244CFD4D00BFF9A2 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BB10F8244CFD4D00BFF9A2 /* Constants.swift */; };
 		04C4B2FC246354BD007C558C /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C4B2FB246354BD007C558C /* DetailViewController.swift */; };
+		04C4B2FE2465C2A1007C558C /* EventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C4B2FD2465C2A1007C558C /* EventCell.swift */; };
 		04D77F82245D471300599CBD /* Validators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D77F81245D471300599CBD /* Validators.swift */; };
 		04EB0DEE24327B5000B532F8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EB0DED24327B5000B532F8 /* AppDelegate.swift */; };
 		04EB0DF024327B5000B532F8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EB0DEF24327B5000B532F8 /* SceneDelegate.swift */; };
@@ -38,7 +38,6 @@
 /* Begin PBXFileReference section */
 		0402831E2458C10A00071A1F /* LocViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocViewController.swift; sourceTree = "<group>"; };
 		040283222458CF7000071A1F /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
-		040283242458CFF400071A1F /* EventCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCell.swift; sourceTree = "<group>"; };
 		040283262458D03000071A1F /* EventModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventModel.swift; sourceTree = "<group>"; };
 		040283282458D03B00071A1F /* EventService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventService.swift; sourceTree = "<group>"; };
 		041767692432D4EF007AC791 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
@@ -51,6 +50,7 @@
 		045FAC97244FFF05008FA4D9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		04BB10F8244CFD4D00BFF9A2 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		04C4B2FB246354BD007C558C /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		04C4B2FD2465C2A1007C558C /* EventCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCell.swift; sourceTree = "<group>"; };
 		04D77F81245D471300599CBD /* Validators.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validators.swift; sourceTree = "<group>"; };
 		04EB0DEA24327B5000B532F8 /* goodswimmer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = goodswimmer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04EB0DED24327B5000B532F8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -130,9 +130,9 @@
 				04EB0DED24327B5000B532F8 /* AppDelegate.swift */,
 				04EB0DEF24327B5000B532F8 /* SceneDelegate.swift */,
 				040283222458CF7000071A1F /* Event.swift */,
-				040283242458CFF400071A1F /* EventCell.swift */,
 				040283262458D03000071A1F /* EventModel.swift */,
 				040283282458D03B00071A1F /* EventService.swift */,
+				04C4B2FD2465C2A1007C558C /* EventCell.swift */,
 				04EB0DF324327B5000B532F8 /* Main.storyboard */,
 				04EB0DF624327B5500B532F8 /* Assets.xcassets */,
 				04EB0DF824327B5500B532F8 /* LaunchScreen.storyboard */,
@@ -300,12 +300,12 @@
 				0417676A2432D4EF007AC791 /* Utilities.swift in Sources */,
 				040283232458CF7000071A1F /* Event.swift in Sources */,
 				04EB0E0224327BA700B532F8 /* SignUpViewController.swift in Sources */,
-				040283252458CFF400071A1F /* EventCell.swift in Sources */,
 				04EB0E0424327BB200B532F8 /* LoginViewController.swift in Sources */,
 				04D77F82245D471300599CBD /* Validators.swift in Sources */,
 				04EB0DF024327B5000B532F8 /* SceneDelegate.swift in Sources */,
 				04EB0E0624327BBD00B532F8 /* HomeViewController.swift in Sources */,
 				040283272458D03000071A1F /* EventModel.swift in Sources */,
+				04C4B2FE2465C2A1007C558C /* EventCell.swift in Sources */,
 				04C4B2FC246354BD007C558C /* DetailViewController.swift in Sources */,
 				040283292458D03B00071A1F /* EventService.swift in Sources */,
 				04BB10F9244CFD4D00BFF9A2 /* Constants.swift in Sources */,
