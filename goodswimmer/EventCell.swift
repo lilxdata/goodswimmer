@@ -23,9 +23,12 @@ class EventCell: UITableViewCell {
         
         //set event title
         
-        eventTitle.text = eventToDisplay.title
+        eventTitle.text = eventToDisplay!.title
         
         //download image
+        
+        
+        
         //display image
     }
     
