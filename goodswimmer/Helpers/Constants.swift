@@ -14,4 +14,9 @@ struct Constants {
         
         static let homeViewController = "homeVC"
     }
+    
+    struct LocalStorage {
+        static let storedUsername = "storedUsername"
+        static let storedUserId = "storedUserId"
+    }
 }

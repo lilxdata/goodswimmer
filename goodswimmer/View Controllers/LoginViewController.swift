@@ -65,6 +65,7 @@ class LoginViewController: UIViewController {
             
                 //TODO: extract method
             else {
+                
                 let homeViewController = self.storyboard?.instantiateViewController(identifier: Constants.Storyboard.homeViewController)  as? HomeViewController
                      
                 self.view.window?.rootViewController = homeViewController
@@ -74,3 +75,9 @@ class LoginViewController: UIViewController {
     }
     
 }
+
+
+// TODO: Auth delegate extension
+// TODO: get user
+// TODO: save logged in user to local storage
+// LocalStorageService.saveCurrentUser(user: user)
