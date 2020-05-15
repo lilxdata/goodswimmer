@@ -10,6 +10,12 @@ import Foundation
 
 //event structure featuring all of the event data we need, title, date etc from firebase data
 //TODO: fill out struct after db design implemented for events
-struct Event {
+struct Event : Codable {
+    
+    var title:String?
+    var address:String?
+    var description:String?
+    var urlToImage:String?
+    
     
 }

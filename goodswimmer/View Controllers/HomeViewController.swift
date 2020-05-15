@@ -12,10 +12,14 @@ import Firebase
 class HomeViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
+    //model var?
+    
+    var events = [Event]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        tableView.dataSource = self
         let db = Firestore.firestore()
 
        // read single document
@@ -38,16 +42,25 @@ class HomeViewController: UIViewController {
         
         
     }
-    
 
-    /*
-    // MARK: - Navigation
+}
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+extension HomeViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return events.count
     }
-    */
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        // get event cell
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "EventCell", for: indexPath) as! EventCell
+        
+        //get event
+        let event = events[indexPath.row]
+        
+        cell.displayEvent(event)
+        return cell
+    }
 
+    
 }
