@@ -102,6 +102,7 @@
 			children = (
 				040283262458D03000071A1F /* EventModel.swift */,
 				040172A4246CF25500297ECA /* GSUser.swift */,
+				040283222458CF7000071A1F /* Event.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -178,7 +179,6 @@
 				04EB0DED24327B5000B532F8 /* AppDelegate.swift */,
 				04C4B2FD2465C2A1007C558C /* EventCell.swift */,
 				04EB0DEF24327B5000B532F8 /* SceneDelegate.swift */,
-				040283222458CF7000071A1F /* Event.swift */,
 				04EB0DF624327B5500B532F8 /* Assets.xcassets */,
 				045FAC97244FFF05008FA4D9 /* GoogleService-Info.plist */,
 				04EB0DFB24327B5500B532F8 /* Info.plist */,

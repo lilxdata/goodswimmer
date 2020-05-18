@@ -7,9 +7,22 @@
 //
 
 import UIKit
+import FirebaseFirestoreSwift
+import FirebaseFirestore
 
 class CreateEventViewController: UIViewController {
 
+    //connect IBOutlets
+    
+    
+    @IBOutlet weak var eventName: UITextField!
+    @IBOutlet weak var eventParticipants: UITextField!
+    @IBOutlet weak var eventLocation: UITextField!
+    @IBOutlet weak var eventDesc: UITextField!
+    
+    
+    @IBOutlet weak var createEventField: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -17,14 +30,29 @@ class CreateEventViewController: UIViewController {
     }
     
 
-    /*
-    // MARK: - Navigation
+    
+    // on create event tapped
+    // connect to db
+    // write data to events collection
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+   
+    @IBAction func createEventTapped(_ sender: Any) {
+        let db = Firestore.firestore()
+       
+        db.collection("events").addDocument(data: [
+            "name": eventName!,
+            "description": eventDesc!]) { err in
+            if let err = err {
+                print("Error writing document: \(err)")
+            } else {
+                print("Document successfully written!")
+            }
+        }
     }
-    */
-
+   
+    
+    
+    
+    //TODO later: validation on fields
+    //fields are filled in, locations are searched, character limits, etc
 }

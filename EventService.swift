@@ -7,8 +7,7 @@
 //
 
 import Foundation
-
 //TODO
-struct EventService : Decodable {
+class EventService {
     
 }

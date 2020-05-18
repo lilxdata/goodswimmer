@@ -12,7 +12,7 @@ import Foundation
 //TODO: fill out struct after db design implemented for events
 struct Event : Codable {
     
-    var title:String?
+    var name:String?
     var address:String?
     var description:String?
     var urlToImage:String?
