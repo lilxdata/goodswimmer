@@ -14,7 +14,6 @@
 		0402831F2458C10A00071A1F /* LocViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0402831E2458C10A00071A1F /* LocViewController.swift */; };
 		040283232458CF7000071A1F /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040283222458CF7000071A1F /* Event.swift */; };
 		040283272458D03000071A1F /* EventModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040283262458D03000071A1F /* EventModel.swift */; };
-		040283292458D03B00071A1F /* EventService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040283282458D03B00071A1F /* EventService.swift */; };
 		0417676A2432D4EF007AC791 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041767692432D4EF007AC791 /* Utilities.swift */; };
 		043C4547245C9465004D2470 /* Career_salle13_cursive.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 043C4546245C9465004D2470 /* Career_salle13_cursive.ttf */; };
 		043C454C245C948E004D2470 /* standard-book-italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 043C4548245C948D004D2470 /* standard-book-italic.otf */; };
@@ -47,7 +46,6 @@
 		0402831E2458C10A00071A1F /* LocViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocViewController.swift; sourceTree = "<group>"; };
 		040283222458CF7000071A1F /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		040283262458D03000071A1F /* EventModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventModel.swift; sourceTree = "<group>"; };
-		040283282458D03B00071A1F /* EventService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventService.swift; sourceTree = "<group>"; };
 		041767692432D4EF007AC791 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		043C4546245C9465004D2470 /* Career_salle13_cursive.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Career_salle13_cursive.ttf; sourceTree = "<group>"; };
 		043C4548245C948D004D2470 /* standard-book-italic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "standard-book-italic.otf"; sourceTree = "<group>"; };
@@ -118,7 +116,6 @@
 		040172A1246CEF5700297ECA /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				040283282458D03B00071A1F /* EventService.swift */,
 				040172A2246CF21A00297ECA /* LocalStorageService.swift */,
 			);
 			name = Services;
@@ -355,7 +352,6 @@
 				040283272458D03000071A1F /* EventModel.swift in Sources */,
 				04C4B2FE2465C2A1007C558C /* EventCell.swift in Sources */,
 				04C4B2FC246354BD007C558C /* DetailViewController.swift in Sources */,
-				040283292458D03B00071A1F /* EventService.swift in Sources */,
 				04BB10F9244CFD4D00BFF9A2 /* Constants.swift in Sources */,
 				0401729B246CEA4000297ECA /* CreateEventViewController.swift in Sources */,
 				040172A5246CF25500297ECA /* GSUser.swift in Sources */,

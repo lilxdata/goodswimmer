@@ -14,32 +14,15 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     //model var?
     
+    @IBOutlet weak var GSLabel: UILabel!
+    
     var events = [Event]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         tableView.dataSource = self
-        let db = Firestore.firestore()
-
-       // read single document
-        db.collection("events").document("event2").getDocument { (docSnapshot, error) in
-            if error == nil && docSnapshot != nil && docSnapshot!.data() != nil {
-                //display document
-                
-            }
-        }
-        
-        //read collection of documents
-        db.collection("events").getDocuments { (querySnapshot, error) in
-            if error == nil && querySnapshot != nil {
-                for document in querySnapshot!.documents {
-                    // display data
-                }
-            }
-        }
-        
-        
+        Utilities.styleAppName(GSLabel)
         
     }
 

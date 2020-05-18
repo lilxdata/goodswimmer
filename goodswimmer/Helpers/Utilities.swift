@@ -41,6 +41,12 @@ class Utilities {
         label.text = label.text?.uppercased()
     }
     
+    static func styleAppName(_ label: UILabel) {
+        label.font = UIFont(name: "Career_salle13_cursive", size: 20)
+        label.textColor = UIColor.black
+        label.text = label.text?.uppercased()
+    }
+    
     static func styleSubHeader(_ label:UILabel) {
         label.font = UIFont(name: "CutiveMono-Regular", size: 21)
         label.textColor = UIColor.black
@@ -53,8 +59,7 @@ class Utilities {
     static func styleButton(_ button: UIButton) {
         //rounded button
         button.titleLabel?.font = UIFont(name: "Standard-Book", size: 21)
-       // button.layer.cornerRadius = 20.0
-       // button.title = button.titleLabel?.text?.uppercased() // did not work
+       // button.layer.cornerRadius = 20.0 
         button.setTitle(button.title(for: .normal)?.uppercased(), for: .normal)
         button.layer.borderWidth = 1.0
         button.layer.borderColor = UIColor.black.cgColor
@@ -79,6 +84,10 @@ class Utilities {
     static func isPasswordValid(_ password: String) -> Bool{
         let passwordTest = NSPredicate(format: "SELF MATCHES %@", "^(?=.*[a-z])(?=.*[$@$#!%*?&])[A-Za-z\\d$@$#!%*?&]{8,}")
         return passwordTest.evaluate(with: password)
+    }
+    
+    static func cleanTextField(_ textfield: UITextField) -> String {
+        return textfield.text!.trimmingCharacters(in: .whitespacesAndNewlines)
     }
     
     // TODO: email validation

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="0iB-n3-dMh">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="t2G-Pr-Um6">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
@@ -12,11 +12,11 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="goodswimmer" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="42M-fm-bvx">
-                                <rect key="frame" x="60" y="344" width="294" height="320"/>
+                                <rect key="frame" x="60" y="388" width="294" height="320"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Artists' organizing tools for the people.  Not the Pigs!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BCL-O1-hEc">
                                         <rect key="frame" x="0.0" y="0.0" width="294" height="180"/>
@@ -70,7 +70,7 @@
                                 </constraints>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Good Swimmer" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xAg-ff-PSy">
-                                <rect key="frame" x="20" y="76" width="374" height="288"/>
+                                <rect key="frame" x="20" y="120" width="374" height="298"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -106,11 +106,11 @@
             <objects>
                 <viewController id="TAM-z9-QUX" customClass="LoginViewController" customModule="goodswimmer" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="mwn-NO-N97">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="9Po-TG-Y9X">
-                                <rect key="frame" x="20" y="311" width="374" height="220"/>
+                                <rect key="frame" x="20" y="338" width="374" height="220"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7I7-aX-iEG" userLabel="Email Field">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="40"/>
@@ -150,7 +150,7 @@
                                 </constraints>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="W8H-Rb-CjK">
-                                <rect key="frame" x="84" y="577" width="246" height="151"/>
+                                <rect key="frame" x="84" y="631" width="246" height="151"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="egu-40-WdM">
                                         <rect key="frame" x="0.0" y="0.0" width="246" height="30"/>
@@ -176,7 +176,7 @@
                                 </subviews>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m6c-Tq-CDt" userLabel="Sign Up Back">
-                                <rect key="frame" x="32" y="755" width="47" height="40"/>
+                                <rect key="frame" x="32" y="809" width="47" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="Uxq-Kw-flg"/>
                                 </constraints>
@@ -221,11 +221,11 @@
             <objects>
                 <viewController id="cyL-OP-bJQ" customClass="SignUpViewController" customModule="goodswimmer" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5yV-c5-WAT">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="OVW-66-kTA">
-                                <rect key="frame" x="40" y="160" width="334" height="497"/>
+                                <rect key="frame" x="40" y="204" width="334" height="497"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" usesAttributedText="YES" placeholder="Username" adjustsFontSizeToFit="NO" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="E3a-hc-qcd" userLabel="Username field">
                                         <rect key="frame" x="0.0" y="0.0" width="334" height="21"/>
@@ -280,7 +280,7 @@
                                 </subviews>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xbx-Sh-8vl">
-                                <rect key="frame" x="339" y="762" width="35" height="40"/>
+                                <rect key="frame" x="339" y="816" width="35" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="dG9-Wm-Jzs"/>
                                 </constraints>
@@ -293,7 +293,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dJF-Af-9fV" userLabel="Sign Up Back">
-                                <rect key="frame" x="40" y="762" width="38" height="40"/>
+                                <rect key="frame" x="40" y="816" width="38" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="FI2-vP-p6H"/>
                                 </constraints>
@@ -349,7 +349,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="VQe-jG-1gh">
-                                <rect key="frame" x="20" y="44" width="374" height="749"/>
+                                <rect key="frame" x="20" y="84" width="374" height="709"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="EventCell" rowHeight="533" id="gdN-qP-DCM" customClass="EventCell" customModule="goodswimmer" customModuleProvider="target">
@@ -387,23 +387,31 @@
                                         </constraints>
                                         <connections>
                                             <outlet property="eventImage" destination="G2Q-de-JJU" id="dnX-YK-gIC"/>
-                                            <outlet property="eventTitle" destination="Xty-rE-bGd" id="fwV-aL-XYB"/>
+                                            <outlet property="eventName" destination="Xty-rE-bGd" id="RxH-RB-pW3"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GOOD SWIMMER" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="lpg-H2-dmk">
+                                <rect key="frame" x="20" y="32" width="374" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="VQe-jG-1gh" firstAttribute="top" secondItem="yTW-II-dQr" secondAttribute="top" id="Mif-jC-OXs"/>
                             <constraint firstItem="VQe-jG-1gh" firstAttribute="leading" secondItem="CGB-Hc-zor" secondAttribute="leading" constant="20" symbolic="YES" id="PsG-dh-0NL"/>
                             <constraint firstAttribute="trailing" secondItem="VQe-jG-1gh" secondAttribute="trailing" constant="20" symbolic="YES" id="bi4-a7-wbn"/>
                             <constraint firstAttribute="bottom" secondItem="VQe-jG-1gh" secondAttribute="bottom" constant="20" symbolic="YES" id="mws-EI-jmh"/>
+                            <constraint firstItem="VQe-jG-1gh" firstAttribute="top" secondItem="yTW-II-dQr" secondAttribute="top" constant="40" id="naz-lM-oea"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="yTW-II-dQr"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Feed" id="lkO-3F-enu"/>
                     <connections>
+                        <outlet property="GSLabel" destination="lpg-H2-dmk" id="SK2-zx-ThR"/>
                         <outlet property="tableView" destination="VQe-jG-1gh" id="Cpm-tN-qmp"/>
                     </connections>
                 </viewController>
@@ -428,7 +436,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="42" translatesAutoresizingMaskIntoConstraints="NO" id="EOp-jb-W6d">
                                 <rect key="frame" x="32" y="104.5" width="350" height="507"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Limited to 50 characters" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HlN-ar-uSV" userLabel="Title field">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Title" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HlN-ar-uSV" userLabel="Title field">
                                         <rect key="frame" x="0.0" y="0.0" width="350" height="17"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
@@ -443,7 +451,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Limited to 500 words" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NIz-un-suc" userLabel="Description field">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Describe your event" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NIz-un-suc" userLabel="Description field">
                                         <rect key="frame" x="0.0" y="185" width="350" height="250"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="250" id="XiD-0y-zos"/>
@@ -612,6 +620,6 @@
         <image name="plus" catalog="system" width="64" height="56"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="47l-76-dUF"/>
+        <segue reference="OkF-zU-RgS"/>
     </inferredMetricsTieBreakers>
 </document>
