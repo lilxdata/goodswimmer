@@ -62,6 +62,7 @@ class SignUpViewController: UIViewController {
     //Check fields and validate that data is correct
     //If all good, return nil
     // Otherwise, return error message
+    //TODO: extract into validators 
     
     func validateFields() -> String? {
         

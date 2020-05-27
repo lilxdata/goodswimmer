@@ -29,20 +29,31 @@ class HomeViewController: UIViewController {
 }
 
 extension HomeViewController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return events.count
+
+        func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+            if events != nil {
+                return events.count
+            } else {
+                displayZeroState()
+            }
+            
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        // get event cell
+        if events != nil {
+           // get event cell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "EventCell", for: indexPath) as! EventCell
+
+            //get event
+            let event = events[indexPath.row]
+
+            cell.displayEvent(event)
+            return cell
+        } else {
+            zeroStateLabel.alpha = 1
+        }
+
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "EventCell", for: indexPath) as! EventCell
-        
-        //get event
-        let event = events[indexPath.row]
-        
-        cell.displayEvent(event)
-        return cell
     }
 
     

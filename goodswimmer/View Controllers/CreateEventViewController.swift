@@ -13,7 +13,6 @@ import FirebaseFirestore
 class CreateEventViewController: UIViewController {
     
     @IBOutlet weak var eventName: UITextField!
-    @IBOutlet weak var eventParticipants: UITextField!
     @IBOutlet weak var eventLocation: UITextField!
     @IBOutlet weak var eventDesc: UITextField!
     
