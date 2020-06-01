@@ -26,6 +26,18 @@ class Utilities {
 //       textfield.attributedPlaceholder = placeholderText
     }
     
+    //TODO: DRY  
+    static func styleTextFieldSmall(_ textfield: UITextField) {
+    // create bottom line detail
+        let bottomLine = CALayer()
+        bottomLine.frame = CGRect( x:0, y:textfield.frame.height + 5, width: textfield.frame.width, height: 1)
+        bottomLine.backgroundColor = UIColor.black.cgColor
+        textfield.layer.addSublayer(bottomLine)
+        textfield.textColor = UIColor.black
+        textfield.font = UIFont(name: "Standard-Book", size: 15)
+
+    }
+    
     static func styleTextFieldRed(_ textfield: UITextField) {
     // create bottom line detail
         let bottomLine = CALayer()
@@ -48,6 +60,10 @@ class Utilities {
     
     static func styleText(_ label: UILabel){
         label.font = UIFont(name: "Standard-Book", size: 24)
+    }
+    
+    static func styleFormHeaders(_ label: UILabel){
+        label.font = UIFont(name: "Standard-Book", size: 35)
     }
     
     static func styleButton(_ button: UIButton) {
