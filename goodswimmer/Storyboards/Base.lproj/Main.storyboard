@@ -106,7 +106,7 @@
             <objects>
                 <viewController id="TAM-z9-QUX" customClass="LoginViewController" customModule="goodswimmer" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="mwn-NO-N97">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="9Po-TG-Y9X">
@@ -427,7 +427,7 @@
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="33K-wP-jbI" userLabel="LocationField">
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="But where tho?" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="33K-wP-jbI" userLabel="LocationField">
                                                         <rect key="frame" x="0.0" y="119.5" width="350" height="18.5"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="350" id="l2v-vs-z84"/>
@@ -441,7 +441,7 @@
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5z6-0E-w8Z" userLabel="AddressField1">
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Number/Street" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5z6-0E-w8Z" userLabel="AddressField1">
                                                         <rect key="frame" x="0.0" y="198.5" width="350" height="18.5"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="175" id="RKF-zP-QN2"/>
@@ -450,7 +450,7 @@
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits"/>
                                                     </textField>
-                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iMn-cQ-k5C" userLabel="AddressField2">
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="City/State" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iMn-cQ-k5C" userLabel="AddressField2">
                                                         <rect key="frame" x="0.0" y="237" width="350" height="18.5"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="350" id="BC8-UZ-z26"/>
@@ -459,7 +459,7 @@
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits"/>
                                                     </textField>
-                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wUL-hP-NT6" userLabel="AddressField3">
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Zip Code" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wUL-hP-NT6" userLabel="AddressField3">
                                                         <rect key="frame" x="0.0" y="275.5" width="350" height="18.5"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="350" id="79r-sQ-Xvs"/>
@@ -477,7 +477,7 @@
                                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="nW6-da-I4u" userLabel="Date Stack View">
                                                         <rect key="frame" x="0.0" y="354.5" width="324" height="18.5"/>
                                                         <subviews>
-                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1Bw-rd-gpP" userLabel="DateField1">
+                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="xx/xx/xxxx" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1Bw-rd-gpP" userLabel="DateField1">
                                                                 <rect key="frame" x="0.0" y="0.0" width="150" height="18.5"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="150" id="Tpg-M4-sew"/>
@@ -485,7 +485,7 @@
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                 <textInputTraits key="textInputTraits"/>
                                                             </textField>
-                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7GY-eW-lIm" userLabel="DateField2">
+                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="xx:xx xm" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7GY-eW-lIm" userLabel="DateField2">
                                                                 <rect key="frame" x="174" y="0.0" width="150" height="18.5"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="150" id="49E-PW-0Ka"/>
@@ -501,7 +501,7 @@
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sVg-VX-16f" userLabel="DescriptionField">
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Limited to 500 words..." minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sVg-VX-16f" userLabel="DescriptionField">
                                                         <rect key="frame" x="0.0" y="433.5" width="350" height="250"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="350" id="aBJ-dw-XX6"/>

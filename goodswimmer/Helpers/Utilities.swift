@@ -18,7 +18,7 @@ class Utilities {
         bottomLine.backgroundColor = UIColor.black.cgColor
         textfield.layer.addSublayer(bottomLine)
         textfield.textColor = UIColor.black
-        textfield.font = UIFont(name: "Standard-Book", size: 24)
+        textfield.font = UIFont(name: "Standard-Book", size: 15)
 //        textfield.attributedPlaceholder.font = UIFont(name: "Standard-Book", size: 15)
 //        textfield.attributedText.text
 //        let placeholderText = NSAttributedString(string: textfield.placeholder!, attributes: [NS UIFont(name: "Standard-Book", size: 15))
