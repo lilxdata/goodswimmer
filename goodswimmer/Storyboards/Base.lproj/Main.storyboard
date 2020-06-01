@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="0iB-n3-dMh">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="0iB-n3-dMh">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -225,54 +225,54 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="OVW-66-kTA">
-                                <rect key="frame" x="40" y="160" width="334" height="497"/>
+                                <rect key="frame" x="40" y="160" width="334" height="500.5"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" usesAttributedText="YES" placeholder="Username" adjustsFontSizeToFit="NO" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="E3a-hc-qcd" userLabel="Username field">
-                                        <rect key="frame" x="0.0" y="0.0" width="334" height="21"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="334" height="22"/>
                                         <attributedString key="attributedText"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BEh-89-X01">
-                                        <rect key="frame" x="0.0" y="46" width="334" height="50"/>
+                                        <rect key="frame" x="0.0" y="47" width="334" height="50"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="39"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" usesAttributedText="YES" placeholder="Email" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="Ae1-A1-aRf" userLabel="Email">
-                                        <rect key="frame" x="0.0" y="121" width="334" height="21"/>
+                                        <rect key="frame" x="0.0" y="122" width="334" height="22"/>
                                         <attributedString key="attributedText"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9rJ-4i-yuQ">
-                                        <rect key="frame" x="0.0" y="167" width="334" height="50"/>
+                                        <rect key="frame" x="0.0" y="169" width="334" height="50"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="OdW-Bj-KnX" userLabel="Password">
-                                        <rect key="frame" x="0.0" y="242" width="334" height="18"/>
+                                        <rect key="frame" x="0.0" y="244" width="334" height="18"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" secureTextEntry="YES" textContentType="password"/>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AG4-59-DuM">
-                                        <rect key="frame" x="0.0" y="285" width="334" height="50"/>
+                                        <rect key="frame" x="0.0" y="287" width="334" height="50"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="City" textAlignment="natural" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="7dU-oO-OFW" userLabel="Location Field">
-                                        <rect key="frame" x="0.0" y="360" width="334" height="17"/>
+                                        <rect key="frame" x="0.0" y="362" width="334" height="18.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" spellCheckingType="yes" smartInsertDeleteType="yes" textContentType="address-level2"/>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hvp-Tj-hXG" userLabel="Location Label">
-                                        <rect key="frame" x="0.0" y="402" width="334" height="50"/>
+                                        <rect key="frame" x="0.0" y="405.5" width="334" height="50"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Error" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XLm-du-vgr">
-                                        <rect key="frame" x="0.0" y="477" width="334" height="20"/>
+                                        <rect key="frame" x="0.0" y="480.5" width="334" height="20"/>
                                         <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="17"/>
                                         <color key="textColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -402,14 +402,14 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="yTW-II-dQr"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Feed" id="lkO-3F-enu"/>
+                    <tabBarItem key="tabBarItem" title="" image="bar-feed" id="lkO-3F-enu"/>
                     <connections>
                         <outlet property="tableView" destination="VQe-jG-1gh" id="Cpm-tN-qmp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6lt-js-sjX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-632" y="1780"/>
+            <point key="canvasLocation" x="-914" y="1767"/>
         </scene>
         <!--Create Event View Controller-->
         <scene sceneID="3vh-6s-80A">
@@ -430,11 +430,11 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="9Aj-Z1-0GZ"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="" image="plus" catalog="system" id="sfX-fR-Dya"/>
+                    <tabBarItem key="tabBarItem" title="" id="sfX-fR-Dya"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="w7F-uL-Aet" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="240" y="1795"/>
+            <point key="canvasLocation" x="-164" y="1876"/>
         </scene>
         <!--Profile View Controller-->
         <scene sceneID="Qy0-5j-bCM">
@@ -459,7 +459,23 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sfN-Ij-DSQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1192.753623188406" y="1779.9107142857142"/>
+            <point key="canvasLocation" x="643" y="1814"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="l1E-EC-Egp">
+            <objects>
+                <viewController id="sfr-ZZ-KVG" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="egT-2n-K3r">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="A0H-xG-f4a"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="" id="smk-at-ehN"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wUT-r0-Gr0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1442" y="1659"/>
         </scene>
         <!--Detail View Controller-->
         <scene sceneID="cIm-yi-nIg">
@@ -529,6 +545,7 @@
                         <segue destination="Yn1-b3-wBZ" kind="relationship" relationship="viewControllers" id="piQ-qj-tPQ"/>
                         <segue destination="b6l-6S-5dU" kind="relationship" relationship="viewControllers" id="i56-Rz-Y6j"/>
                         <segue destination="Ncr-nI-DQr" kind="relationship" relationship="viewControllers" id="bCc-kr-Gkp"/>
+                        <segue destination="sfr-ZZ-KVG" kind="relationship" relationship="viewControllers" id="cHF-8f-ci9"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kuw-aA-6cw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -553,11 +570,11 @@
             <point key="canvasLocation" x="137.68115942028987" y="126.5625"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="person" catalog="system" width="64" height="58"/>
-        <image name="plus" catalog="system" width="64" height="56"/>
-    </resources>
     <inferredMetricsTieBreakers>
         <segue reference="47l-76-dUF"/>
     </inferredMetricsTieBreakers>
+    <resources>
+        <image name="bar-feed" width="12" height="12.5"/>
+        <image name="person" catalog="system" width="128" height="117"/>
+    </resources>
 </document>
