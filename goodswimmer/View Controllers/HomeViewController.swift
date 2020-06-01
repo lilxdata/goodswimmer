@@ -23,6 +23,8 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         tableView.dataSource = self
         tableView.delegate = self
         let db = Firestore.firestore()
+        
+        //TODO: refresh control
 
        // read single document
 //        db.collection("events").document("event2").getDocument { (docSnapshot, error) in
