@@ -34,12 +34,13 @@ class LoginViewController: UIViewController {
         //hide error label
         
         errorLabel.alpha = 0
+        let fontSize = 15
         
         /* style elements */
         
         //style text fields using utilities helper
-        Utilities.styleTextField(emailField)
-        Utilities.styleTextField(passwordField)
+        Utilities.styleTextField(emailField, size: fontSize)
+        Utilities.styleTextField(passwordField, size: fontSize)
         
         // style button
         Utilities.styleButton(signInButton)

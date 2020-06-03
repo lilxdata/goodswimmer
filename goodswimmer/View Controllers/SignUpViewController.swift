@@ -42,20 +42,15 @@ class SignUpViewController: UIViewController {
         //hide error label
         
         errorLabel.alpha = 0
+        let fontSize = 15
         
         /* style elements */
         
         //style text fields using utilities helper
-        Utilities.styleTextField(userNameField)
-        Utilities.styleTextField(emailField)
-        Utilities.styleTextField(passwordField)
-        Utilities.styleTextField(locationField)
-        
-        //style labels 
-//        Utilities.styleText(userNameLabel)
-//        Utilities.styleText(emailLabel)
-//        Utilities.styleText(passwordLabel)
-//        Utilities.styleText(locationLabel)
+        Utilities.styleTextField(userNameField, size: fontSize)
+        Utilities.styleTextField(emailField, size: fontSize)
+        Utilities.styleTextField(passwordField, size: fontSize)
+        Utilities.styleTextField(locationField, size: fontSize)
         
     }
     
