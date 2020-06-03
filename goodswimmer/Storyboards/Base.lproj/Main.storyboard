@@ -12,11 +12,11 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="goodswimmer" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="42M-fm-bvx">
-                                <rect key="frame" x="60" y="344" width="294" height="320"/>
+                                <rect key="frame" x="60" y="388" width="294" height="320"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Artists' organizing tools for the people.  Not the Pigs!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BCL-O1-hEc">
                                         <rect key="frame" x="0.0" y="0.0" width="294" height="180"/>
@@ -70,7 +70,7 @@
                                 </constraints>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Good Swimmer" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xAg-ff-PSy">
-                                <rect key="frame" x="20" y="76" width="374" height="288"/>
+                                <rect key="frame" x="20" y="120" width="374" height="298"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -110,7 +110,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="9Po-TG-Y9X">
-                                <rect key="frame" x="20" y="311" width="374" height="220"/>
+                                <rect key="frame" x="20" y="338" width="374" height="220"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7I7-aX-iEG" userLabel="Email Field">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="40"/>
@@ -150,7 +150,7 @@
                                 </constraints>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="W8H-Rb-CjK">
-                                <rect key="frame" x="84" y="577" width="246" height="151"/>
+                                <rect key="frame" x="84" y="631" width="246" height="151"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="egu-40-WdM">
                                         <rect key="frame" x="0.0" y="0.0" width="246" height="30"/>
@@ -176,7 +176,7 @@
                                 </subviews>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m6c-Tq-CDt" userLabel="Sign Up Back">
-                                <rect key="frame" x="32" y="755" width="47" height="40"/>
+                                <rect key="frame" x="32" y="809" width="47" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="Uxq-Kw-flg"/>
                                 </constraints>
@@ -221,11 +221,11 @@
             <objects>
                 <viewController id="cyL-OP-bJQ" customClass="SignUpViewController" customModule="goodswimmer" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5yV-c5-WAT">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="OVW-66-kTA">
-                                <rect key="frame" x="40" y="160" width="334" height="500.5"/>
+                                <rect key="frame" x="40" y="204" width="334" height="500.5"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" usesAttributedText="YES" placeholder="Username" adjustsFontSizeToFit="NO" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="E3a-hc-qcd" userLabel="Username field">
                                         <rect key="frame" x="0.0" y="0.0" width="334" height="22"/>
@@ -280,7 +280,7 @@
                                 </subviews>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xbx-Sh-8vl">
-                                <rect key="frame" x="339" y="762" width="35" height="40"/>
+                                <rect key="frame" x="339" y="816" width="35" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="dG9-Wm-Jzs"/>
                                 </constraints>
@@ -293,7 +293,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dJF-Af-9fV" userLabel="Sign Up Back">
-                                <rect key="frame" x="40" y="762" width="38" height="40"/>
+                                <rect key="frame" x="40" y="816" width="38" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="FI2-vP-p6H"/>
                                 </constraints>
@@ -580,12 +580,18 @@
                         <outlet property="addressField1" destination="5z6-0E-w8Z" id="jOW-ZT-1iz"/>
                         <outlet property="addressField2" destination="iMn-cQ-k5C" id="Vmd-n7-Abv"/>
                         <outlet property="addressField3" destination="wUL-hP-NT6" id="Xea-UP-raz"/>
+                        <outlet property="addressLabel" destination="V0H-RB-2ys" id="Kj9-uW-VUS"/>
                         <outlet property="createEventButton" destination="QPR-mb-Dr1" id="6Nz-IQ-yAo"/>
                         <outlet property="createEventHeader" destination="yf4-5u-9O6" id="6pE-hA-gE5"/>
                         <outlet property="dateField1" destination="7GY-eW-lIm" id="ToD-HT-gOK"/>
                         <outlet property="dateField2" destination="7GY-eW-lIm" id="JjU-RC-0EH"/>
+                        <outlet property="dateLabel" destination="Bcz-bG-PhY" id="h4e-Uc-QoE"/>
+                        <outlet property="descriptionLabel" destination="NrU-zp-mu9" id="USf-p1-OYs"/>
+                        <outlet property="imageLabel" destination="xjV-Jg-ROD" id="f4a-63-1A2"/>
                         <outlet property="locationField" destination="33K-wP-jbI" id="eNA-EP-jM4"/>
+                        <outlet property="locationLabel" destination="Q7b-Dd-A8G" id="7XD-zS-yeg"/>
                         <outlet property="titleField" destination="H6z-5g-1uJ" id="JSA-qN-m6a"/>
+                        <outlet property="titleLabel" destination="i9W-rH-8Ie" id="Zjt-ue-9ky"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="w7F-uL-Aet" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -729,7 +735,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="47l-76-dUF"/>
+        <segue reference="OkF-zU-RgS"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="bar-add-event" width="11" height="13"/>

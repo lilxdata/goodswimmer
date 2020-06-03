@@ -11,43 +11,19 @@ import UIKit
 
 class Utilities {
     
-    static func styleTextField(_ textfield: UITextField) {
+    static func styleTextField(_ textfield: UITextField, size: Int) {
     // create bottom line detail
         let bottomLine = CALayer()
+        let fontSize = CGFloat(size)
         bottomLine.frame = CGRect( x:0, y:textfield.frame.height + 5, width: textfield.frame.width, height: 1)
         bottomLine.backgroundColor = UIColor.black.cgColor
+        //    bottomLine.backgroundColor = UIColor.red.cgColor
         textfield.layer.addSublayer(bottomLine)
         textfield.textColor = UIColor.black
-        textfield.font = UIFont(name: "Standard-Book", size: 15)
-//        textfield.attributedPlaceholder.font = UIFont(name: "Standard-Book", size: 15)
-//        textfield.attributedText.text
-//        let placeholderText = NSAttributedString(string: textfield.placeholder!, attributes: [NS UIFont(name: "Standard-Book", size: 15))
-        
-//       textfield.attributedPlaceholder = placeholderText
-    }
-    
-    //TODO: DRY  
-    static func styleTextFieldSmall(_ textfield: UITextField) {
-    // create bottom line detail
-        let bottomLine = CALayer()
-        bottomLine.frame = CGRect( x:0, y:textfield.frame.height + 5, width: textfield.frame.width, height: 1)
-        bottomLine.backgroundColor = UIColor.black.cgColor
-        textfield.layer.addSublayer(bottomLine)
-        textfield.textColor = UIColor.black
-        textfield.font = UIFont(name: "Standard-Book", size: 15)
-
-    }
-    
-    static func styleTextFieldRed(_ textfield: UITextField) {
-    // create bottom line detail
-        let bottomLine = CALayer()
-        bottomLine.frame = CGRect( x:0, y:textfield.frame.height - 2, width: textfield.frame.width, height: 2)
-        bottomLine.backgroundColor = UIColor.red.cgColor
-        textfield.layer.addSublayer(bottomLine)
+        textfield.font = UIFont(name: "Standard-Book", size: fontSize)
     }
     
     static func styleHeader(_ label: UILabel){
-        /* add code to style headers and make consistent across app */
         label.font = UIFont(name: "Career_salle13_cursive", size: 54)
         label.textColor = UIColor.black
         label.text = label.text?.uppercased()
@@ -58,12 +34,12 @@ class Utilities {
         label.textColor = UIColor.black
     }
     
-    static func styleText(_ label: UILabel){
-        label.font = UIFont(name: "Standard-Book", size: 24)
-    }
-    
-    static func styleFormHeaders(_ label: UILabel){
-        label.font = UIFont(name: "Standard-Book", size: 35)
+    static func styleLabel(_ label: UILabel, size: Int, uppercase: Bool){
+        let fontSize = CGFloat(size)
+        label.font = UIFont(name: "Standard-Book", size: fontSize)
+        if uppercase {
+            label.text = label.text?.uppercased()
+        }
     }
     
     static func styleButton(_ button: UIButton) {
@@ -82,14 +58,14 @@ class Utilities {
         label.numberOfLines = 0
     }
     
-    static func styleCheckbox(_ button: UIButton) {
-        button.tintColor = UIColor.black
-    }
-    
-    static func styleBoxChecked(_ button: UIButton) {
-        button.tintColor = UIColor.black
-        button.backgroundColor = UIColor.red
-    }
+//    static func styleCheckbox(_ button: UIButton) {
+//        button.tintColor = UIColor.black
+//    }
+//
+//    static func styleBoxChecked(_ button: UIButton) {
+//        button.tintColor = UIColor.black
+//        button.backgroundColor = UIColor.red
+//    }
     
     /* password validation */
     static func isPasswordValid(_ password: String) -> Bool{
