@@ -27,6 +27,7 @@ class CreateEventViewController: UIViewController {
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var createEventButton: UIButton!
     
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -48,9 +49,9 @@ class CreateEventViewController: UIViewController {
         Utilities.styleTextField(dateField2, size: fieldSize)
         
         Utilities.styleLabel(addressLabel, size: labelSize, uppercase: true)
-        Utilities.styleTextField(addressField1,size: fieldSize)
-        Utilities.styleTextField(addressField2, size: fieldSize)
-        Utilities.styleTextField(addressField3, size: fieldSize)
+        Utilities.styleDisabledTextField(addressField1,size: fieldSize)
+        Utilities.styleDisabledTextField(addressField2, size: fieldSize)
+        Utilities.styleDisabledTextField(addressField3, size: fieldSize)
         
         Utilities.styleLabel(descriptionLabel, size: labelSize, uppercase: true)
         
@@ -65,7 +66,11 @@ class CreateEventViewController: UIViewController {
         //TODO: add red asterisks to mandatory categories; helper isMandatory or something
     }
     
-
+    
+    @IBAction func addImageTapped(_ sender: Any) {
+        
+    }
+    
     
     @IBAction func createEventTapped(_ sender: Any) {
         //write to DB

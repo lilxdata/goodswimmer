@@ -52,12 +52,6 @@ class SignUpViewController: UIViewController {
         Utilities.styleTextField(passwordField, size: fontSize)
         Utilities.styleTextField(locationField, size: fontSize)
         
-        //style labels 
-//        Utilities.styleText(userNameLabel)
-//        Utilities.styleText(emailLabel)
-//        Utilities.styleText(passwordLabel)
-//        Utilities.styleText(locationLabel)
-        
     }
     
     //Check fields and validate that data is correct
