@@ -7,8 +7,24 @@
 //
 
 import Foundation
+import FirebaseStorage
+import FirebaseDatabase
+import FirebaseAuth
 
 //TODO
-struct EventService : Decodable {
+class EventService {
+    static func getEvents(completion: @escaping ([Event]) -> Void ) -> Void {
+        
+        //Get reference to DB
+        
+        //Make DB call
+        
+        //Call completion closure
+        
+    }
     
+    static func createEventDBEntry(ref: StorageReference) {
+        
+        
+    }
 }

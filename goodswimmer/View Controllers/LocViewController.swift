@@ -19,7 +19,7 @@ class LocViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        Utilities.styleTextField(locField)
+      //  Utilities.styleTextField(locField)
         Utilities.styleHeader(header)
         Utilities.styleSubHeader(subHeader)
     }
