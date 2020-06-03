@@ -396,7 +396,7 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="973"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="46a-du-hSS">
-                                        <rect key="frame" x="30" y="0.0" width="354" height="1249.5"/>
+                                        <rect key="frame" x="30" y="0.0" width="354" height="1279.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create Event" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yf4-5u-9O6">
                                                 <rect key="frame" x="128" y="30" width="98.5" height="20.5"/>
@@ -405,7 +405,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="wRk-1v-eYi" userLabel="Create Event Stack View">
-                                                <rect key="frame" x="0.0" y="90.5" width="354" height="943"/>
+                                                <rect key="frame" x="0.0" y="90.5" width="354" height="973"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i9W-rH-8Ie">
                                                         <rect key="frame" x="0.0" y="0.0" width="33.5" height="20.5"/>
@@ -501,15 +501,17 @@
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Limited to 500 words..." minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sVg-VX-16f" userLabel="DescriptionField">
+                                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="orv-0s-JHq">
                                                         <rect key="frame" x="0.0" y="543.5" width="350" height="250"/>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="width" constant="350" id="aBJ-dw-XX6"/>
-                                                            <constraint firstAttribute="height" constant="250" id="ocr-9a-R3S"/>
+                                                            <constraint firstAttribute="height" constant="250" id="jTa-Bg-nNM"/>
+                                                            <constraint firstAttribute="width" constant="350" id="kk9-fm-HAX"/>
                                                         </constraints>
+                                                        <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits"/>
-                                                    </textField>
+                                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                    </textView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Image" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xjV-Jg-ROD">
                                                         <rect key="frame" x="0.0" y="823.5" width="47" height="20.5"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -524,14 +526,21 @@
                                                             <action selector="addImageTapped:" destination="Ncr-nI-DQr" eventType="touchUpInside" id="QIW-K2-GOY"/>
                                                         </connections>
                                                     </button>
+                                                    <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ii5-Zm-f4K" userLabel="Error Label">
+                                                        <rect key="frame" x="0.0" y="973" width="354" height="0.0"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <color key="textColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
                                                 </subviews>
                                                 <constraints>
+                                                    <constraint firstItem="Ii5-Zm-f4K" firstAttribute="centerX" secondItem="wRk-1v-eYi" secondAttribute="centerX" id="KII-bq-5DP"/>
                                                     <constraint firstAttribute="trailing" secondItem="nW6-da-I4u" secondAttribute="trailing" constant="30" id="p8x-pd-Gd8"/>
                                                     <constraint firstItem="H6z-5g-1uJ" firstAttribute="width" secondItem="wRk-1v-eYi" secondAttribute="width" multiplier="0.988701" id="tw0-TU-ih2"/>
                                                 </constraints>
                                             </stackView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QPR-mb-Dr1" userLabel="Create Event">
-                                                <rect key="frame" x="44.5" y="1189.5" width="265" height="30"/>
+                                                <rect key="frame" x="44.5" y="1219.5" width="265" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="265" id="uBm-EM-3eG"/>
                                                 </constraints>
@@ -592,6 +601,8 @@
                         <outlet property="dateField2" destination="7GY-eW-lIm" id="JjU-RC-0EH"/>
                         <outlet property="dateLabel" destination="Bcz-bG-PhY" id="h4e-Uc-QoE"/>
                         <outlet property="descriptionLabel" destination="NrU-zp-mu9" id="USf-p1-OYs"/>
+                        <outlet property="descriptionText" destination="orv-0s-JHq" id="xHY-SB-7Uw"/>
+                        <outlet property="errorLabel" destination="Ii5-Zm-f4K" id="XOT-aj-muZ"/>
                         <outlet property="imageLabel" destination="xjV-Jg-ROD" id="f4a-63-1A2"/>
                         <outlet property="locationField" destination="33K-wP-jbI" id="eNA-EP-jM4"/>
                         <outlet property="locationLabel" destination="Q7b-Dd-A8G" id="7XD-zS-yeg"/>

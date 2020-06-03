@@ -84,5 +84,22 @@ class Utilities {
         return passwordTest.evaluate(with: password)
     }
     
+    static func cleanData(_ field: UITextField) -> String {
+        return field.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+    }
+    
+    static func isFilledIn(_ fields: [UITextField]) -> Bool {
+        for field in fields {
+            if field == nil {
+                print ("oops! you didn't fill everything in!")
+                break
+            } else {
+                return true
+            }
+        }
+        return false
+    }
+    
+    
     // TODO: email validation
 }
