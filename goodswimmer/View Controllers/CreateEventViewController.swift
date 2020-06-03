@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import FirebaseFirestore
+import FirebaseFirestoreSwift
 
 class CreateEventViewController: UIViewController {
 
@@ -25,9 +27,13 @@ class CreateEventViewController: UIViewController {
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var imageLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var descriptionField: UITextField!
     @IBOutlet weak var createEventButton: UIButton!
+    @IBOutlet weak var errorLabel: UILabel!
     
-
+    @IBOutlet weak var descriptionText: UITextView!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -60,6 +66,9 @@ class CreateEventViewController: UIViewController {
         Utilities.styleButton(createEventButton)
         Utilities.styleLabel(createEventHeader, size: headerSize, uppercase: false)
         
+        descriptionText.layer.borderColor = UIColor.black.cgColor
+        descriptionText.layer.borderWidth = 1
+    
         
         //TODO: disable address field until location field is filled out - make it some sort of state, once location is put in, check DB if it exists, if not enable address  field, then send noti to us to send postcard inviting them to join. if location does exist, populate with address
         
@@ -74,9 +83,59 @@ class CreateEventViewController: UIViewController {
     
     @IBAction func createEventTapped(_ sender: Any) {
         //write to DB
+        let db = Firestore.firestore()
+        
+        //TODO: check that all fields are filled in! 
+        let eventName = Utilities.cleanData(titleField)
+        let location = Utilities.cleanData(locationField)
+        let date_start = Utilities.cleanData(dateField1)
+        let date_end = Utilities.cleanData(dateField2)
+        let address1 = Utilities.cleanData(addressField1)
+        let address2 = Utilities.cleanData(addressField2)
+        let address3 = Utilities.cleanData(addressField3)
+        
+        let description = descriptionText.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+        
+        //TODO: add photo URL and organizer name, validate
+
+        db.collection("events").addDocument(data: [
+            "name": eventName,
+            "description": description,
+            "location": location,
+            "date_start": date_start,
+            "date_end": date_end,
+            "address1": address1,
+            "address2": address2,
+            "address3": address3
+        ]) { err in
+            if let err = err {
+                self.showError("Error creating event!")
+            } else {
+                print("Document successfully written!")  // event created success pop up
+            }
+        }
+        
+        self.transitionToHome()
         //some sort of validation - all fields filled out, doesn't currently exist, etc
+        
         //then transition to home screen
-        //  do we want like a "success!" popup?
+        
+        //do we want like a "success!" popup?
+        
+    }
+    
+    func showError(_ message:String)  {
+         errorLabel.text! = message
+         errorLabel.alpha = 1
+         Utilities.styleError(errorLabel)
+     }
+    
+    func transitionToHome() {
+        
+        let homeViewController = storyboard?.instantiateViewController(identifier: Constants.Storyboard.homeViewController)  as? HomeViewController
+        
+        view.window?.rootViewController = homeViewController
+        view.window?.makeKeyAndVisible()
     }
     
     
