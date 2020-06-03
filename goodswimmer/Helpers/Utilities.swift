@@ -84,5 +84,9 @@ class Utilities {
         return passwordTest.evaluate(with: password)
     }
     
+    static func cleanData(_ field: UITextField) -> String {
+        return field.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+    }
+    
     // TODO: email validation
 }

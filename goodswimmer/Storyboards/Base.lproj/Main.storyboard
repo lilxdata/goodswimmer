@@ -591,6 +591,7 @@
                         <outlet property="dateField1" destination="1Bw-rd-gpP" id="OVg-Mz-G9h"/>
                         <outlet property="dateField2" destination="7GY-eW-lIm" id="JjU-RC-0EH"/>
                         <outlet property="dateLabel" destination="Bcz-bG-PhY" id="h4e-Uc-QoE"/>
+                        <outlet property="descriptionField" destination="sVg-VX-16f" id="c7q-xl-dIH"/>
                         <outlet property="descriptionLabel" destination="NrU-zp-mu9" id="USf-p1-OYs"/>
                         <outlet property="imageLabel" destination="xjV-Jg-ROD" id="f4a-63-1A2"/>
                         <outlet property="locationField" destination="33K-wP-jbI" id="eNA-EP-jM4"/>

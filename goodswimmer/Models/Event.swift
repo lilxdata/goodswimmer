@@ -13,7 +13,7 @@ import FirebaseDatabase
 //TODO: update struct after db design implemented for events
 struct Event {
     
-    var title:String?
+    var name:String?
     var venue: String?
     var address:String?
     var description:String?
