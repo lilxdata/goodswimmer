@@ -61,6 +61,8 @@ class Utilities {
         button.setTitle(button.title(for: .normal)?.uppercased(), for: .normal)
         button.layer.borderWidth = 1.0
         button.layer.borderColor = UIColor.black.cgColor
+        button.contentVerticalAlignment = UIControl.ContentVerticalAlignment.bottom
+
     }
     
     static func styleError(_ label: UILabel) {
