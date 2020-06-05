@@ -13,6 +13,7 @@ import FirebaseFirestoreSwift
 class CreateEventViewController: UIViewController {
 
     
+    @IBOutlet weak var stackView: UIStackView!
     @IBOutlet weak var createEventHeader: UILabel!
     @IBOutlet weak var titleField: UITextField!
     @IBOutlet weak var titleLabel: UILabel!
@@ -27,7 +28,6 @@ class CreateEventViewController: UIViewController {
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var imageLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
-    @IBOutlet weak var descriptionField: UITextField!
     @IBOutlet weak var createEventButton: UIButton!
     @IBOutlet weak var errorLabel: UILabel!
     
@@ -69,6 +69,12 @@ class CreateEventViewController: UIViewController {
         descriptionText.layer.borderColor = UIColor.black.cgColor
         descriptionText.layer.borderWidth = 1
     
+        //custom spacing between elements
+        let labels = [titleLabel, locationLabel,descriptionLabel, dateLabel, addressLabel]
+        
+        for label in labels {
+            stackView.setCustomSpacing(16, after: label!)
+        }
         
         //TODO: disable address field until location field is filled out - make it some sort of state, once location is put in, check DB if it exists, if not enable address  field, then send noti to us to send postcard inviting them to join. if location does exist, populate with address
         
