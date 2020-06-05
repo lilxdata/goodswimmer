@@ -13,6 +13,7 @@ import FirebaseFirestoreSwift
 class CreateEventViewController: UIViewController {
 
     
+    @IBOutlet weak var stackView: UIStackView!
     @IBOutlet weak var createEventHeader: UILabel!
     @IBOutlet weak var titleField: UITextField!
     @IBOutlet weak var titleLabel: UILabel!
@@ -27,7 +28,6 @@ class CreateEventViewController: UIViewController {
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var imageLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
-    @IBOutlet weak var descriptionField: UITextField!
     @IBOutlet weak var createEventButton: UIButton!
     @IBOutlet weak var errorLabel: UILabel!
     
@@ -43,32 +43,29 @@ class CreateEventViewController: UIViewController {
         let fieldSize = 15
         let headerSize = 35
         
+        //label styling
+        let labels = [titleLabel, locationLabel,descriptionLabel, dateLabel, addressLabel, imageLabel]
         
-        Utilities.styleLabel(titleLabel, size: labelSize, uppercase: true)
-        Utilities.styleTextField(titleField, size: fieldSize)
+        for label in labels {
+            stackView.setCustomSpacing(16, after: label!)
+            Utilities.styleLabel(label!, size: labelSize, uppercase: true)
+        }
         
-        Utilities.styleLabel(locationLabel, size: labelSize, uppercase: true)
-        Utilities.styleTextField(locationField, size: fieldSize)
-    
-        Utilities.styleLabel(dateLabel, size: labelSize, uppercase: true)
-        Utilities.styleTextField(dateField1, size: fieldSize)
-        Utilities.styleTextField(dateField2, size: fieldSize)
+        let textfields = [titleField, locationField, dateField1, dateField2]
         
-        Utilities.styleLabel(addressLabel, size: labelSize, uppercase: true)
+        for textfield in textfields {
+            Utilities.styleTextField(textfield!, size: fieldSize)
+        }
+        
         Utilities.styleDisabledTextField(addressField1,size: fieldSize)
         Utilities.styleDisabledTextField(addressField2, size: fieldSize)
         Utilities.styleDisabledTextField(addressField3, size: fieldSize)
-        
-        Utilities.styleLabel(descriptionLabel, size: labelSize, uppercase: true)
-        
-        Utilities.styleLabel(imageLabel, size: labelSize, uppercase: true)
-        
+   
         Utilities.styleButton(createEventButton)
         Utilities.styleLabel(createEventHeader, size: headerSize, uppercase: false)
         
         descriptionText.layer.borderColor = UIColor.black.cgColor
         descriptionText.layer.borderWidth = 1
-    
         
         //TODO: disable address field until location field is filled out - make it some sort of state, once location is put in, check DB if it exists, if not enable address  field, then send noti to us to send postcard inviting them to join. if location does exist, populate with address
         
@@ -85,7 +82,8 @@ class CreateEventViewController: UIViewController {
         //write to DB
         let db = Firestore.firestore()
         
-        //TODO: check that all fields are filled in! 
+        //TODO: check that all fields are filled in!
+
         let eventName = Utilities.cleanData(titleField)
         let location = Utilities.cleanData(locationField)
         let date_start = Utilities.cleanData(dateField1)
@@ -118,9 +116,7 @@ class CreateEventViewController: UIViewController {
         self.transitionToHome()
         //some sort of validation - all fields filled out, doesn't currently exist, etc
         
-        //then transition to home screen
-        
-        //do we want like a "success!" popup?
+        //then transition to home screen with event populated in feed
         
     }
     
@@ -132,9 +128,9 @@ class CreateEventViewController: UIViewController {
     
     func transitionToHome() {
         
-        let homeViewController = storyboard?.instantiateViewController(identifier: Constants.Storyboard.homeViewController)  as? HomeViewController
+        let tabViewController = storyboard?.instantiateViewController(identifier: Constants.Storyboard.tabViewController)
         
-        view.window?.rootViewController = homeViewController
+        view.window?.rootViewController = tabViewController
         view.window?.makeKeyAndVisible()
     }
     
