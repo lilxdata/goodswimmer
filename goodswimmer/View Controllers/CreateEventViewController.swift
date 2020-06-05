@@ -132,9 +132,9 @@ class CreateEventViewController: UIViewController {
     
     func transitionToHome() {
         
-        let homeViewController = storyboard?.instantiateViewController(identifier: Constants.Storyboard.homeViewController)  as? HomeViewController
+        let tabViewController = storyboard?.instantiateViewController(identifier: Constants.Storyboard.tabViewController)
         
-        view.window?.rootViewController = homeViewController
+        view.window?.rootViewController = tabViewController
         view.window?.makeKeyAndVisible()
     }
     
