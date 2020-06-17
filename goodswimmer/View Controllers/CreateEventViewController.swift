@@ -29,10 +29,11 @@ class CreateEventViewController: UIViewController {
     @IBOutlet weak var imageLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var createEventButton: UIButton!
-    @IBOutlet weak var errorLabel: UILabel!
     
     @IBOutlet weak var descriptionText: UITextView!
     
+    
+    let photoHelper = PhotoHelper()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -74,7 +75,10 @@ class CreateEventViewController: UIViewController {
     
     
     @IBAction func addImageTapped(_ sender: Any) {
-        
+        photoHelper.completionHandler =  { image in
+            print("handle image")
+        }
+        photoHelper.presentActionSheet(from: self)
     }
     
     
@@ -107,7 +111,8 @@ class CreateEventViewController: UIViewController {
             "address3": address3
         ]) { err in
             if let err = err {
-                self.showError("Error creating event!")
+              //  self.showError("Error creating event!")
+                print("Error")
             } else {
                 print("Document successfully written!")  // event created success pop up
             }
@@ -120,11 +125,11 @@ class CreateEventViewController: UIViewController {
         
     }
     
-    func showError(_ message:String)  {
-         errorLabel.text! = message
-         errorLabel.alpha = 1
-         Utilities.styleError(errorLabel)
-     }
+//    func showError(_ message:String)  {
+//         errorLabel.text! = message
+//         errorLabel.alpha = 1
+//         Utilities.styleError(errorLabel)
+//     }
     
     func transitionToHome() {
         
