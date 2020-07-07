@@ -41,7 +41,6 @@ class HomeViewController: UIViewController {
             if error == nil && querySnapshot != nil {
                 for document in querySnapshot!.documents {
                     
-                    print("in for")
                  //   self.events!.append(document.data())
 //                    self.label.text = self.events![0]["name"]! as! String
                    // count+=1

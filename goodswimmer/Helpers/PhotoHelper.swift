@@ -10,8 +10,6 @@ import UIKit
 
 class PhotoHelper: NSObject {
     // MARK: - Properties
-
-    // called after user has selected photo from UIImagePickerController
     var completionHandler: ((UIImage) -> Void)?
 
     // MARK: - Helper Methods
@@ -57,7 +55,7 @@ class PhotoHelper: NSObject {
     }
 
 extension PhotoHelper: UINavigationControllerDelegate, UIImagePickerControllerDelegate {
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+    private func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         if let selectedImage = info[UIImagePickerController.InfoKey.originalImage.rawValue] as? UIImage {
             completionHandler?(selectedImage)
         }
