@@ -29,10 +29,11 @@ class CreateEventViewController: UIViewController {
     @IBOutlet weak var imageLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var createEventButton: UIButton!
-    @IBOutlet weak var errorLabel: UILabel!
     
     @IBOutlet weak var descriptionText: UITextView!
     
+    
+    let photoHelper = PhotoHelper()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -70,11 +71,17 @@ class CreateEventViewController: UIViewController {
         //TODO: disable address field until location field is filled out - make it some sort of state, once location is put in, check DB if it exists, if not enable address  field, then send noti to us to send postcard inviting them to join. if location does exist, populate with address
         
         //TODO: add red asterisks to mandatory categories; helper isMandatory or something
+        
+       // delegate = self
     }
     
     
     @IBAction func addImageTapped(_ sender: Any) {
-        
+        print("In add image tapped")
+        photoHelper.completionHandler =  { image in
+            EventService.createEvent(for: image)
+        }
+        photoHelper.presentActionSheet(from: self)
     }
     
     
@@ -107,7 +114,8 @@ class CreateEventViewController: UIViewController {
             "address3": address3
         ]) { err in
             if let err = err {
-                self.showError("Error creating event!")
+              //  self.showError("Error creating event!")
+                print("Error")
             } else {
                 print("Document successfully written!")  // event created success pop up
             }
@@ -120,11 +128,11 @@ class CreateEventViewController: UIViewController {
         
     }
     
-    func showError(_ message:String)  {
-         errorLabel.text! = message
-         errorLabel.alpha = 1
-         Utilities.styleError(errorLabel)
-     }
+//    func showError(_ message:String)  {
+//         errorLabel.text! = message
+//         errorLabel.alpha = 1
+//         Utilities.styleError(errorLabel)
+//     }
     
     func transitionToHome() {
         

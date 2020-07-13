@@ -12,19 +12,19 @@ import FirebaseDatabase
 import FirebaseAuth
 
 //TODO
-class EventService {
-    static func getEvents(completion: @escaping ([Event]) -> Void ) -> Void {
-        
-        //Get reference to DB
-        
-        //Make DB call
-        
-        //Call completion closure
-        
+struct EventService {
+
+    static func createEvent(for image: UIImage) {
+        print("in create event, pre uploading image")
+        let imageRef = Storage.storage().reference().child("test_image.jpg")
+        StorageService.uploadImage(image, at: imageRef) { (downloadURL) in
+            guard let downloadURL = downloadURL else {
+                print("in guard")
+                return
+            }
+            let urlString = downloadURL.absoluteString
+            print("image URL: \(urlString)")
+        }
     }
     
-    static func createEventDBEntry(ref: StorageReference) {
-        
-        
-    }
 }
