@@ -77,6 +77,7 @@ class CreateEventViewController: UIViewController {
     
     
     @IBAction func addImageTapped(_ sender: Any) {
+        print("In add image tapped")
         photoHelper.completionHandler =  { image in
             EventService.createEvent(for: image)
         }
