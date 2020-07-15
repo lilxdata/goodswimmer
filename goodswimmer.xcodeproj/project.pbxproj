@@ -22,6 +22,7 @@
 		043C454F245C948E004D2470 /* standard-book.otf in Resources */ = {isa = PBXBuildFile; fileRef = 043C454B245C948E004D2470 /* standard-book.otf */; };
 		043C4551245C949D004D2470 /* CutiveMono-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 043C4550245C949D004D2470 /* CutiveMono-Regular.ttf */; };
 		045FAC98244FFF05008FA4D9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 045FAC97244FFF05008FA4D9 /* GoogleService-Info.plist */; };
+		047B249C24BF668500B79F9C /* LocalStorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047B249B24BF668500B79F9C /* LocalStorageService.swift */; };
 		047C977D249956FE0062D860 /* EventModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047C977C249956FE0062D860 /* EventModel.swift */; };
 		047C977F249982160062D860 /* PhotoHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047C977E249982160062D860 /* PhotoHelper.swift */; };
 		047C9781249AA1C00062D860 /* StorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047C9780249AA1C00062D860 /* StorageService.swift */; };
@@ -58,6 +59,7 @@
 		043C454B245C948E004D2470 /* standard-book.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "standard-book.otf"; sourceTree = "<group>"; };
 		043C4550245C949D004D2470 /* CutiveMono-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "CutiveMono-Regular.ttf"; sourceTree = "<group>"; };
 		045FAC97244FFF05008FA4D9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		047B249B24BF668500B79F9C /* LocalStorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalStorageService.swift; sourceTree = "<group>"; };
 		047C977C249956FE0062D860 /* EventModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventModel.swift; sourceTree = "<group>"; };
 		047C977E249982160062D860 /* PhotoHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoHelper.swift; sourceTree = "<group>"; };
 		047C9780249AA1C00062D860 /* StorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageService.swift; sourceTree = "<group>"; };
@@ -119,6 +121,7 @@
 			children = (
 				040283282458D03B00071A1F /* EventService.swift */,
 				047C9780249AA1C00062D860 /* StorageService.swift */,
+				047B249B24BF668500B79F9C /* LocalStorageService.swift */,
 			);
 			name = Services;
 			path = ..;
@@ -341,6 +344,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				04EB0DF224327B5000B532F8 /* ViewController.swift in Sources */,
+				047B249C24BF668500B79F9C /* LocalStorageService.swift in Sources */,
 				0402831F2458C10A00071A1F /* LocViewController.swift in Sources */,
 				04EB0DEE24327B5000B532F8 /* AppDelegate.swift in Sources */,
 				0417676A2432D4EF007AC791 /* Utilities.swift in Sources */,
