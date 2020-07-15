@@ -23,6 +23,7 @@
 		043C4551245C949D004D2470 /* CutiveMono-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 043C4550245C949D004D2470 /* CutiveMono-Regular.ttf */; };
 		045FAC98244FFF05008FA4D9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 045FAC97244FFF05008FA4D9 /* GoogleService-Info.plist */; };
 		047B249C24BF668500B79F9C /* LocalStorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047B249B24BF668500B79F9C /* LocalStorageService.swift */; };
+		047B249E24BF775E00B79F9C /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 047B249D24BF775E00B79F9C /* Login.storyboard */; };
 		047C977D249956FE0062D860 /* EventModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047C977C249956FE0062D860 /* EventModel.swift */; };
 		047C977F249982160062D860 /* PhotoHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047C977E249982160062D860 /* PhotoHelper.swift */; };
 		047C9781249AA1C00062D860 /* StorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047C9780249AA1C00062D860 /* StorageService.swift */; };
@@ -60,6 +61,7 @@
 		043C4550245C949D004D2470 /* CutiveMono-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "CutiveMono-Regular.ttf"; sourceTree = "<group>"; };
 		045FAC97244FFF05008FA4D9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		047B249B24BF668500B79F9C /* LocalStorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalStorageService.swift; sourceTree = "<group>"; };
+		047B249D24BF775E00B79F9C /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		047C977C249956FE0062D860 /* EventModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventModel.swift; sourceTree = "<group>"; };
 		047C977E249982160062D860 /* PhotoHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoHelper.swift; sourceTree = "<group>"; };
 		047C9780249AA1C00062D860 /* StorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageService.swift; sourceTree = "<group>"; };
@@ -101,6 +103,7 @@
 			children = (
 				04EB0DF324327B5000B532F8 /* Main.storyboard */,
 				04EB0DF824327B5500B532F8 /* LaunchScreen.storyboard */,
+				047B249D24BF775E00B79F9C /* Login.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -291,6 +294,7 @@
 				043C454D245C948E004D2470 /* standard-bold-italic.otf in Resources */,
 				043C4547245C9465004D2470 /* Career_salle13_cursive.ttf in Resources */,
 				043C454E245C948E004D2470 /* standard-bold.otf in Resources */,
+				047B249E24BF775E00B79F9C /* Login.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
