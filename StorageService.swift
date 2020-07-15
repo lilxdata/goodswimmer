@@ -15,7 +15,6 @@ struct StorageService {
     //method to upload images to FB Storage
     static func uploadImage(_ image: UIImage, at reference: StorageReference, completion: @escaping (URL?) -> Void) {
         // change image from UIImage to Data type
-        print("in upload image func")
         guard let imageData = image.jpegData(compressionQuality: 0.1) else {
             return completion(nil)
         }

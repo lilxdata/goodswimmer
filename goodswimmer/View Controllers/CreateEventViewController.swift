@@ -72,12 +72,10 @@ class CreateEventViewController: UIViewController {
         
         //TODO: add red asterisks to mandatory categories; helper isMandatory or something
         
-       // delegate = self
     }
     
     
     @IBAction func addImageTapped(_ sender: Any) {
-        print("In add image tapped")
         photoHelper.completionHandler =  { image in
             EventService.createEvent(for: image)
         }
@@ -90,6 +88,7 @@ class CreateEventViewController: UIViewController {
         let db = Firestore.firestore()
         
         //TODO: check that all fields are filled in!
+        //TODO: image URL not currently being written
 
         let eventName = Utilities.cleanData(titleField)
         let location = Utilities.cleanData(locationField)
@@ -112,6 +111,7 @@ class CreateEventViewController: UIViewController {
             "address1": address1,
             "address2": address2,
             "address3": address3
+        
         ]) { err in
             if let err = err {
               //  self.showError("Error creating event!")
@@ -127,12 +127,6 @@ class CreateEventViewController: UIViewController {
         //then transition to home screen with event populated in feed
         
     }
-    
-//    func showError(_ message:String)  {
-//         errorLabel.text! = message
-//         errorLabel.alpha = 1
-//         Utilities.styleError(errorLabel)
-//     }
     
     func transitionToHome() {
         
