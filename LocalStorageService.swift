@@ -21,7 +21,7 @@ class LocalStorageService {
         // Get standard user defaults
         
         let defaults = UserDefaults.standard
-                let userId = defaults.value(forKey: Constants.LocalStorage.storedUserId) as? String
+        let userId = defaults.value(forKey: Constants.LocalStorage.storedUserId) as? String
         let username = defaults.value(forKey: Constants.LocalStorage.storedUsername) as? String
         
         guard userId != nil || username != nil else {
