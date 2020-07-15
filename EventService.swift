@@ -13,13 +13,14 @@ import FirebaseAuth
 
 //TODO
 struct EventService {
+    
+    //TODO: image is being written before event is created -- do we want to wait until event is created to write the image to FB storage? 
 
     static func createEvent(for image: UIImage) {
-        print("in create event, pre uploading image")
+        //TODO: make unique identifier for image, otherwise it will be overwritten
         let imageRef = Storage.storage().reference().child("test_image.jpg")
         StorageService.uploadImage(image, at: imageRef) { (downloadURL) in
             guard let downloadURL = downloadURL else {
-                print("in guard")
                 return
             }
             let urlString = downloadURL.absoluteString
