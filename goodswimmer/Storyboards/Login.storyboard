@@ -10,7 +10,7 @@
         <!--View Controller-->
         <scene sceneID="UkP-Nx-TO8">
             <objects>
-                <viewController id="TVn-Wd-UHi" customClass="ViewController" customModule="goodswimmer" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="loginVC" id="TVn-Wd-UHi" customClass="ViewController" customModule="goodswimmer" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="J2p-ma-zJ0">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
