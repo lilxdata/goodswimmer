@@ -21,4 +21,9 @@ struct Constants {
         static let storedUsername = "storedUsername"
         static let storedUserId = "storedUserId"
     }
+    
+    struct LocalStorage {
+        static let storedUsername = "storedUsername"
+        static let storedUserId = "storedUserId"
+    }
 }
