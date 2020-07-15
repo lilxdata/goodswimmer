@@ -8,23 +8,29 @@
 
 import Foundation
 import FirebaseStorage
-import FirebaseDatabase
 import FirebaseAuth
+import FirebaseFirestore
 
-//TODO
 struct EventService {
-    
-    //TODO: image is being written before event is created -- do we want to wait until event is created to write the image to FB storage? 
+        
+    let db = Firestore.firestore()
 
-    static func createEvent(for image: UIImage) {
-        //TODO: make unique identifier for image, otherwise it will be overwritten
-        let imageRef = Storage.storage().reference().child("test_image.jpg")
+    func createEvent(for image: UIImage, id: String)  {
+        //make unique identifier for image
+        let photoid = UUID().uuidString
+        let imageRef = Storage.storage().reference().child(photoid+".jpg")
         StorageService.uploadImage(image, at: imageRef) { (downloadURL) in
             guard let downloadURL = downloadURL else {
                 return
             }
             let urlString = downloadURL.absoluteString
             print("image URL: \(urlString)")
+            
+            self.db.collection("events").document(id).setData([
+                "photoURL": urlString
+                ], merge: true
+                )
+            
         }
     }
     

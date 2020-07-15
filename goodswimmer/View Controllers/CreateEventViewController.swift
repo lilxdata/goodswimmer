@@ -32,8 +32,18 @@ class CreateEventViewController: UIViewController {
     
     @IBOutlet weak var descriptionText: UITextView!
     
-    
+    let eventService = EventService()
     let photoHelper = PhotoHelper()
+    var uuid = ""
+    
+    //runs everytime page is shown
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        //generate unique id for each event
+        uuid = UUID().uuidString
+        
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -77,7 +87,7 @@ class CreateEventViewController: UIViewController {
     
     @IBAction func addImageTapped(_ sender: Any) {
         photoHelper.completionHandler =  { image in
-            EventService.createEvent(for: image)
+            self.eventService.createEvent(for: image, id: self.uuid)
         }
         photoHelper.presentActionSheet(from: self)
     }
@@ -102,7 +112,7 @@ class CreateEventViewController: UIViewController {
         
         //TODO: add photo URL and organizer name, validate
 
-        db.collection("events").addDocument(data: [
+        db.collection("events").document(uuid).setData([
             "name": eventName,
             "description": description,
             "location": location,
@@ -111,8 +121,7 @@ class CreateEventViewController: UIViewController {
             "address1": address1,
             "address2": address2,
             "address3": address3
-        
-        ]) { err in
+        ], merge: true) { err in
             if let err = err {
               //  self.showError("Error creating event!")
                 print("Error")
