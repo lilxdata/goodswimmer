@@ -24,5 +24,5 @@ class Navigation  {
         return tabViewController
     }
     
-    goToDetailView() 
+   // goToDetailView() 
 }
