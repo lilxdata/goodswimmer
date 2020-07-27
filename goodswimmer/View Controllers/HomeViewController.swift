@@ -37,17 +37,19 @@ class HomeViewController: UIViewController {
 //        }
         
        // read from events collection
+        //TODO: check out snapshot listener 
         db.collection("events").getDocuments { (querySnapshot, error) in
             if error == nil && querySnapshot != nil {
                 for document in querySnapshot!.documents {
-                    
-                 //   self.events!.append(document.data())
-//                    self.label.text = self.events![0]["name"]! as! String
-                   // count+=1
+                    print("document received")
+                    let eventData = document.data()
+                    if let event = Event(eventDict: eventData) {
+                        self.events.append(event)
+                    }
                 }
+                self.tableView.reloadData()
+            }
         }
-            self.tableView.reloadData()
-    }
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -65,7 +67,7 @@ extension HomeViewController : UITableViewDelegate, UITableViewDataSource {
         //get a cell
         let cell = tableView.dequeueReusableCell(withIdentifier: "EventCell", for: indexPath) as! EventCell //cast as event cell
         
-        //get article
+        //get event
         let event = events[indexPath.row]
         
         //customize cell
@@ -76,8 +78,15 @@ extension HomeViewController : UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
+      //called everytime cell is tapped
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("table")
+        //events[indexPath.row].name
+       // prepare(for: detailSegue)
+        //detailSegue
+        
+       // prepare(for: detailSegue, sender: Any?)
+        
     }
    
     
