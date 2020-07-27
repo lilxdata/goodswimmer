@@ -13,4 +13,5 @@ target 'goodswimmer' do
   pod 'FirebaseFirestoreSwift'
   pod 'Firebase/Storage'
   pod 'Firebase/Database'
+  pod 'SDWebImage'
 end

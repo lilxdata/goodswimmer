@@ -138,16 +138,12 @@ class SignUpViewController: UIViewController {
     }
     
     func transitionToHome() {
+        guard let tabVC = Navigation.sharedInstance.goHome() else {
+            return
+        }
         
-//        let homeViewController = storyboard?.instantiateViewController(identifier: Constants.Storyboard.homeViewController)  as? HomeViewController
-//        
-//        view.window?.rootViewController = homeViewController
-//        view.window?.makeKeyAndVisible()
+        present(tabVC, animated: true)
         
-        let tabViewController = storyboard?.instantiateViewController(identifier: Constants.Storyboard.tabViewController)
-        
-        view.window?.rootViewController = tabViewController
-        view.window?.makeKeyAndVisible()
     }
     
 

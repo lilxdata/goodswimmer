@@ -64,17 +64,13 @@ class LoginViewController: UIViewController {
                 self.errorLabel.alpha = 1
             }
             
-                //TODO: extract method
             else {
-//                let homeViewController = self.storyboard?.instantiateViewController(identifier: Constants.Storyboard.homeViewController)  as? HomeViewController
-//
-//                self.view.window?.rootViewController = homeViewController
-//                self.view.window?.makeKeyAndVisible()
+                            
+                guard let tabVC = Navigation.sharedInstance.goHome() else {
+                    return
+                }
                 
-                let tabViewController = self.storyboard?.instantiateViewController(identifier: Constants.Storyboard.tabViewController)
-                
-                self.view.window?.rootViewController = tabViewController
-                self.view.window?.makeKeyAndVisible()
+                self.present(tabVC, animated: true)
             }
         }
     }

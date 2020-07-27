@@ -29,7 +29,14 @@ class ProfileViewController: UIViewController {
     }
     
     func transitionToLogin() {
-       present(UIStoryboard(name: "Login", bundle: nil).instantiateViewController(withIdentifier: "loginVC") as UIViewController, animated: true, completion: nil)
+        
+        let loginSB = UIStoryboard(name: "Login", bundle: nil)
+        
+        let loginViewController = loginSB.instantiateViewController(withIdentifier: Constants.Storyboard.loginViewController)
+        
+        loginViewController.modalPresentationStyle = .fullScreen
+        
+       present(loginViewController, animated: true, completion: nil)
     }
 
 
