@@ -35,7 +35,7 @@ class Utilities {
     
     
     static func styleHeader(_ label: UILabel){
-        label.font = UIFont(name: "Career_salle13_cursive", size: 54)
+        label.font = UIFont(name: "Career_salle13_cursive", size: 20)
         label.textColor = UIColor.black
         label.text = label.text?.uppercased()
     }

@@ -20,8 +20,8 @@ class LocViewController: UIViewController {
         super.viewDidLoad()
 
       //  Utilities.styleTextField(locField)
-        Utilities.styleHeader(header)
-        Utilities.styleSubHeader(subHeader)
+      //  Utilities.styleHeader(header)
+       // Utilities.styleSubHeader(subHeader)
     }
     
 

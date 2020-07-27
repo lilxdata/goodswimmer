@@ -11,7 +11,7 @@ import Firebase
 
 class HomeViewController: UIViewController {
     
-
+    @IBOutlet weak var headerLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
     //If no events, display zero state page
     
@@ -22,6 +22,9 @@ class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        setUpElements()
+        
         let db = Firestore.firestore()
         tableView.delegate = self
         tableView.dataSource = self
@@ -54,8 +57,13 @@ class HomeViewController: UIViewController {
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
-    
 }
+    
+    func setUpElements() {
+        Utilities.styleHeader(headerLabel)
+        
+    }
+    
 }
 
 extension HomeViewController : UITableViewDelegate, UITableViewDataSource {
@@ -71,7 +79,6 @@ extension HomeViewController : UITableViewDelegate, UITableViewDataSource {
         let event = events[indexPath.row]
         
         //customize cell
-        
         cell.displayEvent(event)
         
         // return cell

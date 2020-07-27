@@ -24,6 +24,6 @@ class EventCell: UITableViewCell {
         let imageURL = URL(string: eventToDisplay?.photoURL ?? placeholderURL)
         
         eventImage.sd_setImage(with: imageURL, completed: nil)
-        
+        Utilities.styleLabel(eventName, size: 35,  uppercase: false)
     }
 }
