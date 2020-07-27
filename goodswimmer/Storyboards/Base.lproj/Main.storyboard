@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="t2G-Pr-Um6">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="t2G-Pr-Um6">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -30,30 +30,42 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="txI-t2-u6s">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" contentViewInsetsToSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="txI-t2-u6s">
                                 <rect key="frame" x="0.0" y="44" width="414" height="829"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="EventCell" id="jSg-ZE-5Pj" userLabel="EventCell" customClass="EventCell" customModule="goodswimmer" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                                        <rect key="frame" x="0.0" y="28" width="414" height="203.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="jSg-ZE-5Pj" id="wmx-cG-6sn">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="203.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="g-s-background2" translatesAutoresizingMaskIntoConstraints="NO" id="bzg-xx-Yk3">
+                                                    <rect key="frame" x="70" y="72.5" width="274" height="100"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="100" id="pGU-0j-DFC"/>
+                                                    </constraints>
+                                                </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H4E-oo-EEa" userLabel="display label">
-                                                    <rect key="frame" x="186" y="11.5" width="42" height="21"/>
+                                                    <rect key="frame" x="120" y="31" width="174" height="21.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="H4E-oo-EEa" firstAttribute="centerX" secondItem="wmx-cG-6sn" secondAttribute="centerX" id="Xiy-1O-fW6"/>
-                                                <constraint firstItem="H4E-oo-EEa" firstAttribute="centerY" secondItem="wmx-cG-6sn" secondAttribute="centerY" id="vBd-X8-y45"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="bzg-xx-Yk3" secondAttribute="bottom" constant="20" id="2Ok-7Y-f4y"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="bzg-xx-Yk3" secondAttribute="trailing" constant="50" id="5D4-nT-g6D"/>
+                                                <constraint firstItem="H4E-oo-EEa" firstAttribute="leading" secondItem="wmx-cG-6sn" secondAttribute="leadingMargin" constant="100" id="El9-C8-4Y6"/>
+                                                <constraint firstItem="H4E-oo-EEa" firstAttribute="top" secondItem="wmx-cG-6sn" secondAttribute="topMargin" constant="20" id="J49-sJ-Uxg"/>
+                                                <constraint firstItem="bzg-xx-Yk3" firstAttribute="top" secondItem="H4E-oo-EEa" secondAttribute="bottom" constant="20" id="n3L-mk-iZ3"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="H4E-oo-EEa" secondAttribute="trailing" constant="100" id="nF6-zY-BG8"/>
+                                                <constraint firstItem="bzg-xx-Yk3" firstAttribute="leading" secondItem="wmx-cG-6sn" secondAttribute="leadingMargin" constant="50" id="yeY-2l-cMh"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="eventImage" destination="bzg-xx-Yk3" id="0mW-9Y-tg8"/>
                                             <outlet property="eventName" destination="H4E-oo-EEa" id="f9I-gX-oqB"/>
                                         </connections>
                                     </tableViewCell>
@@ -79,11 +91,12 @@
                     </tabBarItem>
                     <connections>
                         <outlet property="tableView" destination="txI-t2-u6s" id="GYH-36-GNa"/>
+                        <segue destination="xAA-DN-NGL" kind="presentation" identifier="detailSegue" id="BPD-Ab-3Eh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6lt-js-sjX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1775" y="1762"/>
+            <point key="canvasLocation" x="-1786" y="1935"/>
         </scene>
         <!--Create Event View Controller-->
         <scene sceneID="3vh-6s-80A">
@@ -362,29 +375,29 @@
             <objects>
                 <viewController id="xAA-DN-NGL" customClass="DetailViewController" customModule="goodswimmer" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="StU-iH-I3o">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Bm7-pR-Mi0">
-                                <rect key="frame" x="20" y="44" width="374" height="493.5"/>
+                                <rect key="frame" x="20" y="0.0" width="374" height="483.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xuf-sb-sJq">
-                                        <rect key="frame" x="0.0" y="0.0" width="374" height="294.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="284.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="vGR-Di-tCj">
-                                        <rect key="frame" x="0.0" y="304.5" width="374" height="128"/>
+                                        <rect key="frame" x="0.0" y="294.5" width="374" height="128"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rGL-cz-ZPQ">
-                                        <rect key="frame" x="0.0" y="442.5" width="374" height="20.5"/>
+                                        <rect key="frame" x="0.0" y="432.5" width="374" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Buq-QL-Z9a">
-                                        <rect key="frame" x="0.0" y="473" width="374" height="20.5"/>
+                                        <rect key="frame" x="0.0" y="463" width="374" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -410,7 +423,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x9d-H2-ZBQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2563" y="1280"/>
+            <point key="canvasLocation" x="-2996" y="2470"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="KZa-J6-c9e">
@@ -439,6 +452,7 @@
         <image name="bar-add-event" width="11" height="13"/>
         <image name="bar-feed" width="12" height="12.5"/>
         <image name="bar-profile" width="11.5" height="12"/>
+        <image name="g-s-background2" width="800" height="1200"/>
         <image name="magnifyingglass" catalog="system" width="128" height="115"/>
     </resources>
 </document>

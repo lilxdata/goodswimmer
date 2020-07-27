@@ -17,15 +17,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         FirebaseApp.configure()
         
-        //if user signed in
-        if Auth.auth().currentUser != nil {
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            guard let vc = storyboard.instantiateInitialViewController() else {
-                return true
-            }
-            window?.rootViewController = vc
-        }
-        
         return true
     }
 

@@ -21,6 +21,7 @@
 		043C454E245C948E004D2470 /* standard-bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 043C454A245C948E004D2470 /* standard-bold.otf */; };
 		043C454F245C948E004D2470 /* standard-book.otf in Resources */ = {isa = PBXBuildFile; fileRef = 043C454B245C948E004D2470 /* standard-book.otf */; };
 		043C4551245C949D004D2470 /* CutiveMono-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 043C4550245C949D004D2470 /* CutiveMono-Regular.ttf */; };
+		044A54D424CB7C5B001FABA9 /* Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044A54D324CB7C5B001FABA9 /* Navigation.swift */; };
 		045FAC98244FFF05008FA4D9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 045FAC97244FFF05008FA4D9 /* GoogleService-Info.plist */; };
 		047B249C24BF668500B79F9C /* LocalStorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047B249B24BF668500B79F9C /* LocalStorageService.swift */; };
 		047B249E24BF775E00B79F9C /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 047B249D24BF775E00B79F9C /* Login.storyboard */; };
@@ -59,6 +60,7 @@
 		043C454A245C948E004D2470 /* standard-bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "standard-bold.otf"; sourceTree = "<group>"; };
 		043C454B245C948E004D2470 /* standard-book.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "standard-book.otf"; sourceTree = "<group>"; };
 		043C4550245C949D004D2470 /* CutiveMono-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "CutiveMono-Regular.ttf"; sourceTree = "<group>"; };
+		044A54D324CB7C5B001FABA9 /* Navigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Navigation.swift; sourceTree = "<group>"; };
 		045FAC97244FFF05008FA4D9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		047B249B24BF668500B79F9C /* LocalStorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalStorageService.swift; sourceTree = "<group>"; };
 		047B249D24BF775E00B79F9C /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
@@ -137,6 +139,7 @@
 				04BB10F8244CFD4D00BFF9A2 /* Constants.swift */,
 				04D77F81245D471300599CBD /* Validators.swift */,
 				047C977E249982160062D860 /* PhotoHelper.swift */,
+				044A54D324CB7C5B001FABA9 /* Navigation.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -350,6 +353,7 @@
 				04EB0DF224327B5000B532F8 /* ViewController.swift in Sources */,
 				047B249C24BF668500B79F9C /* LocalStorageService.swift in Sources */,
 				0402831F2458C10A00071A1F /* LocViewController.swift in Sources */,
+				044A54D424CB7C5B001FABA9 /* Navigation.swift in Sources */,
 				04EB0DEE24327B5000B532F8 /* AppDelegate.swift in Sources */,
 				0417676A2432D4EF007AC791 /* Utilities.swift in Sources */,
 				040283232458CF7000071A1F /* Event.swift in Sources */,
