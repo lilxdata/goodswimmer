@@ -21,6 +21,7 @@ struct Event {
     var organizer:String?
     var date:String?
     var photoURL:String?
+    var time: String?
     
 //    init?(snapshot: DataSnapshot) {
 //        let eventData = snapshot.value as? [String : Any]
