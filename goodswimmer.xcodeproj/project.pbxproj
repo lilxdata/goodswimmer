@@ -11,7 +11,6 @@
 		0401729D246CEAE600297ECA /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0401729C246CEAE600297ECA /* ProfileViewController.swift */; };
 		0402831F2458C10A00071A1F /* LocViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0402831E2458C10A00071A1F /* LocViewController.swift */; };
 		040283232458CF7000071A1F /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040283222458CF7000071A1F /* Event.swift */; };
-		040283292458D03B00071A1F /* EventService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040283282458D03B00071A1F /* EventService.swift */; };
 		0417676A2432D4EF007AC791 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041767692432D4EF007AC791 /* Utilities.swift */; };
 		04350E4E24848DBE00F1AD27 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04350E4D24848DBE00F1AD27 /* SearchViewController.swift */; };
 		04350E5024849DEA00F1AD27 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04350E4F24849DEA00F1AD27 /* User.swift */; };
@@ -23,15 +22,16 @@
 		043C4551245C949D004D2470 /* CutiveMono-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 043C4550245C949D004D2470 /* CutiveMono-Regular.ttf */; };
 		044A54D424CB7C5B001FABA9 /* Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044A54D324CB7C5B001FABA9 /* Navigation.swift */; };
 		045FAC98244FFF05008FA4D9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 045FAC97244FFF05008FA4D9 /* GoogleService-Info.plist */; };
-		047B249C24BF668500B79F9C /* LocalStorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047B249B24BF668500B79F9C /* LocalStorageService.swift */; };
 		047B249E24BF775E00B79F9C /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 047B249D24BF775E00B79F9C /* Login.storyboard */; };
 		047C977D249956FE0062D860 /* EventModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047C977C249956FE0062D860 /* EventModel.swift */; };
 		047C977F249982160062D860 /* PhotoHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047C977E249982160062D860 /* PhotoHelper.swift */; };
-		047C9781249AA1C00062D860 /* StorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047C9780249AA1C00062D860 /* StorageService.swift */; };
 		047CF3DD2493ED1A002ADFE8 /* EventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047CF3DC2493ED1A002ADFE8 /* EventCell.swift */; };
 		04A192FA2492DB29007F652E /* ZeroStateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A192F92492DB29007F652E /* ZeroStateViewController.swift */; };
 		04BB10F9244CFD4D00BFF9A2 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BB10F8244CFD4D00BFF9A2 /* Constants.swift */; };
 		04C4B2FC246354BD007C558C /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C4B2FB246354BD007C558C /* DetailViewController.swift */; };
+		04CFB70424CF36EF00DDCB75 /* EventService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CFB70324CF36EF00DDCB75 /* EventService.swift */; };
+		04CFB70624CF372D00DDCB75 /* StorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CFB70524CF372D00DDCB75 /* StorageService.swift */; };
+		04CFB70824CF374300DDCB75 /* LocalStorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CFB70724CF374300DDCB75 /* LocalStorageService.swift */; };
 		04D77F82245D471300599CBD /* Validators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D77F81245D471300599CBD /* Validators.swift */; };
 		04EB0DEE24327B5000B532F8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EB0DED24327B5000B532F8 /* AppDelegate.swift */; };
 		04EB0DF024327B5000B532F8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EB0DEF24327B5000B532F8 /* SceneDelegate.swift */; };
@@ -50,7 +50,6 @@
 		0401729C246CEAE600297ECA /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		0402831E2458C10A00071A1F /* LocViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocViewController.swift; sourceTree = "<group>"; };
 		040283222458CF7000071A1F /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
-		040283282458D03B00071A1F /* EventService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventService.swift; sourceTree = "<group>"; };
 		041767692432D4EF007AC791 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		04350E4D24848DBE00F1AD27 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		04350E4F24849DEA00F1AD27 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -62,15 +61,16 @@
 		043C4550245C949D004D2470 /* CutiveMono-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "CutiveMono-Regular.ttf"; sourceTree = "<group>"; };
 		044A54D324CB7C5B001FABA9 /* Navigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Navigation.swift; sourceTree = "<group>"; };
 		045FAC97244FFF05008FA4D9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		047B249B24BF668500B79F9C /* LocalStorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalStorageService.swift; sourceTree = "<group>"; };
 		047B249D24BF775E00B79F9C /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		047C977C249956FE0062D860 /* EventModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventModel.swift; sourceTree = "<group>"; };
 		047C977E249982160062D860 /* PhotoHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoHelper.swift; sourceTree = "<group>"; };
-		047C9780249AA1C00062D860 /* StorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageService.swift; sourceTree = "<group>"; };
 		047CF3DC2493ED1A002ADFE8 /* EventCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCell.swift; sourceTree = "<group>"; };
 		04A192F92492DB29007F652E /* ZeroStateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZeroStateViewController.swift; sourceTree = "<group>"; };
 		04BB10F8244CFD4D00BFF9A2 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		04C4B2FB246354BD007C558C /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		04CFB70324CF36EF00DDCB75 /* EventService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = EventService.swift; path = goodswimmer/Services/EventService.swift; sourceTree = "<group>"; };
+		04CFB70524CF372D00DDCB75 /* StorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = StorageService.swift; path = goodswimmer/Services/StorageService.swift; sourceTree = "<group>"; };
+		04CFB70724CF374300DDCB75 /* LocalStorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LocalStorageService.swift; path = goodswimmer/Services/LocalStorageService.swift; sourceTree = "<group>"; };
 		04D77F81245D471300599CBD /* Validators.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validators.swift; sourceTree = "<group>"; };
 		04EB0DEA24327B5000B532F8 /* goodswimmer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = goodswimmer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04EB0DED24327B5000B532F8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -124,9 +124,9 @@
 		040172A1246CEF5700297ECA /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				040283282458D03B00071A1F /* EventService.swift */,
-				047C9780249AA1C00062D860 /* StorageService.swift */,
-				047B249B24BF668500B79F9C /* LocalStorageService.swift */,
+				04CFB70324CF36EF00DDCB75 /* EventService.swift */,
+				04CFB70524CF372D00DDCB75 /* StorageService.swift */,
+				04CFB70724CF374300DDCB75 /* LocalStorageService.swift */,
 			);
 			name = Services;
 			path = ..;
@@ -351,25 +351,25 @@
 			buildActionMask = 2147483647;
 			files = (
 				04EB0DF224327B5000B532F8 /* ViewController.swift in Sources */,
-				047B249C24BF668500B79F9C /* LocalStorageService.swift in Sources */,
+				04CFB70624CF372D00DDCB75 /* StorageService.swift in Sources */,
 				0402831F2458C10A00071A1F /* LocViewController.swift in Sources */,
 				044A54D424CB7C5B001FABA9 /* Navigation.swift in Sources */,
 				04EB0DEE24327B5000B532F8 /* AppDelegate.swift in Sources */,
 				0417676A2432D4EF007AC791 /* Utilities.swift in Sources */,
 				040283232458CF7000071A1F /* Event.swift in Sources */,
+				04CFB70424CF36EF00DDCB75 /* EventService.swift in Sources */,
 				04EB0E0224327BA700B532F8 /* SignUpViewController.swift in Sources */,
 				04A192FA2492DB29007F652E /* ZeroStateViewController.swift in Sources */,
 				04EB0E0424327BB200B532F8 /* LoginViewController.swift in Sources */,
 				0401729D246CEAE600297ECA /* ProfileViewController.swift in Sources */,
-				047C9781249AA1C00062D860 /* StorageService.swift in Sources */,
 				04D77F82245D471300599CBD /* Validators.swift in Sources */,
+				04CFB70824CF374300DDCB75 /* LocalStorageService.swift in Sources */,
 				047C977F249982160062D860 /* PhotoHelper.swift in Sources */,
 				04EB0DF024327B5000B532F8 /* SceneDelegate.swift in Sources */,
 				04EB0E0624327BBD00B532F8 /* HomeViewController.swift in Sources */,
 				04350E4E24848DBE00F1AD27 /* SearchViewController.swift in Sources */,
 				04C4B2FC246354BD007C558C /* DetailViewController.swift in Sources */,
 				04350E5024849DEA00F1AD27 /* User.swift in Sources */,
-				040283292458D03B00071A1F /* EventService.swift in Sources */,
 				047CF3DD2493ED1A002ADFE8 /* EventCell.swift in Sources */,
 				04BB10F9244CFD4D00BFF9A2 /* Constants.swift in Sources */,
 				047C977D249956FE0062D860 /* EventModel.swift in Sources */,

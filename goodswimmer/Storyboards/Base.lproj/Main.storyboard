@@ -31,24 +31,24 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" contentViewInsetsToSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="txI-t2-u6s">
-                                <rect key="frame" x="0.0" y="44" width="414" height="829"/>
+                                <rect key="frame" x="0.0" y="104" width="414" height="769"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="EventCell" id="jSg-ZE-5Pj" userLabel="EventCell" customClass="EventCell" customModule="goodswimmer" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="203.5"/>
+                                        <rect key="frame" x="0.0" y="28" width="414" height="203"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="jSg-ZE-5Pj" id="wmx-cG-6sn">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="203.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="203"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="g-s-background2" translatesAutoresizingMaskIntoConstraints="NO" id="bzg-xx-Yk3">
-                                                    <rect key="frame" x="70" y="72.5" width="274" height="100"/>
+                                                    <rect key="frame" x="70" y="72" width="274" height="100"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="100" id="pGU-0j-DFC"/>
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H4E-oo-EEa" userLabel="display label">
-                                                    <rect key="frame" x="120" y="31" width="174" height="21.5"/>
+                                                    <rect key="frame" x="120" y="31" width="174" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -75,14 +75,22 @@
                                     <outlet property="delegate" destination="Yn1-b3-wBZ" id="qab-Vt-ebO"/>
                                 </connections>
                             </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Good Swimmer" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WfN-Vf-lrM">
+                                <rect key="frame" x="140" y="54" width="134" height="24"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="txI-t2-u6s" firstAttribute="centerX" secondItem="CGB-Hc-zor" secondAttribute="centerX" id="6Lw-pN-cfi"/>
                             <constraint firstItem="txI-t2-u6s" firstAttribute="leading" secondItem="yTW-II-dQr" secondAttribute="leading" id="EXp-OX-scC"/>
                             <constraint firstItem="yTW-II-dQr" firstAttribute="trailing" secondItem="txI-t2-u6s" secondAttribute="trailing" id="Gz7-Rh-Qkn"/>
-                            <constraint firstItem="txI-t2-u6s" firstAttribute="top" secondItem="yTW-II-dQr" secondAttribute="top" id="YFS-JY-irS"/>
+                            <constraint firstItem="txI-t2-u6s" firstAttribute="top" secondItem="yTW-II-dQr" secondAttribute="top" constant="60" id="YFS-JY-irS"/>
                             <constraint firstItem="txI-t2-u6s" firstAttribute="bottom" secondItem="yTW-II-dQr" secondAttribute="bottom" constant="60" id="hH4-BP-skS"/>
+                            <constraint firstItem="WfN-Vf-lrM" firstAttribute="centerX" secondItem="CGB-Hc-zor" secondAttribute="centerX" id="skn-cF-ofr"/>
+                            <constraint firstItem="WfN-Vf-lrM" firstAttribute="top" secondItem="yTW-II-dQr" secondAttribute="top" constant="10" id="zaX-cf-AQi"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="yTW-II-dQr"/>
                     </view>
@@ -96,7 +104,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6lt-js-sjX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1786" y="1935"/>
+            <point key="canvasLocation" x="-1786.9565217391305" y="1934.5982142857142"/>
         </scene>
         <!--Create Event View Controller-->
         <scene sceneID="3vh-6s-80A">
