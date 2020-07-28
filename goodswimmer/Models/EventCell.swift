@@ -19,12 +19,12 @@ class EventCell: UITableViewCell {
     @IBOutlet weak var eventTime: UILabel!
     
     var eventToDisplay: Event?
-    func displayEvent(_ event: Event) {        
+    func displayEvent(_ event: Event) {
         let placeholderText = "Tba"
         eventToDisplay = event
         eventName.text = eventToDisplay!.name
         eventLocation.text = eventToDisplay?.venue ?? placeholderText
-        eventDate.text = eventToDisplay?.date ?? placeholderText
+        eventDate.text = eventToDisplay?.dateStart ?? placeholderText
         eventTime.text = eventToDisplay?.time ?? placeholderText
         
         let placeholderURL = "https://firebasestorage.googleapis.com/v0/b/good-swimmer.appspot.com/o/test_image.jpg?alt=media&token=7ab711db-332a-4cf1-a4b3-bb711b0def0c"

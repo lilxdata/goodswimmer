@@ -20,6 +20,8 @@ struct Event {
     //var urlToImage:String?
     var organizer:String?
     var date:String?
+    var dateStart: String?
+    var dateEnd: String?
     var photoURL:String?
     var time: String?
     
@@ -37,10 +39,14 @@ struct Event {
     
     
     init?(eventDict: [String: Any]) {
-            let name = eventDict["name"] as? String
+        let name = eventDict["name"] as? String
+        let venue = eventDict["location"] as? String
+        let dateStart = eventDict["date_start"] as? String
           //  let imageHeight = dict["image_height"] as? CGFloat,
           //  let createdAgo = dict["created_at"] as? TimeInterval
-       self.name = name
+        self.name = name
+        self.venue = venue
+        self.dateStart = dateStart
         self.photoURL = eventDict["photoURL"] as? String
         //sd web image library -> imageView
     }

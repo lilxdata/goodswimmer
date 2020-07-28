@@ -9,6 +9,7 @@
 import UIKit
 import FirebaseFirestore
 import FirebaseFirestoreSwift
+import FirebaseAuth
 
 class CreateEventViewController: UIViewController {
 
@@ -107,6 +108,7 @@ class CreateEventViewController: UIViewController {
         let address1 = Utilities.cleanData(addressField1)
         let address2 = Utilities.cleanData(addressField2)
         let address3 = Utilities.cleanData(addressField3)
+      //  let username = Auth.auth().currentUser.username
         
         let description = descriptionText.text!.trimmingCharacters(in: .whitespacesAndNewlines)
         
@@ -120,7 +122,9 @@ class CreateEventViewController: UIViewController {
             "date_end": date_end,
             "address1": address1,
             "address2": address2,
-            "address3": address3
+            "address3": address3,
+            "user_id": uuid
+        //    "username": username
         ], merge: true) { err in
             if let err = err {
               //  self.showError("Error creating event!")
