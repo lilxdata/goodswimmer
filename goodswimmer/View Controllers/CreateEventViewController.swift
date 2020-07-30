@@ -108,11 +108,11 @@ class CreateEventViewController: UIViewController {
         let address1 = Utilities.cleanData(addressField1)
         let address2 = Utilities.cleanData(addressField2)
         let address3 = Utilities.cleanData(addressField3)
-      //  let username = Auth.auth().currentUser.username
-        
         let description = descriptionText.text!.trimmingCharacters(in: .whitespacesAndNewlines)
         
-        //TODO: add photo URL and organizer name, validate
+        guard let user = Auth.auth().currentUser, let username = user.displayName else {
+            return
+        }
 
         db.collection("events").document(uuid).setData([
             "name": eventName,
@@ -123,8 +123,7 @@ class CreateEventViewController: UIViewController {
             "address1": address1,
             "address2": address2,
             "address3": address3,
-            "user_id": uuid
-        //    "username": username
+            "username": username
         ], merge: true) { err in
             if let err = err {
               //  self.showError("Error creating event!")
@@ -136,8 +135,7 @@ class CreateEventViewController: UIViewController {
         
         self.transitionToHome()
         //some sort of validation - all fields filled out, doesn't currently exist, etc
-        
-        //then transition to home screen with event populated in feed
+        // logic, if not filled in throw error
         
     }
     

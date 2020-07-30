@@ -12,7 +12,7 @@ import Firebase
 import FirebaseFirestoreSwift
 
 class SignUpViewController: UIViewController {
- 
+    
     @IBOutlet weak var userNameField: UITextField!
     @IBOutlet weak var userNameLabel: UILabel!
     
@@ -32,7 +32,7 @@ class SignUpViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         setUpElements()
         // Do any additional setup after loading the view.
     }
@@ -79,7 +79,7 @@ class SignUpViewController: UIViewController {
         
         return nil //all good
     }
-
+    
     
     @IBAction func backButtonTapped(_ sender: Any) {
         
@@ -109,25 +109,60 @@ class SignUpViewController: UIViewController {
                 if err != nil {
                     self.showError("Error creating user")
                 } else {
-                    //User created
-                    //Store info
-                    let db = Firestore.firestore()
-                    // Add a new document with a generated ID
-                   db.collection("users").addDocument(data: [
-                        "username": username,
-                        "email": email,
-                        "location": location,
-                        "uid": result!.user.uid
-                    ]) { err in
-                        if  err != nil {
-                            self.showError("Whoops! Something went wrong. \n Our bad. Try again?")
+                    //can also use CR for profile pic
+                    let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
+                    
+                    //TODO: set email and prof pic etc
+                    changeRequest?.displayName = username
+                    changeRequest?.commitChanges { ( error ) in
+                        if error != nil {
+                            self.showError("Error")
+                            self.deleteUser()
+                            return
                         }
+                        //User created
+                        //Store info
+//                        let db = Firestore.firestore()
+//                        // Add a new document with a generated ID
+//                        db.collection("users").addDocument(data: [
+//                            "username": username,
+//                            "email": email,
+//                            "location": location,
+//                            "uid": result!.user.uid
+//                        ]) { err in
+//                            if err != nil {
+//                                self.showError("Whoops! Something went wrong. \n Our bad. Try again?")
+                      //          self.deleteUser()
+//                                return
+//                            }
+                            //Transition to home screen when both requests succeed
+                            self.transitionToHome()
+                       // }
                     }
                 }
             }
-            
-            //Transition to home screen
-            self.transitionToHome()
+        }
+    }
+    
+    func deleteUser() {
+        let user = Auth.auth().currentUser
+        user?.delete { error in
+            if let _ = error {
+                self.deleteUserAgain()
+            }
+        }
+    }
+    
+    func deleteUserAgain() {
+        let user = Auth.auth().currentUser
+        user?.delete { error in
+            if let _ = error {
+                do {
+                    try Auth.auth().signOut()
+                } catch {
+                    self.showError("error")
+                }
+            }
         }
     }
     
@@ -146,5 +181,5 @@ class SignUpViewController: UIViewController {
         
     }
     
-
+    
 }
