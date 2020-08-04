@@ -87,11 +87,14 @@ extension HomeViewController : UITableViewDelegate, UITableViewDataSource {
             vc.selectedEvent = events[indexPath.row]
             vc.selectedTitle = events[indexPath.row].name
             vc.selectedImage = events[indexPath.row].photoURL
+            
+            performSegue(withIdentifier: "detailSegue", sender: Any?.self)
+
+           // navigationController?.pushViewController(vc, animated: true)
+
         }
        // prepare(for: detailSegue, sender: <#T##Any?#>)
        // prepare(for: UIStoryboardSegue, sender: Any?)
-        
-        performSegue(withIdentifier: "detailSegue", sender: Any?.self)
         
     }
 }
