@@ -11,16 +11,31 @@ import UIKit
 class DetailViewController: UIViewController {
 
     
-    @IBOutlet weak var eventLabel: UILabel!
-    @IBOutlet weak var eventPhoto: UIImageView!
-    @IBOutlet weak var eventDate: UILabel!
-    @IBOutlet weak var eventDescription: UILabel!
+    @IBOutlet weak var eventTitle: UILabel!
+    @IBOutlet weak var eventImage: UIImageView!
+    var selectedEvent: Event?
+    var selectedImage: String?
+    var selectedTitle: String?
+    var placeholderURL: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+//        if let event = selectedEvent {
+//           // imageView.image =
+//            placeholderURL = "www.goodswimmer.com"
+//        //    event.name = eventTitle.text
+//
+//            let imageURL = URL(string: (selectedEvent?.photoURL ?? placeholderURL)!)
+//            eventImage.sd_setImage(with: imageURL, completed: nil)
+//
+//        }
         // Do any additional setup after loading the view.
     }
+    
+    //display stuff
+    //read from DB
+    //how to find out which cell was clicked?... -> doing this in homeVC 
     
 
     /*
