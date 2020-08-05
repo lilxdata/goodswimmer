@@ -29,15 +29,6 @@ class HomeViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         //TODO: refresh control
-
-      //  read single document
-//        db.collection("events").document("event2").getDocument { (docSnapshot, error) in
-//            if error == nil && docSnapshot != nil && docSnapshot!.data() != nil {
-//               print("reading event data")
-//
-//
-//            }
-//        }
         
        // read from events collection
         //TODO: check out snapshot listener 
@@ -87,14 +78,23 @@ extension HomeViewController : UITableViewDelegate, UITableViewDataSource {
     
       //called everytime cell is tapped
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("table")
+       // print("table")
         //events[indexPath.row].name
        // prepare(for: detailSegue)
         //detailSegue
         
-       // prepare(for: detailSegue, sender: Any?)
+        if let vc = storyboard?.instantiateViewController(withIdentifier: "detailVC") as? DetailViewController {
+            vc.selectedEvent = events[indexPath.row]
+            vc.selectedTitle = events[indexPath.row].name
+            vc.selectedImage = events[indexPath.row].photoURL
+            
+            performSegue(withIdentifier: "detailSegue", sender: Any?.self)
+
+           // navigationController?.pushViewController(vc, animated: true)
+
+        }
+       // prepare(for: detailSegue, sender: <#T##Any?#>)
+       // prepare(for: UIStoryboardSegue, sender: Any?)
         
     }
-   
-    
 }

@@ -34,7 +34,7 @@
                                 <rect key="frame" x="0.0" y="104" width="414" height="769"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="EventCell" id="jSg-ZE-5Pj" userLabel="EventCell" customClass="EventCell" customModule="goodswimmer" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="EventCell" id="jSg-ZE-5Pj" userLabel="EventCell" customClass="EventCell" customModule="goodswimmer" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="472.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="jSg-ZE-5Pj" id="wmx-cG-6sn">
@@ -152,7 +152,7 @@
                     <connections>
                         <outlet property="headerLabel" destination="WfN-Vf-lrM" id="oa0-vx-bKK"/>
                         <outlet property="tableView" destination="txI-t2-u6s" id="GYH-36-GNa"/>
-                        <segue destination="xAA-DN-NGL" kind="presentation" identifier="detailSegue" id="BPD-Ab-3Eh"/>
+                        <segue destination="xAA-DN-NGL" kind="presentation" identifier="detailSegue" modalPresentationStyle="automatic" id="BPD-Ab-3Eh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6lt-js-sjX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -434,52 +434,29 @@
         <!--Detail View Controller-->
         <scene sceneID="cIm-yi-nIg">
             <objects>
-                <viewController id="xAA-DN-NGL" customClass="DetailViewController" customModule="goodswimmer" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="detailVC" id="xAA-DN-NGL" customClass="DetailViewController" customModule="goodswimmer" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="StU-iH-I3o">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Bm7-pR-Mi0">
-                                <rect key="frame" x="20" y="0.0" width="374" height="483.5"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xuf-sb-sJq">
-                                        <rect key="frame" x="0.0" y="0.0" width="374" height="284.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="vGR-Di-tCj">
-                                        <rect key="frame" x="0.0" y="294.5" width="374" height="128"/>
-                                    </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rGL-cz-ZPQ">
-                                        <rect key="frame" x="0.0" y="432.5" width="374" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Buq-QL-Z9a">
-                                        <rect key="frame" x="0.0" y="463" width="374" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                            </stackView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TOP-eH-6dp">
+                                <rect key="frame" x="87" y="357" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="~details~" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ABE-2a-UBq">
+                                <rect key="frame" x="186" y="139" width="72" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <constraints>
-                            <constraint firstItem="Bm7-pR-Mi0" firstAttribute="centerX" secondItem="StU-iH-I3o" secondAttribute="centerX" id="6aF-eK-1Bx"/>
-                            <constraint firstItem="Bm7-pR-Mi0" firstAttribute="top" secondItem="v17-hs-u3p" secondAttribute="top" id="Lcy-wC-4XH"/>
-                            <constraint firstItem="Bm7-pR-Mi0" firstAttribute="leading" secondItem="StU-iH-I3o" secondAttribute="leading" constant="20" symbolic="YES" id="VTt-zQ-2KZ"/>
-                            <constraint firstAttribute="bottom" secondItem="Bm7-pR-Mi0" secondAttribute="bottom" constant="358.5" id="kiD-rT-f7D"/>
-                        </constraints>
                         <viewLayoutGuide key="safeArea" id="v17-hs-u3p"/>
                     </view>
                     <connections>
-                        <outlet property="eventDate" destination="rGL-cz-ZPQ" id="yLG-zS-c5y"/>
-                        <outlet property="eventDescription" destination="Buq-QL-Z9a" id="eIL-Ol-5uh"/>
-                        <outlet property="eventLabel" destination="xuf-sb-sJq" id="mde-4a-7gu"/>
-                        <outlet property="eventPhoto" destination="vGR-Di-tCj" id="nZb-Ir-nre"/>
+                        <outlet property="eventImage" destination="TOP-eH-6dp" id="86L-oD-AfL"/>
+                        <outlet property="eventTitle" destination="ABE-2a-UBq" id="X3C-Wg-hoP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x9d-H2-ZBQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

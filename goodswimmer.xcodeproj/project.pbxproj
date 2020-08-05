@@ -10,7 +10,6 @@
 		0401729B246CEA4000297ECA /* CreateEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0401729A246CEA4000297ECA /* CreateEventViewController.swift */; };
 		0401729D246CEAE600297ECA /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0401729C246CEAE600297ECA /* ProfileViewController.swift */; };
 		0402831F2458C10A00071A1F /* LocViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0402831E2458C10A00071A1F /* LocViewController.swift */; };
-		040283232458CF7000071A1F /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040283222458CF7000071A1F /* Event.swift */; };
 		0417676A2432D4EF007AC791 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041767692432D4EF007AC791 /* Utilities.swift */; };
 		04350E4E24848DBE00F1AD27 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04350E4D24848DBE00F1AD27 /* SearchViewController.swift */; };
 		04350E5024849DEA00F1AD27 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04350E4F24849DEA00F1AD27 /* User.swift */; };
@@ -23,9 +22,9 @@
 		044A54D424CB7C5B001FABA9 /* Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044A54D324CB7C5B001FABA9 /* Navigation.swift */; };
 		045FAC98244FFF05008FA4D9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 045FAC97244FFF05008FA4D9 /* GoogleService-Info.plist */; };
 		047B249E24BF775E00B79F9C /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 047B249D24BF775E00B79F9C /* Login.storyboard */; };
-		047C977D249956FE0062D860 /* EventModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047C977C249956FE0062D860 /* EventModel.swift */; };
 		047C977F249982160062D860 /* PhotoHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047C977E249982160062D860 /* PhotoHelper.swift */; };
 		047CF3DD2493ED1A002ADFE8 /* EventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047CF3DC2493ED1A002ADFE8 /* EventCell.swift */; };
+		0486C5AD24DA008F00ED6328 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0486C5AC24DA008E00ED6328 /* Event.swift */; };
 		04A192FA2492DB29007F652E /* ZeroStateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A192F92492DB29007F652E /* ZeroStateViewController.swift */; };
 		04BB10F9244CFD4D00BFF9A2 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BB10F8244CFD4D00BFF9A2 /* Constants.swift */; };
 		04C4B2FC246354BD007C558C /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C4B2FB246354BD007C558C /* DetailViewController.swift */; };
@@ -49,7 +48,6 @@
 		0401729A246CEA4000297ECA /* CreateEventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateEventViewController.swift; sourceTree = "<group>"; };
 		0401729C246CEAE600297ECA /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		0402831E2458C10A00071A1F /* LocViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocViewController.swift; sourceTree = "<group>"; };
-		040283222458CF7000071A1F /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		041767692432D4EF007AC791 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		04350E4D24848DBE00F1AD27 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		04350E4F24849DEA00F1AD27 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -62,9 +60,9 @@
 		044A54D324CB7C5B001FABA9 /* Navigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Navigation.swift; sourceTree = "<group>"; };
 		045FAC97244FFF05008FA4D9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		047B249D24BF775E00B79F9C /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
-		047C977C249956FE0062D860 /* EventModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventModel.swift; sourceTree = "<group>"; };
 		047C977E249982160062D860 /* PhotoHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoHelper.swift; sourceTree = "<group>"; };
 		047CF3DC2493ED1A002ADFE8 /* EventCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCell.swift; sourceTree = "<group>"; };
+		0486C5AC24DA008E00ED6328 /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		04A192F92492DB29007F652E /* ZeroStateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZeroStateViewController.swift; sourceTree = "<group>"; };
 		04BB10F8244CFD4D00BFF9A2 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		04C4B2FB246354BD007C558C /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
@@ -113,10 +111,9 @@
 		0401729F246CEF3700297ECA /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				040283222458CF7000071A1F /* Event.swift */,
 				04350E4F24849DEA00F1AD27 /* User.swift */,
+				0486C5AC24DA008E00ED6328 /* Event.swift */,
 				047CF3DC2493ED1A002ADFE8 /* EventCell.swift */,
-				047C977C249956FE0062D860 /* EventModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -356,9 +353,9 @@
 				044A54D424CB7C5B001FABA9 /* Navigation.swift in Sources */,
 				04EB0DEE24327B5000B532F8 /* AppDelegate.swift in Sources */,
 				0417676A2432D4EF007AC791 /* Utilities.swift in Sources */,
-				040283232458CF7000071A1F /* Event.swift in Sources */,
 				04CFB70424CF36EF00DDCB75 /* EventService.swift in Sources */,
 				04EB0E0224327BA700B532F8 /* SignUpViewController.swift in Sources */,
+				0486C5AD24DA008F00ED6328 /* Event.swift in Sources */,
 				04A192FA2492DB29007F652E /* ZeroStateViewController.swift in Sources */,
 				04EB0E0424327BB200B532F8 /* LoginViewController.swift in Sources */,
 				0401729D246CEAE600297ECA /* ProfileViewController.swift in Sources */,
@@ -372,7 +369,6 @@
 				04350E5024849DEA00F1AD27 /* User.swift in Sources */,
 				047CF3DD2493ED1A002ADFE8 /* EventCell.swift in Sources */,
 				04BB10F9244CFD4D00BFF9A2 /* Constants.swift in Sources */,
-				047C977D249956FE0062D860 /* EventModel.swift in Sources */,
 				0401729B246CEA4000297ECA /* CreateEventViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

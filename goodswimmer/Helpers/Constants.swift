@@ -15,6 +15,7 @@ struct Constants {
         static let homeViewController = "homeVC"
         static let tabViewController = "tabVC"
         static let loginViewController = "loginVC"
+        static let detailViewController = "detailVC"
     }
     
     struct LocalStorage {
