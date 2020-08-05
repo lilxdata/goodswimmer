@@ -103,5 +103,19 @@ class Utilities {
     }
     
     
-    // TODO: email validation
+   
+    /* email validation*/
+    static func isEmailValid(_ email: String) -> Bool {
+        var atSym:Bool = false;
+        for char in email {
+            if(char == "@") {
+                atSym = true;
+            }
+            else if(char == "." && atSym) {
+                return true;
+            }
+        }
+        return false;
+        
+    }
 }
