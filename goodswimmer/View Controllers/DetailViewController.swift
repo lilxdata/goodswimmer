@@ -9,28 +9,18 @@
 import UIKit
 
 class DetailViewController: UIViewController {
-
     
-    @IBOutlet weak var eventLabel: UILabel!
-    @IBOutlet weak var eventPhoto: UIImageView!
-    @IBOutlet weak var eventDate: UILabel!
-    @IBOutlet weak var eventDescription: UILabel!
+    
+    @IBOutlet weak var eventTitle: UILabel!
+    @IBOutlet weak var eventImage: UIImageView!
+    var selectedEvent: Event?
+    var selectedImage: String?
+    var selectedTitle: String?
+    var placeholderURL: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
