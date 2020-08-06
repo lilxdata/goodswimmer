@@ -17,7 +17,6 @@ struct Event {
     var venue: String?
     var address:String?
     var description:String?
-    //var urlToImage:String?
     var organizer:String?
     var date:String?
     var dateStart: String?
@@ -25,34 +24,16 @@ struct Event {
     var photoURL:String?
     var time: String?
     
-//    init?(snapshot: DataSnapshot) {
-//        let eventData = snapshot.value as? [String : Any]
-        
-//        self.name = name
-//        self.venue = venue
-//        self.address = address
-//        self.description = description
-//        self.urlToImage = urlToImage
-//        self.organizer = organizer
-//        self.date = date
-//    }
-    
-    
     init?(eventDict: [String: Any]) {
         let name = eventDict["name"] as? String
         let venue = eventDict["location"] as? String
         let dateStart = eventDict["date_start"] as? String
-          //  let imageHeight = dict["image_height"] as? CGFloat,
-          //  let createdAgo = dict["created_at"] as? TimeInterval
+        //  let imageHeight = dict["image_height"] as? CGFloat,
+        //  let createdAgo = dict["created_at"] as? TimeInterval
         self.name = name
         self.venue = venue
         self.dateStart = dateStart
         self.photoURL = eventDict["photoURL"] as? String
         //sd web image library -> imageView
     }
-    
-    
-    //TODO: Photo data 
-    
-//}
 }

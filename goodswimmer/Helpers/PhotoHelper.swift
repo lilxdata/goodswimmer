@@ -11,12 +11,12 @@ import UIKit
 class PhotoHelper: NSObject {
     // MARK: - Properties
     var completionHandler: ((UIImage) -> Void)?
-
+    
     // MARK: - Helper Methods
-
+    
     //takes a reference to a VC so we can show the view
     func presentActionSheet(from viewController: UIViewController) {
-
+        
         // Initialize new pop-up alert controller
         let alertController = UIAlertController(title: nil, message: "Where do you want to get your picture from?", preferredStyle: .actionSheet)
         
@@ -43,7 +43,7 @@ class PhotoHelper: NSObject {
         alertController.addAction(cancelAction)
         
         viewController.present(alertController, animated: true)
-        }
+    }
     
     func presentImagePickerController(with sourceType: UIImagePickerController.SourceType, from viewController: UIViewController) {
         let imagePickerController = UIImagePickerController()
@@ -52,10 +52,10 @@ class PhotoHelper: NSObject {
         
         viewController.present(imagePickerController, animated: true)
     }
-    }
+}
 
 extension PhotoHelper: UINavigationControllerDelegate, UIImagePickerControllerDelegate {
-     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
         if let selectedImage = info[.originalImage] as? UIImage {
             completionHandler?(selectedImage)
         }

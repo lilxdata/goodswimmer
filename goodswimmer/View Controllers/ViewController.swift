@@ -12,11 +12,8 @@ class ViewController: UIViewController {
 
     
     @IBOutlet weak var titleHeader: UILabel!
-    
     @IBOutlet weak var descSubHeader: UILabel!
-    
     @IBOutlet weak var signUpButton: UIButton!
-    
     @IBOutlet weak var signInButton: UIButton!
     
     override func viewDidLoad() {
@@ -24,7 +21,6 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view.
         setUpElements()
     }
-
 
     func setUpElements() {
         Utilities.styleHeader(titleHeader)
