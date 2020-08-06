@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		0401729B246CEA4000297ECA /* CreateEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0401729A246CEA4000297ECA /* CreateEventViewController.swift */; };
 		0401729D246CEAE600297ECA /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0401729C246CEAE600297ECA /* ProfileViewController.swift */; };
-		0402831F2458C10A00071A1F /* LocViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0402831E2458C10A00071A1F /* LocViewController.swift */; };
 		0417676A2432D4EF007AC791 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041767692432D4EF007AC791 /* Utilities.swift */; };
 		04350E4E24848DBE00F1AD27 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04350E4D24848DBE00F1AD27 /* SearchViewController.swift */; };
 		04350E5024849DEA00F1AD27 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04350E4F24849DEA00F1AD27 /* User.swift */; };
@@ -48,7 +47,6 @@
 /* Begin PBXFileReference section */
 		0401729A246CEA4000297ECA /* CreateEventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateEventViewController.swift; sourceTree = "<group>"; };
 		0401729C246CEAE600297ECA /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
-		0402831E2458C10A00071A1F /* LocViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocViewController.swift; sourceTree = "<group>"; };
 		041767692432D4EF007AC791 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		04350E4D24848DBE00F1AD27 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		04350E4F24849DEA00F1AD27 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -200,7 +198,6 @@
 				04EB0E0324327BB200B532F8 /* LoginViewController.swift */,
 				04EB0E0524327BBD00B532F8 /* HomeViewController.swift */,
 				04EB0DF124327B5000B532F8 /* ViewController.swift */,
-				0402831E2458C10A00071A1F /* LocViewController.swift */,
 				04C4B2FB246354BD007C558C /* DetailViewController.swift */,
 				04A192F92492DB29007F652E /* ZeroStateViewController.swift */,
 				0401729A246CEA4000297ECA /* CreateEventViewController.swift */,
@@ -352,7 +349,6 @@
 			files = (
 				04EB0DF224327B5000B532F8 /* ViewController.swift in Sources */,
 				04CFB70624CF372D00DDCB75 /* StorageService.swift in Sources */,
-				0402831F2458C10A00071A1F /* LocViewController.swift in Sources */,
 				044A54D424CB7C5B001FABA9 /* Navigation.swift in Sources */,
 				04EB0DEE24327B5000B532F8 /* AppDelegate.swift in Sources */,
 				0417676A2432D4EF007AC791 /* Utilities.swift in Sources */,
