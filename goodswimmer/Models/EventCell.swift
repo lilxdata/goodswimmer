@@ -17,18 +17,19 @@ class EventCell: UITableViewCell {
     @IBOutlet weak var eventLocation: UILabel!
     @IBOutlet weak var eventDate: UILabel!
     @IBOutlet weak var eventTime: UILabel!
+    @IBOutlet weak var username: UILabel!
     
     var eventToDisplay: Event?
+    
     func displayEvent(_ event: Event) {
-        let placeholderText = "Tba"
         eventToDisplay = event
-        eventName.text = eventToDisplay!.name
-        eventLocation.text = eventToDisplay?.venue ?? placeholderText
-        eventDate.text = eventToDisplay?.dateStart ?? placeholderText
-        eventTime.text = eventToDisplay?.time ?? placeholderText
+        username.text = eventToDisplay?.username ?? Constants.Placeholders.placeholderText
+        eventName.text = eventToDisplay?.name ?? Constants.Placeholders.placeholderTitle
+        eventLocation.text = eventToDisplay?.venue ?? Constants.Placeholders.placeholderText
+        eventDate.text = eventToDisplay?.dateStart ?? Constants.Placeholders.placeholderText
+        eventTime.text = eventToDisplay?.dateEnd ?? eventToDisplay?.time ?? Constants.Placeholders.placeholderText
         
-        let placeholderURL = "https://firebasestorage.googleapis.com/v0/b/good-swimmer.appspot.com/o/test_image.jpg?alt=media&token=7ab711db-332a-4cf1-a4b3-bb711b0def0c"
-        let imageURL = URL(string: eventToDisplay?.photoURL ?? placeholderURL)
+        let imageURL = URL(string: eventToDisplay?.photoURL ?? Constants.Placeholders.placeholderURL)
         
         eventImage.sd_setImage(with: imageURL, completed: nil)
         customizeElements()
@@ -39,5 +40,7 @@ class EventCell: UITableViewCell {
         Utilities.styleLabel(eventLocation, size: 15, uppercase: false)
         Utilities.styleLabel(eventDate, size: 24, uppercase: false)
         Utilities.styleLabel(eventTime, size: 24, uppercase: false)
+       // Utilities.styleTextField(<#T##textfield: UITextField##UITextField#>, size: <#T##Int#>)
+        Utilities.styleLabel(username, size: 15, uppercase: false)
     }
 }
