@@ -14,9 +14,6 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var eventTitle: UILabel!
     @IBOutlet weak var eventImage: UIImageView!
     var selectedEvent: Event?
-//    var selectedImage: String?
-//    var selectedTitle: String?
-//    var placeholderURL: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()

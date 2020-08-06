@@ -10,7 +10,7 @@ import UIKit
 import FirebaseAuth
 
 class LoginViewController: UIViewController {
-
+    
     
     @IBOutlet weak var emailField: UITextField!
     @IBOutlet weak var emailLabel: UILabel!
@@ -24,12 +24,12 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         setUpElements()
         // Do any additional setup after loading the view.
     }
     
-
+    
     func setUpElements() {
         //hide error label
         
@@ -63,9 +63,9 @@ class LoginViewController: UIViewController {
                 self.errorLabel.numberOfLines = 0
                 self.errorLabel.alpha = 1
             }
-            
+                
             else {
-                            
+                
                 guard let tabVC = Navigation.sharedInstance.goHome() else {
                     return
                 }

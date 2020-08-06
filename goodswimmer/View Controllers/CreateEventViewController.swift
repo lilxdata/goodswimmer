@@ -12,7 +12,6 @@ import FirebaseFirestoreSwift
 import FirebaseAuth
 
 class CreateEventViewController: UIViewController {
-
     
     @IBOutlet weak var stackView: UIStackView!
     @IBOutlet weak var createEventHeader: UILabel!
@@ -48,7 +47,7 @@ class CreateEventViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
         
         let labelSize = 12
@@ -72,7 +71,7 @@ class CreateEventViewController: UIViewController {
         Utilities.styleDisabledTextField(addressField1,size: fieldSize)
         Utilities.styleDisabledTextField(addressField2, size: fieldSize)
         Utilities.styleDisabledTextField(addressField3, size: fieldSize)
-   
+        
         Utilities.styleButton(createEventButton)
         Utilities.styleLabel(createEventHeader, size: headerSize, uppercase: false)
         
@@ -96,7 +95,7 @@ class CreateEventViewController: UIViewController {
     
     @IBAction func createEventTapped(_ sender: Any) {
         //TODO: check that all fields are filled in!
-
+        
         let eventName = Utilities.cleanData(titleField)
         let location = Utilities.cleanData(locationField)
         let date_start = Utilities.cleanData(dateField1)
@@ -109,7 +108,7 @@ class CreateEventViewController: UIViewController {
         guard let user = Auth.auth().currentUser, let username = user.displayName else {
             return
         }
-
+        
         let eventDict = [
             "name": eventName,
             "description": description,
@@ -136,5 +135,5 @@ class CreateEventViewController: UIViewController {
         view.window?.rootViewController = tabViewController
         view.window?.makeKeyAndVisible()
     }
-
+    
 }

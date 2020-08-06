@@ -12,7 +12,7 @@ import UIKit
 class Utilities {
     
     static func styleTextField(_ textfield: UITextField, size: Int) {
-    // create bottom line detail
+        // create bottom line detail
         let bottomLine = CALayer()
         let fontSize = CGFloat(size)
         bottomLine.frame = CGRect( x:0, y:textfield.frame.height + 5, width: textfield.frame.width, height: 1)
@@ -23,7 +23,7 @@ class Utilities {
     }
     
     static func styleDisabledTextField(_ textfield: UITextField, size: Int) {
-    // create bottom line detail
+        // create bottom line detail
         let bottomLine = CALayer()
         let fontSize = CGFloat(size)
         bottomLine.frame = CGRect( x:0, y:textfield.frame.height + 5, width: textfield.frame.width, height: 1)
@@ -56,13 +56,13 @@ class Utilities {
     static func styleButton(_ button: UIButton) {
         //rounded button
         button.titleLabel?.font = UIFont(name: "Standard-Book", size: 21)
-       // button.layer.cornerRadius = 20.0
-       // button.title = button.titleLabel?.text?.uppercased() // did not work
+        // button.layer.cornerRadius = 20.0
+        // button.title = button.titleLabel?.text?.uppercased() // did not work
         button.setTitle(button.title(for: .normal)?.uppercased(), for: .normal)
         button.layer.borderWidth = 1.0
         button.layer.borderColor = UIColor.black.cgColor
         button.contentVerticalAlignment = UIControl.ContentVerticalAlignment.bottom
-
+        
     }
     
     static func styleError(_ label: UILabel) {
@@ -71,14 +71,14 @@ class Utilities {
         label.numberOfLines = 0
     }
     
-//    static func styleCheckbox(_ button: UIButton) {
-//        button.tintColor = UIColor.black
-//    }
-//
-//    static func styleBoxChecked(_ button: UIButton) {
-//        button.tintColor = UIColor.black
-//        button.backgroundColor = UIColor.red
-//    }
+    //    static func styleCheckbox(_ button: UIButton) {
+    //        button.tintColor = UIColor.black
+    //    }
+    //
+    //    static func styleBoxChecked(_ button: UIButton) {
+    //        button.tintColor = UIColor.black
+    //        button.backgroundColor = UIColor.red
+    //    }
     
     /* password validation */
     static func isPasswordValid(_ password: String) -> Bool{
@@ -103,7 +103,7 @@ class Utilities {
     }
     
     
-   
+    
     /* email validation*/
     static func isEmailValid(_ email: String) -> Bool {
         var atSym:Bool = false;

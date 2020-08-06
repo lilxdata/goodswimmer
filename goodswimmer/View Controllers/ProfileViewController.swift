@@ -10,14 +10,14 @@ import UIKit
 import FirebaseAuth
 
 class ProfileViewController: UIViewController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
     }
     
-//TODO: set user as not logged in...?
+    //TODO: set user as not logged in...?
     @IBAction func signOutTapped(_ sender: Any) {
         do {
             try Auth.auth().signOut()
@@ -36,8 +36,8 @@ class ProfileViewController: UIViewController {
         
         loginViewController.modalPresentationStyle = .fullScreen
         
-       present(loginViewController, animated: true, completion: nil)
+        present(loginViewController, animated: true, completion: nil)
     }
-
-
+    
+    
 }
