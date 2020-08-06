@@ -26,6 +26,7 @@
 		047CF3DD2493ED1A002ADFE8 /* EventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047CF3DC2493ED1A002ADFE8 /* EventCell.swift */; };
 		0486C5AD24DA008F00ED6328 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0486C5AC24DA008E00ED6328 /* Event.swift */; };
 		04A192FA2492DB29007F652E /* ZeroStateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A192F92492DB29007F652E /* ZeroStateViewController.swift */; };
+		04B7505224DB68BF00DE4B98 /* EventArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B7505124DB68BF00DE4B98 /* EventArray.swift */; };
 		04BB10F9244CFD4D00BFF9A2 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BB10F8244CFD4D00BFF9A2 /* Constants.swift */; };
 		04C4B2FC246354BD007C558C /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C4B2FB246354BD007C558C /* DetailViewController.swift */; };
 		04CFB70424CF36EF00DDCB75 /* EventService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CFB70324CF36EF00DDCB75 /* EventService.swift */; };
@@ -64,6 +65,7 @@
 		047CF3DC2493ED1A002ADFE8 /* EventCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCell.swift; sourceTree = "<group>"; };
 		0486C5AC24DA008E00ED6328 /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		04A192F92492DB29007F652E /* ZeroStateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZeroStateViewController.swift; sourceTree = "<group>"; };
+		04B7505124DB68BF00DE4B98 /* EventArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventArray.swift; sourceTree = "<group>"; };
 		04BB10F8244CFD4D00BFF9A2 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		04C4B2FB246354BD007C558C /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		04CFB70324CF36EF00DDCB75 /* EventService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = EventService.swift; path = goodswimmer/Services/EventService.swift; sourceTree = "<group>"; };
@@ -114,6 +116,7 @@
 				04350E4F24849DEA00F1AD27 /* User.swift */,
 				0486C5AC24DA008E00ED6328 /* Event.swift */,
 				047CF3DC2493ED1A002ADFE8 /* EventCell.swift */,
+				04B7505124DB68BF00DE4B98 /* EventArray.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -367,6 +370,7 @@
 				04350E4E24848DBE00F1AD27 /* SearchViewController.swift in Sources */,
 				04C4B2FC246354BD007C558C /* DetailViewController.swift in Sources */,
 				04350E5024849DEA00F1AD27 /* User.swift in Sources */,
+				04B7505224DB68BF00DE4B98 /* EventArray.swift in Sources */,
 				047CF3DD2493ED1A002ADFE8 /* EventCell.swift in Sources */,
 				04BB10F9244CFD4D00BFF9A2 /* Constants.swift in Sources */,
 				0401729B246CEA4000297ECA /* CreateEventViewController.swift in Sources */,

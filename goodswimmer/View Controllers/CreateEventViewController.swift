@@ -33,7 +33,7 @@ class CreateEventViewController: UIViewController {
     
     @IBOutlet weak var descriptionText: UITextView!
     
-    let eventService = EventService()
+    let eventService = EventService.sharedInstance
     let photoHelper = PhotoHelper()
     var uuid = ""
     
@@ -88,18 +88,14 @@ class CreateEventViewController: UIViewController {
     
     @IBAction func addImageTapped(_ sender: Any) {
         photoHelper.completionHandler =  { image in
-            self.eventService.createEvent(for: image, id: self.uuid)
+            self.eventService.uploadImage(for: image, id: self.uuid)
         }
         photoHelper.presentActionSheet(from: self)
     }
     
     
     @IBAction func createEventTapped(_ sender: Any) {
-        //write to DB
-        let db = Firestore.firestore()
-        
         //TODO: check that all fields are filled in!
-        //TODO: image URL not currently being written
 
         let eventName = Utilities.cleanData(titleField)
         let location = Utilities.cleanData(locationField)
@@ -114,7 +110,7 @@ class CreateEventViewController: UIViewController {
             return
         }
 
-        db.collection("events").document(uuid).setData([
+        let eventDict = [
             "name": eventName,
             "description": description,
             "location": location,
@@ -124,19 +120,13 @@ class CreateEventViewController: UIViewController {
             "address2": address2,
             "address3": address3,
             "username": username
-        ], merge: true) { err in
-            if let err = err {
-              //  self.showError("Error creating event!")
-                print("Error")
-            } else {
-                print("Document successfully written!")  // event created success pop up
-            }
-        }
+        ]
+        
+        self.eventService.createEvent(dictionary: eventDict, uuid: self.uuid)
         
         self.transitionToHome()
         //some sort of validation - all fields filled out, doesn't currently exist, etc
         // logic, if not filled in throw error
-        
     }
     
     func transitionToHome() {
@@ -146,7 +136,5 @@ class CreateEventViewController: UIViewController {
         view.window?.rootViewController = tabViewController
         view.window?.makeKeyAndVisible()
     }
-    
-    
-    
+
 }

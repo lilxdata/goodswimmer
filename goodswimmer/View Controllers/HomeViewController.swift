@@ -13,13 +13,10 @@ class HomeViewController: UIViewController {
     
     @IBOutlet weak var headerLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
-    //If no events, display zero state page
+    @IBOutlet weak var zeroStateView: UIView!
     
-   // var events = [[Event]]() as? [[String: Any]]
-    var events =  [Event]()
-    var eventsStatic = ["First event", "another event", "third event"]
+    let eventArray = EventArray.sharedInstance
 
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -38,12 +35,17 @@ class HomeViewController: UIViewController {
                     print("document received")
                     let eventData = document.data()
                     if let event = Event(eventDict: eventData) {
-                        self.events.append(event)
+                        self.eventArray.events.append(event)
                     }
                 }
                 self.tableView.reloadData()
+                if self.eventArray.events.count == 0 {
+                    self.zeroStateView.isHidden = false
+                }
             }
         }
+        
+        
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -59,7 +61,7 @@ class HomeViewController: UIViewController {
 
 extension HomeViewController : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return events.count
+        return self.eventArray.events.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -67,7 +69,7 @@ extension HomeViewController : UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "EventCell", for: indexPath) as! EventCell //cast as event cell
         
         //get event
-        let event = events[indexPath.row]
+        let event = self.eventArray.events[indexPath.row]
         
         //customize cell
         cell.displayEvent(event)
@@ -78,23 +80,10 @@ extension HomeViewController : UITableViewDelegate, UITableViewDataSource {
     
       //called everytime cell is tapped
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-       // print("table")
-        //events[indexPath.row].name
-       // prepare(for: detailSegue)
-        //detailSegue
-        
+
         if let vc = storyboard?.instantiateViewController(withIdentifier: "detailVC") as? DetailViewController {
-            vc.selectedEvent = events[indexPath.row]
-            vc.selectedTitle = events[indexPath.row].name
-            vc.selectedImage = events[indexPath.row].photoURL
-            
-            performSegue(withIdentifier: "detailSegue", sender: Any?.self)
-
-           // navigationController?.pushViewController(vc, animated: true)
-
+            vc.selectedEvent = self.eventArray.events[indexPath.row]
+            present(vc, animated: true, completion: nil)
         }
-       // prepare(for: detailSegue, sender: <#T##Any?#>)
-       // prepare(for: UIStoryboardSegue, sender: Any?)
-        
     }
 }
