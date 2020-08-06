@@ -71,15 +71,6 @@ class Utilities {
         label.numberOfLines = 0
     }
     
-    //    static func styleCheckbox(_ button: UIButton) {
-    //        button.tintColor = UIColor.black
-    //    }
-    //
-    //    static func styleBoxChecked(_ button: UIButton) {
-    //        button.tintColor = UIColor.black
-    //        button.backgroundColor = UIColor.red
-    //    }
-    
     /* password validation */
     static func isPasswordValid(_ password: String) -> Bool{
         let passwordTest = NSPredicate(format: "SELF MATCHES %@", "^(?=.*[a-z])(?=.*[$@$#!%*?&])[A-Za-z\\d$@$#!%*?&]{8,}")
