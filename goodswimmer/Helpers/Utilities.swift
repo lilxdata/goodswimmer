@@ -102,20 +102,11 @@ class Utilities {
         return false
     }
     
-    
-    
     /* email validation*/
     static func isEmailValid(_ email: String) -> Bool {
-        var atSym:Bool = false;
-        for char in email {
-            if(char == "@") {
-                atSym = true;
-            }
-            else if(char == "." && atSym) {
-                return true;
-            }
-        }
-        return false;
+        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+        let emailPred = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+        return emailPred.evaluate(with: email)
         
     }
 }
