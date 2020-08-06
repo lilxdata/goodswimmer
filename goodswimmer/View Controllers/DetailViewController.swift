@@ -14,12 +14,21 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var eventTitle: UILabel!
     @IBOutlet weak var eventImage: UIImageView!
     var selectedEvent: Event?
-    var selectedImage: String?
-    var selectedTitle: String?
-    var placeholderURL: String?
+//    var selectedImage: String?
+//    var selectedTitle: String?
+//    var placeholderURL: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+       // let image = selectedEvent?.photoURL
+        
+        if let event = selectedEvent {
+            let photoURL = event.photoURL
+            let title = event.name ?? "Unnamed Event"
+            eventTitle.text = title
+        }
+        
         
     }
     
