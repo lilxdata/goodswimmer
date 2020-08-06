@@ -23,6 +23,4 @@ class Navigation  {
         tabViewController.modalPresentationStyle = .fullScreen
         return tabViewController
     }
-    
-   // goToDetailView() 
 }

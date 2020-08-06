@@ -16,7 +16,7 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var zeroStateView: UIView!
     
     let eventArray = EventArray.sharedInstance
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -27,7 +27,7 @@ class HomeViewController: UIViewController {
         tableView.dataSource = self
         //TODO: refresh control
         
-       // read from events collection
+        // read from events collection
         //TODO: check out snapshot listener 
         db.collection("events").getDocuments { (querySnapshot, error) in
             if error == nil && querySnapshot != nil {
@@ -46,11 +46,11 @@ class HomeViewController: UIViewController {
         }
         
         
-    
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        
+        func numberOfSections(in tableView: UITableView) -> Int {
+            return 1
+        }
     }
-}
     
     func setUpElements() {
         Utilities.styleHeader(headerLabel)
@@ -78,9 +78,9 @@ extension HomeViewController : UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
-      //called everytime cell is tapped
+    //called everytime cell is tapped
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-
+        
         if let vc = storyboard?.instantiateViewController(withIdentifier: "detailVC") as? DetailViewController {
             vc.selectedEvent = self.eventArray.events[indexPath.row]
             present(vc, animated: true, completion: nil)

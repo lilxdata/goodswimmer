@@ -83,7 +83,7 @@ class SignUpViewController: UIViewController {
     
     @IBAction func backButtonTapped(_ sender: Any) {
         
-        
+     //TODO
         
     }
     //handle sign up button tap
@@ -120,24 +120,7 @@ class SignUpViewController: UIViewController {
                             self.deleteUser()
                             return
                         }
-                        //User created
-                        //Store info
-//                        let db = Firestore.firestore()
-//                        // Add a new document with a generated ID
-//                        db.collection("users").addDocument(data: [
-//                            "username": username,
-//                            "email": email,
-//                            "location": location,
-//                            "uid": result!.user.uid
-//                        ]) { err in
-//                            if err != nil {
-//                                self.showError("Whoops! Something went wrong. \n Our bad. Try again?")
-                      //          self.deleteUser()
-//                                return
-//                            }
-                            //Transition to home screen when both requests succeed
-                            self.transitionToHome()
-                       // }
+                        self.transitionToHome()
                     }
                 }
             }
@@ -176,10 +159,6 @@ class SignUpViewController: UIViewController {
         guard let tabVC = Navigation.sharedInstance.goHome() else {
             return
         }
-        
         present(tabVC, animated: true)
-        
     }
-    
-    
 }
