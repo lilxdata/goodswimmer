@@ -107,4 +107,12 @@ class Utilities {
         return namePred.evaluate(with: nameRegEx)
         
     }
+    
+    /* username validation */
+    static func isUsernameValid(_ email: String) -> Bool {
+        let usernameRegEx = "^[a-zA-Z0-9_-]+"
+        let usernamePred = NSPredicate(format:"SELF MATCHES %@", usernameRegEx)
+        return usernamePred.evaluate(with: usernameRegEx)
+        
+    }
 }
