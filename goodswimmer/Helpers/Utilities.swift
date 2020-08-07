@@ -93,11 +93,18 @@ class Utilities {
         return false
     }
     
-    /* email validation*/
+    /* email validation */
     static func isEmailValid(_ email: String) -> Bool {
         let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
         let emailPred = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
         return emailPred.evaluate(with: email)
+        
+    }
+    /* name validation */
+    static func isNameValid(_ email: String) -> Bool {
+        let nameRegEx = "/^[A-Za-z][A-Za-z\'\\-]+([\\ A-Za-z][A-Za-z\'\\-]+)*/"
+        let namePred = NSPredicate(format:"SELF MATCHES %@", nameRegEx)
+        return namePred.evaluate(with: nameRegEx)
         
     }
 }
