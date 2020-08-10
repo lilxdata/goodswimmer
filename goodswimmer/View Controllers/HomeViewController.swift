@@ -54,7 +54,6 @@ class HomeViewController: UIViewController {
     
     func setUpElements() {
         Utilities.styleHeader(headerLabel)
-        
     }
     
 }
