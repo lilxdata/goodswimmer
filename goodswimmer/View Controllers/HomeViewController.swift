@@ -45,8 +45,6 @@ class HomeViewController: UIViewController {
             }
         }
         
-        
-        
         func numberOfSections(in tableView: UITableView) -> Int {
             return 1
         }

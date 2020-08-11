@@ -31,7 +31,6 @@ class EventService {
                 "photoURL": urlString
                 ], merge: true
                 )
-            
         }
     }
     

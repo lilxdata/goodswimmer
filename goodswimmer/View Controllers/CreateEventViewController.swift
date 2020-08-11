@@ -81,9 +81,7 @@ class CreateEventViewController: UIViewController {
         //TODO: disable address field until location field is filled out - make it some sort of state, once location is put in, check DB if it exists, if not enable address  field, then send noti to us to send postcard inviting them to join. if location does exist, populate with address
         
         //TODO: add red asterisks to mandatory categories; helper isMandatory or something
-        
     }
-    
     
     @IBAction func addImageTapped(_ sender: Any) {
         photoHelper.completionHandler =  { image in

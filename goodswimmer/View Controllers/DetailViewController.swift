@@ -24,6 +24,7 @@ class DetailViewController: UIViewController {
         super.viewDidLoad()
         
         setUpElements()
+       
         if let event = selectedEvent {
             let photoURL = URL(string: event.photoURL ?? Constants.Placeholders.placeholderURL)
             let title = event.name ?? Constants.Placeholders.placeholderTitle
@@ -38,9 +39,7 @@ class DetailViewController: UIViewController {
             eventDate.text = date
             eventTime.text = time
             eventDesc.text = desc
-            
         }
-        
         
     }
     
