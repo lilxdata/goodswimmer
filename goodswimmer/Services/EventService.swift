@@ -44,4 +44,21 @@ class EventService {
                    }
                }
     }
+    //Function can be moved to another location if necessary
+    //Currently not static by imagine we only want users
+    //to be filtering their events and not other classes
+    func filterEvents(filter:String, cat: String) {
+        print("I am filtering!")
+        print("I am filtering by", cat)
+        db.collection(cat).whereField(filter, isEqualTo: true)
+            .getDocuments() { (querySnapshot, err) in
+                if let err = err {
+                    print("Error getting events: \(err)")
+                } else {
+                    for event in querySnapshot!.documents {
+                        print("\(event.documentID) => \(event.data())")
+                    }
+                }
+        }
+    }
 }
