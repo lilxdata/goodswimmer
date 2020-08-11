@@ -101,18 +101,26 @@ class Utilities {
         
     }
     /* name validation */
-    static func isNameValid(_ email: String) -> Bool {
+    static func isNameValid(_ name: String) -> Bool {
         let nameRegEx = "/^[A-Za-z][A-Za-z\'\\-]+([\\ A-Za-z][A-Za-z\'\\-]+)*/"
         let namePred = NSPredicate(format:"SELF MATCHES %@", nameRegEx)
-        return namePred.evaluate(with: nameRegEx)
+        return namePred.evaluate(with: name)
         
     }
     
     /* username validation */
-    static func isUsernameValid(_ email: String) -> Bool {
+    static func isUsernameValid(_ username: String) -> Bool {
         let usernameRegEx = "^[a-zA-Z0-9_-]+"
         let usernamePred = NSPredicate(format:"SELF MATCHES %@", usernameRegEx)
-        return usernamePred.evaluate(with: usernameRegEx)
+        return usernamePred.evaluate(with: username)
+        
+    }
+    
+    /* date validation */
+    static func isDateValid(_ date: String) -> Bool {
+        let usernameRegEx = "^(0[1-9]|1[012])\\/(0[1-9]|[12][0-9]|3[01])\\/(19|20)\\d\\d ([01][0-9]|2[0-3]):([0-5][0-9])$"
+        let usernamePred = NSPredicate(format:"SELF MATCHES %@", usernameRegEx)
+        return usernamePred.evaluate(with: date)
         
     }
 }
