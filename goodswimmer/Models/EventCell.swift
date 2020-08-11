@@ -40,7 +40,6 @@ class EventCell: UITableViewCell {
         Utilities.styleLabel(eventLocation, size: 15, uppercase: false)
         Utilities.styleLabel(eventDate, size: 24, uppercase: false)
         Utilities.styleLabel(eventTime, size: 24, uppercase: false)
-       // Utilities.styleTextField(<#T##textfield: UITextField##UITextField#>, size: <#T##Int#>)
         Utilities.styleLabel(username, size: 15, uppercase: false)
     }
 }
