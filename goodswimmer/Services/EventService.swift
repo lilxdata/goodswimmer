@@ -12,7 +12,7 @@ import FirebaseAuth
 import FirebaseFirestore
 
 class EventService {
-        
+    let eventArray = EventArray.sharedInstance
     let db = Firestore.firestore()
     static let sharedInstance = EventService()
 
@@ -43,5 +43,21 @@ class EventService {
                        print("Document successfully written!")  // event created success pop up
                    }
                }
+    }
+    //Function can be moved to another location if necessary
+    //Currently not static by imagine we only want users
+    //to be filtering their events and not other classes
+    func filterEvents(filter:String, cat: String) {
+        print(filter,cat)
+        db.collection("events").whereField("name", isEqualTo: "Monster giveaway")
+            .getDocuments() { (querySnapshot, err) in
+                if let err = err {
+                    print("Error getting events: \(err)")
+                } else {
+                    for event in querySnapshot!.documents {
+                        print("\(event.documentID) => \(event.data())")
+                    }
+                }
+        }
     }
 }

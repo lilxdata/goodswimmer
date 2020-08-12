@@ -478,14 +478,27 @@
                     <view key="view" contentMode="scaleToFill" id="egT-2n-K3r">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vts-Jf-xR8">
+                                <rect key="frame" x="136" y="397" width="142" height="122"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Filter"/>
+                                <connections>
+                                    <action selector="filterResults:" destination="sfr-ZZ-KVG" eventType="touchUpInside" id="SjB-a4-b7d"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="A0H-xG-f4a"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="magnifyingglass" catalog="system" id="smk-at-ehN"/>
+                    <connections>
+                        <outlet property="filterButton" destination="vts-Jf-xR8" id="v8j-3X-xb9"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wUT-r0-Gr0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1377" y="1872"/>
+            <point key="canvasLocation" x="1376.8115942028987" y="1871.6517857142856"/>
         </scene>
         <!--Detail View Controller-->
         <scene sceneID="cIm-yi-nIg">
