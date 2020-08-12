@@ -12,7 +12,7 @@ import FirebaseAuth
 import FirebaseFirestore
 
 class EventService {
-        
+    let eventArray = EventArray.sharedInstance
     let db = Firestore.firestore()
     static let sharedInstance = EventService()
 
@@ -48,9 +48,8 @@ class EventService {
     //Currently not static by imagine we only want users
     //to be filtering their events and not other classes
     func filterEvents(filter:String, cat: String) {
-        print("I am filtering!")
-        print("I am filtering by", cat)
-        db.collection(cat).whereField(filter, isEqualTo: true)
+        print(filter,cat)
+        db.collection("events").whereField("name", isEqualTo: "Monster giveaway")
             .getDocuments() { (querySnapshot, err) in
                 if let err = err {
                     print("Error getting events: \(err)")

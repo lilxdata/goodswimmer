@@ -12,9 +12,20 @@ class SearchViewController: UIViewController {
 
     @IBOutlet var filterButton: UIButton!
     @IBAction func filterResults(_ sender: UIButton) {
-        eventService.filterEvents(filter: "name", cat: "a")
+        filterResultsArray(filter: "Monster giveaway", category: "name")
     }
-
+    func filterResultsArray(filter: String, category : String) {
+        for event in eventArray.events {
+            if(category == "name"){
+                if(event.name == filter){
+                    print(event)
+                }
+            }
+        }
+    }
+    
+    
+    
     //access to eventarray across app
     let eventArray = EventArray.sharedInstance
     let eventService = EventService()
@@ -25,6 +36,6 @@ class SearchViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         filterResults(filterButton)
-        eventService.filterEvents(filter: "a", cat: "name")
+        eventService.filterEvents(filter: "luhmow", cat: "name")
     }
 }
