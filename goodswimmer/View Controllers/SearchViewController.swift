@@ -10,6 +10,7 @@ import UIKit
 
 class SearchViewController: UIViewController {
 
+    @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet var filterButton: UIButton!
     @IBAction func filterResults(_ sender: UIButton) {
         filterResultsArray(filter: "Monster giveaway", category: "name")
