@@ -31,11 +31,10 @@ class EventService {
                 "photoURL": urlString
                 ], merge: true
                 )
-            
         }
     }
     
-    func createEvent(dictionary: [String: String], uuid: String) {
+    func createEvent(dictionary: [String: Any], uuid: String) {
         db.collection("events").document(uuid).setData(dictionary, merge: true) { err in
                    if let err = err {
                        print("Error")

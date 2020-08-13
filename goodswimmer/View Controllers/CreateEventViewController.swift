@@ -81,9 +81,7 @@ class CreateEventViewController: UIViewController {
         //TODO: disable address field until location field is filled out - make it some sort of state, once location is put in, check DB if it exists, if not enable address  field, then send noti to us to send postcard inviting them to join. if location does exist, populate with address
         
         //TODO: add red asterisks to mandatory categories; helper isMandatory or something
-        
     }
-    
     
     @IBAction func addImageTapped(_ sender: Any) {
         photoHelper.completionHandler =  { image in
@@ -109,17 +107,22 @@ class CreateEventViewController: UIViewController {
             return
         }
         
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MM/DD/YYYY"
+        guard let startDate = dateFormatter.date(from: date_start) else { return }
+        print("startDate", startDate)
+        
         let eventDict = [
             "name": eventName,
             "description": description,
             "location": location,
-            "date_start": date_start,
+            "start_date": Timestamp.init(date: startDate),
             "date_end": date_end, // TODO: change this date_end name to "time" and add date_end and time_end fields
             "address1": address1,
             "address2": address2,
             "address3": address3,
             "username": username
-        ]
+            ] as [String : Any]
         
         self.eventService.createEvent(dictionary: eventDict, uuid: self.uuid)
         

@@ -29,7 +29,7 @@ class HomeViewController: UIViewController {
         
         // read from events collection
         //TODO: check out snapshot listener 
-        db.collection("events").getDocuments { (querySnapshot, error) in
+        db.collection("events").order(by: "date_start").addSnapshotListener { (querySnapshot, error) in
             if error == nil && querySnapshot != nil {
                 for document in querySnapshot!.documents {
                     print("document received")
@@ -44,8 +44,6 @@ class HomeViewController: UIViewController {
                 }
             }
         }
-        
-        
         
         func numberOfSections(in tableView: UITableView) -> Int {
             return 1
@@ -82,6 +80,7 @@ extension HomeViewController : UITableViewDelegate, UITableViewDataSource {
         
         if let vc = storyboard?.instantiateViewController(withIdentifier: "detailVC") as? DetailViewController {
             vc.selectedEvent = self.eventArray.events[indexPath.row]
+            vc.modalPresentationStyle = .fullScreen
             present(vc, animated: true, completion: nil)
         }
     }
