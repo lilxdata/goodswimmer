@@ -26,7 +26,18 @@ class EventCell: UITableViewCell {
         username.text = eventToDisplay?.username ?? Constants.Placeholders.placeholderText
         eventName.text = eventToDisplay?.name ?? Constants.Placeholders.placeholderTitle
         eventLocation.text = eventToDisplay?.venue ?? Constants.Placeholders.placeholderText
-        eventDate.text = eventToDisplay?.dateStart ?? Constants.Placeholders.placeholderText
+                    
+        if let startDate = eventToDisplay?.startDate {
+          //  eventDate.text = startDate
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "E MMM d" //yy or yyyy for year
+            eventDate.text = dateFormatter.string(from: startDate.dateValue())
+        } else if let dateStart = eventToDisplay?.dateStart {
+            eventDate.text = dateStart
+        } else {
+            eventDate.text = Constants.Placeholders.placeholderText
+        }
+        
         eventTime.text = eventToDisplay?.dateEnd ?? eventToDisplay?.time ?? Constants.Placeholders.placeholderText
         
         let imageURL = URL(string: eventToDisplay?.photoURL ?? Constants.Placeholders.placeholderURL)

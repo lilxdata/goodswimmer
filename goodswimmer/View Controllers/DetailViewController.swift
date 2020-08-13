@@ -43,6 +43,11 @@ class DetailViewController: UIViewController {
         
     }
     
+    
+    @IBAction func backButtonTapped(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
     func setUpElements() {
         Utilities.styleLabel(eventTitle, size: 35, uppercase: false)
         Utilities.styleLabel(eventHeader, size: 15, uppercase: true)

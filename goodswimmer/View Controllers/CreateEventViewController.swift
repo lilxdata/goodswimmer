@@ -107,17 +107,22 @@ class CreateEventViewController: UIViewController {
             return
         }
         
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MM/DD/YYYY"
+        guard let startDate = dateFormatter.date(from: date_start) else { return }
+        print("startDate", startDate)
+        
         let eventDict = [
             "name": eventName,
             "description": description,
             "location": location,
-            "date_start": date_start,
+            "start_date": Timestamp.init(date: startDate),
             "date_end": date_end, // TODO: change this date_end name to "time" and add date_end and time_end fields
             "address1": address1,
             "address2": address2,
             "address3": address3,
             "username": username
-        ]
+            ] as [String : Any]
         
         self.eventService.createEvent(dictionary: eventDict, uuid: self.uuid)
         

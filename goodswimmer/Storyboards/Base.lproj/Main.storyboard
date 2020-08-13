@@ -40,7 +40,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" contentViewInsetsToSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="txI-t2-u6s">
-                                <rect key="frame" x="0.0" y="104" width="414" height="769"/>
+                                <rect key="frame" x="0.0" y="104" width="414" height="709"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="EventCell" id="jSg-ZE-5Pj" userLabel="EventCell" customClass="EventCell" customModule="goodswimmer" customModuleProvider="target">
@@ -194,7 +194,7 @@
                             <constraint firstItem="yTW-II-dQr" firstAttribute="trailing" secondItem="txI-t2-u6s" secondAttribute="trailing" id="Gz7-Rh-Qkn"/>
                             <constraint firstItem="M3l-pl-9to" firstAttribute="leading" secondItem="yTW-II-dQr" secondAttribute="leading" id="Kfb-rn-Lkg"/>
                             <constraint firstItem="txI-t2-u6s" firstAttribute="top" secondItem="yTW-II-dQr" secondAttribute="top" constant="60" id="YFS-JY-irS"/>
-                            <constraint firstItem="txI-t2-u6s" firstAttribute="bottom" secondItem="yTW-II-dQr" secondAttribute="bottom" constant="60" id="hH4-BP-skS"/>
+                            <constraint firstItem="txI-t2-u6s" firstAttribute="bottom" secondItem="yTW-II-dQr" secondAttribute="bottom" id="hH4-BP-skS"/>
                             <constraint firstAttribute="trailing" secondItem="M3l-pl-9to" secondAttribute="trailing" id="phc-p4-0g9"/>
                             <constraint firstItem="yTW-II-dQr" firstAttribute="bottom" secondItem="M3l-pl-9to" secondAttribute="bottom" id="rX1-wn-Rfh"/>
                             <constraint firstItem="WfN-Vf-lrM" firstAttribute="centerX" secondItem="CGB-Hc-zor" secondAttribute="centerX" id="skn-cF-ofr"/>
@@ -557,6 +557,13 @@
                                     </button>
                                 </subviews>
                             </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MqA-ew-OiP" userLabel="back button">
+                                <rect key="frame" x="5" y="64" width="62.5" height="22"/>
+                                <state key="normal" title="Button" image="chevron.compact.left" catalog="system"/>
+                                <connections>
+                                    <action selector="backButtonTapped:" destination="xAA-DN-NGL" eventType="touchUpInside" id="sns-jB-Cfw"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -570,11 +577,13 @@
                             <constraint firstItem="v17-hs-u3p" firstAttribute="trailing" secondItem="2Ox-Dn-tEh" secondAttribute="trailing" constant="20" id="RBw-gA-6Nh"/>
                             <constraint firstItem="D0Y-3d-QaR" firstAttribute="centerX" secondItem="StU-iH-I3o" secondAttribute="centerX" id="T4Y-02-fyg"/>
                             <constraint firstItem="qf5-0d-NWG" firstAttribute="leading" secondItem="v17-hs-u3p" secondAttribute="leading" constant="20" id="TYm-qU-N9b"/>
+                            <constraint firstItem="MqA-ew-OiP" firstAttribute="leading" secondItem="v17-hs-u3p" secondAttribute="leading" constant="5" id="Vz7-LS-R4Q"/>
                             <constraint firstItem="v17-hs-u3p" firstAttribute="trailing" secondItem="NkF-5g-ebp" secondAttribute="trailing" constant="20" id="WT1-Yb-bcx"/>
                             <constraint firstItem="v17-hs-u3p" firstAttribute="trailing" secondItem="qf5-0d-NWG" secondAttribute="trailing" constant="20" id="baY-0I-D3a"/>
                             <constraint firstItem="0RT-Nr-zYl" firstAttribute="top" secondItem="2Ox-Dn-tEh" secondAttribute="top" id="kQ4-H2-lUj"/>
                             <constraint firstItem="UPN-So-WvS" firstAttribute="top" secondItem="2Ox-Dn-tEh" secondAttribute="bottom" constant="10" id="mon-U1-XKI"/>
                             <constraint firstItem="UPN-So-WvS" firstAttribute="leading" secondItem="v17-hs-u3p" secondAttribute="leading" constant="20" id="oMC-i6-4yr"/>
+                            <constraint firstItem="MqA-ew-OiP" firstAttribute="top" secondItem="v17-hs-u3p" secondAttribute="top" constant="20" id="op3-pY-4Vx"/>
                             <constraint firstItem="0RT-Nr-zYl" firstAttribute="trailing" secondItem="StU-iH-I3o" secondAttribute="trailing" constant="-10" id="rUb-td-ix7"/>
                             <constraint firstItem="v17-hs-u3p" firstAttribute="trailing" secondItem="ABE-2a-UBq" secondAttribute="trailing" constant="10" id="u2d-6k-pfo"/>
                             <constraint firstItem="TOP-eH-6dp" firstAttribute="leading" secondItem="StU-iH-I3o" secondAttribute="leading" constant="10" id="uxM-IY-cKk"/>
@@ -682,6 +691,7 @@
         <image name="bar-add-event" width="11" height="13"/>
         <image name="bar-feed" width="12" height="12.5"/>
         <image name="bar-profile" width="11.5" height="12"/>
+        <image name="chevron.compact.left" catalog="system" width="64" height="128"/>
         <image name="follow" width="53" height="43.5"/>
         <image name="g-s-background2" width="800" height="1200"/>
         <image name="magnifyingglass" catalog="system" width="128" height="115"/>
