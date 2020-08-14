@@ -18,7 +18,7 @@ class SearchViewController: UIViewController {
     func filterResultsArray(filter: String, category : String) {
         for event in eventArray.events {
             if(category == "name"){
-                if(event.name == filter){
+                if(event.name?.contains(filter) == true){
                     print(event)
                 }
             }
