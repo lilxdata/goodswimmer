@@ -71,13 +71,33 @@ class SignUpViewController: UIViewController {
         let cleanedPassword = passwordField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
         
         let secure = Utilities.isPasswordValid(cleanedPassword)
-        
+    
         if !secure {
             return "Let's make that \n password more secure!"
         }
         //Check that email is an email format (with @ etc)
+        let usernameValid = Validators.isUsernameValid(userNameField.text!)
+        
+        if !usernameValid {
+            return "Let's double check that \n username!"
+        }
+        //Check that email is an email format (with @ etc)
+        let emailValid = Validators.isEmailValid(emailField.text!)
+        
+        if !emailValid {
+            return "Let's double check that \n email!"
+        }
+        
+        //Check that city is an city format (with @ etc)
+        let cityValid = Validators.isCityValid(locationField.text!)
+        
+        if !cityValid {
+            return "Let's double check that \n city!"
+        }
         
         return nil //all good
+        
+        
     }
     
     
