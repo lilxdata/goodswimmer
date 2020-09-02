@@ -97,7 +97,7 @@ class CreateEventViewController: UIViewController {
         let eventName = Utilities.cleanData(titleField)
         let location = Utilities.cleanData(locationField)
         let date_start = Utilities.cleanData(dateField1)
-        let date_end = Utilities.cleanData(dateField2)
+        let start_time = Utilities.cleanData(dateField2)
         let address1 = Utilities.cleanData(addressField1)
         let address2 = Utilities.cleanData(addressField2)
         let address3 = Utilities.cleanData(addressField3)
@@ -108,16 +108,18 @@ class CreateEventViewController: UIViewController {
         }
         
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "MM/DD/YYYY"
-        guard let startDate = dateFormatter.date(from: date_start) else { return }
-        print("startDate", startDate)
+        dateFormatter.dateFormat = "MM/dd/yyyy hh:mma"
+        let dateTimeString = date_start + " " + start_time
+        print("dt string", dateTimeString)
+        guard let startDate = dateFormatter.date(from: dateTimeString) else { return }
+       // print("startDate", startDate)
         
         let eventDict = [
             "name": eventName,
             "description": description,
             "location": location,
             "start_date": Timestamp.init(date: startDate),
-            "date_end": date_end, // TODO: change this date_end name to "time" and add date_end and time_end fields
+           // TODO: change this date_end name to "time" and add date_end and time_end fields
             "address1": address1,
             "address2": address2,
             "address3": address3,
