@@ -22,14 +22,14 @@ struct Event {
     var date:String?
     var dateStart: String?
     var startDate: Timestamp?
-    var dateEnd: String?
+    var startTime: String?
     var photoURL:String?
     var time: String?
     
     init?(eventDict: [String: Any]) {
         let name = eventDict["name"] as? String
         let venue = eventDict["location"] as? String
-        let time = eventDict["date_end"] as? String
+        let startTime = eventDict["start_time"] as? String
         let username = eventDict["username"] as? String
         let description = eventDict["description"] as? String
         let dateStart = eventDict["date_start"] as? String //deprecated
@@ -41,7 +41,7 @@ struct Event {
         self.venue = venue
         self.dateStart = dateStart
         self.photoURL = eventDict["photoURL"] as? String
-        self.time = time
+        self.startTime = startTime
         self.description = description
         self.startDate = startDate
     }
