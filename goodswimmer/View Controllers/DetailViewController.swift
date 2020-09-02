@@ -48,6 +48,7 @@ class DetailViewController: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
     
+    /* to do: unwrap optionals / error handle */
     func setUpElements() {
         Utilities.styleLabel(eventTitle, size: 35, uppercase: false)
         Utilities.styleLabel(eventHeader, size: 15, uppercase: true)
