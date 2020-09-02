@@ -29,8 +29,10 @@ class HomeViewController: UIViewController {
         
         // read from events collection
         //TODO: check out snapshot listener 
-        db.collection("events").order(by: "date_start").addSnapshotListener { (querySnapshot, error) in
+        db.collection("events").order(by: "start_date").addSnapshotListener { (querySnapshot, error) in
             if error == nil && querySnapshot != nil {
+                //clear event array to remove dupes
+                self.eventArray.events.removeAll()
                 for document in querySnapshot!.documents {
                     print("document received")
                     let eventData = document.data()

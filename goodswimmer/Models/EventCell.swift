@@ -28,18 +28,18 @@ class EventCell: UITableViewCell {
         eventLocation.text = eventToDisplay?.venue ?? Constants.Placeholders.placeholderText
                     
         if let startDate = eventToDisplay?.startDate {
-          //  eventDate.text = startDate
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "E MMM d" //yy or yyyy for year
             eventDate.text = dateFormatter.string(from: startDate.dateValue())
-        } else if let dateStart = eventToDisplay?.dateStart {
-            eventDate.text = dateStart
+            
+            dateFormatter.dateFormat = "hh:mma"
+            eventTime.text = dateFormatter.string(from: startDate.dateValue())
+            
         } else {
+            print("in else")
             eventDate.text = Constants.Placeholders.placeholderText
         }
-        
-        eventTime.text = eventToDisplay?.dateEnd ?? eventToDisplay?.time ?? Constants.Placeholders.placeholderText
-        
+                
         let imageURL = URL(string: eventToDisplay?.photoURL ?? Constants.Placeholders.placeholderURL)
         
         eventImage.sd_setImage(with: imageURL, completed: nil)
