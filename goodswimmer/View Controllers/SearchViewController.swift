@@ -34,8 +34,8 @@ class SearchViewController: UIViewController {
     func filterEvents(_ searchTerm: String){
         print(searchTerm)
         for event in eventArray.events {
-            print(event)
-            if(event.name == searchTerm){
+            //print(event)
+            if(event.name?.contains(searchTerm) == true){
                 print(event)
             }
         }
@@ -47,6 +47,7 @@ class SearchViewController: UIViewController {
         //print(searchBar.text!)
         //print(searchController.searchBar.text!)
         //filterSearchBar(searchBar, textDidChange:searchBar.text!)
+        //wyzant.com
     }
 
 }
