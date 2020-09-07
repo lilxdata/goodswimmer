@@ -9,34 +9,67 @@
 import UIKit
 
 class SearchViewController: UIViewController {
-
-    @IBOutlet weak var searchBar: UISearchBar!
-    @IBOutlet var filterButton: UIButton!
-    @IBAction func filterResults(_ sender: UIButton) {
-        filterResultsArray(filter: "Monster giveaway", category: "name")
-    }
-    func filterResultsArray(filter: String, category : String) {
-        for event in eventArray.events {
-            if(category == "name"){
-                if(event.name == filter){
-                    print(event)
-                }
-            }
-        }
-    }
-    
-    
+    var searchController: UISearchController!
     
     //access to eventarray across app
     let eventArray = EventArray.sharedInstance
     let eventService = EventService()
     
+    @IBOutlet var searchContainerView: UIView!
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        searchController = UISearchController(searchResultsController: nil)
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchContainerView.addSubview(searchController.searchBar)
+        searchController.searchBar.delegate = self
+        searchController.searchBar.placeholder = "Event Filter"
+        
+    }
+    
+    func filterEvents(_ searchTerm: String){
+        print(searchTerm)
+        for event in eventArray.events {
+            //print(event)
+            if(event.name?.contains(searchTerm) == true){
+                print(event)
+            }
+        }
+    }
+    
+     @IBAction func filterButtonPress(_ sender: Any) {
+        print("I am using the button")
+        //print(isSearchBarEmpty)
+        //print(searchBar.text!)
+        //print(searchController.searchBar.text!)
+        //filterSearchBar(searchBar, textDidChange:searchBar.text!)
+        //wyzant.com
+    }
 
-        // Do any additional setup after loading the view.
-        filterResults(filterButton)
-        eventService.filterEvents(filter: "luhmow", cat: "name")
+}
+
+extension SearchViewController: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        if let searchText = searchController.searchBar.text {
+            filterEvents(searchText)
+        }
+    }
+}
+
+extension SearchViewController: UISearchBarDelegate {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        if let searchText = searchController.searchBar.text {
+            filterEvents(searchText)
+        }
+    }
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchController.isActive = false
+        if let searchText = searchBar.text, !searchText.isEmpty {
+            searchBar.text = ""
+        }
     }
 }
