@@ -553,31 +553,26 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vts-Jf-xR8">
-                                <rect key="frame" x="136" y="397" width="142" height="122"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LsW-E4-Xz8">
+                                <rect key="frame" x="165" y="391" width="84" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Filter"/>
+                                <state key="normal" title="Filter Button"/>
                                 <connections>
-                                    <action selector="filterResults:" destination="sfr-ZZ-KVG" eventType="touchUpInside" id="SjB-a4-b7d"/>
+                                    <action selector="filterButtonPress:" destination="sfr-ZZ-KVG" eventType="touchUpInside" id="7fs-Z5-8pX"/>
                                 </connections>
                             </button>
-                            <searchBar contentMode="redraw" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UOD-uo-VuR">
-                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </searchBar>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ajG-bV-5Ef">
+                                <rect key="frame" x="0.0" y="44" width="414" height="55"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <constraints>
-                            <constraint firstItem="A0H-xG-f4a" firstAttribute="trailing" secondItem="UOD-uo-VuR" secondAttribute="trailing" constant="10" id="3Cp-3E-OSe"/>
-                            <constraint firstItem="UOD-uo-VuR" firstAttribute="top" secondItem="A0H-xG-f4a" secondAttribute="top" constant="10" id="Ji6-jm-262"/>
-                            <constraint firstItem="UOD-uo-VuR" firstAttribute="leading" secondItem="A0H-xG-f4a" secondAttribute="leading" constant="10" id="hPl-ic-y9t"/>
-                        </constraints>
                         <viewLayoutGuide key="safeArea" id="A0H-xG-f4a"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="magnifyingglass" catalog="system" id="smk-at-ehN"/>
                     <connections>
-                        <outlet property="filterButton" destination="vts-Jf-xR8" id="v8j-3X-xb9"/>
-                        <outlet property="searchBar" destination="UOD-uo-VuR" id="Q1g-x4-x5v"/>
+                        <outlet property="searchContainerView" destination="ajG-bV-5Ef" id="Xwp-Ug-EmP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wUT-r0-Gr0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
