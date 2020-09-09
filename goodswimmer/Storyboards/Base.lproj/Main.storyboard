@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="t2G-Pr-Um6">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="t2G-Pr-Um6">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -10,11 +10,44 @@
         <!--Detail View2-->
         <scene sceneID="UfY-CE-Vbf">
             <objects>
+<<<<<<< HEAD
+                <viewController storyboardIdentifier="detailVC2" id="JWq-AV-ix7" userLabel="Detail View2" customClass="DetailViewController" customModule="goodswimmer" customModuleProvider="target" sceneMemberID="viewController">
+=======
                 <viewController id="JWq-AV-ix7" userLabel="Detail View2" sceneMemberID="viewController">
+>>>>>>> 57b60fac2461e27d66343c762122be1014fd04c9
                     <view key="view" contentMode="scaleToFill" id="b3a-KJ-wfF">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+<<<<<<< HEAD
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rze-dK-TJn">
+                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="8XM-qN-Dlc"/>
+                                </constraints>
+                                <items>
+                                    <navigationItem title="Event" id="jKl-Hw-CVb" userLabel="Event">
+                                        <barButtonItem key="backBarButtonItem" title="back" id="Iz3-YG-ize"/>
+                                        <barButtonItem key="leftBarButtonItem" title="Item" image="chevron.left" catalog="system" id="bx7-6f-YDm" userLabel="back button">
+                                            <connections>
+                                                <action selector="backButtonTapped:" destination="JWq-AV-ix7" id="ouO-ox-YAK"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="X8o-U3-wNM">
+                                <rect key="frame" x="0.0" y="108" width="414" height="459"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e6j-in-o8j">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="459"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Event Title " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ABE-2a-UBq">
+                                                <rect key="frame" x="10" y="20" width="394" height="30"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="30" id="LUH-1H-bsK"/>
+                                                </constraints>
+=======
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="X8o-U3-wNM">
                                 <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <subviews>
@@ -29,12 +62,17 @@
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Event Title " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ABE-2a-UBq">
                                                 <rect key="frame" x="10" y="50.5" width="394" height="20.5"/>
+>>>>>>> 57b60fac2461e27d66343c762122be1014fd04c9
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="TOP-eH-6dp">
+<<<<<<< HEAD
+                                                <rect key="frame" x="10" y="70" width="394" height="289"/>
+=======
                                                 <rect key="frame" x="10" y="91" width="394" height="289"/>
+>>>>>>> 57b60fac2461e27d66343c762122be1014fd04c9
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="289" id="Hcy-f6-sUA"/>
                                                     <constraint firstAttribute="width" constant="394" id="bvt-nd-FVi"/>
@@ -47,21 +85,36 @@
                                             <constraint firstItem="ABE-2a-UBq" firstAttribute="leading" secondItem="e6j-in-o8j" secondAttribute="leading" constant="10" id="7eE-yj-bbr"/>
                                             <constraint firstItem="TOP-eH-6dp" firstAttribute="top" secondItem="ABE-2a-UBq" secondAttribute="bottom" constant="20" id="Dz3-Vx-rM1"/>
                                             <constraint firstAttribute="trailing" secondItem="TOP-eH-6dp" secondAttribute="trailing" constant="10" id="EOB-xI-tEr"/>
+<<<<<<< HEAD
+                                            <constraint firstAttribute="bottom" secondItem="TOP-eH-6dp" secondAttribute="bottom" constant="100" id="O3P-7F-AUN"/>
+                                            <constraint firstItem="TOP-eH-6dp" firstAttribute="leading" secondItem="e6j-in-o8j" secondAttribute="leading" constant="10" id="r8F-iq-R60"/>
+                                            <constraint firstItem="ABE-2a-UBq" firstAttribute="top" secondItem="e6j-in-o8j" secondAttribute="top" constant="20" id="sJs-vP-Oae"/>
+=======
                                             <constraint firstItem="D0Y-3d-QaR" firstAttribute="top" secondItem="e6j-in-o8j" secondAttribute="top" constant="20" id="ReH-oN-zCE"/>
                                             <constraint firstAttribute="trailing" secondItem="D0Y-3d-QaR" secondAttribute="trailing" constant="10" id="YLA-LD-3dN"/>
                                             <constraint firstItem="TOP-eH-6dp" firstAttribute="leading" secondItem="e6j-in-o8j" secondAttribute="leading" constant="10" id="r8F-iq-R60"/>
                                             <constraint firstItem="ABE-2a-UBq" firstAttribute="top" secondItem="D0Y-3d-QaR" secondAttribute="bottom" constant="10" id="xvp-2r-f1A"/>
                                             <constraint firstItem="D0Y-3d-QaR" firstAttribute="leading" secondItem="e6j-in-o8j" secondAttribute="leading" constant="10" id="zAw-jC-cdE"/>
+>>>>>>> 57b60fac2461e27d66343c762122be1014fd04c9
                                         </constraints>
                                     </view>
                                 </subviews>
                                 <constraints>
+<<<<<<< HEAD
+                                    <constraint firstItem="e6j-in-o8j" firstAttribute="width" secondItem="X8o-U3-wNM" secondAttribute="width" id="9Vg-E0-v9h"/>
+                                    <constraint firstItem="zFM-QR-9Xo" firstAttribute="trailing" secondItem="e6j-in-o8j" secondAttribute="trailing" id="JbZ-8Q-AUb"/>
+                                    <constraint firstItem="zFM-QR-9Xo" firstAttribute="bottom" secondItem="e6j-in-o8j" secondAttribute="bottom" id="MEg-e4-Utz"/>
+                                    <constraint firstItem="e6j-in-o8j" firstAttribute="top" secondItem="zFM-QR-9Xo" secondAttribute="top" id="Xnx-yY-Ld0"/>
+                                    <constraint firstAttribute="bottom" secondItem="e6j-in-o8j" secondAttribute="bottom" id="fcW-jB-UjF"/>
+                                    <constraint firstItem="e6j-in-o8j" firstAttribute="leading" secondItem="zFM-QR-9Xo" secondAttribute="leading" id="h1V-Uc-v48"/>
+=======
                                     <constraint firstItem="zFM-QR-9Xo" firstAttribute="trailing" secondItem="e6j-in-o8j" secondAttribute="trailing" id="JbZ-8Q-AUb"/>
                                     <constraint firstItem="zFM-QR-9Xo" firstAttribute="bottom" secondItem="e6j-in-o8j" secondAttribute="bottom" id="MEg-e4-Utz"/>
                                     <constraint firstItem="e6j-in-o8j" firstAttribute="height" secondItem="X8o-U3-wNM" secondAttribute="height" id="Xha-Gi-TlI"/>
                                     <constraint firstItem="e6j-in-o8j" firstAttribute="top" secondItem="zFM-QR-9Xo" secondAttribute="top" id="Xnx-yY-Ld0"/>
                                     <constraint firstItem="e6j-in-o8j" firstAttribute="leading" secondItem="zFM-QR-9Xo" secondAttribute="leading" id="h1V-Uc-v48"/>
                                     <constraint firstItem="e6j-in-o8j" firstAttribute="width" secondItem="X8o-U3-wNM" secondAttribute="width" id="zOB-xc-cHP"/>
+>>>>>>> 57b60fac2461e27d66343c762122be1014fd04c9
                                 </constraints>
                                 <viewLayoutGuide key="contentLayoutGuide" id="BeT-KD-xQL"/>
                                 <viewLayoutGuide key="frameLayoutGuide" id="zFM-QR-9Xo"/>
@@ -69,6 +122,23 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+<<<<<<< HEAD
+                            <constraint firstItem="Rze-dK-TJn" firstAttribute="width" secondItem="b3a-KJ-wfF" secondAttribute="width" id="8cN-JQ-6f0"/>
+                            <constraint firstItem="X8o-U3-wNM" firstAttribute="top" secondItem="Rze-dK-TJn" secondAttribute="bottom" constant="20" id="Q01-5K-1eI"/>
+                            <constraint firstItem="X8o-U3-wNM" firstAttribute="leading" secondItem="B2D-St-dAQ" secondAttribute="leading" id="Q51-gP-wgu"/>
+                            <constraint firstItem="Rze-dK-TJn" firstAttribute="centerX" secondItem="b3a-KJ-wfF" secondAttribute="centerX" id="ZUB-8Z-OMR"/>
+                            <constraint firstItem="X8o-U3-wNM" firstAttribute="trailing" secondItem="B2D-St-dAQ" secondAttribute="trailing" id="bb7-hF-ZoY"/>
+                            <constraint firstItem="Rze-dK-TJn" firstAttribute="top" secondItem="B2D-St-dAQ" secondAttribute="top" id="fCg-mG-ngD"/>
+                            <constraint firstItem="X8o-U3-wNM" firstAttribute="width" secondItem="b3a-KJ-wfF" secondAttribute="width" id="m8b-2e-yOJ"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="B2D-St-dAQ"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="huY-NV-yzR"/>
+                    <connections>
+                        <outlet property="eventImage" destination="TOP-eH-6dp" id="L6z-eX-b0k"/>
+                        <outlet property="eventTitle" destination="ABE-2a-UBq" id="C4N-ec-Tj9"/>
+                    </connections>
+=======
                             <constraint firstItem="X8o-U3-wNM" firstAttribute="leading" secondItem="B2D-St-dAQ" secondAttribute="leading" id="Q51-gP-wgu"/>
                             <constraint firstItem="X8o-U3-wNM" firstAttribute="top" secondItem="B2D-St-dAQ" secondAttribute="top" id="Yy7-sh-Wjm"/>
                             <constraint firstItem="X8o-U3-wNM" firstAttribute="bottom" secondItem="B2D-St-dAQ" secondAttribute="bottom" id="ZZ2-Jf-2HR"/>
@@ -76,6 +146,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="B2D-St-dAQ"/>
                     </view>
+>>>>>>> 57b60fac2461e27d66343c762122be1014fd04c9
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IdO-bP-l6g" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -287,7 +358,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6lt-js-sjX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1786.9565217391305" y="1934.5982142857142"/>
+            <point key="canvasLocation" x="-1591" y="1971"/>
         </scene>
         <!--Create Event View Controller-->
         <scene sceneID="3vh-6s-80A">
@@ -579,6 +650,8 @@
             </objects>
             <point key="canvasLocation" x="1376.8115942028987" y="1871.6517857142856"/>
         </scene>
+<<<<<<< HEAD
+=======
         <!--Detail View Controller-->
         <scene sceneID="cIm-yi-nIg">
             <objects>
@@ -675,6 +748,7 @@
             </objects>
             <point key="canvasLocation" x="-2996" y="2470"/>
         </scene>
+>>>>>>> 57b60fac2461e27d66343c762122be1014fd04c9
         <!--Tab Bar Controller-->
         <scene sceneID="KZa-J6-c9e">
             <objects>
@@ -758,7 +832,7 @@
         <image name="bar-add-event" width="11" height="13"/>
         <image name="bar-feed" width="12" height="12.5"/>
         <image name="bar-profile" width="11.5" height="12"/>
-        <image name="chevron.compact.left" catalog="system" width="64" height="128"/>
+        <image name="chevron.left" catalog="system" width="96" height="128"/>
         <image name="follow" width="53" height="43.5"/>
         <image name="g-s-background2" width="800" height="1200"/>
         <image name="magnifyingglass" catalog="system" width="128" height="115"/>

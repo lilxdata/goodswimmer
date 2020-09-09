@@ -75,7 +75,10 @@ class Validators {
     }
     
     /* city validation */
+    /* to do; google places API to check it's actually a city*/
     static func isCityValid(_ city: String) -> Bool {
-        return isNameValid(city)
+        let cityRegEx = "[A-Z][A-Za-z\\s]+"
+        let cityPred = NSPredicate(format:"SELF MATCHES %@", cityRegEx)
+        return cityPred.evaluate(with: city)
     }
 }

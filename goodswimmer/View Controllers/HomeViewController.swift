@@ -80,7 +80,8 @@ extension HomeViewController : UITableViewDelegate, UITableViewDataSource {
     //called everytime cell is tapped
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        if let vc = storyboard?.instantiateViewController(withIdentifier: "detailVC") as? DetailViewController {
+      //  self.performSegue(withIdentifier: "detailSegue2", sender: <#T##Any?#>)
+        if let vc = storyboard?.instantiateViewController(withIdentifier: "detailVC2") as? DetailViewController {
             vc.selectedEvent = self.eventArray.events[indexPath.row]
             vc.modalPresentationStyle = .fullScreen
             present(vc, animated: true, completion: nil)
