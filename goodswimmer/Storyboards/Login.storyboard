@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="tUA-sm-Vzu">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="tUA-sm-Vzu">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -12,11 +12,11 @@
             <objects>
                 <viewController storyboardIdentifier="loginVC" id="TVn-Wd-UHi" customClass="ViewController" customModule="goodswimmer" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="J2p-ma-zJ0">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="wS8-ZY-Jci">
-                                <rect key="frame" x="60" y="388" width="294" height="320"/>
+                                <rect key="frame" x="60" y="344" width="294" height="320"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Artists' organizing tools for the people.  Not the Pigs!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bJh-vs-yx4">
                                         <rect key="frame" x="0.0" y="0.0" width="294" height="186"/>
@@ -70,7 +70,7 @@
                                 </constraints>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Good Swimmer" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hk4-Qd-9GW">
-                                <rect key="frame" x="20" y="120" width="374" height="298"/>
+                                <rect key="frame" x="20" y="76" width="374" height="288"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -106,11 +106,11 @@
             <objects>
                 <viewController id="bCE-wc-b7h" customClass="LoginViewController" customModule="goodswimmer" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5Ec-N7-D8m">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="8Vb-vs-o1Z">
-                                <rect key="frame" x="20" y="338" width="374" height="220"/>
+                                <rect key="frame" x="20" y="311" width="374" height="220"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="S8g-MD-fth" userLabel="Email Field">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="40"/>
@@ -150,7 +150,7 @@
                                 </constraints>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="Egj-2I-2Lq">
-                                <rect key="frame" x="84" y="624" width="246" height="158"/>
+                                <rect key="frame" x="84" y="570" width="246" height="158"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d8O-Ij-yS9">
                                         <rect key="frame" x="0.0" y="0.0" width="246" height="37"/>
@@ -179,7 +179,7 @@
                                 </subviews>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fqx-9b-asb" userLabel="Sign Up Back">
-                                <rect key="frame" x="32" y="809" width="47" height="40"/>
+                                <rect key="frame" x="32" y="755" width="47" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="6Jv-M6-8UT"/>
                                 </constraints>
@@ -224,11 +224,11 @@
             <objects>
                 <viewController id="cpa-BG-OWQ" customClass="SignUpViewController" customModule="goodswimmer" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="rdY-Zc-UrI">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="E65-g4-3Tb">
-                                <rect key="frame" x="40" y="204" width="334" height="500.5"/>
+                                <rect key="frame" x="40" y="160" width="334" height="500.5"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" usesAttributedText="YES" placeholder="Username" adjustsFontSizeToFit="NO" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="rSs-Km-y1d" userLabel="Username field">
                                         <rect key="frame" x="0.0" y="0.0" width="334" height="22"/>
@@ -255,7 +255,7 @@
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="LhR-y2-QS0" userLabel="Password">
                                         <rect key="frame" x="0.0" y="244" width="334" height="18"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" secureTextEntry="YES" textContentType="password"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" secureTextEntry="YES"/>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5GM-kc-z6z">
                                         <rect key="frame" x="0.0" y="287" width="334" height="50"/>
@@ -266,7 +266,7 @@
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="City" textAlignment="natural" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="wbW-ip-z75" userLabel="Location Field">
                                         <rect key="frame" x="0.0" y="362" width="334" height="18.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" spellCheckingType="yes" smartInsertDeleteType="yes" textContentType="address-level2"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="yes" spellCheckingType="yes" smartInsertDeleteType="yes" textContentType="address-level2"/>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MGV-nS-Sad" userLabel="Location Label">
                                         <rect key="frame" x="0.0" y="405.5" width="334" height="50"/>
@@ -283,7 +283,7 @@
                                 </subviews>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NPs-cA-PDT">
-                                <rect key="frame" x="339" y="816" width="35" height="40"/>
+                                <rect key="frame" x="339" y="762" width="35" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="DmO-uV-NOJ"/>
                                 </constraints>
@@ -296,7 +296,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8bW-W4-I7q" userLabel="Sign Up Back">
-                                <rect key="frame" x="40" y="816" width="38" height="40"/>
+                                <rect key="frame" x="40" y="762" width="38" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="lF0-qp-5az"/>
                                 </constraints>
@@ -362,6 +362,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="rcO-Tf-u4D"/>
+        <segue reference="ZDG-80-Vfg"/>
     </inferredMetricsTieBreakers>
 </document>
