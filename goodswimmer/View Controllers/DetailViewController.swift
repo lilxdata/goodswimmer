@@ -13,10 +13,10 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var eventHeader: UILabel!
     @IBOutlet weak var eventTitle: UILabel!
     @IBOutlet weak var eventImage: UIImageView!
-    @IBOutlet weak var eventLocation: UILabel!
-    @IBOutlet weak var eventDate: UILabel!
-    @IBOutlet weak var eventTime: UILabel!
-    @IBOutlet weak var eventDesc: UILabel!
+    @IBOutlet weak var eventLocation: UILabel?
+    @IBOutlet weak var eventDate: UILabel?
+    @IBOutlet weak var eventTime: UILabel?
+    @IBOutlet weak var eventDesc: UILabel?
     
     var selectedEvent: Event?
     
@@ -34,11 +34,11 @@ class DetailViewController: UIViewController {
             let desc = event.description ?? Constants.Placeholders.placeholderText
             
             eventTitle.text = title
-            eventLocation.text = location
+            eventLocation?.text = location
             eventImage.sd_setImage(with: photoURL, completed: nil)
-            eventDate.text = date
-            eventTime.text = time
-            eventDesc.text = desc
+            eventDate?.text = date
+            eventTime?.text = time
+            eventDesc?.text = desc
         }
         
     }
