@@ -27,7 +27,7 @@ class DetailViewController: UIViewController {
        
         if let event = selectedEvent {
             let photoURL = URL(string: event.photoURL ?? Constants.Placeholders.placeholderURL)
-            let title = event.name ?? Constants.Placeholders.placeholderTitle
+            let title = event.name ?? Constants.Placeholders.placeholderText
             let location = event.venue ?? Constants.Placeholders.placeholderText
             let date = event.dateStart ?? Constants.Placeholders.placeholderText
             let time = event.time ?? Constants.Placeholders.placeholderText
@@ -50,12 +50,12 @@ class DetailViewController: UIViewController {
     
     /* to do: unwrap optionals / error handle */
     func setUpElements() {
-        Utilities.styleLabel(eventTitle, size: 35, uppercase: false)
-        Utilities.styleLabel(eventHeader, size: 15, uppercase: true)
-        Utilities.styleLabel(eventLocation, size: 15, uppercase: false)
-        Utilities.styleLabel(eventDate, size: 24, uppercase: false)
-        Utilities.styleLabel(eventTime, size: 24, uppercase: false)
-        Utilities.styleLabel(eventDesc, size: 15, uppercase: false)
+       // Utilities.styleLabel(eventTitle, size: 35, uppercase: false)
+//        Utilities.styleLabel(eventHeader, size: 15, uppercase: true)
+//        Utilities.styleLabel(eventLocation, size: 15, uppercase: false)
+//        Utilities.styleLabel(eventDate, size: 24, uppercase: false)
+//        Utilities.styleLabel(eventTime, size: 24, uppercase: false)
+//        Utilities.styleLabel(eventDesc, size: 15, uppercase: false)
     }
     
 }
