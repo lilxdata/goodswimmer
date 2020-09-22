@@ -33,13 +33,14 @@ class SearchViewController: UIViewController {
     
     func filterEvents(_ searchTerm: String){
         for event in eventArray.events {
+            //If our searchTerm is really small then no need to preform lcs
             if(searchTerm.count < 3){
                 if(event.name?.contains(searchTerm) == true){
                     print(event)
                 }
             }
             else {
-                if(lcs(X: searchTerm, Y: searchTerm) > 3){
+                if(lcs(X: event.name!, Y: searchTerm) > 3){
                     print(event)
                 }
             }
@@ -75,13 +76,8 @@ class SearchViewController: UIViewController {
      @IBAction func filterButtonPress(_ sender: Any) {
         print("I am using the button")
         print("testing lcs")
-        var lcsT = lcs(X:"AGGTAB",Y: "GXTXAYB")
+        let lcsT = lcs(X:"AGGTAB",Y: "GXTXAYB")
         print("lcs expected is 4, lcs is ",lcsT)
-        //print(isSearchBarEmpty)
-        //print(searchBar.text!)
-        //print(searchController.searchBar.text!)
-        //filterSearchBar(searchBar, textDidChange:searchBar.text!)
-        //wyzant.com
     }
 
 }
