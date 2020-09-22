@@ -32,17 +32,51 @@ class SearchViewController: UIViewController {
     }
     
     func filterEvents(_ searchTerm: String){
-        print(searchTerm)
         for event in eventArray.events {
-            //print(event)
-            if(event.name?.contains(searchTerm) == true){
-                print(event)
+            if(searchTerm.count < 3){
+                if(event.name?.contains(searchTerm) == true){
+                    print(event)
+                }
+            }
+            else {
+                if(lcs(X: searchTerm, Y: searchTerm) > 3){
+                    print(event)
+                }
             }
         }
+    }
+    func lcs(X :String, Y :String) -> Int{
+        //find the length of the strings
+        let m = X.count
+        let n = Y.count
+        // declaring the array for storing the dp values
+        var L = Array(repeating: Array(repeating: 0, count: m+1), count: n+1)
+        /*Following steps build L[m+1][n+1] in bottom up fashion
+        Note: L[i][j] contains length of LCS of X[0..i-1]
+        and Y[0..j-1]*/
+        for i in 0...m+1{
+            for j in 0...n+1{
+                if(i == 0 || j == 0) {
+                    L[i][j] = 0
+                }
+                else if(X[X.index(X.startIndex, offsetBy: i-1)] == Y[Y.index(Y.startIndex, offsetBy: j-1)]) {
+                    L[i][j] = L[i-1][j-1]+1
+                }
+                else {
+                    L[i][j] = max(L[i-1][j] , L[i][j-1])
+                }
+            }
+        }
+        /// L[m][n] contains the length of LCS of X[0..n-1] & Y[0..m-1]
+        print(L)
+        return L[m][n]
     }
     
      @IBAction func filterButtonPress(_ sender: Any) {
         print("I am using the button")
+        print("testing lcs")
+        var lcsT = lcs(X:"AGGTAB",Y: "GXTXAYB")
+        print("lcs expected is 4, lcs is ",lcsT)
         //print(isSearchBarEmpty)
         //print(searchBar.text!)
         //print(searchController.searchBar.text!)
