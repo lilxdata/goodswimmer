@@ -10,9 +10,10 @@ import UIKit
 
 class DetailViewController: UIViewController {
     
-    @IBOutlet weak var eventHeader: UILabel!
-    @IBOutlet weak var eventTitle: UILabel!
-    @IBOutlet weak var eventImage: UIImageView!
+    @IBOutlet weak var navBar: UINavigationBar!
+    // @IBOutlet weak var eventHeader: UILabel!
+    @IBOutlet weak var eventTitle: UILabel?
+    @IBOutlet weak var eventImage: UIImageView?
     @IBOutlet weak var eventLocation: UILabel?
     @IBOutlet weak var eventDate: UILabel?
     @IBOutlet weak var eventTime: UILabel?
@@ -33,9 +34,9 @@ class DetailViewController: UIViewController {
             let time = event.time ?? Constants.Placeholders.placeholderText
             let desc = event.description ?? Constants.Placeholders.placeholderText
             
-            eventTitle.text = title
+            eventTitle?.text = title
             eventLocation?.text = location
-            eventImage.sd_setImage(with: photoURL, completed: nil)
+            eventImage?.sd_setImage(with: photoURL, completed: nil)
             eventDate?.text = date
             eventTime?.text = time
             eventDesc?.text = desc
@@ -50,12 +51,16 @@ class DetailViewController: UIViewController {
     
     /* to do: unwrap optionals / error handle */
     func setUpElements() {
-       // Utilities.styleLabel(eventTitle, size: 35, uppercase: false)
+        
+        let eventHeader = navBar.topItem?.title ?? "EVENT"
+        Utilities.styleEventHeader(eventHeader)
+   //     Utilities.styleLabel(eventHeader, size: 24, uppercase: true)
+        Utilities.styleLabel(eventTitle!, size: 35, uppercase: false)
 //        Utilities.styleLabel(eventHeader, size: 15, uppercase: true)
 //        Utilities.styleLabel(eventLocation, size: 15, uppercase: false)
 //        Utilities.styleLabel(eventDate, size: 24, uppercase: false)
 //        Utilities.styleLabel(eventTime, size: 24, uppercase: false)
-//        Utilities.styleLabel(eventDesc, size: 15, uppercase: false)
+      Utilities.styleLabel(eventDesc!, size: 15, uppercase: false)
     }
     
 }
