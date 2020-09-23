@@ -13,5 +13,8 @@ struct User {
     
     var username:String?
     var userId:String?
+    var following:[String?]
+    var followers:[String?]
 
 }
+

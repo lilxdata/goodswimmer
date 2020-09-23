@@ -90,7 +90,6 @@ class CreateEventViewController: UIViewController {
         photoHelper.presentActionSheet(from: self)
     }
     
-    
     @IBAction func createEventTapped(_ sender: Any) {
         //TODO: check that all fields are filled in!
         
@@ -104,6 +103,7 @@ class CreateEventViewController: UIViewController {
         let description = descriptionText.text!.trimmingCharacters(in: .whitespacesAndNewlines)
         
         guard let user = Auth.auth().currentUser, let username = user.displayName else {
+            print("user not logged in / username not found")
             return
         }
         
@@ -111,8 +111,10 @@ class CreateEventViewController: UIViewController {
         dateFormatter.dateFormat = "MM/dd/yyyy hh:mma"
         let dateTimeString = date_start + " " + start_time
         print("dt string", dateTimeString)
-        guard let startDate = dateFormatter.date(from: dateTimeString) else { return }
-       // print("startDate", startDate)
+        guard let startDate = dateFormatter.date(from: dateTimeString) else {
+            print("something wrong with date")
+            return
+        }
         
         let eventDict = [
             "name": eventName,
