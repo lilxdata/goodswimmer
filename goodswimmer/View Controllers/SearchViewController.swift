@@ -32,22 +32,61 @@ class SearchViewController: UIViewController {
     }
     
     func filterEvents(_ searchTerm: String){
-        print(searchTerm)
         for event in eventArray.events {
-            //print(event)
-            if(event.name?.contains(searchTerm) == true){
-                print(event)
+            //If our searchTerm is really small then no need to preform lcs
+            if(searchTerm.count < 3){
+                if(event.name?.contains(searchTerm) == true){
+                    print(event)
+                }
+            }
+            else {
+                if(editDis(X: event.name!, Y: searchTerm) < event.name!.count/3){
+                    print(event)
+                }
             }
         }
+    }
+    func editDis(X :String, Y :String) -> Int{
+        //find the length of the strings
+        let m = X.count
+        let n = Y.count
+        //Create a table to store results of subproblems
+        var dp = Array(repeating: Array(repeating: 0, count: n+1), count: m+1)
+        // Fill dp[][] in bottom up manner
+        for i in 0...m{ //swift for loops are inclusive!
+            for j in 0...n{
+                //If first string is empty, only option is to
+                //insert all characters of second string
+                if(i == 0) {
+                    dp[i][j] = j
+                }
+                //If second string is empty, only option is to
+                //remove all characters of second string
+                else if(j == 0) {
+                    dp[i][j] = i
+                }
+                //If last characters are same, ignore last char
+                //and recur for remaining string
+                else if(X[X.index(X.startIndex, offsetBy: i-1)] == Y[Y.index(Y.startIndex, offsetBy: j-1)]) {
+                    dp[i][j] = dp[i-1][j-1]
+                }
+                //If last character are different, consider all
+                //possibilities and find minimum
+                else {
+                    dp[i][j] = 1 + min(dp[i-1][j]    //Insert
+                                  ,dp[i][j-1],   //Erase
+                                   dp[i-1][j-1]) //Substitute
+                }
+            }
+        }
+        return dp[m][n]
     }
     
      @IBAction func filterButtonPress(_ sender: Any) {
         print("I am using the button")
-        //print(isSearchBarEmpty)
-        //print(searchBar.text!)
-        //print(searchController.searchBar.text!)
-        //filterSearchBar(searchBar, textDidChange:searchBar.text!)
-        //wyzant.com
+        print("I am testing edit distance")
+        let editDistance = editDis(X:"AGGTAB",Y: "GXTXAYB")
+        print("edit Distance expected is 4, editDistance is ",editDistance)
     }
 
 }
