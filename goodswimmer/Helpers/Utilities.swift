@@ -53,6 +53,14 @@ class Utilities {
         }
     }
     
+    static func styleEventHeader(_ header: String) {
+        let fontSize = CGFloat(15)
+      //  header.
+        
+       // font = UIFont(name: "Standard-Book", size: fontSize)
+        header.uppercased()
+    }
+    
     static func styleButton(_ button: UIButton) {
         //rounded button
         button.titleLabel?.font = UIFont(name: "Standard-Book", size: 21)
