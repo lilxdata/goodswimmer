@@ -52,8 +52,13 @@ class SearchViewController: UIViewController {
         //Create a table to store results of subproblems
         var dp = Array(repeating: Array(repeating: 0, count: n+1), count: m+1)
         // Fill dp[][] in bottom up manner
+<<<<<<< HEAD
         for i in 0...m{ //swift for loops are inclusive!
             for j in 0...n{
+=======
+        for i in 0...m+1{
+            for j in 0...n+1{
+>>>>>>> b8dce4cf4ec40a7cf3b0eb7212f5958112acf027
                 //If first string is empty, only option is to
                 //insert all characters of second string
                 if(i == 0) {
@@ -72,12 +77,20 @@ class SearchViewController: UIViewController {
                 //If last character are different, consider all
                 //possibilities and find minimum
                 else {
+<<<<<<< HEAD
                     dp[i][j] = 1 + min(dp[i-1][j]    //Insert
+=======
+                    dp[i][j] = min(dp[i-1][j]    //Insert
+>>>>>>> b8dce4cf4ec40a7cf3b0eb7212f5958112acf027
                                   ,dp[i][j-1],   //Erase
                                    dp[i-1][j-1]) //Substitute
                 }
             }
         }
+<<<<<<< HEAD
+=======
+        print(dp)
+>>>>>>> b8dce4cf4ec40a7cf3b0eb7212f5958112acf027
         return dp[m][n]
     }
     
@@ -85,7 +98,11 @@ class SearchViewController: UIViewController {
         print("I am using the button")
         print("I am testing edit distance")
         let editDistance = editDis(X:"AGGTAB",Y: "GXTXAYB")
+<<<<<<< HEAD
         print("edit Distance expected is 4, editDistance is ",editDistance)
+=======
+        print("lcs expected is 4, editDistance is ",editDistance)
+>>>>>>> b8dce4cf4ec40a7cf3b0eb7212f5958112acf027
     }
 
 }
