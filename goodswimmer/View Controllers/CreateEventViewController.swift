@@ -91,7 +91,12 @@ class CreateEventViewController: UIViewController {
     }
     
     @IBAction func createEventTapped(_ sender: Any) {
+<<<<<<< HEAD
 
+=======
+        //TODO: check that all fields are filled in!
+        
+>>>>>>> b8dce4cf4ec40a7cf3b0eb7212f5958112acf027
         var eventNameInput = Utilities.cleanData(titleField)
         var locationInput = Utilities.cleanData(locationField)
         var date_start_input = Utilities.cleanData(dateField1)
@@ -151,13 +156,64 @@ class CreateEventViewController: UIViewController {
         }
         let address3 = address3Input
         
+        
+        //Event Name Validation
+        let eventNameValid = Validators.isNameValid(eventNameInput)
+        if !eventNameValid {
+            eventNameInput = "Invalid Event Name, please reenter"
+        }
+        let eventName = eventNameInput
+        
+        //Location Validation
+        let locationValid = Validators.isCityValid(locationInput)
+        if !locationValid {
+            locationInput = "Invalid Location, please reenter"
+        }
+        let location = locationInput
+        
+        //Date Start Validation
+        let date_start_valid = Validators.isDateValid(date_start_input)
+        if !date_start_valid {
+            date_start_input = "Invalid Date, please reenter"
+        }
+        let date_start = date_start_input
+        
+        //Start Time Validation
+        let start_time_valid = Validators.isTimeValid(start_time_input)
+        if !start_time_valid {
+            start_time_input = "Invalid Time, please reenter"
+        }
+        let start_time = start_time_input
+        
+        //Street/Number Validation
+        let address1Valid = Validators.isStreetNumberValid(address1Input)
+        if !address1Valid {
+            address1Input = "Invalid Street/Number, please reenter"
+        }
+        let address1 = address1Input
+        
+        //City,State Validation
+        let address2Valid = Validators.isCityStateValid(address2Input)
+        if !address2Valid {
+            address2Input = "Invalid City,State, please reenter"
+        }
+        let address2 = address2Input
+        
+        //Zip Code Validation
+        let address3Valid = Validators.isZipCodeValid(address3Input)
+        if !address3Valid {
+            address3Input = "Invalid Zip Code, please reenter"
+        }
+        let address3 = address3Input
+        
+        
         guard let user = Auth.auth().currentUser, let username = user.displayName else {
             print("user not logged in / username not found")
             return
         }
         
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "MM/dd/yyyy hh:mma"
+        dateFormatter.dateFormat = "dd/mm/yyyy hh:mma"
         let dateTimeString = date_start + " " + start_time
         print("dt string", dateTimeString)
         guard let startDate = dateFormatter.date(from: dateTimeString) else {
