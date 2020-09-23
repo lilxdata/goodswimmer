@@ -101,7 +101,7 @@ class CreateEventViewController: UIViewController {
         var address3Input = Utilities.cleanData(addressField3)
         let description = descriptionText.text!.trimmingCharacters(in: .whitespacesAndNewlines)
          
-         
+        
         //Event Name Validation
         let eventNameValid = Validators.isNameValid(eventNameInput)
         if !eventNameValid {

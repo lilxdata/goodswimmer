@@ -73,7 +73,7 @@ class Validators {
         
     }
     
-    /* city validation */
+    /* city validation */ 
     /* to do; google places API to check it's actually a city*/
     static func isCityValid(_ city: String) -> Bool {
         let cityRegEx = "[A-Z][A-Za-z\\s]+"
