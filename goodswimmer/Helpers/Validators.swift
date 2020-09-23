@@ -43,7 +43,7 @@ class Validators {
     
     /* date validation */
     static func isTimeValid(_ time: String) -> Bool {
-        let timeRegEx = "^([0]{1}[1-9]{1}|[1]{1}[0-2]{1})[:]{1}[0-5]{1}[0-9]\\ {0,1}[ap]{1}[m]{1}$"
+        let timeRegEx = "^([0]{1}[1-9]{1}|[1]{1}[0-2]{1})[:]{1}[0-5]{1}[0-9]\\ {0,1}[apAP]{1}[mM]{1}$"
         let timePred = NSPredicate(format:"SELF MATCHES %@", timeRegEx)
         return timePred.evaluate(with: time)
         
