@@ -40,44 +40,54 @@ class SearchViewController: UIViewController {
                 }
             }
             else {
-                if(lcs(X: event.name!, Y: searchTerm) > 3){
+                if(editDis(X: event.name!, Y: searchTerm) < event.name!.count/3){
                     print(event)
                 }
             }
         }
     }
-    func lcs(X :String, Y :String) -> Int{
+    func editDis(X :String, Y :String) -> Int{
         //find the length of the strings
         let m = X.count
         let n = Y.count
-        // declaring the array for storing the dp values
-        var L = Array(repeating: Array(repeating: 0, count: m+1), count: n+1)
-        /*Following steps build L[m+1][n+1] in bottom up fashion
-        Note: L[i][j] contains length of LCS of X[0..i-1]
-        and Y[0..j-1]*/
+        //Create a table to store results of subproblems
+        var dp = Array(repeating: Array(repeating: 0, count: n+1), count: m+1)
+        // Fill dp[][] in bottom up manner
         for i in 0...m+1{
             for j in 0...n+1{
-                if(i == 0 || j == 0) {
-                    L[i][j] = 0
+                //If first string is empty, only option is to
+                //insert all characters of second string
+                if(i == 0) {
+                    dp[i][j] = j
                 }
+                //If second string is empty, only option is to
+                //remove all characters of second string
+                else if(j == 0) {
+                    dp[i][j] = i
+                }
+                //If last characters are same, ignore last char
+                //and recur for remaining string
                 else if(X[X.index(X.startIndex, offsetBy: i-1)] == Y[Y.index(Y.startIndex, offsetBy: j-1)]) {
-                    L[i][j] = L[i-1][j-1]+1
+                    dp[i][j] = dp[i-1][j-1]
                 }
+                //If last character are different, consider all
+                //possibilities and find minimum
                 else {
-                    L[i][j] = max(L[i-1][j] , L[i][j-1])
+                    dp[i][j] = min(dp[i-1][j]    //Insert
+                                  ,dp[i][j-1],   //Erase
+                                   dp[i-1][j-1]) //Substitute
                 }
             }
         }
-        /// L[m][n] contains the length of LCS of X[0..n-1] & Y[0..m-1]
-        print(L)
-        return L[m][n]
+        print(dp)
+        return dp[m][n]
     }
     
      @IBAction func filterButtonPress(_ sender: Any) {
         print("I am using the button")
-        print("testing lcs")
-        let lcsT = lcs(X:"AGGTAB",Y: "GXTXAYB")
-        print("lcs expected is 4, lcs is ",lcsT)
+        print("I am testing edit distance")
+        let editDistance = editDis(X:"AGGTAB",Y: "GXTXAYB")
+        print("lcs expected is 4, editDistance is ",editDistance)
     }
 
 }
