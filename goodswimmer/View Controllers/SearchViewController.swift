@@ -15,8 +15,7 @@ class SearchViewController: UIViewController {
     let eventArray = EventArray.sharedInstance
     let eventService = EventService()
     
-    @IBOutlet var searchContainerView: UIView!
-    
+    @IBOutlet var searchContainerView: UIView!    
     
     
     override func viewDidLoad() {
