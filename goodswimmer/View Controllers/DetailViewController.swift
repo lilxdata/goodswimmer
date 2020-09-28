@@ -31,14 +31,15 @@ class DetailViewController: UIViewController {
             let photoURL = URL(string: event.photoURL ?? Constants.Placeholders.placeholderURL)
             let title = event.name ?? Constants.Placeholders.placeholderText
             let location = event.venue ?? Constants.Placeholders.placeholderText
-            let date = event.dateStart ?? Constants.Placeholders.placeholderText
+            let date = event.startDate!
+                //TODO: make a timestamp obj placeholder for optional unwrapping ?? Constants.Placeholders.placeholderText
             let time = event.time ?? Constants.Placeholders.placeholderText
             let description = event.description ?? Constants.Placeholders.placeholderText
             
             eventTitle?.text = title
             eventLocation?.text = location
             eventImage?.sd_setImage(with: photoURL, completed: nil)
-            eventDate?.text = date
+         //   eventDate?.text = date
             eventTime?.text = time
             eventDesc?.text = description
         }

@@ -98,7 +98,9 @@ class CreateEventViewController: UIViewController {
         var eventNameInput = Utilities.cleanData(titleField)
         var locationInput = Utilities.cleanData(locationField)
         var date_start_input = Utilities.cleanData(dateField1)
-        var start_time_input = Utilities.cleanData(dateField2)
+        var date_end_input = Utilities.cleanData(dateField2)
+        var time_start_input = Utilities.cleanData(timeField1)
+        var time_end_input = Utilities.cleanData(timeField2)
         var address1Input = Utilities.cleanData(addressField1)
         var address2Input = Utilities.cleanData(addressField2)
         var address3Input = Utilities.cleanData(addressField3)
@@ -119,18 +121,35 @@ class CreateEventViewController: UIViewController {
         let location = locationInput
         
         //Date Start Validation
+        print("date_start_input", date_start_input)
         let date_start_valid = Validators.isDateValid(date_start_input)
         if !date_start_valid {
             date_start_input = "Invalid Date, please reenter"
         }
         let date_start = date_start_input
         
-        //Start Time Validation
-        let start_time_valid = Validators.isTimeValid(start_time_input)
-        if !start_time_valid {
-            start_time_input = "Invalid Time, please reenter"
+        //Date End Validation
+        print("date_end_input", date_end_input)
+        let date_end_valid = Validators.isDateValid(date_end_input)
+        if !date_end_valid {
+            date_end_input = "Invalid Date, please reenter"
         }
-        let start_time = start_time_input
+        let date_end = date_end_input
+        
+        
+        //Start Time Validation
+        let time_start_valid = Validators.isTimeValid(time_start_input)
+        if !time_start_valid {
+            time_start_input = "Invalid Time, please reenter"
+        }
+        let time_start = time_start_input
+        
+        //End Time Validation
+        let time_end_valid = Validators.isTimeValid(time_end_input)
+        if !time_end_valid {
+            time_end_input = "Invalid Time, please reenter"
+        }
+        let time_end = time_end_input
         
         //Street/Number Validation
         let address1Valid = Validators.isStreetNumberValid(address1Input)
@@ -157,12 +176,15 @@ class CreateEventViewController: UIViewController {
             print("user not logged in / username not found")
             return
         }
-        //TODO: redo for time and date separately
+
+        //combine start time & date and end time & date fields into 2 timestamp objects
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd/mm/yyyy hh:mma"
-        let dateTimeString = date_start + " " + start_time
-        print("dt string", dateTimeString)
-        guard let startDate = dateFormatter.date(from: dateTimeString) else {
+        dateFormatter.dateFormat = "MM/dd/yyyy hh:mma"
+        let dateTimeString = date_start + " " + time_start
+        print("start date time string", dateTimeString)
+        let endDateTimeString = date_end + " " + time_end
+        print("end date time string", endDateTimeString)
+        guard let startDate = dateFormatter.date(from: dateTimeString), let endDate = dateFormatter.date(from: endDateTimeString) else {
             print("something wrong with date")
             return
         }
@@ -172,6 +194,7 @@ class CreateEventViewController: UIViewController {
             "description": description,
             "location": location,
             "start_date": Timestamp.init(date: startDate),
+            "end_date": Timestamp.init(date: endDate),
             // TODO: change this date_end name to "time" and add date_end and time_end fields
             "address1": address1,
             "address2": address2,

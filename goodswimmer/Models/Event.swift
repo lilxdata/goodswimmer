@@ -23,8 +23,8 @@ struct Event {
   //  var dateStart: String?
     var startDate: Timestamp?
     var endDate: Timestamp?
-    var startTime: Timestamp?
-    var endTime: Timestamp?
+  //  var startTime: Timestamp?
+   // var endTime: Timestamp?
     var photoURL:String?
     var time: String?
     var userId: String? //todo
@@ -37,8 +37,8 @@ struct Event {
   //      let dateStart = eventDict["date_start"] as? String //deprecated
         let startDate = eventDict["start_date"] as? Timestamp
         let endDate = eventDict["end_date"] as? Timestamp
-        let startTime = eventDict["start_time"] as? Timestamp
-        let endTime = eventDict["end_time"] as? Timestamp
+ //       let startTime = eventDict["start_time"] as? Timestamp
+   //     let endTime = eventDict["end_time"] as? Timestamp
         //  let imageHeight = dict["image_height"] as? CGFloat,
         //  let createdAgo = dict["created_at"] as? TimeInterval
         self.username = username
@@ -49,7 +49,7 @@ struct Event {
         self.endDate = endDate
         self.description = description
         self.startDate = startDate
-        self.startTime = startTime
-        self.endTime = endTime
+ //       self.startTime = startTime
+   //     self.endTime = endTime
     }
 }

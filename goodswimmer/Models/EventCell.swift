@@ -27,13 +27,20 @@ class EventCell: UITableViewCell {
         eventName.text = eventToDisplay?.name ?? Constants.Placeholders.placeholderTitle
         eventLocation.text = eventToDisplay?.venue ?? Constants.Placeholders.placeholderText
                     
-        if let startDate = eventToDisplay?.startDate {
+        //TODO: check if same month / diff month, same day diff day
+        if let startDate = eventToDisplay?.startDate, let endDate = eventToDisplay?.endDate {
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "E MMM d" //yy or yyyy for year
             eventDate.text = dateFormatter.string(from: startDate.dateValue())
             
+            //TODO: format end date
+            
             dateFormatter.dateFormat = "hh:mma"
-            eventTime.text = dateFormatter.string(from: startDate.dateValue())
+            
+            let startTimeString = dateFormatter.string(from: startDate.dateValue())
+            let endTimeString = dateFormatter.string(from: endDate.dateValue())
+            
+            eventTime.text = startTimeString + "-" + endTimeString
             
         } else {
             print("in else")
