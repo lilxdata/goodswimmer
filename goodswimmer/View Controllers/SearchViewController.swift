@@ -32,20 +32,21 @@ class SearchViewController: UIViewController {
     
     func filterEvents(_ searchTerm: String){
         for event in eventArray.events {
-            //If our searchTerm is really small then no need to preform lcs
+            //If our searchTerm is really small then no need to preform edit distance
             if(searchTerm.count < 3){
                 if(event.name?.contains(searchTerm) == true){
                     print(event)
                 }
             }
             else {
-                if(editDis(X: event.name!, Y: searchTerm) < event.name!.count/3){
+                if(editDis(X: (event.name!).lowercased(), Y: searchTerm.lowercased()) < 10){
                     print(event)
                 }
             }
         }
     }
     func editDis(X :String, Y :String) -> Int{
+        print(X,Y)
         //find the length of the strings
         let m = X.count
         let n = Y.count
