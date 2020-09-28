@@ -20,7 +20,7 @@ class EventCell: UITableViewCell {
     @IBOutlet weak var username: UILabel!
     
     var eventToDisplay: Event?
-    
+    //TODO: ADD START DATE / END DATE, START TIME / END TIME
     func displayEvent(_ event: Event) {
         eventToDisplay = event
         username.text = eventToDisplay?.username ?? Constants.Placeholders.placeholderText

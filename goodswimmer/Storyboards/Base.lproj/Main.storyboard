@@ -347,11 +347,11 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="eventDate" destination="hjb-xz-kJV" id="g8t-mX-PkF"/>
                                             <outlet property="eventImage" destination="bzg-xx-Yk3" id="0mW-9Y-tg8"/>
                                             <outlet property="eventLocation" destination="WWy-fm-WO9" id="JBE-cZ-PXx"/>
                                             <outlet property="eventName" destination="H4E-oo-EEa" id="f9I-gX-oqB"/>
                                             <outlet property="eventTime" destination="6Om-dE-w1R" id="ICV-dz-KJN"/>
+                                            <outlet property="startDate" destination="hjb-xz-kJV" id="g8t-mX-PkF"/>
                                             <outlet property="username" destination="8sP-Le-h0x" id="R3x-FV-wO9"/>
                                         </connections>
                                     </tableViewCell>

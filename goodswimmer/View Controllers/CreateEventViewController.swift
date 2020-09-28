@@ -103,42 +103,42 @@ class CreateEventViewController: UIViewController {
         var address2Input = Utilities.cleanData(addressField2)
         var address3Input = Utilities.cleanData(addressField3)
         let description = descriptionText.text!.trimmingCharacters(in: .whitespacesAndNewlines)
-         
+        
         //Event Name Validation
         let eventNameValid = Validators.isNameValid(eventNameInput)
         if !eventNameValid {
             eventNameInput = "Invalid Event Name, please reenter"
         }
         let eventName = eventNameInput
-         
+        
         //Location Validation
         let locationValid = Validators.isCityValid(locationInput)
         if !locationValid {
             locationInput = "Invalid Location, please reenter"
         }
         let location = locationInput
-         
+        
         //Date Start Validation
         let date_start_valid = Validators.isDateValid(date_start_input)
         if !date_start_valid {
             date_start_input = "Invalid Date, please reenter"
         }
         let date_start = date_start_input
-         
+        
         //Start Time Validation
         let start_time_valid = Validators.isTimeValid(start_time_input)
         if !start_time_valid {
             start_time_input = "Invalid Time, please reenter"
         }
         let start_time = start_time_input
-         
+        
         //Street/Number Validation
         let address1Valid = Validators.isStreetNumberValid(address1Input)
         if !address1Valid {
             address1Input = "Invalid Street/Number, please reenter"
         }
         let address1 = address1Input
-         
+        
         //City,State Validation
         let address2Valid = Validators.isCityStateValid(address2Input)
         if !address2Valid {
@@ -157,7 +157,7 @@ class CreateEventViewController: UIViewController {
             print("user not logged in / username not found")
             return
         }
-        
+        //TODO: redo for time and date separately
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd/mm/yyyy hh:mma"
         let dateTimeString = date_start + " " + start_time
@@ -172,12 +172,12 @@ class CreateEventViewController: UIViewController {
             "description": description,
             "location": location,
             "start_date": Timestamp.init(date: startDate),
-           // TODO: change this date_end name to "time" and add date_end and time_end fields
+            // TODO: change this date_end name to "time" and add date_end and time_end fields
             "address1": address1,
             "address2": address2,
             "address3": address3,
             "username": username
-            ] as [String : Any]
+        ] as [String : Any]
         
         self.eventService.createEvent(dictionary: eventDict, uuid: self.uuid)
         
