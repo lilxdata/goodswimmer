@@ -179,7 +179,7 @@ class CreateEventViewController: UIViewController {
 
         //combine start time & date and end time & date fields into 2 timestamp objects
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "MM/dd/yyyy hh:mma"
+        dateFormatter.dateFormat = "dd/MM/yyyy hh:mma"
         let dateTimeString = date_start + " " + time_start
         print("start date time string", dateTimeString)
         let endDateTimeString = date_end + " " + time_end
