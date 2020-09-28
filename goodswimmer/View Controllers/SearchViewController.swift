@@ -39,7 +39,7 @@ class SearchViewController: UIViewController {
                 }
             }
             else {
-                if(editDis(X: event.name!, Y: searchTerm) < 4){
+                if(editDis(X: (event.name!).lowercased(), Y: searchTerm.lowercased()) < 10){
                     print(event)
                 }
             }
