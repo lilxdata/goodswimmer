@@ -23,6 +23,7 @@ struct Constants {
         static let placeholderText = "TBA"
         static let placeholderTitle = "Unnamed Event"
         
+        
     }
     struct LocalStorage {
         static let storedUsername = "storedUsername"
