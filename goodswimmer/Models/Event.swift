@@ -20,9 +20,11 @@ struct Event {
     var description:String?
     var username:String?
     var date:String?
-    var dateStart: String?
+  //  var dateStart: String?
     var startDate: Timestamp?
-    var startTime: String?
+    var endDate: Timestamp?
+  //  var startTime: Timestamp?
+   // var endTime: Timestamp?
     var photoURL:String?
     var time: String?
     var userId: String? //todo
@@ -30,20 +32,24 @@ struct Event {
     init?(eventDict: [String: Any]) {
         let name = eventDict["name"] as? String
         let venue = eventDict["location"] as? String
-        let startTime = eventDict["start_time"] as? String
         let username = eventDict["username"] as? String
         let description = eventDict["description"] as? String
-        let dateStart = eventDict["date_start"] as? String //deprecated
+  //      let dateStart = eventDict["date_start"] as? String //deprecated
         let startDate = eventDict["start_date"] as? Timestamp
+        let endDate = eventDict["end_date"] as? Timestamp
+ //       let startTime = eventDict["start_time"] as? Timestamp
+   //     let endTime = eventDict["end_time"] as? Timestamp
         //  let imageHeight = dict["image_height"] as? CGFloat,
         //  let createdAgo = dict["created_at"] as? TimeInterval
         self.username = username
         self.name = name
         self.venue = venue
-        self.dateStart = dateStart
+   //     self.dateStart = dateStart
         self.photoURL = eventDict["photoURL"] as? String
-        self.startTime = startTime
+        self.endDate = endDate
         self.description = description
         self.startDate = startDate
+ //       self.startTime = startTime
+   //     self.endTime = endTime
     }
 }
