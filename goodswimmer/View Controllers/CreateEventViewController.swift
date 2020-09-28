@@ -25,6 +25,8 @@ class CreateEventViewController: UIViewController {
     @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var dateField1: UITextField!
     @IBOutlet weak var dateField2: UITextField!
+    @IBOutlet weak var timeField1: UITextField!
+    @IBOutlet weak var timeField2: UITextField!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var imageLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
@@ -62,11 +64,13 @@ class CreateEventViewController: UIViewController {
             Utilities.styleLabel(label!, size: labelSize, uppercase: true)
         }
         
-        let textfields = [titleField, locationField, dateField1, dateField2]
+        let textfields = [titleField, locationField, dateField1, dateField2, timeField1, timeField2]
         
         for textfield in textfields {
             Utilities.styleTextField(textfield!, size: fieldSize)
         }
+        
+        //TODO: add disabled option in helper func for styleTextField
         
         Utilities.styleDisabledTextField(addressField1,size: fieldSize)
         Utilities.styleDisabledTextField(addressField2, size: fieldSize)
@@ -100,7 +104,6 @@ class CreateEventViewController: UIViewController {
         var address3Input = Utilities.cleanData(addressField3)
         let description = descriptionText.text!.trimmingCharacters(in: .whitespacesAndNewlines)
          
-        
         //Event Name Validation
         let eventNameValid = Validators.isNameValid(eventNameInput)
         if !eventNameValid {
@@ -149,7 +152,6 @@ class CreateEventViewController: UIViewController {
             address3Input = "Invalid Zip Code, please reenter"
         }
         let address3 = address3Input
-        
         
         guard let user = Auth.auth().currentUser, let username = user.displayName else {
             print("user not logged in / username not found")
