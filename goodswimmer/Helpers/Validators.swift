@@ -35,19 +35,17 @@ class Validators {
     
     /* date validation */
     static func isDateValid(_ date: String) -> Bool {
-//        let dateRegEx = "^(?:(?:31(\\/|-|\\.)(?:0?[13578]|1[02]))\\1|(?:(?:29|30)(\\/|-|\\.)(?:0?[1,3-9]|1[0-2])\\2))(?:(?:1[6-9]|[2-9]\\d)?\\d{2})$|^(?:29(\\/|-|\\.)0?2\\3(?:(?:(?:1[6-9]|[2-9]\\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\\d|2[0-8])(\\/|-|\\.)(?:(?:0?[1-9])|(?:1[0-2]))\\4(?:(?:1[6-9]|[2-9]\\d)?\\d{2})$"
-//        let datePred = NSPredicate(format:"SELF MATCHES %@", dateRegEx)
-//        return datePred.evaluate(with: date)
-        return true
+        let dateRegEx = "^(?:(?:31(\\/|-|\\.)(?:0?[13578]|1[02]))\\1|(?:(?:29|30)(\\/|-|\\.)(?:0?[1,3-9]|1[0-2])\\2))(?:(?:1[6-9]|[2-9]\\d)?\\d{2})$|^(?:29(\\/|-|\\.)0?2\\3(?:(?:(?:1[6-9]|[2-9]\\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\\d|2[0-8])(\\/|-|\\.)(?:(?:0?[1-9])|(?:1[0-2]))\\4(?:(?:1[6-9]|[2-9]\\d)?\\d{2})$"
+        let datePred = NSPredicate(format:"SELF MATCHES %@", dateRegEx)
+        return datePred.evaluate(with: date)
         
     }
     
     /* date validation */
     static func isTimeValid(_ time: String) -> Bool {
-//        let timeRegEx = "^([0]{1}[1-9]{1}|[1]{1}[0-2]{1})[:]{1}[0-5]{1}[0-9]\\ {0,1}[apAP]{1}[mM]{1}$"
-//        let timePred = NSPredicate(format:"SELF MATCHES %@", timeRegEx)
-//        return timePred.evaluate(with: time)
-        return true
+        let timeRegEx = "^([0]{1}[1-9]{1}|[1]{1}[0-2]{1})[:]{1}[0-5]{1}[0-9]\\ {0,1}[apAP]{1}[mM]{1}$"
+        let timePred = NSPredicate(format:"SELF MATCHES %@", timeRegEx)
+        return timePred.evaluate(with: time)
         
     }
     
