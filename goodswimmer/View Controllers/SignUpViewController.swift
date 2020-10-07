@@ -134,13 +134,38 @@ class SignUpViewController: UIViewController {
                     
                     //TODO: set email and prof pic etc
                     changeRequest?.displayName = username
-                    changeRequest?.commitChanges { ( error ) in
-                        if error != nil {
-                            self.showError("Error")
-                            self.deleteUser()
-                            return
+                    
+                    // Create a storage reference from our storage service
+                    let storageRef = Storage.storage().reference()
+                    // Create a reference to stock photo in firebase
+                    let stockPhotoRef = storageRef.child("goodswimmer stock profile.png")
+                    // Fetch the download URL
+                    stockPhotoRef.downloadURL { url, error in
+                      if let error = error {
+                        // Handle any errors
+                        print("Error retreiving stock photo",error)
+                        changeRequest?.commitChanges { ( error ) in
+                            if error != nil {
+                                self.showError("Error")
+                                self.deleteUser()
+                                return
+                            }
+                            self.transitionToHome()
                         }
-                        self.transitionToHome()
+                      } else {
+                        // Get the download URL
+                        //Setting profile pic to default swimming pic in firebase
+                        changeRequest?.photoURL = url
+                        changeRequest?.commitChanges { ( error ) in
+                            if error != nil {
+                                self.showError("Error")
+                                self.deleteUser()
+                                return
+                            }
+                            self.transitionToHome()
+                        }
+                    }
+                    
                     }
                 }
             }
