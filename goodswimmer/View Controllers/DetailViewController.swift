@@ -8,8 +8,9 @@
 
 import UIKit
 
-class DetailViewController: UIViewController {
-    
+class DetailViewController: UIViewController, UICollectionViewDelegate,
+                            UICollectionViewDataSource {
+        
     @IBOutlet weak var navBar: UINavigationBar!
     // @IBOutlet weak var eventHeader: UILabel!
     @IBOutlet weak var eventTitle: UILabel!
@@ -18,14 +19,18 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var eventTime: UILabel!
     @IBOutlet weak var eventLocation: UILabel!
     @IBOutlet weak var eventDesc: UILabel!
-    
+    @IBOutlet weak var attendeeGrid: UICollectionView!
     
     var selectedEvent: Event?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
         setUpElements()
+        
+        attendeeGrid.delegate = self
+        attendeeGrid.dataSource = self
         
         if let event = selectedEvent {
             let photoURL = URL(string: event.photoURL ?? Constants.Placeholders.placeholderURL)
@@ -75,6 +80,24 @@ class DetailViewController: UIViewController {
         Utilities.styleLabel(eventDate, size: 24, uppercase: false)
         Utilities.styleLabel(eventTime, size: 24, uppercase: false)
         Utilities.styleLabel(eventDesc, size: 15, uppercase: false)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+     //   return selectedEvent?.attendees?.count ?? 0 //number of attendees
+        return 3
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        let attendee = selectedEvent?.attendees?[indexPath.item]
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "attendeeCell", for: indexPath) as? AttendeeCell else {
+            return UICollectionViewCell()
+        }
+        
+        cell.attendeeToDisplay = attendee
+        return cell
+        
+        
     }
     
 }

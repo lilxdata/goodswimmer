@@ -28,6 +28,7 @@ struct Event {
     var photoURL:String?
     var time: String?
     var userId: String? //todo
+    var attendees: [Attendee]?
     
     init?(eventDict: [String: Any]) {
         let name = eventDict["name"] as? String
