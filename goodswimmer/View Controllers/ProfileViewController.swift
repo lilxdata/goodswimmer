@@ -57,22 +57,6 @@ class ProfileViewController: UIViewController {
         let user = Auth.auth().currentUser
         profileImage.sd_setImage(with: user?.photoURL, for: state, completed: nil)
         profileImage.imageView?.makeRounded()
-        let stockPhotoRef = storageRef.child("goodswimmer stock profile.png")
-        // Fetch the download URL
-        stockPhotoRef.downloadURL { url, error in
-          if let error = error {
-            // Handle any errors
-            print("Error retreiving stock photo")
-            print(error)
-          } else {
-            // Get the download URL
-            //Setting profile pic to default swimming pic in firebase
-            //changeRequest?.photoURL = url
-            print(URL(string: url!.absoluteString))
-            //changeRequest?.photoURL = URL(string: url?.absoluteString)
-          }
-        }
-      
     }
     
     //TODO: set user as not logged in...?
