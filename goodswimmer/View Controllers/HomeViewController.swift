@@ -56,6 +56,19 @@ class HomeViewController: UIViewController {
         Utilities.styleHeader(headerLabel)
     }
     
+    @IBAction func inviteFriend(_ sender: Any) {
+        print("invite friend button pressed")
+    }
+    
+    @IBAction func addToList(_ sender: Any) {
+        print("add to list button pressed")
+    }
+    
+    @IBAction func addToCal(_ sender: Any) {
+        print("add to calendar button pressed")
+    }
+    
+    
 }
 
 extension HomeViewController : UITableViewDelegate, UITableViewDataSource {
