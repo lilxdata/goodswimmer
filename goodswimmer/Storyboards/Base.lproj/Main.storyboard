@@ -791,25 +791,60 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LsW-E4-Xz8">
-                                <rect key="frame" x="165" y="391" width="84" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Filter Button"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ajG-bV-5Ef">
+                                <rect key="frame" x="0.0" y="44" width="414" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="oKy-7N-vsJ"/>
+                                </constraints>
+                            </view>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="C6B-kL-8Nq">
+                                <rect key="frame" x="0.0" y="94" width="414" height="403"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="403" id="O0Y-L7-4vd"/>
+                                </constraints>
+                            </mapView>
+                            <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LsW-E4-Xz8" userLabel="Search">
+                                <rect key="frame" x="10" y="507" width="34" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="34" id="bk5-lx-j9b"/>
+                                    <constraint firstAttribute="height" constant="34" id="cVb-BD-KiV"/>
+                                </constraints>
+                                <state key="normal" image="bar-search"/>
                                 <connections>
                                     <action selector="filterButtonPress:" destination="sfr-ZZ-KVG" eventType="touchUpInside" id="7fs-Z5-8pX"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ajG-bV-5Ef">
-                                <rect key="frame" x="0.0" y="44" width="414" height="55"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" systemColor="systemYellowColor"/>
-                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Featured Events" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OG7-be-SY3">
+                                <rect key="frame" x="145.5" y="527" width="123.5" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="g-s-background3" translatesAutoresizingMaskIntoConstraints="NO" id="JEr-1i-gar">
+                                <rect key="frame" x="10" y="571" width="394" height="1200"/>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="A0H-xG-f4a"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="C6B-kL-8Nq" firstAttribute="top" secondItem="ajG-bV-5Ef" secondAttribute="bottom" id="Bo6-RN-iXJ"/>
+                            <constraint firstItem="OG7-be-SY3" firstAttribute="centerX" secondItem="egT-2n-K3r" secondAttribute="centerX" id="CWf-d1-HZh"/>
+                            <constraint firstItem="A0H-xG-f4a" firstAttribute="leading" secondItem="C6B-kL-8Nq" secondAttribute="leading" id="G4e-Ja-cyZ"/>
+                            <constraint firstItem="LsW-E4-Xz8" firstAttribute="leading" secondItem="A0H-xG-f4a" secondAttribute="leading" constant="10" id="IAH-PT-CIe"/>
+                            <constraint firstItem="OG7-be-SY3" firstAttribute="top" secondItem="C6B-kL-8Nq" secondAttribute="bottom" constant="30" id="M3E-Fl-hRs"/>
+                            <constraint firstItem="LsW-E4-Xz8" firstAttribute="top" secondItem="C6B-kL-8Nq" secondAttribute="bottom" constant="10" id="Wh8-U0-taS"/>
+                            <constraint firstItem="A0H-xG-f4a" firstAttribute="trailing" secondItem="C6B-kL-8Nq" secondAttribute="trailing" id="Xd4-9l-OD5"/>
+                            <constraint firstItem="JEr-1i-gar" firstAttribute="leading" secondItem="A0H-xG-f4a" secondAttribute="leading" constant="10" id="YYH-8u-Bsc"/>
+                            <constraint firstItem="A0H-xG-f4a" firstAttribute="trailing" secondItem="ajG-bV-5Ef" secondAttribute="trailing" id="Zcn-Sv-zfa"/>
+                            <constraint firstItem="ajG-bV-5Ef" firstAttribute="top" secondItem="A0H-xG-f4a" secondAttribute="top" id="cdJ-TN-xaj"/>
+                            <constraint firstItem="ajG-bV-5Ef" firstAttribute="leading" secondItem="A0H-xG-f4a" secondAttribute="leading" id="k6g-gh-t9B"/>
+                            <constraint firstItem="A0H-xG-f4a" firstAttribute="trailing" secondItem="JEr-1i-gar" secondAttribute="trailing" constant="10" id="mDb-C7-AX8"/>
+                            <constraint firstItem="JEr-1i-gar" firstAttribute="top" secondItem="OG7-be-SY3" secondAttribute="bottom" constant="23" id="r9Z-h5-u4a"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="magnifyingglass" catalog="system" id="smk-at-ehN"/>
                     <connections>
+                        <outlet property="featuredLabel" destination="OG7-be-SY3" id="F4K-L7-pCg"/>
                         <outlet property="searchContainerView" destination="ajG-bV-5Ef" id="Xwp-Ug-EmP"/>
                     </connections>
                 </viewController>
@@ -900,9 +935,11 @@
         <image name="bar-add-event" width="11" height="13"/>
         <image name="bar-feed" width="12" height="12.5"/>
         <image name="bar-profile" width="11.5" height="12"/>
+        <image name="bar-search" width="12" height="12"/>
         <image name="chevron.left" catalog="system" width="96" height="128"/>
         <image name="follow" width="53" height="43.5"/>
         <image name="g-s-background2" width="800" height="1200"/>
+        <image name="g-s-background3" width="800" height="1200"/>
         <image name="magnifyingglass" catalog="system" width="128" height="115"/>
         <image name="view" width="43" height="43"/>
         <systemColor name="labelColor">
@@ -913,9 +950,6 @@
         </systemColor>
         <systemColor name="systemRedColor">
             <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemYellowColor">
-            <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

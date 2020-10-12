@@ -100,8 +100,28 @@ class Utilities {
         }
         return false
     }
+    
+    static func customizeSearchBar(_ controller: UISearchController){
+        
+        let bar = controller.searchBar
+       // bar.barStyle = .black
+        bar.barTintColor = UIColor.red
+        bar.tintColor = UIColor.white
+        
+//        UITextField.appearance().defaultTextAttributes = [NSAttributedString.Key.foregroundColor.rawValue: UIColor.white]
+        
+        if let text = bar.value(forKey: "searchField") as? UITextField {
+                text.textColor = UIColor.white
+            }
+        
+        let placeholder = bar.placeholder as? UITextField
+        placeholder?.textColor = UIColor.white
+        
+
+    }
 }
 
+<<<<<<< HEAD
 extension UIImageView {
 
     func makeRounded(_cornerRadius: CGFloat) {
@@ -113,3 +133,5 @@ extension UIImageView {
         self.clipsToBounds = true
     }
 }
+=======
+>>>>>>> initial search UI changes: map, red search bar, featured label

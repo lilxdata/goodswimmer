@@ -11,12 +11,13 @@ import UIKit
 class SearchViewController: UIViewController {
     var searchController: UISearchController!
     
+    @IBOutlet weak var featuredLabel: UILabel!
+    
     //access to eventarray across app
     let eventArray = EventArray.sharedInstance
     let eventService = EventService()
     
     @IBOutlet var searchContainerView: UIView!    
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,8 +27,9 @@ class SearchViewController: UIViewController {
         searchController.obscuresBackgroundDuringPresentation = false
         searchContainerView.addSubview(searchController.searchBar)
         searchController.searchBar.delegate = self
-        searchController.searchBar.placeholder = "Event Filter"
+        searchController.searchBar.placeholder = Constants.Placeholders.placeholderSearch
         
+        setUpElements()
     }
     
     func filterEvents(_ searchTerm: String){
@@ -82,6 +84,11 @@ class SearchViewController: UIViewController {
             }
         }
         return dp[m][n]
+    }
+    
+    func setUpElements() {
+        Utilities.customizeSearchBar(searchController)
+        Utilities.styleLabel(featuredLabel, size: 12, uppercase: true)
     }
     
     @IBAction func filterButtonPress(_ sender: Any) {
