@@ -10,11 +10,11 @@ import Foundation
 
 //TODO: logic for these, connect to buttons
 class CalendarHelper {
-    static func addToCalendar() {
+    static func addToCalendar(event: Event, userid: String) {
         print("added to calendar")
     }
 
-    static func attendEvent() {
+    static func attendEvent(event: Event, userid: String) {
         print("attending event")
     }
 }

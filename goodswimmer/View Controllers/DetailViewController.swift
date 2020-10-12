@@ -26,7 +26,6 @@ class DetailViewController: UIViewController, UICollectionViewDelegate,
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
         setUpElements()
         
         attendeeGrid.delegate = self
@@ -58,7 +57,10 @@ class DetailViewController: UIViewController, UICollectionViewDelegate,
     
     
     @IBAction func addToList(_ sender: Any) {
+        let username = selectedEvent?.username
         print("add to list button tapped")
+        CalendarHelper.addToCalendar(event: selectedEvent!, userid: username!)
+        CalendarHelper.attendEvent(event: selectedEvent!, userid: username!)
     }
     
     
