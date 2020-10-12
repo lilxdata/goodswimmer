@@ -20,8 +20,17 @@ class ProfileViewController: UIViewController {
         
         photoHelper.completionHandler =  { image in
             //make unique identifier for image
-            let photoid = UUID().uuidString
+            let photoid = Auth.auth().currentUser!.uid
             let imageRef = Storage.storage().reference().child(photoid+".jpg")
+            let user = Auth.auth().currentUser
+            //Removes image from storage
+            imageRef.delete { error in
+                if let error = error {
+                    print(error)
+                } else {
+                    print("Removed old profile picture, adding uploaded image")
+                }
+            }
             StorageService.uploadImage(image, at: imageRef) { (downloadURL) in
                 guard let downloadURL = downloadURL else {
                     return
@@ -30,13 +39,13 @@ class ProfileViewController: UIViewController {
                 print("image URL: \(urlString)")
                 let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
                 changeRequest?.photoURL = URL(string: urlString)
+                
+                self.profileImage.sd_setImage(with: user?.photoURL, for: self.state, completed: nil)
                 changeRequest?.commitChanges { (error) in
                 }
             }
         }
         photoHelper.presentActionSheet(from: self)
-        let user = Auth.auth().currentUser
-        profileImage.sd_setImage(with: user?.photoURL, for: state, completed: nil)
     }
     
     let eventService = EventService.sharedInstance
@@ -56,7 +65,9 @@ class ProfileViewController: UIViewController {
         super.viewDidLoad()
         let user = Auth.auth().currentUser
         profileImage.sd_setImage(with: user?.photoURL, for: state, completed: nil)
-        profileImage.imageView?.makeRounded()
+        profileImage.imageView?.makeRounded(_cornerRadius: profileImage.frame.height)
+        let currImageRef = Storage.storage().reference().child(Auth.auth().currentUser!.uid+".jpg")
+        print(currImageRef)
     }
     
     //TODO: set user as not logged in...?
@@ -84,16 +95,4 @@ class ProfileViewController: UIViewController {
     
 }
 
-extension UIImageView {
 
-    func makeRounded() {
-
-        self.layer.borderWidth = 3
-        self.layer.masksToBounds = false
-        self.layer.borderColor = UIColor.black.cgColor
-        print("I am printing height")
-        print(self.frame.height)
-        self.layer.cornerRadius = 40.0 //self.frame.height / 1
-        self.clipsToBounds = true
-    }
-}
