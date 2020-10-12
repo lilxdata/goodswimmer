@@ -55,22 +55,18 @@ class DetailViewController: UIViewController, UICollectionViewDelegate,
         self.dismiss(animated: true, completion: nil)
     }
     
-    
-    @IBAction func addToList(_ sender: Any) {
+    @IBAction func addToCal(_ sender: Any) {
         let username = selectedEvent?.username
+             print("add to cal button tapped")
+             CalendarHelper.addToCalendar(event: selectedEvent!, userid: username!)
+             CalendarHelper.attendEvent(event: selectedEvent!, userid: username!)
+    }
+
+    @IBAction func shareEvent(_ sender: Any) {
+        print("share event button tapped")
+    }
+    @IBAction func addToList(_ sender: Any) {
         print("add to list button tapped")
-        CalendarHelper.addToCalendar(event: selectedEvent!, userid: username!)
-        CalendarHelper.attendEvent(event: selectedEvent!, userid: username!)
-    }
-    
-    
-    @IBAction func viewButtonTapped(_ sender: Any) {
-        print("view button tapped")
-    }
-    
-    
-    @IBAction func followButtonTapped(_ sender: Any) {
-        print("follow button tapped")
     }
     
     func setUpElements() {

@@ -114,27 +114,27 @@
                                                         </constraints>
                                                         <state key="normal" image="follow"/>
                                                         <connections>
-                                                            <action selector="followButtonTapped:" destination="JWq-AV-ix7" eventType="touchUpInside" id="yF4-6q-SrV"/>
+                                                            <action selector="shareEvent:" destination="JWq-AV-ix7" eventType="touchUpInside" id="Gxt-Jf-gBg"/>
                                                         </connections>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WCi-Rb-iWF" userLabel="view">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WCi-Rb-iWF" userLabel="addToList">
                                                         <rect key="frame" x="56" y="0.0" width="43" height="43.5"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="43" id="srY-2U-mns"/>
                                                         </constraints>
                                                         <state key="normal" image="view"/>
                                                         <connections>
-                                                            <action selector="viewButtonTapped:" destination="JWq-AV-ix7" eventType="touchUpInside" id="cJf-2D-U5z"/>
+                                                            <action selector="addToList:" destination="JWq-AV-ix7" eventType="touchUpInside" id="3ye-TF-agB"/>
                                                         </connections>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZFf-6M-qSI" userLabel="addToList">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZFf-6M-qSI" userLabel="addToCal">
                                                         <rect key="frame" x="109" y="0.0" width="43" height="43.5"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="43" id="GZO-KM-abT"/>
                                                         </constraints>
                                                         <state key="normal" image="add-to-list"/>
                                                         <connections>
-                                                            <action selector="addToList:" destination="JWq-AV-ix7" eventType="touchUpInside" id="sMj-ES-ZuH"/>
+                                                            <action selector="addToCal:" destination="JWq-AV-ix7" eventType="touchUpInside" id="KEb-rP-29E"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
@@ -344,17 +344,26 @@
                                                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="11" translatesAutoresizingMaskIntoConstraints="NO" id="lfa-0U-PeC" userLabel="Icon Stack View">
                                                     <rect key="frame" x="243" y="421" width="161" height="51"/>
                                                     <subviews>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ScY-ey-H4k">
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ScY-ey-H4k" userLabel="Invite">
                                                             <rect key="frame" x="0.0" y="0.0" width="53" height="51"/>
                                                             <state key="normal" image="follow"/>
+                                                            <connections>
+                                                                <action selector="inviteFriend:" destination="Yn1-b3-wBZ" eventType="touchUpInside" id="KXp-Aq-Nyb"/>
+                                                            </connections>
                                                         </button>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lFE-Vk-tnT">
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lFE-Vk-tnT" userLabel="List">
                                                             <rect key="frame" x="64" y="0.0" width="43" height="51"/>
                                                             <state key="normal" image="view"/>
+                                                            <connections>
+                                                                <action selector="addToList:" destination="Yn1-b3-wBZ" eventType="touchUpInside" id="24d-xy-bOI"/>
+                                                            </connections>
                                                         </button>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7qm-BC-K55" userLabel="Plus">
                                                             <rect key="frame" x="118" y="0.0" width="43" height="51"/>
                                                             <state key="normal" image="add-to-list"/>
+                                                            <connections>
+                                                                <action selector="addToCal:" destination="Yn1-b3-wBZ" eventType="touchUpInside" id="Aia-8k-azR"/>
+                                                            </connections>
                                                         </button>
                                                     </subviews>
                                                 </stackView>
