@@ -35,7 +35,6 @@ struct Event {
         let venue = eventDict["location"] as? String
         let username = eventDict["username"] as? String
         let description = eventDict["description"] as? String
-  //      let dateStart = eventDict["date_start"] as? String //deprecated
         let startDate = eventDict["start_date"] as? Timestamp
         let endDate = eventDict["end_date"] as? Timestamp
  //       let startTime = eventDict["start_time"] as? Timestamp

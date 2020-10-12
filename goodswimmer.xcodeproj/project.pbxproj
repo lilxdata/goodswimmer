@@ -10,6 +10,7 @@
 		0401729B246CEA4000297ECA /* CreateEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0401729A246CEA4000297ECA /* CreateEventViewController.swift */; };
 		0401729D246CEAE600297ECA /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0401729C246CEAE600297ECA /* ProfileViewController.swift */; };
 		0417676A2432D4EF007AC791 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041767692432D4EF007AC791 /* Utilities.swift */; };
+		042F1E812534DE9200601CA6 /* CalendarHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042F1E802534DE9200601CA6 /* CalendarHelper.swift */; };
 		04350E4E24848DBE00F1AD27 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04350E4D24848DBE00F1AD27 /* SearchViewController.swift */; };
 		04350E5024849DEA00F1AD27 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04350E4F24849DEA00F1AD27 /* User.swift */; };
 		043C4547245C9465004D2470 /* Career_salle13_cursive.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 043C4546245C9465004D2470 /* Career_salle13_cursive.ttf */; };
@@ -51,6 +52,7 @@
 		0401729A246CEA4000297ECA /* CreateEventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateEventViewController.swift; sourceTree = "<group>"; };
 		0401729C246CEAE600297ECA /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		041767692432D4EF007AC791 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
+		042F1E802534DE9200601CA6 /* CalendarHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarHelper.swift; sourceTree = "<group>"; };
 		04350E4D24848DBE00F1AD27 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		04350E4F24849DEA00F1AD27 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		043C4546245C9465004D2470 /* Career_salle13_cursive.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Career_salle13_cursive.ttf; sourceTree = "<group>"; };
@@ -147,6 +149,7 @@
 				047C977E249982160062D860 /* PhotoHelper.swift */,
 				044A54D324CB7C5B001FABA9 /* Navigation.swift */,
 				04B33992251BED7B00E9B8E0 /* FirestoreHelper.swift */,
+				042F1E802534DE9200601CA6 /* CalendarHelper.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -366,6 +369,7 @@
 				0486C5AD24DA008F00ED6328 /* Event.swift in Sources */,
 				04A192FA2492DB29007F652E /* ZeroStateViewController.swift in Sources */,
 				04EB0E0424327BB200B532F8 /* LoginViewController.swift in Sources */,
+				042F1E812534DE9200601CA6 /* CalendarHelper.swift in Sources */,
 				0401729D246CEAE600297ECA /* ProfileViewController.swift in Sources */,
 				046E1C80252E60DF004D7A4D /* AttendeeCell.swift in Sources */,
 				04D77F82245D471300599CBD /* Validators.swift in Sources */,
