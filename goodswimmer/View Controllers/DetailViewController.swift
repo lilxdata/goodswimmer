@@ -8,8 +8,9 @@
 
 import UIKit
 
-class DetailViewController: UIViewController {
-    
+class DetailViewController: UIViewController, UICollectionViewDelegate,
+                            UICollectionViewDataSource {
+        
     @IBOutlet weak var navBar: UINavigationBar!
     // @IBOutlet weak var eventHeader: UILabel!
     @IBOutlet weak var eventTitle: UILabel!
@@ -18,7 +19,7 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var eventTime: UILabel!
     @IBOutlet weak var eventLocation: UILabel!
     @IBOutlet weak var eventDesc: UILabel!
-    
+    @IBOutlet weak var attendeeGrid: UICollectionView!
     
     var selectedEvent: Event?
     
@@ -26,6 +27,9 @@ class DetailViewController: UIViewController {
         super.viewDidLoad()
         
         setUpElements()
+        
+        attendeeGrid.delegate = self
+        attendeeGrid.dataSource = self
         
         if let event = selectedEvent {
             let photoURL = URL(string: event.photoURL ?? Constants.Placeholders.placeholderURL)
@@ -51,19 +55,18 @@ class DetailViewController: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
     
-    
+    @IBAction func addToCal(_ sender: Any) {
+        let username = selectedEvent?.username
+             print("add to cal button tapped")
+             CalendarHelper.addToCalendar(event: selectedEvent!, userid: username!)
+             CalendarHelper.attendEvent(event: selectedEvent!, userid: username!)
+    }
+
+    @IBAction func shareEvent(_ sender: Any) {
+        print("share event button tapped")
+    }
     @IBAction func addToList(_ sender: Any) {
         print("add to list button tapped")
-    }
-    
-    
-    @IBAction func viewButtonTapped(_ sender: Any) {
-        print("view button tapped")
-    }
-    
-    
-    @IBAction func followButtonTapped(_ sender: Any) {
-        print("follow button tapped")
     }
     
     func setUpElements() {
@@ -75,6 +78,24 @@ class DetailViewController: UIViewController {
         Utilities.styleLabel(eventDate, size: 24, uppercase: false)
         Utilities.styleLabel(eventTime, size: 24, uppercase: false)
         Utilities.styleLabel(eventDesc, size: 15, uppercase: false)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+     //   return selectedEvent?.attendees?.count ?? 0 //number of attendees
+        return 3
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        let attendee = selectedEvent?.attendees?[indexPath.item]
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "attendeeCell", for: indexPath) as? AttendeeCell else {
+            return UICollectionViewCell()
+        }
+        
+        cell.attendeeToDisplay = attendee
+        return cell
+        
+        
     }
     
 }
