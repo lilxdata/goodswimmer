@@ -16,9 +16,9 @@ class EventService {
     let db = Firestore.firestore()
     static let sharedInstance = EventService()
 
-    func uploadImage(for image: UIImage, id: String)  {
+    func uploadImage(for image: UIImage, id: String, name: String)  {
         //make unique identifier for image
-        let photoid = UUID().uuidString
+        let photoid = name
         let imageRef = Storage.storage().reference().child(photoid+".jpg")
         StorageService.uploadImage(image, at: imageRef) { (downloadURL) in
             guard let downloadURL = downloadURL else {
