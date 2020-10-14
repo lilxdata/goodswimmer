@@ -14,10 +14,26 @@ import FirebaseStorage
 
 
 class ProfileViewController: UIViewController {
+    let eventService = EventService.sharedInstance
+    let photoHelper = PhotoHelper()
+    var uuid = ""
+    var state : UIControl.State = []
+    
+    // Get a reference to the storage service using the default Firebase App
+    let storage = Storage.storage()
 
+    // Create a storage reference from our storage service
+    let storageRef = Storage.storage().reference()
+    
+    //Outlets
     @IBOutlet weak var profileImage: UIButton!
+    @IBOutlet weak var bioButton: UIButton!
+    @IBOutlet weak var bioTextField: UITextField!
+    
+    @IBAction func bioButtonTapped(_ sender: Any) {
+        bioButton.setTitle("My Updated Bio", for: .normal)
+    }
     @IBAction func profileImageTapped(_ sender: Any) {
-        
         photoHelper.completionHandler =  { image in
             //make unique identifier for image
             let photoid = Auth.auth().currentUser!.uid
@@ -39,7 +55,6 @@ class ProfileViewController: UIViewController {
                 print("image URL: \(urlString)")
                 let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
                 changeRequest?.photoURL = URL(string: urlString)
-                
                 self.profileImage.sd_setImage(with: user?.photoURL, for: self.state, completed: nil)
                 changeRequest?.commitChanges { (error) in
                 }
@@ -47,27 +62,24 @@ class ProfileViewController: UIViewController {
         }
         photoHelper.presentActionSheet(from: self)
     }
+         
     
-    let eventService = EventService.sharedInstance
-    let photoHelper = PhotoHelper()
-    var uuid = ""
-    var state : UIControl.State = []
-    // Get a reference to the storage service using the default Firebase App
-    let storage = Storage.storage()
-
-    // Create a storage reference from our storage service
-    let storageRef = Storage.storage().reference()
-    //let eventArray = EventArray.sharedInstance
     
-       
-
     override func viewDidLoad() {
         super.viewDidLoad()
         let user = Auth.auth().currentUser
         profileImage.sd_setImage(with: user?.photoURL, for: state, completed: nil)
         profileImage.imageView?.makeRounded(_cornerRadius: profileImage.frame.height)
-        let currImageRef = Storage.storage().reference().child(Auth.auth().currentUser!.uid+".jpg")
-        print(currImageRef)
+        bioButton.setTitle("Changed my Bio!", for: .normal)
+        let db = Firestore.firestore()
+        let curUser = db.collection("users").document(Auth.auth().currentUser!.uid)
+        curUser.getDocument { (document, error) in
+            if let document = document, document.exists {
+                self.bioTextField.text = document.get("bio") as? String
+            } else {
+                print("User does not exist")
+            }
+        }
     }
     
     //TODO: set user as not logged in...?
