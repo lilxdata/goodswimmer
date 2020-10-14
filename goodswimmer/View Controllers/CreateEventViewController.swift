@@ -93,6 +93,7 @@ class CreateEventViewController: UIViewController {
             self.eventService.uploadImage(for: image, id: self.uuid, name:Auth.auth().currentUser!.displayName!+Utilities.cleanData(self.titleField))
         }
         photoHelper.presentActionSheet(from: self)
+        
     }
     
     @IBAction func createEventTapped(_ sender: Any) {
@@ -200,7 +201,8 @@ class CreateEventViewController: UIViewController {
             "address1": address1,
             "address2": address2,
             "address3": address3,
-            "username": username
+            "username": username,
+            "featured": false
         ] as [String : Any]
         
         self.eventService.createEvent(dictionary: eventDict, uuid: self.uuid)

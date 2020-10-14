@@ -113,10 +113,10 @@ class Utilities {
         if let text = bar.value(forKey: "searchField") as? UITextField {
                 text.textColor = UIColor.white
             }
-        
-        let placeholder = bar.placeholder as? UITextField
-        placeholder?.textColor = UIColor.white
-        
+                
+//        let placeholder = bar.placeholder as? UITextField
+//        placeholder?.textColor = UIColor.white
+//
 
     }
 }

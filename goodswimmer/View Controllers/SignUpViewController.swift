@@ -10,8 +10,9 @@ import UIKit
 import FirebaseAuth
 import Firebase
 import FirebaseFirestoreSwift
+import GooglePlaces
 
-class SignUpViewController: UIViewController {
+class SignUpViewController: UIViewController, GMSAutocompleteViewControllerDelegate {
     
     @IBOutlet weak var userNameField: UITextField!
     @IBOutlet weak var userNameLabel: UILabel!
@@ -30,11 +31,17 @@ class SignUpViewController: UIViewController {
     
     @IBOutlet weak var errorLabel: UILabel!
     
+    var cityId = ""
+    var city = ""
+    var coordinate: CLLocationCoordinate2D?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setUpElements()
         // Do any additional setup after loading the view.
+        
+        locationField.addTarget(self, action: #selector(cityTapped), for: .touchDown)
     }
     
     // TO DO: extract method
@@ -98,6 +105,15 @@ class SignUpViewController: UIViewController {
         return nil //all good
         
         
+    }
+    
+    
+    @objc func cityTapped() {
+        //create autocomplete controller
+        print("city func tapped")
+        let autoCompleteController = GMSAutocompleteViewController()
+        autoCompleteController.delegate = self
+        self.present(autoCompleteController, animated: true, completion: nil)
     }
     
     
@@ -216,10 +232,31 @@ class SignUpViewController: UIViewController {
         Utilities.styleError(errorLabel)
     }
     
+    func viewController(_ viewController: GMSAutocompleteViewController, didAutocompleteWith place: GMSPlace) {
+        print("in did autocomplete with, place name ", place.name)
+        print("place id", place.placeID)
+        print("chars", place.coordinate)
+        dismiss(animated: true, completion: nil)
+        cityId = place.placeID ?? ""
+        city = place.name ?? ""
+        coordinate = place.coordinate
+        locationField.text = city
+    }
+    
+    func viewController(_ viewController: GMSAutocompleteViewController, didFailAutocompleteWithError error: Error) {
+        print("error in city autocomplete: ", error.localizedDescription)
+    }
+    
+    func wasCancelled(_ viewController: GMSAutocompleteViewController) {
+        dismiss(animated: true, completion: nil)
+    }
+    
     func transitionToHome() {
         guard let tabVC = Navigation.sharedInstance.goHome() else {
             return
         }
         present(tabVC, animated: true)
     }
+    
+    
 }

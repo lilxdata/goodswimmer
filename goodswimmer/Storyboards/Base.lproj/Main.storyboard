@@ -845,6 +845,7 @@
                     <tabBarItem key="tabBarItem" title="" image="magnifyingglass" catalog="system" id="smk-at-ehN"/>
                     <connections>
                         <outlet property="featuredLabel" destination="OG7-be-SY3" id="F4K-L7-pCg"/>
+                        <outlet property="mapView" destination="C6B-kL-8Nq" id="QIv-tF-LD8"/>
                         <outlet property="searchContainerView" destination="ajG-bV-5Ef" id="Xwp-Ug-EmP"/>
                     </connections>
                 </viewController>

@@ -7,11 +7,13 @@
 //
 
 import UIKit
+import MapKit
 
 class SearchViewController: UIViewController {
     var searchController: UISearchController!
     
     @IBOutlet weak var featuredLabel: UILabel!
+    @IBOutlet weak var mapView: MKMapView!
     
     //access to eventarray across app
     let eventArray = EventArray.sharedInstance
@@ -30,6 +32,15 @@ class SearchViewController: UIViewController {
         searchController.searchBar.placeholder = Constants.Placeholders.placeholderSearch
         
         setUpElements()
+        
+        //replace with coordinate from FB
+        let coordinate = CLLocationCoordinate2D(latitude: 39.928848, longitude: -75.154107)
+        
+        let regionRadius: CLLocationDistance = 2000
+        
+        let coordinateRegion = MKCoordinateRegion(center: coordinate, latitudinalMeters: regionRadius, longitudinalMeters: regionRadius)
+        mapView.setRegion(coordinateRegion, animated: true)
+        
     }
     
     func filterEvents(_ searchTerm: String){

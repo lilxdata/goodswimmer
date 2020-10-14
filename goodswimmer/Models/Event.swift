@@ -25,6 +25,7 @@ struct Event {
     var time: String?
     var userId: String? //todo
     var attendees: [Attendee]?
+    var featured: Bool?
     
     init?(eventDict: [String: Any]) {
         let name = eventDict["name"] as? String
@@ -33,6 +34,7 @@ struct Event {
         let description = eventDict["description"] as? String
         let startDate = eventDict["start_date"] as? Timestamp
         let endDate = eventDict["end_date"] as? Timestamp
+        let featured = eventDict["featured"] as? Bool ?? false
 
         self.username = username
         self.name = name
@@ -41,5 +43,6 @@ struct Event {
         self.endDate = endDate
         self.description = description
         self.startDate = startDate
+        self.featured = featured
     }
 }
