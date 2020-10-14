@@ -754,18 +754,34 @@
                                     <action selector="profileImageTapped:" destination="b6l-6S-5dU" eventType="touchUpInside" id="hex-cK-Ont"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jHG-Le-eeo">
+                                <rect key="frame" x="120" y="44" width="274" height="131"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="bioButtonTapped:" destination="b6l-6S-5dU" eventType="touchUpInside" id="FdR-AG-tL4"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Enter Bio Here" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4ib-z1-lOg">
+                                <rect key="frame" x="120" y="176" width="274" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="haP-qg-lo7"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="bar-profile" id="RKn-TJ-FCr"/>
                     <connections>
+                        <outlet property="bioButton" destination="jHG-Le-eeo" id="MSK-fs-2Ty"/>
+                        <outlet property="bioTextField" destination="4ib-z1-lOg" id="M5E-CO-1UU"/>
                         <outlet property="profileImage" destination="IBa-bW-DKN" id="49u-OA-HYp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sfN-Ij-DSQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="433" y="2003"/>
+            <point key="canvasLocation" x="431.8840579710145" y="2002.9017857142856"/>
         </scene>
         <!--Search View Controller-->
         <scene sceneID="l1E-EC-Egp">

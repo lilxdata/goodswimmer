@@ -88,8 +88,9 @@ class CreateEventViewController: UIViewController {
     }
     
     @IBAction func addImageTapped(_ sender: Any) {
+        print(Auth.auth().currentUser!.displayName!)
         photoHelper.completionHandler =  { image in
-            self.eventService.uploadImage(for: image, id: self.uuid)
+            self.eventService.uploadImage(for: image, id: self.uuid, name:Auth.auth().currentUser!.displayName!+Utilities.cleanData(self.titleField))
         }
         photoHelper.presentActionSheet(from: self)
     }

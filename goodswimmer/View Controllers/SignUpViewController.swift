@@ -129,12 +129,27 @@ class SignUpViewController: UIViewController {
                 if err != nil {
                     self.showError("Error creating user")
                 } else {
+                    //This is the create user functionality, could benefit from a userService class
+                    let userDict = [
+                        "username":  username,
+                        "userId": result?.user.uid,
+                        "following": [String](),
+                        "followers": [String](),
+                        "bio": ""
+                    ] as [String : Any]
+                    let db = Firestore.firestore()
+                    db.collection("users").document((result?.user.uid)!).setData(userDict, merge: true) { err in
+                        if let err = err {
+                            print("Error")
+                        } else {
+                            print("Document successfully written!")  // user created success pop up
+                        }
+                    }
                     //can also use CR for profile pic
                     let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
                     
                     //TODO: set email and prof pic etc
                     changeRequest?.displayName = username
-                    
                     // Create a storage reference from our storage service
                     let storageRef = Storage.storage().reference()
                     // Create a reference to stock photo in firebase
@@ -165,9 +180,10 @@ class SignUpViewController: UIViewController {
                             self.transitionToHome()
                         }
                     }
-                    
                     }
                 }
+                
+
             }
         }
     }
