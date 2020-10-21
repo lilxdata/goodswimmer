@@ -46,6 +46,7 @@
 		04EB0E0424327BB200B532F8 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EB0E0324327BB200B532F8 /* LoginViewController.swift */; };
 		04EB0E0624327BBD00B532F8 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EB0E0524327BBD00B532F8 /* HomeViewController.swift */; };
 		64870E85F93983CEBB9B319F /* Pods_goodswimmer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D09BF077A0B42778B27167B /* Pods_goodswimmer.framework */; };
+		86915C8725400869002BE724 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86915C8625400869002BE724 /* UserService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -90,6 +91,7 @@
 		04EB0E0324327BB200B532F8 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		04EB0E0524327BBD00B532F8 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		3D09BF077A0B42778B27167B /* Pods_goodswimmer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_goodswimmer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		86915C8625400869002BE724 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		955F4AAD75B92758752A5789 /* Pods-goodswimmer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-goodswimmer.debug.xcconfig"; path = "Target Support Files/Pods-goodswimmer/Pods-goodswimmer.debug.xcconfig"; sourceTree = "<group>"; };
 		99587D227CCE06C5BA0C26EE /* Pods-goodswimmer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-goodswimmer.release.xcconfig"; path = "Target Support Files/Pods-goodswimmer/Pods-goodswimmer.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -133,6 +135,7 @@
 			isa = PBXGroup;
 			children = (
 				04CFB70324CF36EF00DDCB75 /* EventService.swift */,
+				86915C8625400869002BE724 /* UserService.swift */,
 				04CFB70524CF372D00DDCB75 /* StorageService.swift */,
 				04CFB70724CF374300DDCB75 /* LocalStorageService.swift */,
 			);
@@ -359,6 +362,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				86915C8725400869002BE724 /* UserService.swift in Sources */,
 				04EB0DF224327B5000B532F8 /* ViewController.swift in Sources */,
 				04CFB70624CF372D00DDCB75 /* StorageService.swift in Sources */,
 				044A54D424CB7C5B001FABA9 /* Navigation.swift in Sources */,

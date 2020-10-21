@@ -15,6 +15,7 @@ import FirebaseStorage
 
 class ProfileViewController: UIViewController {
     let eventService = EventService.sharedInstance
+    let userService = UserService.sharedInstance
     let photoHelper = PhotoHelper()
     var uuid = ""
     var state : UIControl.State = []
@@ -29,9 +30,12 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var profileImage: UIButton!
     @IBOutlet weak var bioButton: UIButton!
     @IBOutlet weak var bioTextField: UITextField!
+    @IBOutlet weak var bioLabel: UILabel!
     
     @IBAction func bioButtonTapped(_ sender: Any) {
-        bioButton.setTitle("My Updated Bio", for: .normal)
+        self.bioLabel.text = self.bioTextField.text
+        let db = Firestore.firestore()
+        db.collection("users").document(Auth.auth().currentUser!.uid).updateData(["bio" : self.bioTextField.text!])
     }
     @IBAction func profileImageTapped(_ sender: Any) {
         photoHelper.completionHandler =  { image in
@@ -71,13 +75,16 @@ class ProfileViewController: UIViewController {
         profileImage.sd_setImage(with: user?.photoURL, for: state, completed: nil)
         profileImage.imageView?.makeRounded(_cornerRadius: profileImage.frame.height)
         bioButton.setTitle("Changed my Bio!", for: .normal)
+        self.bioTextField.text = self.userService.getCurrentBio()
+        
         let db = Firestore.firestore()
         let curUser = db.collection("users").document(Auth.auth().currentUser!.uid)
         curUser.getDocument { (document, error) in
             if let document = document, document.exists {
-                self.bioTextField.text = document.get("bio") as? String
+                self.bioTextField.text = document.get("bio") as? String ?? "Error retreiving bio"
+                self.bioLabel.text = document.get("bio") as? String ?? "Error retreiving bio"
             } else {
-                print("User does not exist")
+                print("Error retreiving bio")
             }
         }
     }
