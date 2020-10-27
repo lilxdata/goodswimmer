@@ -33,9 +33,19 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var bioLabel: UILabel!
     
     @IBAction func bioButtonTapped(_ sender: Any) {
-        self.bioLabel.text = self.bioTextField.text
-        let db = Firestore.firestore()
-        db.collection("users").document(Auth.auth().currentUser!.uid).updateData(["bio" : self.bioTextField.text!])
+        if(self.bioButton.currentTitle == "Update Bio!"){
+            self.bioTextField.isHidden = false
+            self.bioTextField.text = "Enter your new bio here!"
+            self.bioButton.setTitle("Save changes?", for: state)
+        }
+        else{
+            self.bioLabel.text = self.bioTextField.text
+            let db = Firestore.firestore()
+            db.collection("users").document(Auth.auth().currentUser!.uid).updateData(["bio" : self.bioTextField.text!])
+            self.bioTextField.text = ""
+            self.bioTextField.isHidden = true
+            self.bioButton.setTitle("Update Bio!", for: state)
+        }
     }
     @IBAction func profileImageTapped(_ sender: Any) {
         photoHelper.completionHandler =  { image in
@@ -43,13 +53,27 @@ class ProfileViewController: UIViewController {
             let photoid = Auth.auth().currentUser!.uid
             let imageRef = Storage.storage().reference().child(photoid+".jpg")
             let user = Auth.auth().currentUser
-            //Removes image from storage
-            imageRef.delete { error in
-                if let error = error {
-                    print(error)
-                } else {
-                    print("Removed old profile picture, adding uploaded image")
+            let stockPhotoRef = Storage.storage().reference().child("goodswimmer stock profile.png")
+            // Fetch the download URL
+            stockPhotoRef.downloadURL { stock_url, error in
+              if let error = error {
+                // Handle any errors
+                print("Error retreiving stock photo:",error)
+              } else {
+                //Removes image from storage
+                if(stock_url != user?.photoURL){
+                    imageRef.delete { error in
+                        if let error = error {
+                            print(error)
+                        } else {
+                            print("Removed old profile picture, adding uploaded image")
+                        }
+                    }
                 }
+                else {
+                    print("Updating from stock photo")
+                }
+              }
             }
             StorageService.uploadImage(image, at: imageRef) { (downloadURL) in
                 guard let downloadURL = downloadURL else {
@@ -74,19 +98,17 @@ class ProfileViewController: UIViewController {
         let user = Auth.auth().currentUser
         profileImage.sd_setImage(with: user?.photoURL, for: state, completed: nil)
         profileImage.imageView?.makeRounded(_cornerRadius: profileImage.frame.height)
-        bioButton.setTitle("Changed my Bio!", for: .normal)
-        self.bioTextField.text = self.userService.getCurrentBio()
-        
+        self.bioTextField.isHidden = true
         let db = Firestore.firestore()
         let curUser = db.collection("users").document(Auth.auth().currentUser!.uid)
         curUser.getDocument { (document, error) in
             if let document = document, document.exists {
-                self.bioTextField.text = document.get("bio") as? String ?? "Error retreiving bio"
                 self.bioLabel.text = document.get("bio") as? String ?? "Error retreiving bio"
             } else {
                 print("Error retreiving bio")
             }
         }
+       
     }
     
     //TODO: set user as not logged in...?
@@ -107,7 +129,6 @@ class ProfileViewController: UIViewController {
         let loginViewController = loginSB.instantiateViewController(withIdentifier: Constants.Storyboard.loginViewController)
         
         loginViewController.modalPresentationStyle = .fullScreen
-        
         present(loginViewController, animated: true, completion: nil)
     }
     
