@@ -28,7 +28,7 @@ class LocalStorageService {
             return nil
         }
         
-        let user = User(username: username, userId: userId, following: [], followers: [])
+        let user = User(username: username, userId: userId, following: [], followers: [], events: [])
         return user
     }
     

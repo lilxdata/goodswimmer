@@ -46,6 +46,7 @@
 		04EB0E0424327BB200B532F8 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EB0E0324327BB200B532F8 /* LoginViewController.swift */; };
 		04EB0E0624327BBD00B532F8 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EB0E0524327BBD00B532F8 /* HomeViewController.swift */; };
 		64870E85F93983CEBB9B319F /* Pods_goodswimmer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D09BF077A0B42778B27167B /* Pods_goodswimmer.framework */; };
+		86908789254F8E3A00E3ED49 /* myEventsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86908788254F8E3A00E3ED49 /* myEventsCell.swift */; };
 		86915C8725400869002BE724 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86915C8625400869002BE724 /* UserService.swift */; };
 /* End PBXBuildFile section */
 
@@ -91,6 +92,7 @@
 		04EB0E0324327BB200B532F8 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		04EB0E0524327BBD00B532F8 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		3D09BF077A0B42778B27167B /* Pods_goodswimmer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_goodswimmer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		86908788254F8E3A00E3ED49 /* myEventsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = myEventsCell.swift; sourceTree = "<group>"; };
 		86915C8625400869002BE724 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		955F4AAD75B92758752A5789 /* Pods-goodswimmer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-goodswimmer.debug.xcconfig"; path = "Target Support Files/Pods-goodswimmer/Pods-goodswimmer.debug.xcconfig"; sourceTree = "<group>"; };
 		99587D227CCE06C5BA0C26EE /* Pods-goodswimmer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-goodswimmer.release.xcconfig"; path = "Target Support Files/Pods-goodswimmer/Pods-goodswimmer.release.xcconfig"; sourceTree = "<group>"; };
@@ -127,6 +129,7 @@
 				04B7505124DB68BF00DE4B98 /* EventArray.swift */,
 				046E1C7C252E5B07004D7A4D /* Attendee.swift */,
 				046E1C7F252E60DF004D7A4D /* AttendeeCell.swift */,
+				86908788254F8E3A00E3ED49 /* myEventsCell.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -387,6 +390,7 @@
 				04B33993251BED7B00E9B8E0 /* FirestoreHelper.swift in Sources */,
 				046E1C7D252E5B07004D7A4D /* Attendee.swift in Sources */,
 				04B7505224DB68BF00DE4B98 /* EventArray.swift in Sources */,
+				86908789254F8E3A00E3ED49 /* myEventsCell.swift in Sources */,
 				047CF3DD2493ED1A002ADFE8 /* EventCell.swift in Sources */,
 				04BB10F9244CFD4D00BFF9A2 /* Constants.swift in Sources */,
 				0401729B246CEA4000297ECA /* CreateEventViewController.swift in Sources */,

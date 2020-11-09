@@ -11,14 +11,19 @@ import FirebaseFirestore
 import FirebaseFirestoreSwift
 import FirebaseAuth
 import FirebaseStorage
+import FSCalendar
 
 
-class ProfileViewController: UIViewController {
+class ProfileViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource {
     let eventService = EventService.sharedInstance
     let userService = UserService.sharedInstance
     let photoHelper = PhotoHelper()
+    //access to eventarray across app
+    let eventArray = EventArray.sharedInstance
+    var myEventsArr = [" "]
     var uuid = ""
     var state : UIControl.State = []
+    
     
     // Get a reference to the storage service using the default Firebase App
     let storage = Storage.storage()
@@ -27,10 +32,13 @@ class ProfileViewController: UIViewController {
     let storageRef = Storage.storage().reference()
     
     //Outlets
+    @IBOutlet weak var eventsToAttend: UICollectionView!
     @IBOutlet weak var profileImage: UIButton!
     @IBOutlet weak var bioButton: UIButton!
     @IBOutlet weak var bioTextField: UITextField!
     @IBOutlet weak var bioLabel: UILabel!
+    @IBOutlet weak var calendar: FSCalendar!
+    
     
     @IBAction func bioButtonTapped(_ sender: Any) {
         if(self.bioButton.currentTitle == "Update Bio!"){
@@ -104,11 +112,16 @@ class ProfileViewController: UIViewController {
         curUser.getDocument { (document, error) in
             if let document = document, document.exists {
                 self.bioLabel.text = document.get("bio") as? String ?? "Error retreiving bio"
+                self.myEventsArr = document.get("events") as! [String]
+                self.calendar.reloadData()
             } else {
                 print("Error retreiving bio")
             }
         }
-       
+        
+        calendar.delegate = self
+        calendar.dataSource = self
+        
     }
     
     //TODO: set user as not logged in...?
@@ -131,8 +144,64 @@ class ProfileViewController: UIViewController {
         loginViewController.modalPresentationStyle = .fullScreen
         present(loginViewController, animated: true, completion: nil)
     }
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+     //   return selectedEvent?.attendees?.count ?? 0 //number of attendees
+        return 3
+    }
     
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        //let attendee = selectedEvent?.attendees?[indexPath.item]
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "myEventsCell", for: indexPath) as? myEventsCell else {
+            return UICollectionViewCell()
+        }
+        
+        //cell.myEventsT
+            //.attendeeToDisplay = attendee
+        return cell
+        
+        
+    }
     
+    func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "EEEE MM-dd-YYYY"
+        let dateString = formatter.string(from: date)
+        print("Selected", dateString)
+        print("Today's Events are: ")
+        for event in eventArray.events{
+            var eventDate = event.startDate?.dateValue()
+            var eventDateString = formatter.string(from: eventDate!)
+            if(eventDateString == dateString && self.myEventsArr.contains(event.name!)){
+                print(event)
+            }
+        }
+    }
+    
+
+    fileprivate lazy var dateFormatter2: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        return formatter
+    }()
+
+    func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
+        let dateString = self.dateFormatter2.string(from: date)
+        var eventCount = 0
+        for event in eventArray.events{
+            var eventDate = event.startDate?.dateValue()
+            var eventDateString = self.dateFormatter2.string(from: eventDate!)
+            if eventDateString.contains(dateString) && self.myEventsArr.contains(event.name!) {
+                eventCount = eventCount + 1
+            }
+        }
+        return eventCount
+    }
+    
+    func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, eventDefaultColorsFor date: Date) -> [UIColor]? {
+        print("TODO:")
+        return [UIColor.green]
+    }
 }
 
 

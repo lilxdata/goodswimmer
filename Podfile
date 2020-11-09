@@ -14,4 +14,5 @@ target 'goodswimmer' do
   pod 'Firebase/Storage'
   pod 'Firebase/Database'
   pod 'SDWebImage'
+  pod 'FSCalendar'
 end
