@@ -15,8 +15,8 @@ import FSCalendar
 
 
 class ProfileViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource {
-    let eventService = EventService.sharedInstance
-    let userService = UserService.sharedInstance
+    let eventService = EventService()
+    //let userService = UserService()
     let photoHelper = PhotoHelper()
     //access to eventarray across app
     let eventArray = EventArray.sharedInstance
@@ -152,13 +152,13 @@ class ProfileViewController: UIViewController, FSCalendarDelegate, FSCalendarDat
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         //let attendee = selectedEvent?.attendees?[indexPath.item]
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "myEventsCell", for: indexPath) as? myEventsCell else {
+        //guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "myEventsCell", for: indexPath) as? myEventsCell else {
             return UICollectionViewCell()
-        }
+        //}
         
         //cell.myEventsT
             //.attendeeToDisplay = attendee
-        return cell
+        //return cell
         
         
     }

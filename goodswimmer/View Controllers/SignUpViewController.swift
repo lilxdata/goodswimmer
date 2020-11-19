@@ -30,7 +30,7 @@ class SignUpViewController: UIViewController {
     
     @IBOutlet weak var errorLabel: UILabel!
     
-    let userService = UserService.sharedInstance
+    //let userService = UserService.sharedInstance
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -131,7 +131,7 @@ class SignUpViewController: UIViewController {
                 if err != nil {
                     self.showError("Error creating user")
                 } else {
-                    self.userService.createFirestoreUser(username: username, userID: (result?.user.uid)!)
+                    //self.userService.createFirestoreUser(username: username, userID: (result?.user.uid)!)
                     //can also use CR for profile pic
                     let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
                     
