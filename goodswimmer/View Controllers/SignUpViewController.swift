@@ -30,8 +30,6 @@ class SignUpViewController: UIViewController {
     
     @IBOutlet weak var errorLabel: UILabel!
     
-    //let userService = UserService.sharedInstance
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -131,7 +129,22 @@ class SignUpViewController: UIViewController {
                 if err != nil {
                     self.showError("Error creating user")
                 } else {
-                    //self.userService.createFirestoreUser(username: username, userID: (result?.user.uid)!)
+                    //This is the create user functionality, could benefit from a userService class
+                    let userDict = [
+                        "username":  username,
+                        "userId": result?.user.uid,
+                        "following": [String](),
+                        "followers": [String](),
+                        "bio": ""
+                    ] as [String : Any]
+                    let db = Firestore.firestore()
+                    db.collection("users").document((result?.user.uid)!).setData(userDict, merge: true) { err in
+                        if let err = err {
+                            print("Error")
+                        } else {
+                            print("Document successfully written!")  // user created success pop up
+                        }
+                    }
                     //can also use CR for profile pic
                     let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
                     
