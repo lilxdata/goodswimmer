@@ -254,6 +254,7 @@
 				04EB0DE724327B5000B532F8 /* Frameworks */,
 				04EB0DE824327B5000B532F8 /* Resources */,
 				AD5D0F4700172B863DD93ECB /* [CP] Embed Pods Frameworks */,
+				B2ACACBBB160A416F9B6A607 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -356,6 +357,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-goodswimmer/Pods-goodswimmer-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B2ACACBBB160A416F9B6A607 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-goodswimmer/Pods-goodswimmer-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-goodswimmer/Pods-goodswimmer-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-goodswimmer/Pods-goodswimmer-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
