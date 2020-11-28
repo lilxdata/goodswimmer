@@ -254,7 +254,7 @@
 				04EB0DE724327B5000B532F8 /* Frameworks */,
 				04EB0DE824327B5000B532F8 /* Resources */,
 				AD5D0F4700172B863DD93ECB /* [CP] Embed Pods Frameworks */,
-				B2ACACBBB160A416F9B6A607 /* [CP] Copy Pods Resources */,
+				B353FE12D8361920037C6052 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -359,7 +359,7 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-goodswimmer/Pods-goodswimmer-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		B2ACACBBB160A416F9B6A607 /* [CP] Copy Pods Resources */ = {
+		B353FE12D8361920037C6052 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (

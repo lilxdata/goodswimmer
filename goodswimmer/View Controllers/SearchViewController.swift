@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MapKit
 
 class SearchViewController: UIViewController {
     var searchController: UISearchController!
@@ -16,6 +17,8 @@ class SearchViewController: UIViewController {
     let eventService = EventService()
     
     @IBOutlet var searchContainerView: UIView!    
+    @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var featuredLabel: UILabel!
     
     
     override func viewDidLoad() {
@@ -27,6 +30,18 @@ class SearchViewController: UIViewController {
         searchContainerView.addSubview(searchController.searchBar)
         searchController.searchBar.delegate = self
         searchController.searchBar.placeholder = "Event Filter"
+        
+        
+        //Map Stuff
+        setUpElements()
+        
+        //replace with coordinate from FB
+        let coordinate = CLLocationCoordinate2D(latitude: 39.928848, longitude: -75.154107)
+        
+        let regionRadius: CLLocationDistance = 2000
+        
+        let coordinateRegion = MKCoordinateRegion(center: coordinate, latitudinalMeters: regionRadius, longitudinalMeters: regionRadius)
+        mapView.setRegion(coordinateRegion, animated: true)
         
     }
     
@@ -83,14 +98,15 @@ class SearchViewController: UIViewController {
         }
         return dp[m][n]
     }
-    
-    @IBAction func filterButtonPress(_ sender: Any) {
-        print("I am using the button")
-        print("I am testing edit distance")
-        let editDistance = editDis(X:"AGGTAB",Y: "GXTXAYB")
-        print("edit Distance expected is 4, editDistance is ",editDistance)
+    func setUpElements() {
+        //Utilities.customizeSearchBar(searchController)
+        Utilities.styleLabel(featuredLabel, size: 12, uppercase: true)
+        print("wow")
     }
+
+
 }
+
 
 extension SearchViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
