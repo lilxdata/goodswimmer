@@ -99,7 +99,7 @@ class SearchViewController: UIViewController {
         return dp[m][n]
     }
     func setUpElements() {
-        //Utilities.customizeSearchBar(searchController)
+        Utilities.customizeSearchBar(searchController)
         Utilities.styleLabel(featuredLabel, size: 12, uppercase: true)
         print("wow")
     }

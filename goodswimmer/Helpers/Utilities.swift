@@ -100,6 +100,25 @@ class Utilities {
         }
         return false
     }
+    
+    static func customizeSearchBar(_ controller: UISearchController){
+        
+        let bar = controller.searchBar
+       // bar.barStyle = .black
+        bar.barTintColor = UIColor.red
+        bar.tintColor = UIColor.white
+        
+//        UITextField.appearance().defaultTextAttributes = [NSAttributedString.Key.foregroundColor.rawValue: UIColor.white]
+        
+        if let text = bar.value(forKey: "searchField") as? UITextField {
+                text.textColor = UIColor.white
+            }
+                
+//        let placeholder = bar.placeholder as? UITextField
+//        placeholder?.textColor = UIColor.white
+//
+
+    }
 }
 
 extension UIImageView {
