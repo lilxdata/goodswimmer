@@ -25,6 +25,8 @@ struct Event {
     var time: String?
     var userId: String? //todo
     var attendees: [Attendee]?
+    private let accessibilityQs: [String]?
+    var accessibilityAs: [Bool]?
     
     init?(eventDict: [String: Any]) {
         let name = eventDict["name"] as? String
@@ -33,13 +35,18 @@ struct Event {
         let description = eventDict["description"] as? String
         let startDate = eventDict["start_date"] as? Timestamp
         let endDate = eventDict["end_date"] as? Timestamp
-
+        let address = eventDict["address"] as? String
+        
+        
         self.username = username
         self.name = name
         self.venue = venue
+        self.address = address
         self.photoURL = eventDict["photoURL"] as? String
         self.endDate = endDate
         self.description = description
         self.startDate = startDate
+        self.accessibilityQs = ["Wheelchair Ramp?", "Elevator?"] //TODO: Ask Justin if he wants any more than this? Implement with checkboxes
+        self.accessibilityAs = [false, false]
     }
 }
