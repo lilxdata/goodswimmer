@@ -837,7 +837,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Woodstock Festival" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gi7-si-5SB">
-                                <rect key="frame" x="133" y="362" width="149" height="112"/>
+                                <rect key="frame" x="20" y="362" width="374" height="112"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -851,6 +851,7 @@
                     <connections>
                         <outlet property="featuredLabel" destination="fAF-m4-qQK" id="5J8-5T-qNm"/>
                         <outlet property="mapView" destination="SA0-Jl-CnG" id="Rbs-q8-wlj"/>
+                        <outlet property="mappedEvent" destination="gi7-si-5SB" id="F5K-EE-Ach"/>
                         <outlet property="searchContainerView" destination="ajG-bV-5Ef" id="Xwp-Ug-EmP"/>
                     </connections>
                 </viewController>
