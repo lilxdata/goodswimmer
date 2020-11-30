@@ -197,6 +197,7 @@ class CreateEventViewController: UIViewController {
             "start_date": Timestamp.init(date: startDate),
             "end_date": Timestamp.init(date: endDate),
             // TODO: change this date_end name to "time" and add date_end and time_end fields
+            "address" : "",
             "address1": address1,
             "address2": address2,
             "address3": address3,
