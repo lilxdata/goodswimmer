@@ -74,7 +74,6 @@ class SearchViewController: UIViewController {
             formatter.dateFormat = "MM-dd-YYYY"
             let date = topEvent?.startDate?.dateValue()
             let dateString = formatter.string(from: date ?? NSDate() as Date)
-            print("Selected", dateString)
             self.mappedEvent.text = eventName + "\n"  + eventAddr + "\n" + dateString
             
         }

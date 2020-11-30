@@ -14,7 +14,8 @@ import FirebaseStorage
 import FSCalendar
 
 
-class ProfileViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource {
+class ProfileViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource, UICollectionViewDelegate,
+                             UICollectionViewDataSource  {
     let eventService = EventService()
     //let userService = UserService()
     let photoHelper = PhotoHelper()
@@ -38,6 +39,9 @@ class ProfileViewController: UIViewController, FSCalendarDelegate, FSCalendarDat
     @IBOutlet weak var bioTextField: UITextField!
     @IBOutlet weak var bioLabel: UILabel!
     @IBOutlet weak var calendar: FSCalendar!
+    @IBOutlet weak var eventsAttendingCV: UICollectionView!
+    
+    
     
     
     @IBAction func bioButtonTapped(_ sender: Any) {
@@ -101,8 +105,14 @@ class ProfileViewController: UIViewController, FSCalendarDelegate, FSCalendarDat
          
     
     
+    func setUpElements() {
+        //Utilities.styleButton(bioButton)
+        Utilities.styleLabel(bioLabel, size: 12, uppercase: true)
+        bioLabel.numberOfLines = 5
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
+        setUpElements()
         let user = Auth.auth().currentUser
         print(user?.photoURL)
         profileImage.sd_setImage(with: user?.photoURL, for: state, completed: nil)
@@ -122,7 +132,8 @@ class ProfileViewController: UIViewController, FSCalendarDelegate, FSCalendarDat
         
         calendar.delegate = self
         calendar.dataSource = self
-        
+        //eventsAttendingCV.delegate = self
+        //eventsAttendingCV.dataSource = self
     }
     
     //TODO: set user as not logged in...?
