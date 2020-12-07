@@ -820,24 +820,79 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ajG-bV-5Ef">
-                                <rect key="frame" x="0.0" y="44" width="414" height="55"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" systemColor="systemYellowColor"/>
-                            </view>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="SA0-Jl-CnG">
-                                <rect key="frame" x="20" y="142" width="374" height="219"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </mapView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="GKq-CE-kMc">
+                                <rect key="frame" x="0.0" y="35" width="414" height="700"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ajG-bV-5Ef">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
+                                        <color key="backgroundColor" systemColor="systemYellowColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="WZS-e2-sOn"/>
+                                        </constraints>
+                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="fill" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sde-6a-uNs">
+                                        <rect key="frame" x="0.0" y="50" width="414" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="mrM-no-dbz"/>
+                                        </constraints>
+                                        <state key="normal" title="Button"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="fill" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GjA-6u-vQm" userLabel="Top Event Display">
+                                        <rect key="frame" x="0.0" y="100" width="414" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="y8l-Wm-Eg7"/>
+                                        </constraints>
+                                        <state key="normal" title="Button"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="fill" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W5m-aS-xuF" userLabel="Top List Display 1">
+                                        <rect key="frame" x="0.0" y="150" width="414" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="jIG-2r-Ujx"/>
+                                        </constraints>
+                                        <state key="normal" title="Button"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="fill" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zsT-sg-77h">
+                                        <rect key="frame" x="0.0" y="200" width="414" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="u6F-hE-Lfq"/>
+                                        </constraints>
+                                        <state key="normal" title="Button"/>
+                                    </button>
+                                    <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="SA0-Jl-CnG">
+                                        <rect key="frame" x="50" y="250" width="314" height="400"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="400" id="8cM-9Q-JyX"/>
+                                        </constraints>
+                                    </mapView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Woodstock Festival" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gi7-si-5SB">
+                                        <rect key="frame" x="0.0" y="650" width="414" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="fSp-m2-JpQ"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="GjA-6u-vQm" secondAttribute="trailing" id="04y-bB-JIw"/>
+                                    <constraint firstItem="W5m-aS-xuF" firstAttribute="leading" secondItem="GKq-CE-kMc" secondAttribute="leading" id="8Tm-Jj-DGN"/>
+                                    <constraint firstAttribute="trailing" secondItem="sde-6a-uNs" secondAttribute="trailing" id="9iK-Nd-GY9"/>
+                                    <constraint firstItem="gi7-si-5SB" firstAttribute="leading" secondItem="GKq-CE-kMc" secondAttribute="leading" id="A8Y-LQ-ET5"/>
+                                    <constraint firstItem="sde-6a-uNs" firstAttribute="leading" secondItem="GKq-CE-kMc" secondAttribute="leading" id="Kmq-XG-7tR"/>
+                                    <constraint firstItem="zsT-sg-77h" firstAttribute="leading" secondItem="GKq-CE-kMc" secondAttribute="leading" id="PT5-e7-2k8"/>
+                                    <constraint firstAttribute="trailing" secondItem="zsT-sg-77h" secondAttribute="trailing" id="TI0-Yz-WD1"/>
+                                    <constraint firstItem="ajG-bV-5Ef" firstAttribute="leading" secondItem="GKq-CE-kMc" secondAttribute="leading" id="Yr0-rV-t5E"/>
+                                    <constraint firstAttribute="trailing" secondItem="W5m-aS-xuF" secondAttribute="trailing" id="aWu-Pm-G3v"/>
+                                    <constraint firstItem="GjA-6u-vQm" firstAttribute="leading" secondItem="GKq-CE-kMc" secondAttribute="leading" id="mtW-VX-gFA"/>
+                                    <constraint firstAttribute="trailing" secondItem="SA0-Jl-CnG" secondAttribute="trailing" constant="50" id="pYR-XJ-5H8"/>
+                                    <constraint firstAttribute="trailing" secondItem="ajG-bV-5Ef" secondAttribute="trailing" id="q7y-sZ-a5I"/>
+                                    <constraint firstItem="SA0-Jl-CnG" firstAttribute="leading" secondItem="GKq-CE-kMc" secondAttribute="leading" constant="50" id="xxa-FS-Mgs"/>
+                                    <constraint firstAttribute="trailing" secondItem="gi7-si-5SB" secondAttribute="trailing" id="yFs-Hl-iXh"/>
+                                </constraints>
+                            </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Featured Event" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fAF-m4-qQK">
-                                <rect key="frame" x="153" y="516" width="115" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Woodstock Festival" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gi7-si-5SB">
-                                <rect key="frame" x="20" y="362" width="374" height="112"/>
+                                <rect key="frame" x="0.0" y="700" width="414" height="20.5"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -846,6 +901,11 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="A0H-xG-f4a"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="GKq-CE-kMc" firstAttribute="leading" secondItem="A0H-xG-f4a" secondAttribute="leading" id="bf5-Tj-WrG"/>
+                            <constraint firstItem="GKq-CE-kMc" firstAttribute="top" secondItem="egT-2n-K3r" secondAttribute="top" constant="35" id="enz-CP-Zx4"/>
+                            <constraint firstItem="GKq-CE-kMc" firstAttribute="trailing" secondItem="A0H-xG-f4a" secondAttribute="trailing" id="qD4-3d-Kia"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="magnifyingglass" catalog="system" id="smk-at-ehN"/>
                     <connections>
@@ -853,6 +913,11 @@
                         <outlet property="mapView" destination="SA0-Jl-CnG" id="Rbs-q8-wlj"/>
                         <outlet property="mappedEvent" destination="gi7-si-5SB" id="F5K-EE-Ach"/>
                         <outlet property="searchContainerView" destination="ajG-bV-5Ef" id="Xwp-Ug-EmP"/>
+                        <outlet property="searchStack" destination="GKq-CE-kMc" id="KIT-V6-PxQ"/>
+                        <outlet property="topEventDisplay" destination="GjA-6u-vQm" id="BB8-w4-8LZ"/>
+                        <outlet property="topListDisplay1" destination="W5m-aS-xuF" id="KVM-rw-N4b"/>
+                        <outlet property="topListDisplay2" destination="zsT-sg-77h" id="XCY-pA-yci"/>
+                        <outlet property="topUserDisplay" destination="sde-6a-uNs" id="mvN-Bf-f1Z"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wUT-r0-Gr0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

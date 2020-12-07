@@ -8,6 +8,7 @@
 
 import UIKit
 import MapKit
+import FirebaseFirestore
 
 class SearchViewController: UIViewController {
     var searchController: UISearchController!
@@ -16,10 +17,19 @@ class SearchViewController: UIViewController {
     let eventArray = EventArray.sharedInstance
     let eventService = EventService()
     
+    
+    
     @IBOutlet var searchContainerView: UIView!    
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var featuredLabel: UILabel!    
     @IBOutlet weak var mappedEvent: UILabel!
+    @IBOutlet weak var searchStack: UIStackView!
+    @IBOutlet weak var topUserDisplay: UIButton!
+    @IBOutlet weak var topEventDisplay: UIButton!
+    @IBOutlet weak var topListDisplay1: UIButton!
+    @IBOutlet weak var topListDisplay2: UIButton!
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,8 +47,33 @@ class SearchViewController: UIViewController {
         
         //Initialize Location with Woodstock Music Festival
         setMapLocation(address: "200 Hurd Rd, Swan Lake, NY 12783")
-
-        
+    }
+    
+    func searchForTopUser(_ searchTerm: String){
+        var topUserEditDistance = [2^32,2^32] //[Current,Previous]
+        var topUser = User(following: [""], followers: [""], events: [""])
+        let db = Firestore.firestore()
+        let users = db.collection("users")
+        //print("Am I being called?")
+        //print(searchTerm)
+        users.whereField("username", isEqualTo: searchTerm).getDocuments() { (querySnapshot, err) in
+            if let err = err {
+                print("Error getting users: \(err)")
+            } else {
+                for document in querySnapshot!.documents {
+                    print()
+                    //if(topUserEditDistance[0] < topUserEditDistance[1]) {
+                        //topUser = document.get(<#T##field: Any##Any#>)
+                    var userBio = document.get("bio") as? String ?? "No User Found"
+                    var userUsername = document.get("username") as? String ?? ""
+                    var topUserLabel = userUsername + "\n" + userBio
+                        self.topUserDisplay.setTitle(topUserLabel, for: .normal)
+                        print(self.topUserDisplay.title(for: .normal))
+                        topUserEditDistance[1] = topUserEditDistance[0]
+                    //}
+                }
+            }
+        }
         
     }
     
@@ -46,23 +81,15 @@ class SearchViewController: UIViewController {
         var topEventEditDistance = [2^32,2^32] //[Current,Previous]
         var topEvent = Event(eventDict: ["name": ""])
         for event in eventArray.events {
-            //If our searchTerm is really small then no need to preform edit distance
-            if(searchTerm.count < 3){
-                if(event.name?.contains(searchTerm) == true){
-                    print(event)
+            let name = event.name!.prefix(searchTerm.count)
+            topEventEditDistance[0] = editDis(X: (name).lowercased(), Y: searchTerm.lowercased())
+            if(topEventEditDistance[0] < 10){
+                if(topEventEditDistance[0] < topEventEditDistance[1]) {
+                    topEvent = event
+                    topEventEditDistance[1] = topEventEditDistance[0]
                 }
             }
-            else {
-                topEventEditDistance[0] = editDis(X: (event.name!).lowercased(), Y: searchTerm.lowercased())
-                if(topEventEditDistance[0] < 10){
-                    print(event)
-                    //print(event.address!)
-                    if(topEventEditDistance[0] < topEventEditDistance[1]) {
-                        topEvent = event
-                        topEventEditDistance[1] = topEventEditDistance[1]
-                    }
-                }
-            }
+            
         }
         if topEvent?.address != nil {
             self.setMapLocation(address: (topEvent?.address)!)
@@ -75,12 +102,14 @@ class SearchViewController: UIViewController {
             let date = topEvent?.startDate?.dateValue()
             let dateString = formatter.string(from: date ?? NSDate() as Date)
             self.mappedEvent.text = eventName + "\n"  + eventAddr + "\n" + dateString
+            var topEventLabel = eventName + "\n" + (topEvent?.description ?? "Event Description Missing")
+            topEventDisplay.setTitle(topEventLabel, for: .normal)
             
         }
     }
     
     func editDis(X :String, Y :String) -> Int{
-        print(X,Y)
+        //print(X,Y)
         //find the length of the strings
         let m = X.count
         let n = Y.count
@@ -123,6 +152,11 @@ class SearchViewController: UIViewController {
         Utilities.styleLabel(mappedEvent, size: 12, uppercase: true)
         mappedEvent.numberOfLines = 3
         mappedEvent.textAlignment = .center
+        topUserDisplay.titleLabel?.numberOfLines = 3
+        topEventDisplay.titleLabel?.numberOfLines = 3
+        topListDisplay1.titleLabel?.numberOfLines = 3
+        topListDisplay2.titleLabel?.numberOfLines = 3
+        hideSearchResults(isHidden: true)
     }
     
     func setMapLocation(address: String) {
@@ -136,13 +170,32 @@ class SearchViewController: UIViewController {
                 return
             }
             let coordinate = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
-            
             let regionRadius: CLLocationDistance = 1000
-            
             let coordinateRegion = MKCoordinateRegion(center: coordinate, latitudinalMeters: regionRadius, longitudinalMeters: regionRadius)
             self.mapView.setRegion(coordinateRegion, animated: true)
-  
-            // Use your location
+        }
+    }
+    
+    func hideSearchResults(isHidden: Bool){
+        for elem in searchStack.arrangedSubviews {
+            if(elem == topUserDisplay){
+                elem.isHidden = isHidden
+            }
+            else if(elem == topEventDisplay){
+                elem.isHidden = isHidden
+            }
+            else if(elem == topListDisplay1){
+                elem.isHidden = isHidden
+            }
+            else if(elem == topListDisplay2){
+                elem.isHidden = isHidden
+            }
+            else if(elem == mapView){
+                elem.isHidden = !isHidden
+            }
+            else if(elem == mappedEvent){
+                elem.isHidden = !isHidden
+            }
         }
     }
 
@@ -152,8 +205,16 @@ class SearchViewController: UIViewController {
 
 extension SearchViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
+        //Search Bar Results
         if let searchText = searchController.searchBar.text {
+            if searchText.count < 1 {
+                hideSearchResults(isHidden: true)
+            }
+            else {
+                hideSearchResults(isHidden: false)
+            }
             filterEvents(searchText,false)
+            searchForTopUser(searchText)
         }
     }
 }
@@ -162,6 +223,7 @@ extension SearchViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         if let searchText = searchController.searchBar.text {
             filterEvents(searchText, true)
+            searchForTopUser(searchText)
         }
         
     }
@@ -169,6 +231,7 @@ extension SearchViewController: UISearchBarDelegate {
         searchController.isActive = false
         if let searchText = searchBar.text, !searchText.isEmpty {
             searchBar.text = ""
+            hideSearchResults(isHidden: true)
         }
     }
 }
