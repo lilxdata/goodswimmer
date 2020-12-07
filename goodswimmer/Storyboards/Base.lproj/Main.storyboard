@@ -363,6 +363,7 @@
                                                             <state key="normal" image="add-to-list"/>
                                                             <connections>
                                                                 <action selector="addToCal:" destination="Yn1-b3-wBZ" eventType="touchUpInside" id="Aia-8k-azR"/>
+                                                                <action selector="addToCalendar:" destination="jSg-ZE-5Pj" eventType="touchUpInside" id="iYu-Xg-xTE"/>
                                                             </connections>
                                                         </button>
                                                     </subviews>
@@ -416,11 +417,14 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="addToCalendarButton" destination="7qm-BC-K55" id="9pm-gz-321"/>
+                                            <outlet property="addToListButton" destination="lFE-Vk-tnT" id="Mnw-OE-GYe"/>
                                             <outlet property="eventDate" destination="hjb-xz-kJV" id="fWt-LH-FUe"/>
                                             <outlet property="eventImage" destination="bzg-xx-Yk3" id="0mW-9Y-tg8"/>
                                             <outlet property="eventLocation" destination="WWy-fm-WO9" id="JBE-cZ-PXx"/>
                                             <outlet property="eventName" destination="H4E-oo-EEa" id="f9I-gX-oqB"/>
                                             <outlet property="eventTime" destination="6Om-dE-w1R" id="ICV-dz-KJN"/>
+                                            <outlet property="inviteButton" destination="ScY-ey-H4k" id="309-hQ-2qi"/>
                                             <outlet property="username" destination="8sP-Le-h0x" id="R3x-FV-wO9"/>
                                         </connections>
                                     </tableViewCell>
