@@ -64,8 +64,20 @@ class HomeViewController: UIViewController {
         print("add to list button pressed")
     }
     
+    //Get the name of the event I clicked on!
     @IBAction func addToCal(_ sender: Any) {
         print("add to calendar button pressed")
+        let db = Firestore.firestore()
+        let curUser = db.collection("users").document(Auth.auth().currentUser!.uid)
+        curUser.getDocument { (document, error) in
+            if let document = document, document.exists {
+                db.collection("users").document(Auth.auth().currentUser!.uid).updateData([
+                    "events" : FieldValue.arrayUnion(["Book Release Party"])
+                ])
+            } else {
+                print("Error adding event")
+            }
+        }
     }
     
     

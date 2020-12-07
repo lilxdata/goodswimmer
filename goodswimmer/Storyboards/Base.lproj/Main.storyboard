@@ -812,6 +812,31 @@
             </objects>
             <point key="canvasLocation" x="431.8840579710145" y="2002.9017857142856"/>
         </scene>
+        <!--Calendar View Controller-->
+        <scene sceneID="8pR-pd-m8v">
+            <objects>
+                <viewController storyboardIdentifier="calendar_vc" id="7HX-cH-Af7" customClass="CalendarViewController" customModule="goodswimmer" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="l1G-t0-0CI">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vfj-ze-2sC">
+                                <rect key="frame" x="20" y="130" width="374" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="ccW-Id-T08"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <connections>
+                        <outlet property="testEventButton" destination="Vfj-ze-2sC" id="HiK-E9-eXo"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="E7F-jn-jZX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="431.8840579710145" y="2749.5535714285711"/>
+        </scene>
         <!--Search View Controller-->
         <scene sceneID="l1E-EC-Egp">
             <objects>

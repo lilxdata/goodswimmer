@@ -48,6 +48,7 @@
 		64870E85F93983CEBB9B319F /* Pods_goodswimmer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D09BF077A0B42778B27167B /* Pods_goodswimmer.framework */; };
 		86908789254F8E3A00E3ED49 /* myEventsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86908788254F8E3A00E3ED49 /* myEventsCell.swift */; };
 		86915C8725400869002BE724 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86915C8625400869002BE724 /* UserService.swift */; };
+		86A16C90257DF56D00C390C6 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A16C8F257DF56D00C390C6 /* CalendarViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -94,6 +95,7 @@
 		3D09BF077A0B42778B27167B /* Pods_goodswimmer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_goodswimmer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		86908788254F8E3A00E3ED49 /* myEventsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = myEventsCell.swift; sourceTree = "<group>"; };
 		86915C8625400869002BE724 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
+		86A16C8F257DF56D00C390C6 /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		955F4AAD75B92758752A5789 /* Pods-goodswimmer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-goodswimmer.debug.xcconfig"; path = "Target Support Files/Pods-goodswimmer/Pods-goodswimmer.debug.xcconfig"; sourceTree = "<group>"; };
 		99587D227CCE06C5BA0C26EE /* Pods-goodswimmer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-goodswimmer.release.xcconfig"; path = "Target Support Files/Pods-goodswimmer/Pods-goodswimmer.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -221,6 +223,7 @@
 				0401729A246CEA4000297ECA /* CreateEventViewController.swift */,
 				0401729C246CEAE600297ECA /* ProfileViewController.swift */,
 				04350E4D24848DBE00F1AD27 /* SearchViewController.swift */,
+				86A16C8F257DF56D00C390C6 /* CalendarViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -383,6 +386,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				86A16C90257DF56D00C390C6 /* CalendarViewController.swift in Sources */,
 				86915C8725400869002BE724 /* UserService.swift in Sources */,
 				04EB0DF224327B5000B532F8 /* ViewController.swift in Sources */,
 				04CFB70624CF372D00DDCB75 /* StorageService.swift in Sources */,

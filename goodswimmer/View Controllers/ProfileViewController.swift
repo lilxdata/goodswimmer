@@ -181,12 +181,21 @@ class ProfileViewController: UIViewController, FSCalendarDelegate, FSCalendarDat
         let dateString = formatter.string(from: date)
         print("Selected", dateString)
         print("Today's Events are: ")
+        var eventsToday: [Event?] = []
         for event in eventArray.events{
             var eventDate = event.startDate?.dateValue()
             var eventDateString = formatter.string(from: eventDate!)
             if(eventDateString == dateString && self.myEventsArr.contains(event.name!)){
                 print(event)
+                eventsToday.append(event)
             }
+        }
+        //Go to
+        //calendar_vc
+        if let vc = storyboard?.instantiateViewController(withIdentifier: "calendar_vc") as? CalendarViewController {
+            vc.eventsToday = eventsToday
+            //vc.modalPresentationStyle = .fullScreen
+            present(vc, animated: true, completion: nil)
         }
     }
     
