@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import FirebaseFirestore
+import FirebaseAuth
 
 class DetailViewController: UIViewController, UICollectionViewDelegate,
                             UICollectionViewDataSource {
@@ -98,4 +100,42 @@ class DetailViewController: UIViewController, UICollectionViewDelegate,
         
     }
     
+    @IBAction func addToFollowers(_ sender: Any) {
+        let db = Firestore.firestore()
+        let curUser = db.collection("users").document(Auth.auth().currentUser!.uid)
+        let otherUser = self.selectedEvent?.username!
+        curUser.getDocument { (document, error) in
+            if let document = document, document.exists {
+                db.collection("users").document(Auth.auth().currentUser!.uid).updateData([
+                    "following" : FieldValue.arrayUnion([otherUser])
+                ])
+            } else {
+                print("Error following user")
+            }
+        }
+        db.collection("users").whereField("username", isEqualTo: otherUser).getDocuments() { (querySnapshot, err) in
+            if let err = err {
+                print("Error getting other user: \(err)")
+            } else {
+                for document in querySnapshot!.documents {
+                    db.collection("users").document(document.get("userId") as! String).updateData([
+                        "followers" : FieldValue.arrayUnion([Auth.auth().currentUser?.displayName])
+                    ])
+                }
+            }
+        }
+    }
+    @IBAction func addToCalendar(_ sender: Any) {
+        let db = Firestore.firestore()
+        let curUser = db.collection("users").document(Auth.auth().currentUser!.uid)
+        curUser.getDocument { (document, error) in
+            if let document = document, document.exists {
+                db.collection("users").document(Auth.auth().currentUser!.uid).updateData([
+                    "events" : FieldValue.arrayUnion([self.selectedEvent?.name!])
+                ])
+            } else {
+                print("Error adding event")
+            }
+        }
+    }
 }

@@ -67,8 +67,8 @@ class EventCell: UITableViewCell {
     }
     
     @IBAction func addToCalendar(_ sender: Any) {
-        print("add to calendar button pressed")
-        print(self.eventName.text)
+        //print("add to calendar button pressed")
+        //print(self.eventName.text)
         //print(self.tableView.hashValue)
         let db = Firestore.firestore()
         let curUser = db.collection("users").document(Auth.auth().currentUser!.uid)
@@ -82,4 +82,18 @@ class EventCell: UITableViewCell {
             }
         }
     }
+    
+    /*@IBAction func addToFollowing(_ sender: Any) {
+        let db = Firestore.firestore()
+        let curUser = db.collection("users").document(Auth.auth().currentUser!.uid)
+        curUser.getDocument { (document, error) in
+            if let document = document, document.exists {
+                db.collection("users").document(Auth.auth().currentUser!.uid).updateData([
+                    "followers" : FieldValue.arrayUnion([self.username.text!])
+                ])
+            } else {
+                print("Error following user")
+            }
+        }
+    }*/
 }

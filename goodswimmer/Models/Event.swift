@@ -46,7 +46,9 @@ struct Event {
         self.endDate = endDate
         self.description = description
         self.startDate = startDate
-        self.accessibilityQs = ["Wheelchair Ramp?", "Elevator?"] //TODO: Ask Justin if he wants any more than this? Implement with checkboxes
+        self.accessibilityQs = ["Wheelchair accessible", "Accessible Restroom",
+                                "Scent-Free", "Close to Transit",
+                                "NOTAFLOF", "Other"]
         self.accessibilityAs = [false, false]
     }
 }
