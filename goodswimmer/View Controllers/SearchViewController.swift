@@ -47,6 +47,7 @@ class SearchViewController: UIViewController {
         
         //Initialize Location with Woodstock Music Festival
         setMapLocation(address: "200 Hurd Rd, Swan Lake, NY 12783")
+        
     }
     
     func searchForTopUser(_ searchTerm: String){
@@ -207,7 +208,6 @@ class SearchViewController: UIViewController {
             }
         }
     }
-
 
 }
 

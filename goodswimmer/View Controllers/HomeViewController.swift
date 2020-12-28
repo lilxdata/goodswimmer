@@ -29,7 +29,7 @@ class HomeViewController: UIViewController {
             return 1
         }
         
-        
+        /*
         let listDict = [
             "username" : Auth.auth().currentUser!.displayName,
             "userId" : Auth.auth().currentUser!.uid,
@@ -41,6 +41,27 @@ class HomeViewController: UIViewController {
         ] as [String : Any]
         let service = ListService()
         service.createList(dictionary: listDict, uuid: Auth.auth().currentUser!.uid)
+        */
+        /*let xPos = (self.view.frame.width)*0.1
+        let yPos = (self.view.frame.height)*0.3
+        let testView = UIView(frame: CGRect(x: xPos, y: yPos, width:320, height:400))
+      
+        testView.backgroundColor = UIColor.orange
+        self.view.addSubview(testView)
+        
+        var button = UIButton(type: UIButton.ButtonType.system)
+        button.frame = CGRect(x: 0, y: 0, width:320, height:200)
+        button.backgroundColor = UIColor.white
+        button.addTarget(self, action: #selector(pressed), for: .touchUpInside)
+            
+        button.setTitle("Create your List!", for: .normal)
+        button.setTitleColor(UIColor.black, for: .normal)
+        button.contentHorizontalAlignment = .left
+        testView.addSubview(button)*/
+    }
+    
+    @objc func pressed(_sender: UIButton!) {
+        print("I pressed")
     }
     
     func setUpElements() {
