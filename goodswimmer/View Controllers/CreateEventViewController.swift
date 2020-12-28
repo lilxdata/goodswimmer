@@ -33,7 +33,16 @@ class CreateEventViewController: UIViewController {
     @IBOutlet weak var createEventButton: UIButton!
     
     @IBOutlet weak var descriptionText: UITextView!
+    @IBOutlet weak var WheelchairAccessibleButton: UIButton!
+    @IBOutlet weak var CloseToTransitButton: UIButton!
+    @IBOutlet weak var accessibleRestroomButton: UIButton!
+    @IBOutlet weak var NOTAFLOFButton: UIButton!
+    @IBOutlet weak var scentFreeButton: UIButton!
+    @IBOutlet weak var otherAccButton: UIButton!
+    @IBOutlet weak var OtherAccessibilityText: UITextView!
     
+
+    var accessibilityArray = ["wheelchair" : false,  "transit" : false, "restroom" : false, "NOTAFLOF" : false, "scentFree" : false, "other" : false]
     let eventService = EventService.sharedInstance
     let photoHelper = PhotoHelper()
     var uuid = ""
@@ -81,6 +90,8 @@ class CreateEventViewController: UIViewController {
         
         descriptionText.layer.borderColor = UIColor.black.cgColor
         descriptionText.layer.borderWidth = 1
+        OtherAccessibilityText.layer.borderColor = UIColor.black.cgColor
+        OtherAccessibilityText.layer.borderWidth = 1
         
         //TODO: disable address field until location field is filled out - make it some sort of state, once location is put in, check DB if it exists, if not enable address  field, then send noti to us to send postcard inviting them to join. if location does exist, populate with address
         
@@ -188,8 +199,9 @@ class CreateEventViewController: UIViewController {
         guard let startDate = dateFormatter.date(from: dateTimeString), let endDate = dateFormatter.date(from: endDateTimeString) else {
             print("something wrong with date")
             return
-        }
-        
+        }        
+        let accessibilityAs = [accessibilityArray["wheelchair"], accessibilityArray["transit"], accessibilityArray["restroom"], accessibilityArray["NOTAFLOF"], accessibilityArray["scentFree"], accessibilityArray["other"]]
+        let otherDescription = "Test of Functionality"
         let eventDict = [
             "name": eventName,
             "description": description,
@@ -201,7 +213,10 @@ class CreateEventViewController: UIViewController {
             "address1": address1,
             "address2": address2,
             "address3": address3,
-            "username": username
+            "username": username,
+            "accessibilityAs": accessibilityAs,
+            "otherDescription": otherDescription,
+            "createdDate": NSDate(timeIntervalSince1970:(NSDate().timeIntervalSince1970)) ,
         ] as [String : Any]
         
         self.eventService.createEvent(dictionary: eventDict, uuid: self.uuid)
@@ -218,5 +233,40 @@ class CreateEventViewController: UIViewController {
         view.window?.rootViewController = tabViewController
         view.window?.makeKeyAndVisible()
     }
+    func setCheckMark(button: UIButton, check: Bool) {
+        if(check) {
+            button.setImage(UIImage(systemName: "checkmark.square"), for: .normal)
+        }
+        else {
+            button.setImage(UIImage(systemName: "square"), for: .normal)
+        }
+    }
+    @IBAction func wheelchairAccessiblePressed(_ sender: Any) {
+        accessibilityArray["wheelchair"] = !(accessibilityArray["wheelchair"] ?? true)
+        setCheckMark(button: WheelchairAccessibleButton, check: accessibilityArray["wheelchair"] ?? false)
+    }
+    @IBAction func closeToTransitPressed(_ sender: Any) {
+        accessibilityArray["transit"] = !(accessibilityArray["transit"] ?? true)
+        setCheckMark(button: CloseToTransitButton, check: accessibilityArray["transit"] ?? false)
+    }
+   
+    @IBAction func accessibleRestroomPressed(_ sender: Any) {
+        accessibilityArray["restroom"] = !(accessibilityArray["restroom"] ?? true)
+        setCheckMark(button: accessibleRestroomButton, check: accessibilityArray["restroom"] ?? false)
+    }
     
+    
+    @IBAction func NOTAFLOFPressed(_ sender: Any) {
+        accessibilityArray["NOTAFLOF"] = !(accessibilityArray["NOTAFLOF"] ?? true)
+        setCheckMark(button: NOTAFLOFButton, check: accessibilityArray["NOTAFLOF"] ?? false)
+    }
+    @IBAction func scentFreePressed(_ sender: Any) {
+        accessibilityArray["scentFree"] = !(accessibilityArray["scentFree"] ?? true)
+        setCheckMark(button: scentFreeButton, check: accessibilityArray["scentFree"] ?? false)
+    }
+    
+    @IBAction func otherAccPressed(_ sender: Any) {
+        accessibilityArray["other"] = !(accessibilityArray["other"] ?? true)
+        setCheckMark(button: otherAccButton, check: accessibilityArray["other"] ?? false)
+    }
 }

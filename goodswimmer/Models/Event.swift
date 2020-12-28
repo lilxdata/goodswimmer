@@ -27,6 +27,8 @@ struct Event {
     var attendees: [Attendee]?
     private let accessibilityQs: [String]?
     var accessibilityAs: [Bool]?
+    var otherDescription:String?
+    private var createdDate: Timestamp?
     
     init?(eventDict: [String: Any]) {
         let name = eventDict["name"] as? String
@@ -36,6 +38,8 @@ struct Event {
         let startDate = eventDict["start_date"] as? Timestamp
         let endDate = eventDict["end_date"] as? Timestamp
         let address = eventDict["address"] as? String
+        let otherDescription = eventDict["description"] as? String
+        let createdDate = eventDict["createdDate"] as? Timestamp
         
         
         self.username = username
@@ -49,6 +53,8 @@ struct Event {
         self.accessibilityQs = ["Wheelchair accessible", "Accessible Restroom",
                                 "Scent-Free", "Close to Transit",
                                 "NOTAFLOF", "Other"]
-        self.accessibilityAs = [false, false]
+        self.accessibilityAs = [false, false, false, false, false, false]
+        self.otherDescription = otherDescription
+        self.createdDate = createdDate
     }
 }

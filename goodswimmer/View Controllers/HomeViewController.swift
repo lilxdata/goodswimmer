@@ -14,22 +14,67 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var headerLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var zeroStateView: UIView!
+    @IBOutlet weak var sortBySwitch: UISwitch!
+    @IBOutlet weak var sortByLabel: UILabel!
     
     let eventArray = EventArray.sharedInstance
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setUpElements()
-        
-        let db = Firestore.firestore()
         tableView.delegate = self
         tableView.dataSource = self
-        //TODO: refresh control
         
-        // read from events collection
-        //TODO: check out snapshot listener 
-        db.collection("events").order(by: "start_date").addSnapshotListener { (querySnapshot, error) in
+        func numberOfSections(in tableView: UITableView) -> Int {
+            return 1
+        }
+        
+    }
+    
+    func setUpElements() {
+        Utilities.styleHeader(headerLabel)
+        Utilities.styleLabel(sortByLabel, size: 12, uppercase: false)
+        sortByLabel.textAlignment = .right
+        sortTableView(sortBy: "start_date")
+        sortBySwitch.clipsToBounds = true
+        sortBySwitch.layer.cornerRadius = 1 * sortBySwitch.frame.height / 2.0
+        sortBySwitch.transform = CGAffineTransform(scaleX: 0.75, y: 0.75)
+        sortBySwitch.onTintColor = .orange
+        sortBySwitch.tintColor = .orange
+        sortBySwitch.backgroundColor = .orange
+    }
+    
+    @IBAction func inviteFriend(_ sender: Any) {
+        print("invite friend button pressed")
+    }
+    
+    @IBAction func addToList(_ sender: Any) {
+        print("add to list button pressed")
+    }
+    
+    @IBAction func addToCal(_ sender: Any) {
+        print("add to calendar button pressed")
+    }
+    
+    @IBAction func sortByUpdate(_ sender: Any) {
+        if(sortBySwitch.isOn) {
+            sortByLabel.text = "Event Date"
+            sortTableView(sortBy: "start_date")
+            sortBySwitch.onTintColor = .orange
+            sortBySwitch.tintColor = .orange
+            sortBySwitch.backgroundColor = .orange
+        }
+        else {
+            sortByLabel.text = "Date Posted"
+            sortTableView(sortBy: "createdDate")
+            sortBySwitch.tintColor = .blue
+            sortBySwitch.backgroundColor = .blue
+        }
+    }
+    
+    func sortTableView(sortBy: String){
+        let db = Firestore.firestore()
+        db.collection("events").order(by: sortBy).addSnapshotListener { (querySnapshot, error) in
             if error == nil && querySnapshot != nil {
                 //clear event array to remove dupes
                 self.eventArray.events.removeAll()
@@ -46,28 +91,7 @@ class HomeViewController: UIViewController {
                 }
             }
         }
-        
-        func numberOfSections(in tableView: UITableView) -> Int {
-            return 1
-        }
     }
-    
-    func setUpElements() {
-        Utilities.styleHeader(headerLabel)
-    }
-    
-    @IBAction func inviteFriend(_ sender: Any) {
-        print("invite friend button pressed")
-    }
-    
-    @IBAction func addToList(_ sender: Any) {
-        print("add to list button pressed")
-    }
-    
-    @IBAction func addToCal(_ sender: Any) {
-        print("add to calendar button pressed")
-    }
-    
 }
 
 extension HomeViewController : UITableViewDelegate, UITableViewDataSource {
