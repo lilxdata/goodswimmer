@@ -15,7 +15,7 @@ class ListService {
 
     let db = Firestore.firestore()
     
-    func createEvent(dictionary: [String: Any], uuid: String) {
+    func createList(dictionary: [String: Any], uuid: String) {
         db.collection("lists").document(uuid).setData(dictionary, merge: true) { err in
                    if let err = err {
                        print("Error")

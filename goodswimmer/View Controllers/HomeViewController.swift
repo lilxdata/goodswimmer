@@ -29,6 +29,18 @@ class HomeViewController: UIViewController {
             return 1
         }
         
+        
+        let listDict = [
+            "username" : Auth.auth().currentUser!.displayName,
+            "userId" : Auth.auth().currentUser!.uid,
+            "followers" : [],
+            "description" : "Test Description",
+            "events" : [],
+            "places" : [],
+            "createdDate": NSDate(timeIntervalSince1970:(NSDate().timeIntervalSince1970)) ,
+        ] as [String : Any]
+        let service = ListService()
+        service.createList(dictionary: listDict, uuid: Auth.auth().currentUser!.uid)
     }
     
     func setUpElements() {
