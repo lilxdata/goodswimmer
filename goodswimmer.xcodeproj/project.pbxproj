@@ -47,7 +47,7 @@
 		04EB0E0624327BBD00B532F8 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EB0E0524327BBD00B532F8 /* HomeViewController.swift */; };
 		64870E85F93983CEBB9B319F /* Pods_goodswimmer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D09BF077A0B42778B27167B /* Pods_goodswimmer.framework */; };
 		86706D2D2599D6FA0040EAFA /* List.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86706D2C2599D6FA0040EAFA /* List.swift */; };
-		86706D302599DDE40040EAFA /* ListService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86706D2F2599DDE40040EAFA /* ListService.swift */; };
+		86706D512599E5CD0040EAFA /* ListService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86706D502599E5CD0040EAFA /* ListService.swift */; };
 		86908789254F8E3A00E3ED49 /* myEventsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86908788254F8E3A00E3ED49 /* myEventsCell.swift */; };
 		86915C8725400869002BE724 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86915C8625400869002BE724 /* UserService.swift */; };
 		86A16C90257DF56D00C390C6 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A16C8F257DF56D00C390C6 /* CalendarViewController.swift */; };
@@ -96,7 +96,7 @@
 		04EB0E0524327BBD00B532F8 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		3D09BF077A0B42778B27167B /* Pods_goodswimmer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_goodswimmer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		86706D2C2599D6FA0040EAFA /* List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = List.swift; sourceTree = "<group>"; };
-		86706D2F2599DDE40040EAFA /* ListService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListService.swift; sourceTree = "<group>"; };
+		86706D502599E5CD0040EAFA /* ListService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ListService.swift; path = goodswimmer/Services/ListService.swift; sourceTree = "<group>"; };
 		86908788254F8E3A00E3ED49 /* myEventsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = myEventsCell.swift; sourceTree = "<group>"; };
 		86915C8625400869002BE724 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		86A16C8F257DF56D00C390C6 /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
@@ -148,7 +148,7 @@
 				86915C8625400869002BE724 /* UserService.swift */,
 				04CFB70524CF372D00DDCB75 /* StorageService.swift */,
 				04CFB70724CF374300DDCB75 /* LocalStorageService.swift */,
-				86706D2F2599DDE40040EAFA /* ListService.swift */,
+				86706D502599E5CD0040EAFA /* ListService.swift */,
 			);
 			name = Services;
 			path = ..;
@@ -417,7 +417,7 @@
 				04350E5024849DEA00F1AD27 /* User.swift in Sources */,
 				04B33993251BED7B00E9B8E0 /* FirestoreHelper.swift in Sources */,
 				046E1C7D252E5B07004D7A4D /* Attendee.swift in Sources */,
-				86706D302599DDE40040EAFA /* ListService.swift in Sources */,
+				86706D512599E5CD0040EAFA /* ListService.swift in Sources */,
 				04B7505224DB68BF00DE4B98 /* EventArray.swift in Sources */,
 				86908789254F8E3A00E3ED49 /* myEventsCell.swift in Sources */,
 				047CF3DD2493ED1A002ADFE8 /* EventCell.swift in Sources */,
