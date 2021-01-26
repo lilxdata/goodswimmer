@@ -17,6 +17,8 @@ class CreateEventViewController: UIViewController {
     @IBOutlet weak var createEventHeader: UILabel!
     @IBOutlet weak var titleField: UITextField!
     @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var participantsLabel: UILabel!
+    @IBOutlet weak var participantsField: UITextView!
     @IBOutlet weak var locationField: UITextField!
     @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var addressField1: UITextField!
@@ -40,8 +42,12 @@ class CreateEventViewController: UIViewController {
     @IBOutlet weak var scentFreeButton: UIButton!
     @IBOutlet weak var otherAccButton: UIButton!
     @IBOutlet weak var OtherAccessibilityText: UITextView!
+    @IBOutlet weak var ticketPriceLabel: UILabel!
+    @IBOutlet weak var ticketPriceField: UITextField!
+    @IBOutlet weak var inviteOnlyButton: UIButton!
+    @IBOutlet weak var inviteOnlyField: UITextView!
     
-
+    
     var accessibilityArray = ["wheelchair" : false,  "transit" : false, "restroom" : false, "NOTAFLOF" : false, "scentFree" : false, "other" : false]
     let eventService = EventService.sharedInstance
     let photoHelper = PhotoHelper()
@@ -67,14 +73,14 @@ class CreateEventViewController: UIViewController {
         let headerSize = 35
         
         //label styling
-        let labels = [titleLabel, locationLabel,descriptionLabel, dateLabel, addressLabel, imageLabel]
+        let labels = [titleLabel, participantsLabel, locationLabel,descriptionLabel, dateLabel, addressLabel, imageLabel, ticketPriceLabel]
         
         for label in labels {
             stackView.setCustomSpacing(16, after: label!)
             Utilities.styleLabel(label!, size: labelSize, uppercase: true)
         }
         
-        let textfields = [titleField, locationField, dateField1, dateField2, timeField1, timeField2, addressField1, addressField2, addressField3]
+        let textfields = [titleField, locationField, dateField1, dateField2, timeField1, timeField2, addressField1, addressField2, addressField3, ticketPriceField]
         
         for textfield in textfields {
             Utilities.styleTextField(textfield!, size: fieldSize)
@@ -94,6 +100,16 @@ class CreateEventViewController: UIViewController {
         OtherAccessibilityText.layer.borderWidth = 1
         OtherAccessibilityText.isUserInteractionEnabled = false
         Utilities.styleDisabledTextView(OtherAccessibilityText, size: fieldSize)
+        participantsField.layer.borderColor = UIColor.black.cgColor
+        participantsField.layer.borderWidth = 1
+        participantsField.isUserInteractionEnabled = true
+        //Utilities.styleDisabledTextView(participantsField, size: fieldSize)
+        
+        
+        inviteOnlyField.layer.borderColor = UIColor.black.cgColor
+        inviteOnlyField.layer.borderWidth = 1
+        inviteOnlyField.isUserInteractionEnabled = true
+        
         self.transitionToHome()
         
         //TODO: disable address field until location field is filled out - make it some sort of state, once location is put in, check DB if it exists, if not enable address  field, then send noti to us to send postcard inviting them to join. if location does exist, populate with address
