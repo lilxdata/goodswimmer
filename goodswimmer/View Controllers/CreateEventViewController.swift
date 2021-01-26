@@ -24,6 +24,7 @@ class CreateEventViewController: UIViewController {
     @IBOutlet weak var addressField1: UITextField!
     @IBOutlet weak var addressField2: UITextField!
     @IBOutlet weak var addressField3: UITextField!
+    @IBOutlet weak var inviteToGSButton: UIButton!
     @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var dateField1: UITextField!
     @IBOutlet weak var dateField2: UITextField!
@@ -46,9 +47,14 @@ class CreateEventViewController: UIViewController {
     @IBOutlet weak var ticketPriceField: UITextField!
     @IBOutlet weak var inviteOnlyButton: UIButton!
     @IBOutlet weak var inviteOnlyField: UITextView!
+    @IBOutlet weak var multidayEventButton: UIButton!
     
     
     var accessibilityArray = ["wheelchair" : false,  "transit" : false, "restroom" : false, "NOTAFLOF" : false, "scentFree" : false, "other" : false]
+    var inviteToGSState = false
+    var inviteOnlyState = false
+    var multiDayEventState = false
+    
     let eventService = EventService.sharedInstance
     let photoHelper = PhotoHelper()
     var uuid = ""
@@ -99,16 +105,19 @@ class CreateEventViewController: UIViewController {
         OtherAccessibilityText.layer.borderColor = UIColor.black.cgColor
         OtherAccessibilityText.layer.borderWidth = 1
         OtherAccessibilityText.isUserInteractionEnabled = false
+        OtherAccessibilityText.isHidden = true
         Utilities.styleDisabledTextView(OtherAccessibilityText, size: fieldSize)
         participantsField.layer.borderColor = UIColor.black.cgColor
         participantsField.layer.borderWidth = 1
         participantsField.isUserInteractionEnabled = true
-        //Utilities.styleDisabledTextView(participantsField, size: fieldSize)
-        
+
         
         inviteOnlyField.layer.borderColor = UIColor.black.cgColor
         inviteOnlyField.layer.borderWidth = 1
-        inviteOnlyField.isUserInteractionEnabled = true
+        inviteOnlyField.isUserInteractionEnabled = false
+        
+        dateField2.isUserInteractionEnabled = false
+        dateField2.isHidden = true
         
         self.transitionToHome()
         
@@ -136,6 +145,14 @@ class CreateEventViewController: UIViewController {
         var address2Input = Utilities.cleanData(addressField2)
         var address3Input = Utilities.cleanData(addressField3)
         let description = descriptionText.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+        let participants = participantsField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+        var inviteList = inviteOnlyField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+        if(inviteOnlyState == false) {
+            inviteList = ""
+        }
+        
+        let ticketPrice = Int(ticketPriceField.text!) ?? 0
+     
         
         var errorMessage = "An error occurred:\n"
         
@@ -240,7 +257,7 @@ class CreateEventViewController: UIViewController {
         print("start date time string", dateTimeString)
         let endDateTimeString = date_end + " " + time_end
         print("end date time string", endDateTimeString)
-        guard let startDate = dateFormatter.date(from: dateTimeString), let endDate = dateFormatter.date(from: endDateTimeString) else {
+        guard let startDate = dateFormatter.date(from: dateTimeString), var endDate = dateFormatter.date(from: endDateTimeString) else {
             print("something wrong with date")
             return
         }        
@@ -249,10 +266,15 @@ class CreateEventViewController: UIViewController {
         if(accessibilityArray["other"] == false) {
             otherDescription = ""
         }
+        if(multiDayEventState == false){
+            dateField2.isUserInteractionEnabled = false
+            endDate = startDate
+        }
         let eventDict = [
             "name": eventName,
             "description": description,
             "location": location,
+            "participants" : participants,
             "start_date": Timestamp.init(date: startDate),
             "end_date": Timestamp.init(date: endDate),
             // TODO: change this date_end name to "time" and add date_end and time_end fields
@@ -263,6 +285,10 @@ class CreateEventViewController: UIViewController {
             "username": username,
             "accessibilityAs": accessibilityAs,
             "otherDescription": otherDescription,
+            "inviteList" : inviteList,
+            "ticketPrice" : ticketPrice,
+            "inviteToGS" : inviteToGSState,
+            "inviteOnly" : inviteOnlyState,
             "createdDate": NSDate(timeIntervalSince1970:(NSDate().timeIntervalSince1970)) ,
         ] as [String : Any]
         
@@ -363,12 +389,46 @@ class CreateEventViewController: UIViewController {
         let fieldSize = 15
         if(accessibilityArray["other"] == true){
             OtherAccessibilityText.isUserInteractionEnabled = true
+            OtherAccessibilityText.isHidden = false
             Utilities.styleDisabledTextView(OtherAccessibilityText, size: fieldSize)
         }
         else {
             OtherAccessibilityText.isUserInteractionEnabled = false
+            OtherAccessibilityText.isHidden = true
             Utilities.styleTextView(OtherAccessibilityText, size: fieldSize)
         }
 
+    }
+    @IBAction func inviteToGSPressed(_ sender: Any) {
+        inviteToGSState = !inviteToGSState
+        setCheckMark(button: inviteToGSButton, check: inviteToGSState)
+    }
+    
+   
+    @IBAction func inviteOnlyPressed(_ sender: Any) {
+        inviteOnlyState = !inviteOnlyState
+        setCheckMark(button: inviteOnlyButton, check: inviteOnlyState)
+        let fieldSize = 15
+        if(inviteOnlyState == true){
+            inviteOnlyField.isUserInteractionEnabled = true
+            Utilities.styleDisabledTextView(inviteOnlyField, size: fieldSize)
+        }
+        else {
+            inviteOnlyField.isUserInteractionEnabled = false
+            Utilities.styleTextView(inviteOnlyField, size: fieldSize)
+        }
+    }
+    
+    @IBAction func multiDayEventPressed(_ sender: Any) {
+        multiDayEventState = !multiDayEventState
+        setCheckMark(button: multidayEventButton, check: multiDayEventState)
+        if(multiDayEventState == true){
+            dateField2.isUserInteractionEnabled = true
+            dateField2.isHidden = false
+        }
+        else {
+            dateField2.isUserInteractionEnabled = false
+            dateField2.isHidden = true
+        }
     }
 }

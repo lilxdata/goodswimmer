@@ -37,8 +37,7 @@ class HomeViewController: UIViewController {
         func numberOfSections(in tableView: UITableView) -> Int {
             return 1
         }
-        
-        
+   
     
         let listMenuWidth = 320
         let listMenuHeight = 400
