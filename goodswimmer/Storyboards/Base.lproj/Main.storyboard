@@ -350,6 +350,7 @@
                                                             <rect key="frame" x="0.0" y="0.0" width="53" height="51"/>
                                                             <state key="normal" image="follow"/>
                                                             <connections>
+                                                                <action selector="addToFollowing:" destination="jSg-ZE-5Pj" eventType="touchUpInside" id="TR7-tM-68Q"/>
                                                                 <action selector="inviteFriend:" destination="Yn1-b3-wBZ" eventType="touchUpInside" id="KXp-Aq-Nyb"/>
                                                             </connections>
                                                         </button>
@@ -358,6 +359,7 @@
                                                             <state key="normal" image="view"/>
                                                             <connections>
                                                                 <action selector="addToList:" destination="Yn1-b3-wBZ" eventType="touchUpInside" id="24d-xy-bOI"/>
+                                                                <action selector="addToList:" destination="jSg-ZE-5Pj" eventType="touchUpInside" id="yGh-cP-lch"/>
                                                             </connections>
                                                         </button>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7qm-BC-K55" userLabel="Plus">
@@ -588,29 +590,8 @@
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="nW6-da-I4u" userLabel="Date Stack View">
-                                                        <rect key="frame" x="0.0" y="507.5" width="324" height="18.5"/>
-                                                        <subviews>
-                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Start Date" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1Bw-rd-gpP" userLabel="DateField1">
-                                                                <rect key="frame" x="0.0" y="0.0" width="150" height="18.5"/>
-                                                                <constraints>
-                                                                    <constraint firstAttribute="width" constant="150" id="Tpg-M4-sew"/>
-                                                                </constraints>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
-                                                            </textField>
-                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="End Date" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7GY-eW-lIm" userLabel="DateField2">
-                                                                <rect key="frame" x="174" y="0.0" width="150" height="18.5"/>
-                                                                <constraints>
-                                                                    <constraint firstAttribute="width" constant="150" id="49E-PW-0Ka"/>
-                                                                </constraints>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
-                                                            </textField>
-                                                        </subviews>
-                                                    </stackView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="ith-j2-Nym" userLabel="Time Stack View">
-                                                        <rect key="frame" x="0.0" y="563" width="320" height="18.5"/>
+                                                        <rect key="frame" x="0.0" y="507.5" width="320" height="18.5"/>
                                                         <subviews>
                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Start Time" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iSx-bC-4Bf" userLabel="TimeField1">
                                                                 <rect key="frame" x="0.0" y="0.0" width="150" height="18.5"/>
@@ -624,6 +605,27 @@
                                                                 <rect key="frame" x="170" y="0.0" width="150" height="18.5"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="150" id="Jnv-wL-tSC"/>
+                                                                </constraints>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
+                                                            </textField>
+                                                        </subviews>
+                                                    </stackView>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="nW6-da-I4u" userLabel="Date Stack View">
+                                                        <rect key="frame" x="0.0" y="563" width="324" height="18.5"/>
+                                                        <subviews>
+                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Start Date" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1Bw-rd-gpP" userLabel="DateField1">
+                                                                <rect key="frame" x="0.0" y="0.0" width="150" height="18.5"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" constant="150" id="Tpg-M4-sew"/>
+                                                                </constraints>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
+                                                            </textField>
+                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="End Date" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7GY-eW-lIm" userLabel="DateField2">
+                                                                <rect key="frame" x="174" y="0.0" width="150" height="18.5"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" constant="150" id="49E-PW-0Ka"/>
                                                                 </constraints>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                 <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>

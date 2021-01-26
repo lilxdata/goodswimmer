@@ -46,6 +46,7 @@ class CreateEventViewController: UIViewController {
     let eventService = EventService.sharedInstance
     let photoHelper = PhotoHelper()
     var uuid = ""
+    let menu = Menu.sharedInstance
     
     //runs everytime page is shown
     override func viewWillAppear(_ animated: Bool) {
@@ -73,17 +74,16 @@ class CreateEventViewController: UIViewController {
             Utilities.styleLabel(label!, size: labelSize, uppercase: true)
         }
         
-        let textfields = [titleField, locationField, dateField1, dateField2, timeField1, timeField2]
+        let textfields = [titleField, locationField, dateField1, dateField2, timeField1, timeField2, addressField1, addressField2, addressField3]
         
         for textfield in textfields {
             Utilities.styleTextField(textfield!, size: fieldSize)
         }
+        addressField1.isUserInteractionEnabled = true
+        addressField2.isUserInteractionEnabled = true
+        addressField3.isUserInteractionEnabled = true
         
-        //TODO: add disabled option in helper func for styleTextField
         
-        Utilities.styleDisabledTextField(addressField1,size: fieldSize)
-        Utilities.styleDisabledTextField(addressField2, size: fieldSize)
-        Utilities.styleDisabledTextField(addressField3, size: fieldSize)
         
         Utilities.styleButton(createEventButton)
         Utilities.styleLabel(createEventHeader, size: headerSize, uppercase: false)
@@ -92,6 +92,9 @@ class CreateEventViewController: UIViewController {
         descriptionText.layer.borderWidth = 1
         OtherAccessibilityText.layer.borderColor = UIColor.black.cgColor
         OtherAccessibilityText.layer.borderWidth = 1
+        OtherAccessibilityText.isUserInteractionEnabled = false
+        Utilities.styleDisabledTextView(OtherAccessibilityText, size: fieldSize)
+        self.transitionToHome()
         
         //TODO: disable address field until location field is filled out - make it some sort of state, once location is put in, check DB if it exists, if not enable address  field, then send noti to us to send postcard inviting them to join. if location does exist, populate with address
         
@@ -118,10 +121,14 @@ class CreateEventViewController: UIViewController {
         var address3Input = Utilities.cleanData(addressField3)
         let description = descriptionText.text!.trimmingCharacters(in: .whitespacesAndNewlines)
         
+        var errorMessage = "An error occurred:\n"
+        
         //Event Name Validation
         let eventNameValid = Validators.isNameValid(eventNameInput)
         if !eventNameValid {
             eventNameInput = "Invalid Event Name, please reenter"
+            errorMessage = errorMessage + "\n"
+            errorMessage = errorMessage + eventNameInput
         }
         let eventName = eventNameInput
         
@@ -129,6 +136,8 @@ class CreateEventViewController: UIViewController {
         let locationValid = Validators.isCityValid(locationInput)
         if !locationValid {
             locationInput = "Invalid Location, please reenter"
+            errorMessage = errorMessage + "\n"
+            errorMessage = errorMessage + locationInput
         }
         let location = locationInput
         
@@ -137,6 +146,8 @@ class CreateEventViewController: UIViewController {
         let date_start_valid = Validators.isDateValid(date_start_input)
         if !date_start_valid {
             date_start_input = "Invalid Date, please reenter"
+            errorMessage = errorMessage + "\n"
+            errorMessage = errorMessage + date_start_input
         }
         let date_start = date_start_input
         
@@ -145,6 +156,8 @@ class CreateEventViewController: UIViewController {
         let date_end_valid = Validators.isDateValid(date_end_input)
         if !date_end_valid {
             date_end_input = "Invalid Date, please reenter"
+            errorMessage = errorMessage + "\n"
+            errorMessage = errorMessage + date_end_input
         }
         let date_end = date_end_input
         
@@ -153,6 +166,8 @@ class CreateEventViewController: UIViewController {
         let time_start_valid = Validators.isTimeValid(time_start_input)
         if !time_start_valid {
             time_start_input = "Invalid Time, please reenter"
+            errorMessage = errorMessage + "\n"
+            errorMessage = errorMessage + time_start_input
         }
         let time_start = time_start_input
         
@@ -160,6 +175,9 @@ class CreateEventViewController: UIViewController {
         let time_end_valid = Validators.isTimeValid(time_end_input)
         if !time_end_valid {
             time_end_input = "Invalid Time, please reenter"
+            errorMessage = errorMessage + "\n"
+            errorMessage = errorMessage + time_end_input
+
         }
         let time_end = time_end_input
         
@@ -167,6 +185,8 @@ class CreateEventViewController: UIViewController {
         let address1Valid = Validators.isStreetNumberValid(address1Input)
         if !address1Valid {
             address1Input = "Invalid Street/Number, please reenter"
+            errorMessage = errorMessage + "\n"
+            errorMessage = errorMessage + address1Input
         }
         let address1 = address1Input
         
@@ -174,6 +194,8 @@ class CreateEventViewController: UIViewController {
         let address2Valid = Validators.isCityStateValid(address2Input)
         if !address2Valid {
             address2Input = "Invalid City,State, please reenter"
+            errorMessage = errorMessage + "\n"
+            errorMessage = errorMessage + address2Input
         }
         let address2 = address2Input
         
@@ -181,6 +203,9 @@ class CreateEventViewController: UIViewController {
         let address3Valid = Validators.isZipCodeValid(address3Input)
         if !address3Valid {
             address3Input = "Invalid Zip Code, please reenter"
+            errorMessage = errorMessage + "\n"
+            errorMessage = errorMessage + address3Input
+            
         }
         let address3 = address3Input
         
@@ -188,7 +213,10 @@ class CreateEventViewController: UIViewController {
             print("user not logged in / username not found")
             return
         }
-
+        
+        
+        addErrorPopUp(_sender: self.view, errorMessage: errorMessage)
+         
         //combine start time & date and end time & date fields into 2 timestamp objects
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd/MM/yyyy hh:mma"
@@ -201,7 +229,10 @@ class CreateEventViewController: UIViewController {
             return
         }        
         let accessibilityAs = [accessibilityArray["wheelchair"], accessibilityArray["transit"], accessibilityArray["restroom"], accessibilityArray["NOTAFLOF"], accessibilityArray["scentFree"], accessibilityArray["other"]]
-        let otherDescription = "Test of Functionality"
+        var otherDescription = OtherAccessibilityText.text
+        if(accessibilityArray["other"] == false) {
+            otherDescription = ""
+        }
         let eventDict = [
             "name": eventName,
             "description": description,
@@ -222,8 +253,6 @@ class CreateEventViewController: UIViewController {
         self.eventService.createEvent(dictionary: eventDict, uuid: self.uuid)
         
         self.transitionToHome()
-        //some sort of validation - all fields filled out, doesn't currently exist, etc
-        // logic, if not filled in throw error
     }
     
     func transitionToHome() {
@@ -232,6 +261,7 @@ class CreateEventViewController: UIViewController {
         
         view.window?.rootViewController = tabViewController
         view.window?.makeKeyAndVisible()
+        addSuccessPopUp(_sender: (tabViewController?.view)!)
     }
     func setCheckMark(button: UIButton, check: Bool) {
         if(check) {
@@ -241,6 +271,52 @@ class CreateEventViewController: UIViewController {
             button.setImage(UIImage(systemName: "square"), for: .normal)
         }
     }
+    //Move this later
+    func addErrorPopUp(_sender: UIView, errorMessage: String?) {
+        let xPos = (_sender.frame.width)*0.1
+        let yPos = (_sender.frame.height)*0.1
+        let width = (_sender.frame.width)*0.8
+        let height = (_sender.frame.height)*0.7
+        let errorPopUp = UIView(frame: CGRect(x: xPos, y: yPos, width:width, height:height))
+        errorPopUp.backgroundColor = UIColor.white
+        errorPopUp.layer.borderColor = CGColor(red: 1.0, green: 0.0, blue: 0.0, alpha: 1)
+        errorPopUp.layer.borderWidth = 1
+        let errorMessageButton = UIButton(type: UIButton.ButtonType.system)
+        errorMessageButton.frame = CGRect(x: 0, y: 0, width:width, height:height)
+        errorMessageButton.addTarget(self.menu, action: #selector(self.menu.closeAddTolistMenu), for: .touchUpInside)
+        errorMessageButton.setTitle("An error occurred", for: .normal)
+        errorMessageButton.setTitleColor(UIColor.red, for: .normal)
+        errorMessageButton.contentHorizontalAlignment = .center
+        errorPopUp.addSubview(errorMessageButton)
+        errorMessageButton.titleLabel?.numberOfLines = 100
+        if (errorMessage != nil) {
+            errorMessageButton.setTitle(errorMessage, for: .normal)
+        }
+        _sender.addSubview(errorPopUp)
+    }
+    
+    func addSuccessPopUp(_sender: UIView) {
+        let xPos = (_sender.frame.width)*0.1
+        let yPos = (_sender.frame.height)*0.1
+        let width = (_sender.frame.width)*0.8
+        let height = (_sender.frame.height)*0.7
+        let successPopUp = UIView(frame: CGRect(x: xPos, y: yPos, width:width, height:height))
+        successPopUp.backgroundColor = UIColor.white
+        successPopUp.layer.borderColor = CGColor(red: 0.0, green: 1.0, blue: 0.0, alpha: 1)
+        successPopUp.layer.borderWidth = 1
+        let successMessageButton = UIButton(type: UIButton.ButtonType.system)
+        successMessageButton.frame = CGRect(x: 0, y: 0, width:width, height:height)
+        successMessageButton.addTarget(self.menu, action: #selector(self.menu.closeAddTolistMenu), for: .touchUpInside)
+        successMessageButton.setTitle("Your event was created!", for: .normal)
+        successMessageButton.setTitleColor(UIColor.green, for: .normal)
+        successMessageButton.contentHorizontalAlignment = .center
+        //successMessageButton.titleLabel?.
+        successPopUp.addSubview(successMessageButton)
+        successMessageButton.titleLabel?.numberOfLines = 100
+        _sender.addSubview(successPopUp)
+        print(_sender)
+    }
+    
     @IBAction func wheelchairAccessiblePressed(_ sender: Any) {
         accessibilityArray["wheelchair"] = !(accessibilityArray["wheelchair"] ?? true)
         setCheckMark(button: WheelchairAccessibleButton, check: accessibilityArray["wheelchair"] ?? false)
@@ -268,5 +344,15 @@ class CreateEventViewController: UIViewController {
     @IBAction func otherAccPressed(_ sender: Any) {
         accessibilityArray["other"] = !(accessibilityArray["other"] ?? true)
         setCheckMark(button: otherAccButton, check: accessibilityArray["other"] ?? false)
+        let fieldSize = 15
+        if(accessibilityArray["other"] == true){
+            OtherAccessibilityText.isUserInteractionEnabled = true
+            Utilities.styleDisabledTextView(OtherAccessibilityText, size: fieldSize)
+        }
+        else {
+            OtherAccessibilityText.isUserInteractionEnabled = false
+            Utilities.styleTextView(OtherAccessibilityText, size: fieldSize)
+        }
+
     }
 }

@@ -24,6 +24,8 @@ class EventCell: UITableViewCell {
     @IBOutlet weak var addToListButton: UIButton!
     @IBOutlet weak var addToCalendarButton: UIButton!
     
+    
+    
     var eventToDisplay: Event?
     //TODO: ADD START DATE / END DATE, START TIME / END TIME
     func displayEvent(_ event: Event) {
@@ -67,7 +69,6 @@ class EventCell: UITableViewCell {
     }
     
     @IBAction func addToCalendar(_ sender: Any) {
-        //print("add to calendar button pressed")
         //print(self.eventName.text)
         //print(self.tableView.hashValue)
         let db = Firestore.firestore()
@@ -83,7 +84,19 @@ class EventCell: UITableViewCell {
         }
     }
     
-    /*@IBAction func addToFollowing(_ sender: Any) {
+    @IBAction func addToList(_ sender: Any) {
+        print("I pressed list")
+        let xPos = ((self.superview?.superview?.superview?.frame.width)!)*0.1
+        let yPos = ((self.superview?.superview?.superview?.frame.height)!)*0.3
+        let testView = UIView(frame: CGRect(x: xPos, y: yPos, width:320, height:400))
+        for view in self.superview?.superview?.subviews as [UIView] {
+            if(view.frame == testView.frame) {
+                view.isHidden = false
+            }
+        }
+        
+    }
+    @IBAction func addToFollowing(_ sender: Any) {
         let db = Firestore.firestore()
         let curUser = db.collection("users").document(Auth.auth().currentUser!.uid)
         curUser.getDocument { (document, error) in
@@ -95,5 +108,5 @@ class EventCell: UITableViewCell {
                 print("Error following user")
             }
         }
-    }*/
+    }
 }

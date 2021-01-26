@@ -51,6 +51,7 @@
 		86908789254F8E3A00E3ED49 /* myEventsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86908788254F8E3A00E3ED49 /* myEventsCell.swift */; };
 		86915C8725400869002BE724 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86915C8625400869002BE724 /* UserService.swift */; };
 		86A16C90257DF56D00C390C6 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A16C8F257DF56D00C390C6 /* CalendarViewController.swift */; };
+		86CD670E25AC377F0099EA48 /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CD670D25AC377F0099EA48 /* Menu.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -100,6 +101,7 @@
 		86908788254F8E3A00E3ED49 /* myEventsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = myEventsCell.swift; sourceTree = "<group>"; };
 		86915C8625400869002BE724 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		86A16C8F257DF56D00C390C6 /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
+		86CD670D25AC377F0099EA48 /* Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
 		955F4AAD75B92758752A5789 /* Pods-goodswimmer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-goodswimmer.debug.xcconfig"; path = "Target Support Files/Pods-goodswimmer/Pods-goodswimmer.debug.xcconfig"; sourceTree = "<group>"; };
 		99587D227CCE06C5BA0C26EE /* Pods-goodswimmer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-goodswimmer.release.xcconfig"; path = "Target Support Files/Pods-goodswimmer/Pods-goodswimmer.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -160,6 +162,7 @@
 				041767692432D4EF007AC791 /* Utilities.swift */,
 				04BB10F8244CFD4D00BFF9A2 /* Constants.swift */,
 				04D77F81245D471300599CBD /* Validators.swift */,
+				86CD670D25AC377F0099EA48 /* Menu.swift */,
 				047C977E249982160062D860 /* PhotoHelper.swift */,
 				044A54D324CB7C5B001FABA9 /* Navigation.swift */,
 				04B33992251BED7B00E9B8E0 /* FirestoreHelper.swift */,
@@ -419,6 +422,7 @@
 				046E1C7D252E5B07004D7A4D /* Attendee.swift in Sources */,
 				86706D512599E5CD0040EAFA /* ListService.swift in Sources */,
 				04B7505224DB68BF00DE4B98 /* EventArray.swift in Sources */,
+				86CD670E25AC377F0099EA48 /* Menu.swift in Sources */,
 				86908789254F8E3A00E3ED49 /* myEventsCell.swift in Sources */,
 				047CF3DD2493ED1A002ADFE8 /* EventCell.swift in Sources */,
 				04BB10F9244CFD4D00BFF9A2 /* Constants.swift in Sources */,

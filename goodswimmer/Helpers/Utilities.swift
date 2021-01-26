@@ -22,6 +22,17 @@ class Utilities {
         textfield.font = UIFont(name: "Standard-Book", size: fontSize)
     }
     
+    static func styleTextView(_ textView: UITextView, size: Int) {
+        // create bottom line detail
+        let bottomLine = CALayer()
+        let fontSize = CGFloat(size)
+        bottomLine.frame = CGRect( x:0, y:textView.frame.height + 5, width: textView.frame.width, height: 1)
+        bottomLine.backgroundColor = UIColor.black.cgColor
+        textView.layer.addSublayer(bottomLine)
+        textView.textColor = UIColor.black
+        textView.font = UIFont(name: "Standard-Book", size: fontSize)
+    }
+    
     static func styleDisabledTextField(_ textfield: UITextField, size: Int) {
         // create bottom line detail
         let bottomLine = CALayer()
@@ -33,6 +44,16 @@ class Utilities {
         textfield.font = UIFont(name: "Standard-Book", size: fontSize)
     }
     
+    static func styleDisabledTextView(_ textView: UITextView, size: Int) {
+        // create bottom line detail
+        let bottomLine = CALayer()
+        let fontSize = CGFloat(size)
+        bottomLine.frame = CGRect( x:0, y:textView.frame.height + 5, width: textView.frame.width, height: 1)
+        bottomLine.backgroundColor = UIColor.systemGray2.cgColor
+        textView.layer.addSublayer(bottomLine)
+        textView.textColor = UIColor.black
+        textView.font = UIFont(name: "Standard-Book", size: fontSize)
+    }
     
     static func styleHeader(_ label: UILabel){
         label.font = UIFont(name: "Career_salle13_cursive", size: 20)
