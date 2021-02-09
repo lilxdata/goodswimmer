@@ -14,7 +14,7 @@ import FirebaseStorage
 import FSCalendar
 
 
-class ProfileViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource, UICollectionViewDelegate,
+class ProfileViewController: UIViewController, FSCalendarDelegate, FSCalendarDataSource, FSCalendarDelegateAppearance, UICollectionViewDelegate,
                              UICollectionViewDataSource  {
     let eventService = EventService()
     //let userService = UserService()
@@ -134,6 +134,18 @@ class ProfileViewController: UIViewController, FSCalendarDelegate, FSCalendarDat
         calendar.dataSource = self
         calendar.scope = .week
         calendar.scrollDirection = .vertical
+        //calendar.appearance.borderDefaultColor = .black
+        calendar.appearance.borderSelectionColor = .black
+        calendar.appearance.selectionColor = .red
+        calendar.appearance.titleFont = UIFont.systemFont(ofSize: 17.0)
+        calendar.appearance.headerTitleFont = UIFont.boldSystemFont(ofSize: 17.0)
+        calendar.appearance.weekdayFont = UIFont.boldSystemFont(ofSize: 17.0)
+        
+        calendar.appearance.todayColor = .black
+        calendar.appearance.titleTodayColor = .white
+        calendar.appearance.todaySelectionColor = .red
+        
+        
         //eventsAttendingCV.delegate = self
         //eventsAttendingCV.dataSource = self
     }
@@ -218,12 +230,37 @@ class ProfileViewController: UIViewController, FSCalendarDelegate, FSCalendarDat
                 eventCount = eventCount + 1
             }
         }
-        return eventCount
+        return 0
     }
     
-    func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, eventDefaultColorsFor date: Date) -> [UIColor]? {
-        print("TODO:")
-        return [UIColor.green]
+
+    func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, fillDefaultColorFor date: Date) -> UIColor? {
+
+        //format date according your need
+
+        let dateString = self.dateFormatter2.string(from: date)
+        //your events date array
+        var eventCount = 0
+        for event in eventArray.events{
+            var eventDate = event.startDate?.dateValue()
+            var eventDateString = self.dateFormatter2.string(from: eventDate!)
+            if eventDateString.contains(dateString) && self.myEventsArr.contains(event.name!) {
+                eventCount = eventCount + 1
+            }
+        }
+        if(eventCount == 0){
+            return nil
+        }
+        
+        else if(eventCount == 1){
+            return UIColor.blue
+        }
+        else {
+            return UIColor.green
+        }
+
+        return nil //add your color for default
+
     }
 }
 

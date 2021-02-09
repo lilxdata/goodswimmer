@@ -10,7 +10,7 @@ import UIKit
 import FirebaseAuth
 import Firebase
 import FirebaseFirestoreSwift
-//import GooglePlaces
+import GooglePlaces
 
 class SignUpViewController: UIViewController, GMSAutocompleteViewControllerDelegate {
     
