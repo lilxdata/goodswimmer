@@ -132,6 +132,8 @@ class ProfileViewController: UIViewController, FSCalendarDelegate, FSCalendarDat
         
         calendar.delegate = self
         calendar.dataSource = self
+        calendar.scope = .week
+        calendar.scrollDirection = .vertical
         //eventsAttendingCV.delegate = self
         //eventsAttendingCV.dataSource = self
     }

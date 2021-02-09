@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 import Firebase
+import SDWebImage
 
 class HomeViewController: UIViewController {
     
@@ -137,10 +138,70 @@ class HomeViewController: UIViewController {
                 }
             }
         }
-        print("I am checking the stackview")
-        print(buttonArray)
-    
+        print("I am getting items from the tab bar")
+
+        var tabBarButton = tabBarController?.tabBar.items?[1]
+        
+        //Resizing Tab Bar Icons
+        tabBarController?.tabBar.items?[0].selectedImage = self.resizeImage(image: (tabBarController?.tabBar.items?[0].selectedImage)!, newWidth: 20)
+        tabBarController?.tabBar.items?[0].image = tabBarController?.tabBar.items?[0].selectedImage
+        tabBarController?.tabBar.items?[2].selectedImage = self.resizeImage(image: (tabBarController?.tabBar.items?[2].selectedImage)!, newWidth: 20)
+        tabBarController?.tabBar.items?[2].image = tabBarController?.tabBar.items?[2].selectedImage
+        tabBarController?.tabBar.items?[3].selectedImage = self.resizeImage(image: (tabBarController?.tabBar.items?[3].selectedImage)!, newWidth: 30)
+        tabBarController?.tabBar.items?[3].image = tabBarController?.tabBar.items?[3].selectedImage
+        
+        
+        tabBarController?.tabBar.tintColor = .red
+
+        let photoid = Auth.auth().currentUser!.uid
+        let imageRef = Storage.storage().reference().child(photoid+".jpg")
+
+        let image: UIImage = UIImage(systemName: "checkmark.square")!
+        let profileImageView = UIImageView(image: image)
+        
+ 
+        imageRef.downloadURL { url, error in
+          if let error = error {
+            // Handle any errors
+            print(error)
+          } else {
+
+            profileImageView.sd_setImage(with: url, completed:{ (image, error, cacheType, imageURL) in
+
+                profileImageView.image = profileImageView.image!.roundedImage
+
+                self.tabBarController?.tabBar.items?[1].selectedImage = self.resizeImage(image: (profileImageView.image)!, newWidth: 50)
+                
+                self.tabBarController?.tabBar.items?[1].selectedImage = self.tabBarController?.tabBar.items?[1].selectedImage!.withRenderingMode(.alwaysOriginal)
+                
+                self.tabBarController?.tabBar.items?[1].image = self.tabBarController?.tabBar.items?[1].selectedImage!.withRenderingMode(.alwaysOriginal)
+                
+                listMenuView.addSubview(profileImageView)
+            
+                
+               })
+            
+            
+          }
+        }
+        
+        
+        
+        
     }
+    
+    
+    func resizeImage(image: UIImage, newWidth: CGFloat) -> UIImage {
+
+       let scale = newWidth / image.size.width
+       let newHeight = image.size.height * scale
+        UIGraphicsBeginImageContext(CGSize(width: newWidth, height: newHeight))
+        image.draw(in: CGRect(x: 0, y: 0, width: newWidth, height: newHeight))
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()!
+       UIGraphicsEndImageContext()
+
+        return newImage
+   }
     
     @objc func pressed(_sender: UIButton!) {
         print("I pressed")
