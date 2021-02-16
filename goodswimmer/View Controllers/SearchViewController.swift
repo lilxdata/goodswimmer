@@ -47,6 +47,7 @@ class SearchViewController: UIViewController {
         
         //Initialize Location with Woodstock Music Festival
         setMapLocation(address: "200 Hurd Rd, Swan Lake, NY 12783")
+        
     }
     
     func searchForTopUser(_ searchTerm: String){
@@ -153,9 +154,18 @@ class SearchViewController: UIViewController {
         mappedEvent.numberOfLines = 3
         mappedEvent.textAlignment = .center
         topUserDisplay.titleLabel?.numberOfLines = 3
+        topUserDisplay.backgroundColor = UIColor.red
+        topUserDisplay.tintColor = UIColor.white
         topEventDisplay.titleLabel?.numberOfLines = 3
+        topEventDisplay.backgroundColor = UIColor.red
+        topEventDisplay.tintColor = UIColor.white
         topListDisplay1.titleLabel?.numberOfLines = 3
+        topListDisplay1.backgroundColor = UIColor.red
+        topListDisplay1.tintColor = UIColor.white
         topListDisplay2.titleLabel?.numberOfLines = 3
+        topListDisplay2.backgroundColor = UIColor.red
+        topListDisplay2.tintColor = UIColor.white
+        featuredLabel.textAlignment = .center
         hideSearchResults(isHidden: true)
     }
     
@@ -198,7 +208,6 @@ class SearchViewController: UIViewController {
             }
         }
     }
-
 
 }
 

@@ -9,6 +9,8 @@
 import Foundation
 import UIKit
 import SDWebImage
+import FirebaseFirestore
+import FirebaseAuth
 
 class EventCell: UITableViewCell {
     
@@ -18,6 +20,11 @@ class EventCell: UITableViewCell {
     @IBOutlet weak var eventDate: UILabel!
     @IBOutlet weak var eventTime: UILabel!
     @IBOutlet weak var username: UILabel!
+    @IBOutlet weak var inviteButton: UIButton!    
+    @IBOutlet weak var addToListButton: UIButton!
+    @IBOutlet weak var addToCalendarButton: UIButton!
+    
+    
     
     var eventToDisplay: Event?
     //TODO: ADD START DATE / END DATE, START TIME / END TIME
@@ -59,5 +66,47 @@ class EventCell: UITableViewCell {
         Utilities.styleLabel(eventDate, size: 24, uppercase: false)
         Utilities.styleLabel(eventTime, size: 24, uppercase: false)
         Utilities.styleLabel(username, size: 15, uppercase: false)
+    }
+    
+    @IBAction func addToCalendar(_ sender: Any) {
+        //print(self.eventName.text)
+        //print(self.tableView.hashValue)
+        let db = Firestore.firestore()
+        let curUser = db.collection("users").document(Auth.auth().currentUser!.uid)
+        curUser.getDocument { (document, error) in
+            if let document = document, document.exists {
+                db.collection("users").document(Auth.auth().currentUser!.uid).updateData([
+                    "events" : FieldValue.arrayUnion([self.eventName.text!])
+                ])
+            } else {
+                print("Error adding event")
+            }
+        }
+    }
+    
+    @IBAction func addToList(_ sender: Any) {
+        print("I pressed list")
+        let xPos = ((self.superview?.superview?.superview?.frame.width)!)*0.1
+        let yPos = ((self.superview?.superview?.superview?.frame.height)!)*0.3
+        let testView = UIView(frame: CGRect(x: xPos, y: yPos, width:320, height:400))
+        for view in self.superview?.superview?.subviews as [UIView] {
+            if(view.frame == testView.frame) {
+                view.isHidden = false
+            }
+        }
+        
+    }
+    @IBAction func addToFollowing(_ sender: Any) {
+        let db = Firestore.firestore()
+        let curUser = db.collection("users").document(Auth.auth().currentUser!.uid)
+        curUser.getDocument { (document, error) in
+            if let document = document, document.exists {
+                db.collection("users").document(Auth.auth().currentUser!.uid).updateData([
+                    "followers" : FieldValue.arrayUnion([self.username.text!])
+                ])
+            } else {
+                print("Error following user")
+            }
+        }
     }
 }

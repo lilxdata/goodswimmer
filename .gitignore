@@ -1,6 +1,9 @@
 ### Mac ###
 .DS_Store
 
+### Pods ###
+**/Pods
+
 ### Firebase ###
 .idea
 **/node_modules/*

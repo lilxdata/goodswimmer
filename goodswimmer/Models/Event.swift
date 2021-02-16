@@ -27,6 +27,13 @@ struct Event {
     var attendees: [Attendee]?
     private let accessibilityQs: [String]?
     var accessibilityAs: [Bool]?
+    var otherDescription: String?
+    var participants:String?
+    var ticketPrice: Int?
+    var inviteList:String?
+    var inviteToGS: Bool?
+    var inviteOnly: Bool?
+    private var createdDate: Timestamp?
     
     init?(eventDict: [String: Any]) {
         let name = eventDict["name"] as? String
@@ -36,6 +43,13 @@ struct Event {
         let startDate = eventDict["start_date"] as? Timestamp
         let endDate = eventDict["end_date"] as? Timestamp
         let address = eventDict["address"] as? String
+        let otherDescription = eventDict["description"] as? String
+        let createdDate = eventDict["createdDate"] as? Timestamp
+        let participants = eventDict["participants"] as? String
+        let ticketPrice = eventDict["ticketPrice"] as? Int
+        let inviteList = eventDict["inviteList"] as? String
+        let inviteToGS = eventDict["inviteToGS"] as? Bool
+        let inviteOnly = eventDict["inviteOnly"] as? Bool
         
         
         self.username = username
@@ -46,7 +60,16 @@ struct Event {
         self.endDate = endDate
         self.description = description
         self.startDate = startDate
-        self.accessibilityQs = ["Wheelchair Ramp?", "Elevator?"] //TODO: Ask Justin if he wants any more than this? Implement with checkboxes
-        self.accessibilityAs = [false, false]
+        self.accessibilityQs = ["Wheelchair accessible", "Accessible Restroom",
+                                "Scent-Free", "Close to Transit",
+                                "NOTAFLOF", "Other"]
+        self.accessibilityAs = [false, false, false, false, false, false]
+        self.otherDescription = otherDescription
+        self.createdDate = createdDate
+        self.participants = participants
+        self.ticketPrice = ticketPrice
+        self.inviteList = inviteList
+        self.inviteToGS = inviteToGS
+        self.inviteOnly = inviteOnly
     }
 }

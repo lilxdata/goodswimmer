@@ -5,55 +5,260 @@
 //  Created by madi on 3/30/20.
 //  Copyright © 2020 madi. All rights reserved.
 //
-
+import Foundation
 import UIKit
 import Firebase
+import SDWebImage
 
 class HomeViewController: UIViewController {
     
     @IBOutlet weak var headerLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var zeroStateView: UIView!
+    @IBOutlet weak var sortBySwitch: UISwitch!
+    @IBOutlet weak var sortByLabel: UILabel!
     
     let eventArray = EventArray.sharedInstance
+    let menu = Menu.sharedInstance
+    
+    
+    var event = Event(eventDict: ["eventName" : "PlaceHolder"])
+    let maxButton = 10
+    var numOfLists = 0
+    var buttonArray = [UIButton](repeating: UIButton(type: UIButton.ButtonType.custom), count: 10)
+    let notClicked = UIImage.imageWithColor(color: .white, size: CGSize(width: 50, height: 50))
+    let clicked = UIImage.imageWithColor(color: .black, size: CGSize(width: 50, height: 50))
+    let animated = UIImage.imageWithColor(color: .red, size: CGSize(width: 50, height: 50))
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setUpElements()
-        
-        let db = Firestore.firestore()
         tableView.delegate = self
         tableView.dataSource = self
-        //TODO: refresh control
-        
-        // read from events collection
-        //TODO: check out snapshot listener 
-        db.collection("events").order(by: "start_date").addSnapshotListener { (querySnapshot, error) in
-            if error == nil && querySnapshot != nil {
-                //clear event array to remove dupes
-                self.eventArray.events.removeAll()
-                for document in querySnapshot!.documents {
-                    print("document received")
-                    let eventData = document.data()
-                    if let event = Event(eventDict: eventData) {
-                        self.eventArray.events.append(event)
-                    }
-                }
-                self.tableView.reloadData()
-                if self.eventArray.events.count == 0 {
-                    self.zeroStateView.isHidden = false
-                }
-            }
-        }
         
         func numberOfSections(in tableView: UITableView) -> Int {
             return 1
         }
+   
+    
+        let listMenuWidth = 320
+        let listMenuHeight = 400
+        let listMenuMargin = 20
+        let listMenuRowWidth = CGFloat(listMenuWidth)*0.75
+        let xPos = (self.view.frame.width)*0.1
+        let yPos = (self.view.frame.height)*0.3
+        let listMenuView = UIView(frame: CGRect(x: xPos, y: yPos, width:320, height:400))
+        listMenuView.backgroundColor = UIColor.red
+        
+        let listMenuViewTest = UIView(frame: CGRect(x: 0, y: 0, width:300, height:100))
+        listMenuViewTest.backgroundColor = UIColor.black
+       
+        
+        
+        var addToListMenuTitle = UILabel(frame: CGRect(x: 0, y: Int(Double(listMenuHeight)*0), width:listMenuWidth, height:200))
+        addToListMenuTitle.textAlignment = .center
+        addToListMenuTitle.font = addToListMenuTitle.font.withSize(28)
+        addToListMenuTitle.text = "Add to List"
+        addToListMenuTitle.textColor = .white
+        
+        
+        
+        
+        var createListButton = UIButton(type: UIButton.ButtonType.system)
+        
+        createListButton.addTarget(self, action: #selector(pressed), for: .touchUpInside)
+        createListButton.setTitle("+ Create New List", for: .normal)
+        createListButton.setTitleColor(UIColor.black, for: .normal)
+        createListButton.contentHorizontalAlignment = .center
+
+        
+        var exitListMenuButton = UIButton(type: UIButton.ButtonType.system)
+        
+        exitListMenuButton.addTarget(self, action: #selector(closeAddTolistMenu), for: .touchUpInside)
+        exitListMenuButton.setTitle("Close", for: .normal)
+        exitListMenuButton.setTitleColor(UIColor.black, for: .normal)
+        exitListMenuButton.contentHorizontalAlignment = .center
+        
+        
+        //Stack View
+        let listMenuStackView   = UIStackView()
+        listMenuStackView.frame = listMenuView.frame
+        listMenuStackView.addArrangedSubview(addToListMenuTitle)
+        for i in 0...maxButton-1 {
+            buttonArray[i] = UIButton(type: UIButton.ButtonType.custom)
+            setUpListMenuButton(button: buttonArray[i] )
+            listMenuStackView.addArrangedSubview(buttonArray[i] )
+            
+        }
+        
+        listMenuStackView.addArrangedSubview(createListButton)
+        listMenuStackView.addArrangedSubview(exitListMenuButton)
+        
+        
+        listMenuStackView.axis  = .vertical
+        listMenuStackView.distribution  = UIStackView.Distribution.equalSpacing
+        listMenuStackView.alignment = UIStackView.Alignment.center
+        listMenuStackView.spacing   = 0.0
+        listMenuStackView.translatesAutoresizingMaskIntoConstraints = false
+        
+        listMenuView.addSubview(listMenuStackView)
+        listMenuStackView.addArrangedSubview(listMenuViewTest)
+        self.view.addSubview(listMenuView)
+        
+        listMenuView.isHidden = true
+        
+        
+        
+        view.addConstraint(NSLayoutConstraint(item: listMenuStackView, attribute: .top, relatedBy: .equal, toItem: listMenuView, attribute: .top, multiplier: 1.0, constant: 0.0))
+        view.addConstraint(NSLayoutConstraint(item: listMenuStackView, attribute: .leading, relatedBy: .equal, toItem: listMenuView, attribute: .leading, multiplier: 1.0, constant: 0.0))
+        view.addConstraint(NSLayoutConstraint(item: listMenuStackView, attribute: .trailing, relatedBy: .equal, toItem: listMenuView, attribute: .trailing, multiplier: 1.0, constant: 0.0))
+        
+        for listButton in buttonArray {
+            view.addConstraint(NSLayoutConstraint(item: listButton, attribute: NSLayoutConstraint.Attribute.width, relatedBy: NSLayoutConstraint.Relation.equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant:  listMenuRowWidth))
+        }
+        
+
+        view.addConstraint(NSLayoutConstraint(item: createListButton, attribute: NSLayoutConstraint.Attribute.width, relatedBy: NSLayoutConstraint.Relation.equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: listMenuRowWidth))
+    
+        //Make Buttons Have Firebase Connections
+        let db = Firestore.firestore()
+        db.collection("lists").whereField("username", arrayContains: Auth.auth().currentUser?.displayName).getDocuments() { (querySnapshot, err) in
+            if let err = err {
+                print("Error getting lists: \(err)")
+            } else {
+                for document in querySnapshot!.documents {
+                    var listName = document.get("listName")
+                    if(listName != nil) {
+                        print(document.get("listName") as! String)
+                        self.buttonArray[self.numOfLists].setTitle(document.get("listName") as! String, for: .normal)
+                        self.buttonArray[self.numOfLists].isHidden = false
+                        self.numOfLists = self.numOfLists + 1
+                        
+                    }
+                    
+                }
+            }
+        }
+        print("I am getting items from the tab bar")
+
+        var tabBarButton = tabBarController?.tabBar.items?[1]
+        
+        //Resizing Tab Bar Icons
+        tabBarController?.tabBar.items?[0].selectedImage = self.resizeImage(image: (tabBarController?.tabBar.items?[0].selectedImage)!, newWidth: 20)
+        tabBarController?.tabBar.items?[0].image = tabBarController?.tabBar.items?[0].selectedImage
+        tabBarController?.tabBar.items?[2].selectedImage = self.resizeImage(image: (tabBarController?.tabBar.items?[2].selectedImage)!, newWidth: 20)
+        tabBarController?.tabBar.items?[2].image = tabBarController?.tabBar.items?[2].selectedImage
+        tabBarController?.tabBar.items?[3].selectedImage = self.resizeImage(image: (tabBarController?.tabBar.items?[3].selectedImage)!, newWidth: 30)
+        tabBarController?.tabBar.items?[3].image = tabBarController?.tabBar.items?[3].selectedImage
+        
+        
+        tabBarController?.tabBar.tintColor = .red
+
+        let photoid = Auth.auth().currentUser!.uid
+        let imageRef = Storage.storage().reference().child(photoid+".jpg")
+
+        let image: UIImage = UIImage(systemName: "checkmark.square")!
+        let profileImageView = UIImageView(image: image)
+        
+ 
+        imageRef.downloadURL { url, error in
+          if let error = error {
+            // Handle any errors
+            print(error)
+          } else {
+
+            profileImageView.sd_setImage(with: url, completed:{ (image, error, cacheType, imageURL) in
+
+                profileImageView.image = profileImageView.image!.roundedImage
+
+                self.tabBarController?.tabBar.items?[1].selectedImage = self.resizeImage(image: (profileImageView.image)!, newWidth: 50)
+                
+                self.tabBarController?.tabBar.items?[1].selectedImage = self.tabBarController?.tabBar.items?[1].selectedImage!.withRenderingMode(.alwaysOriginal)
+                
+                self.tabBarController?.tabBar.items?[1].image = self.tabBarController?.tabBar.items?[1].selectedImage!.withRenderingMode(.alwaysOriginal)
+                
+                listMenuView.addSubview(profileImageView)
+            
+                
+               })
+            
+            
+          }
+        }
+        
+        
+        
+        
+    }
+    
+    
+    func resizeImage(image: UIImage, newWidth: CGFloat) -> UIImage {
+
+       let scale = newWidth / image.size.width
+       let newHeight = image.size.height * scale
+        UIGraphicsBeginImageContext(CGSize(width: newWidth, height: newHeight))
+        image.draw(in: CGRect(x: 0, y: 0, width: newWidth, height: newHeight))
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()!
+       UIGraphicsEndImageContext()
+
+        return newImage
+   }
+    
+    @objc func pressed(_sender: UIButton!) {
+        print("I pressed")
+        //_sender.isSelected = true
+        if(_sender.image(for: .normal) == notClicked) {
+            _sender.setImage(clicked, for: .normal)
+        }
+        else if(_sender.image(for: .normal) == clicked){
+            _sender.setImage(notClicked, for: .normal)
+            
+        }
+        
+    }
+    
+    @objc func closeAddTolistMenu(_sender: UIButton!) {
+        print("I am getting my parent")
+        print(_sender.superview)
+        _sender.superview?.superview?.isHidden = true
+        
+    }
+
+    
+    func setUpListMenuButton(button: UIButton){
+        button.backgroundColor = UIColor.white
+        button.addTarget(self, action: #selector(pressed), for: .touchUpInside)
+        button.setTitle("Create your List!", for: .normal)
+        button.setTitleColor(UIColor.black, for: .normal)
+        button.contentHorizontalAlignment = .center
+        //List Row
+        let listRowCheckBoxFrame = CGRect(x: 0, y: 0, width:40, height:50)
+        
+        let listRowCheckBoxCG = CIContext().createCGImage(CIImage(color: .white), from: listRowCheckBoxFrame)!
+        
+        let listCheckBox = UIImage(cgImage: listRowCheckBoxCG)
+        button.setImage(self.notClicked, for: .normal)
+        button.setImage(self.animated, for: .selected)
+        button.layer.borderWidth = 1
+        button.layer.borderColor = UIColor.black.cgColor
+        button.contentHorizontalAlignment = .left
+        button.titleEdgeInsets.left = 10
+        button.isHidden = true
+        
+        
     }
     
     func setUpElements() {
         Utilities.styleHeader(headerLabel)
+        Utilities.styleLabel(sortByLabel, size: 12, uppercase: false)
+        sortByLabel.textAlignment = .right
+        sortTableView(sortBy: "start_date")
+        sortBySwitch.clipsToBounds = true
+        sortBySwitch.layer.cornerRadius = 1 * sortBySwitch.frame.height / 2.0
+        sortBySwitch.transform = CGAffineTransform(scaleX: 0.75, y: 0.75)
+        sortBySwitch.onTintColor = .red
+        sortBySwitch.tintColor = .red
+        sortBySwitch.backgroundColor = .red
     }
     
     @IBAction func inviteFriend(_ sender: Any) {
@@ -68,7 +273,46 @@ class HomeViewController: UIViewController {
         print("add to calendar button pressed")
     }
     
+    @IBAction func sortByUpdate(_ sender: Any) {
+        if(sortBySwitch.isOn) {
+            sortByLabel.text = "Event Date"
+            sortTableView(sortBy: "start_date")
+            sortBySwitch.onTintColor = .orange
+            sortBySwitch.tintColor = .orange
+            sortBySwitch.backgroundColor = .orange
+        }
+        else {
+            sortByLabel.text = "Date Posted"
+            sortTableView(sortBy: "createdDate")
+            sortBySwitch.tintColor = .blue
+            sortBySwitch.backgroundColor = .blue
+        }
+    }
     
+    func sortTableView(sortBy: String){
+        let db = Firestore.firestore()
+        db.collection("events").order(by: sortBy).addSnapshotListener { (querySnapshot, error) in
+            if error == nil && querySnapshot != nil {
+                //clear event array to remove dupes
+                self.eventArray.events.removeAll()
+                for document in querySnapshot!.documents {
+                    print("document received")
+                    let eventData = document.data()
+                    let eventDate = (document.get("start_date") as! Timestamp).dateValue()
+                    let currentDate = NSDate() as Date
+                    if(eventDate > currentDate){
+                        if let event = Event(eventDict: eventData) {
+                            self.eventArray.events.append(event)
+                        }
+                    }
+                }
+                self.tableView.reloadData()
+                if self.eventArray.events.count == 0 {
+                    self.zeroStateView.isHidden = false
+                }
+            }
+        }
+    }
 }
 
 extension HomeViewController : UITableViewDelegate, UITableViewDataSource {
@@ -101,3 +345,16 @@ extension HomeViewController : UITableViewDelegate, UITableViewDataSource {
         }
     }
 }
+
+
+extension UIImage {
+    class func imageWithColor(color: UIColor, size: CGSize=CGSize(width: 1, height: 1)) -> UIImage {
+        UIGraphicsBeginImageContextWithOptions(size, false, 0)
+        color.setFill()
+        UIRectFill(CGRect(origin: CGPoint.zero, size: size))
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return image!
+    }
+}
+

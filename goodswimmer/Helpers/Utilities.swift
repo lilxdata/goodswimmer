@@ -22,6 +22,17 @@ class Utilities {
         textfield.font = UIFont(name: "Standard-Book", size: fontSize)
     }
     
+    static func styleTextView(_ textView: UITextView, size: Int) {
+        // create bottom line detail
+        let bottomLine = CALayer()
+        let fontSize = CGFloat(size)
+        bottomLine.frame = CGRect( x:0, y:textView.frame.height + 5, width: textView.frame.width, height: 1)
+        bottomLine.backgroundColor = UIColor.black.cgColor
+        textView.layer.addSublayer(bottomLine)
+        textView.textColor = UIColor.black
+        textView.font = UIFont(name: "Standard-Book", size: fontSize)
+    }
+    
     static func styleDisabledTextField(_ textfield: UITextField, size: Int) {
         // create bottom line detail
         let bottomLine = CALayer()
@@ -33,6 +44,16 @@ class Utilities {
         textfield.font = UIFont(name: "Standard-Book", size: fontSize)
     }
     
+    static func styleDisabledTextView(_ textView: UITextView, size: Int) {
+        // create bottom line detail
+        let bottomLine = CALayer()
+        let fontSize = CGFloat(size)
+        bottomLine.frame = CGRect( x:0, y:textView.frame.height + 5, width: textView.frame.width, height: 1)
+        bottomLine.backgroundColor = UIColor.systemGray2.cgColor
+        textView.layer.addSublayer(bottomLine)
+        textView.textColor = UIColor.black
+        textView.font = UIFont(name: "Standard-Book", size: fontSize)
+    }
     
     static func styleHeader(_ label: UILabel){
         label.font = UIFont(name: "Career_salle13_cursive", size: 20)
@@ -130,5 +151,18 @@ extension UIImageView {
         self.layer.borderColor = UIColor.black.cgColor
         self.layer.cornerRadius = _cornerRadius/2
         self.clipsToBounds = true
+    }
+}
+
+extension UIImage{
+    var roundedImage: UIImage {
+        let rect = CGRect(origin:CGPoint(x: 0, y: 0), size: self.size)
+        UIGraphicsBeginImageContextWithOptions(self.size, false, 1)
+        UIBezierPath(
+            roundedRect: rect,
+            cornerRadius: self.size.height 
+            ).addClip()
+        self.draw(in: rect)
+        return UIGraphicsGetImageFromCurrentImageContext()!
     }
 }
