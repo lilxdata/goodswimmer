@@ -6,9 +6,14 @@
 //  Copyright © 2020 madi w/ help from makeschool All rights reserved.
 //
 
+import FirebaseFirestore
+import FirebaseFirestoreSwift
+import FirebaseAuth
+import FirebaseStorage
 import UIKit
 
 class PhotoHelper: NSObject {
+
     // MARK: - Properties
     var completionHandler: ((UIImage) -> Void)?
     
@@ -51,6 +56,18 @@ class PhotoHelper: NSObject {
         imagePickerController.delegate = self
         
         viewController.present(imagePickerController, animated: true)
+    }
+    
+    func resizeImage(image: UIImage, newWidth: CGFloat) -> UIImage {
+
+        let scale = newWidth / image.size.width
+        let newHeight = image.size.height * scale
+        //UIGraphicsBeginImageContext(CGSizeMake(newWidth, newHeight))
+        image.draw(in: CGRect(x: 0, y: 0, width: newWidth, height: newHeight))
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+
+        return newImage
     }
 }
 

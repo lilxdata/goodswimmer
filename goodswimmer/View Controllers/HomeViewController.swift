@@ -21,6 +21,7 @@ class HomeViewController: UIViewController {
     let eventArray = EventArray.sharedInstance
     let menu = Menu.sharedInstance
     
+    
     var event = Event(eventDict: ["eventName" : "PlaceHolder"])
     let maxButton = 10
     var numOfLists = 0

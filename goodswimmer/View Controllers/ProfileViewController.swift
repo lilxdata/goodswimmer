@@ -33,13 +33,13 @@ class ProfileViewController: UIViewController, FSCalendarDelegate, FSCalendarDat
     let storageRef = Storage.storage().reference()
     
     //Outlets
-    @IBOutlet weak var eventsToAttend: UICollectionView!
+    @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var profileImage: UIButton!
     @IBOutlet weak var bioButton: UIButton!
     @IBOutlet weak var bioTextField: UITextField!
     @IBOutlet weak var bioLabel: UILabel!
     @IBOutlet weak var calendar: FSCalendar!
-    @IBOutlet weak var eventsAttendingCV: UICollectionView!
+    @IBOutlet weak var eventsHosting: UIButton!
     
     
     
@@ -109,6 +109,8 @@ class ProfileViewController: UIViewController, FSCalendarDelegate, FSCalendarDat
         //Utilities.styleButton(bioButton)
         Utilities.styleLabel(bioLabel, size: 12, uppercase: true)
         bioLabel.numberOfLines = 5
+        usernameLabel.text = Auth.auth().currentUser?.displayName
+        usernameLabel.textAlignment = .center
     }
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -130,6 +132,28 @@ class ProfileViewController: UIViewController, FSCalendarDelegate, FSCalendarDat
             }
         }
         
+        
+        for event in eventArray.events {
+            var eventDate =  NSDate() as Date
+            if event.username == Auth.auth().currentUser?.displayName {
+                if  (event.startDate?.dateValue())!  > eventDate {
+
+                    eventDate = (event.startDate?.dateValue() as! NSDate) as Date
+                    print(eventDate)
+                    var imageView = UIImageView()
+                    //imageView.sd_setImage(with: URL(fileURLWithPath: event.photoURL ?? "https://firebasestorage.googleapis.com/v0/b/good-swimmer.appspot.com/o/goodswimmer%20stock%20profile.png?alt=media&token=174d3698-5a08-454d-805b-701997c68c61"))
+                    //imageView.sd_setImage(with: URL(fileURLWithPath: "https://firebasestorage.googleapis.com/v0/b/good-swimmer.appspot.com/o/decemberUserFull%20Event.jpg?alt=media&token=ab054ab9-8ebb-4ab7-ad75-fafce318220c"))
+                    self.eventsHosting.setImage(imageView.image, for: .normal)
+                    eventsHosting.sd_setImage(with: user?.photoURL, for: state, completed: nil)
+                        
+                }
+            }
+        }
+        
+        
+        
+        
+        
         calendar.delegate = self
         calendar.dataSource = self
         calendar.scope = .week
@@ -144,8 +168,8 @@ class ProfileViewController: UIViewController, FSCalendarDelegate, FSCalendarDat
         calendar.appearance.todayColor = .black
         calendar.appearance.titleTodayColor = .white
         calendar.appearance.todaySelectionColor = .red
-        
-        
+        calendar.appearance.headerTitleColor = .black
+        calendar.appearance.weekdayTextColor = .black
         //eventsAttendingCV.delegate = self
         //eventsAttendingCV.dataSource = self
     }

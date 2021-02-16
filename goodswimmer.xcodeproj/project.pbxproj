@@ -266,7 +266,7 @@
 				04EB0DE724327B5000B532F8 /* Frameworks */,
 				04EB0DE824327B5000B532F8 /* Resources */,
 				AD5D0F4700172B863DD93ECB /* [CP] Embed Pods Frameworks */,
-				C1CBCC96F68C73E8D4E2A8F1 /* [CP] Copy Pods Resources */,
+				2E014BAFD397E48D8F1EDE12 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -332,6 +332,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		2E014BAFD397E48D8F1EDE12 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-goodswimmer/Pods-goodswimmer-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-goodswimmer/Pods-goodswimmer-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-goodswimmer/Pods-goodswimmer-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		99E070F1DB9D80630DC6B271 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -369,23 +386,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-goodswimmer/Pods-goodswimmer-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		C1CBCC96F68C73E8D4E2A8F1 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-goodswimmer/Pods-goodswimmer-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-goodswimmer/Pods-goodswimmer-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-goodswimmer/Pods-goodswimmer-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */

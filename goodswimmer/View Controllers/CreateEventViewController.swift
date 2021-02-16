@@ -10,9 +10,12 @@ import UIKit
 import FirebaseFirestore
 import FirebaseFirestoreSwift
 import FirebaseAuth
+import FirebaseStorage
+import SDWebImage
 
 class CreateEventViewController: UIViewController {
     
+    @IBOutlet weak var createEventScrollView: UIScrollView!
     @IBOutlet weak var stackView: UIStackView!
     @IBOutlet weak var createEventHeader: UILabel!
     @IBOutlet weak var titleField: UITextField!
@@ -54,11 +57,13 @@ class CreateEventViewController: UIViewController {
     var inviteToGSState = false
     var inviteOnlyState = false
     var multiDayEventState = false
-    
-    let eventService = EventService.sharedInstance
     let photoHelper = PhotoHelper()
+    let eventService = EventService.sharedInstance
     var uuid = ""
     let menu = Menu.sharedInstance
+    var stockImages = ["checked": UIImageView(image: UIImage(systemName: "square")),
+                      "unchecked": UIImageView(image: UIImage(systemName: "square"))
+                      ]
     
     //runs everytime page is shown
     override func viewWillAppear(_ animated: Bool) {
@@ -72,6 +77,11 @@ class CreateEventViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
+        loadStockPhotos()
+        var filename = "checked"
+        //self.stockImages[filename]?.image = self.photoHelper.resizeImage(image: (self.stockImages[filename]?.image)!, newWidth: 200.0)
+
         // Do any additional setup after loading the view.
         
         let labelSize = 12
@@ -305,13 +315,50 @@ class CreateEventViewController: UIViewController {
         view.window?.makeKeyAndVisible()
         addSuccessPopUp(_sender: (tabViewController?.view)!)
     }
+    
+    func setupCheckBoxes() {
+        print("I am setting up")
+        let buttons = [inviteToGSButton, WheelchairAccessibleButton, CloseToTransitButton,
+                       accessibleRestroomButton, NOTAFLOFButton, scentFreeButton, otherAccButton,
+                       multidayEventButton]
+        for button in buttons {
+            setCheckMark(button: button!, check: false)
+        }
+        
+    }
+    
+    func loadStockPhotos() {
+        "I am downloading"
+        let filenames = ["checked", "unchecked"]
+        for filename in filenames {
+            let imageRef = Storage.storage().reference().child(filename+".png")
+            // Fetch the download URL
+            imageRef.downloadURL { url, error in
+              if let error = error {
+                // Handle any errors
+                print("An error ocurred while getting stock photos:", error)
+              } else {
+                // Get the download URL
+                self.stockImages[filename]?.sd_setImage(with: url, completed: { (_: UIImage?,_: Error?, _: SDImageCacheType, _: URL?) -> Void in
+                    if filename == "unchecked" {
+                        self.setupCheckBoxes()
+                    }
+                })
+              }
+            }
+        }
+    }
+
+    
+    
     func setCheckMark(button: UIButton, check: Bool) {
         if(check) {
-            button.setImage(UIImage(systemName: "checkmark.square"), for: .normal)
+            button.setImage(stockImages["checked"]?.image, for: .normal)
         }
         else {
-            button.setImage(UIImage(systemName: "square"), for: .normal)
+            button.setImage(stockImages["unchecked"]?.image, for: .normal)
         }
+        
     }
     //Move this later
     func addErrorPopUp(_sender: UIView, errorMessage: String?) {
@@ -431,4 +478,6 @@ class CreateEventViewController: UIViewController {
             dateField2.isHidden = true
         }
     }
+    
 }
+
