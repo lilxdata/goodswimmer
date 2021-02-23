@@ -145,7 +145,7 @@ class Utilities {
 extension UIImageView {
 
     func makeRounded(_cornerRadius: CGFloat) {
-
+        
         self.layer.borderWidth = 1
         self.layer.masksToBounds = false
         self.layer.borderColor = UIColor.black.cgColor
