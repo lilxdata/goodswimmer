@@ -39,11 +39,15 @@ class ProfileViewController: UIViewController, FSCalendarDelegate, FSCalendarDat
     @IBOutlet weak var bioTextField: UITextField!
     @IBOutlet weak var bioLabel: UILabel!
     @IBOutlet weak var calendar: FSCalendar!
+   
+    @IBOutlet weak var eventsHostingLabel: UILabel!
     @IBOutlet weak var eventsHosting: UIButton!
     @IBOutlet weak var eventHostingDate: UIButton!
     @IBOutlet weak var eventHostingTitle: UIButton!
     @IBOutlet weak var signOutButton: UIButton!
     
+    @IBOutlet weak var privateInvitesLabel: UILabel!
+    @IBOutlet weak var updateBioButton: UIButton!
     
     
     @IBAction func bioButtonTapped(_ sender: Any) {
@@ -51,6 +55,7 @@ class ProfileViewController: UIViewController, FSCalendarDelegate, FSCalendarDat
             self.bioTextField.isHidden = false
             self.bioTextField.text = "Enter your new bio here!"
             self.bioButton.setTitle("Save changes?", for: state)
+            self.bioLabel.isHidden = true
         }
         else{
             self.bioLabel.text = self.bioTextField.text
@@ -58,6 +63,7 @@ class ProfileViewController: UIViewController, FSCalendarDelegate, FSCalendarDat
             db.collection("users").document(Auth.auth().currentUser!.uid).updateData(["bio" : self.bioTextField.text!])
             self.bioTextField.text = ""
             self.bioTextField.isHidden = true
+            self.bioLabel.isHidden = false
             self.bioButton.setTitle("Update Bio!", for: state)
         }
     }
@@ -116,9 +122,27 @@ class ProfileViewController: UIViewController, FSCalendarDelegate, FSCalendarDat
         
         eventHostingDate.tintColor = .black
         eventHostingDate.titleLabel?.numberOfLines = 2
+        eventHostingDate.titleLabel?.textAlignment = .left
         
         eventHostingTitle.tintColor = .black
         eventHostingTitle.titleLabel?.numberOfLines = 2
+        eventHostingTitle.titleLabel?.textAlignment = .left
+        eventHostingTitle.titleLabel?.font = .boldSystemFont(ofSize: 21.0)
+        
+        signOutButton.setTitleColor(Utilities.getRedUI(), for: .normal)
+        signOutButton.layer.borderWidth = 2
+        signOutButton.layer.borderColor = CGColor(red: 1.0, green: 0.3, blue: 0.0, alpha: 1.0)
+        signOutButton.titleLabel?.textAlignment = .center
+        
+        
+        set_photo(button: updateBioButton, name: "change_bio_button.png")
+        
+        
+        Utilities.styleLabel(eventsHostingLabel, size: 12, uppercase: true)
+        
+        
+        Utilities.styleLabel(privateInvitesLabel, size: 12, uppercase: true)
+        
     }
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -149,9 +173,9 @@ class ProfileViewController: UIViewController, FSCalendarDelegate, FSCalendarDat
                     eventsHosting.sd_setImage(with: URL(string: event.photoURL!), for: state, completed: nil)
                     let formatter4 = DateFormatter()
                     formatter4.dateFormat = "HH:mm E, d MMM y"
-                    var eventDateText = formatter4.string(from: (event.startDate?.dateValue())!) + "." + event.venue!
+                    var eventDateText = formatter4.string(from: (event.startDate?.dateValue())!) + " · " + event.venue!
                     eventHostingDate.setTitle(eventDateText, for: .normal)
-                    eventHostingTitle.setTitle(event.description, for: .normal)
+                    eventHostingTitle.setTitle(event.name, for: .normal)
                         
                 }
             }
@@ -181,9 +205,7 @@ class ProfileViewController: UIViewController, FSCalendarDelegate, FSCalendarDat
         //eventsAttendingCV.dataSource = self
         
         
-        signOutButton.setTitleColor(.red, for: .normal)
-        signOutButton.layer.borderWidth = 2
-        signOutButton.layer.borderColor = CGColor(red: 1.0, green: 0.3, blue: 0.0, alpha: 1.0)
+        
     }
     
     //TODO: set user as not logged in...?

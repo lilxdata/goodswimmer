@@ -46,6 +46,7 @@
 		04EB0E0424327BB200B532F8 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EB0E0324327BB200B532F8 /* LoginViewController.swift */; };
 		04EB0E0624327BBD00B532F8 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EB0E0524327BBD00B532F8 /* HomeViewController.swift */; };
 		64870E85F93983CEBB9B319F /* Pods_goodswimmer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D09BF077A0B42778B27167B /* Pods_goodswimmer.framework */; };
+		8661EB0A25E5FB8B00F080B1 /* REGEX_TESTS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8661EB0925E5FB8B00F080B1 /* REGEX_TESTS.swift */; };
 		86706D2D2599D6FA0040EAFA /* List.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86706D2C2599D6FA0040EAFA /* List.swift */; };
 		86706D512599E5CD0040EAFA /* ListService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86706D502599E5CD0040EAFA /* ListService.swift */; };
 		86908789254F8E3A00E3ED49 /* myEventsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86908788254F8E3A00E3ED49 /* myEventsCell.swift */; };
@@ -96,6 +97,7 @@
 		04EB0E0324327BB200B532F8 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		04EB0E0524327BBD00B532F8 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		3D09BF077A0B42778B27167B /* Pods_goodswimmer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_goodswimmer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8661EB0925E5FB8B00F080B1 /* REGEX_TESTS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = REGEX_TESTS.swift; sourceTree = "<group>"; };
 		86706D2C2599D6FA0040EAFA /* List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = List.swift; sourceTree = "<group>"; };
 		86706D502599E5CD0040EAFA /* ListService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ListService.swift; path = goodswimmer/Services/ListService.swift; sourceTree = "<group>"; };
 		86908788254F8E3A00E3ED49 /* myEventsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = myEventsCell.swift; sourceTree = "<group>"; };
@@ -205,6 +207,7 @@
 		04EB0DEC24327B5000B532F8 /* goodswimmer */ = {
 			isa = PBXGroup;
 			children = (
+				8661EB0825E5FB5600F080B1 /* Tests */,
 				0401729E246CEF1900297ECA /* Storyboards */,
 				043C4545245C9448004D2470 /* Fonts */,
 				040172A1246CEF5700297ECA /* Services */,
@@ -235,6 +238,14 @@
 				86A16C8F257DF56D00C390C6 /* CalendarViewController.swift */,
 			);
 			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		8661EB0825E5FB5600F080B1 /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				8661EB0925E5FB8B00F080B1 /* REGEX_TESTS.swift */,
+			);
+			path = Tests;
 			sourceTree = "<group>";
 		};
 		8F27E9A48575CDAE9FEE4C32 /* Frameworks */ = {
@@ -402,6 +413,7 @@
 				044A54D424CB7C5B001FABA9 /* Navigation.swift in Sources */,
 				04EB0DEE24327B5000B532F8 /* AppDelegate.swift in Sources */,
 				0417676A2432D4EF007AC791 /* Utilities.swift in Sources */,
+				8661EB0A25E5FB8B00F080B1 /* REGEX_TESTS.swift in Sources */,
 				04CFB70424CF36EF00DDCB75 /* EventService.swift in Sources */,
 				04EB0E0224327BA700B532F8 /* SignUpViewController.swift in Sources */,
 				0486C5AD24DA008F00ED6328 /* Event.swift in Sources */,

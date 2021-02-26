@@ -28,7 +28,7 @@ class HomeViewController: UIViewController {
     var buttonArray = [UIButton](repeating: UIButton(type: UIButton.ButtonType.custom), count: 10)
     let notClicked = UIImage.imageWithColor(color: .white, size: CGSize(width: 50, height: 50))
     let clicked = UIImage.imageWithColor(color: .black, size: CGSize(width: 50, height: 50))
-    let animated = UIImage.imageWithColor(color: .red, size: CGSize(width: 50, height: 50))
+    let animated = UIImage.imageWithColor(color: Utilities.getRedUI(), size: CGSize(width: 50, height: 50))
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,8 +39,9 @@ class HomeViewController: UIViewController {
         func numberOfSections(in tableView: UITableView) -> Int {
             return 1
         }
-   
-    
+        REGEX_TESTS.run_regex_date_test()
+
+        
         let listMenuWidth = 320
         let listMenuHeight = 400
         let listMenuMargin = 20
@@ -48,7 +49,7 @@ class HomeViewController: UIViewController {
         let xPos = (self.view.frame.width)*0.1
         let yPos = (self.view.frame.height)*0.3
         let listMenuView = UIView(frame: CGRect(x: xPos, y: yPos, width:320, height:400))
-        listMenuView.backgroundColor = UIColor.red
+        listMenuView.backgroundColor = Utilities.getRedUI()
         
         let listMenuViewTest = UIView(frame: CGRect(x: 0, y: 0, width:300, height:100))
         listMenuViewTest.backgroundColor = UIColor.black
@@ -152,37 +153,31 @@ class HomeViewController: UIViewController {
         tabBarController?.tabBar.items?[3].image = tabBarController?.tabBar.items?[3].selectedImage
         
         
-        tabBarController?.tabBar.tintColor = .red
+        tabBarController?.tabBar.tintColor = Utilities.getRedUI()
+        
+        
+        //searchController.isActive = false
 
         let photoid = Auth.auth().currentUser!.uid
         let imageRef = Storage.storage().reference().child(photoid+".jpg")
-
-        let image: UIImage = UIImage(systemName: "checkmark.square")!
-        let profileImageView = UIImageView(image: image)
-        
  
         imageRef.downloadURL { url, error in
           if let error = error {
             // Handle any errors
             print(error)
           } else {
-
-            profileImageView.sd_setImage(with: url, completed:{ (image, error, cacheType, imageURL) in
-
-                profileImageView.image = profileImageView.image!.roundedImage
-
-                self.tabBarController?.tabBar.items?[1].selectedImage = self.resizeImage(image: (profileImageView.image)!, newWidth: 50)
-                
-                self.tabBarController?.tabBar.items?[1].selectedImage = self.tabBarController?.tabBar.items?[1].selectedImage!.withRenderingMode(.alwaysOriginal)
-                
-                self.tabBarController?.tabBar.items?[1].image = self.tabBarController?.tabBar.items?[1].selectedImage!.withRenderingMode(.alwaysOriginal)
-                
-                listMenuView.addSubview(profileImageView)
-            
-                
+                let profileImageView = UIImageView()
+                //Get the Profile Image
+                profileImageView.sd_setImage(with: url, completed:{ (image, error, cacheType, imageURL) in
+                    let size = 40
+                    //Resize the image for the tab bar
+                    profileImageView.image = self.resizeAsCircleImage(image: (profileImageView.image)!, newRadius: CGFloat(size/2))
+                    //Round the image
+                    self.tabBarController?.tabBar.items?[1].image = profileImageView.image?.roundedImage
+                    //Set rendering to original so our photo shows up
+                    self.tabBarController?.tabBar.items?[1].selectedImage = self.tabBarController?.tabBar.items?[1].image!.withRenderingMode(.alwaysOriginal)
+                    self.tabBarController?.tabBar.items?[1].image = self.tabBarController?.tabBar.items?[1].image!.withRenderingMode(.alwaysOriginal)
                })
-            
-            
           }
         }
         
@@ -192,17 +187,27 @@ class HomeViewController: UIViewController {
     }
     
     
+    
+    /*This function resizes an image with same scale as original*/
     func resizeImage(image: UIImage, newWidth: CGFloat) -> UIImage {
-
-       let scale = newWidth / image.size.width
-       let newHeight = image.size.height * scale
+        let scale = newWidth / image.size.width
+        let newHeight = image.size.height * scale
         UIGraphicsBeginImageContext(CGSize(width: newWidth, height: newHeight))
         image.draw(in: CGRect(x: 0, y: 0, width: newWidth, height: newHeight))
         let newImage = UIGraphicsGetImageFromCurrentImageContext()!
-       UIGraphicsEndImageContext()
+        UIGraphicsEndImageContext()
 
         return newImage
-   }
+    }
+    /* This function resizes an image as a circle, does not keep all of the orignal image*/
+    func resizeAsCircleImage(image: UIImage, newRadius: CGFloat) -> UIImage {
+        UIGraphicsBeginImageContext(CGSize(width: newRadius*2, height: newRadius*2))
+        image.draw(in: CGRect(x: 0, y: 0, width: newRadius*2, height: newRadius*2))
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+        
+        return newImage
+    }
     
     @objc func pressed(_sender: UIButton!) {
         print("I pressed")
@@ -256,9 +261,9 @@ class HomeViewController: UIViewController {
         sortBySwitch.clipsToBounds = true
         sortBySwitch.layer.cornerRadius = 1 * sortBySwitch.frame.height / 2.0
         sortBySwitch.transform = CGAffineTransform(scaleX: 0.75, y: 0.75)
-        sortBySwitch.onTintColor = .red
-        sortBySwitch.tintColor = .red
-        sortBySwitch.backgroundColor = .red
+        sortBySwitch.onTintColor = Utilities.getRedUI()
+        sortBySwitch.tintColor = Utilities.getRedUI()
+        sortBySwitch.backgroundColor = Utilities.getRedUI()
     }
     
     @IBAction func inviteFriend(_ sender: Any) {
@@ -291,26 +296,37 @@ class HomeViewController: UIViewController {
     
     func sortTableView(sortBy: String){
         let db = Firestore.firestore()
-        db.collection("events").order(by: sortBy).addSnapshotListener { (querySnapshot, error) in
-            if error == nil && querySnapshot != nil {
-                //clear event array to remove dupes
-                self.eventArray.events.removeAll()
-                for document in querySnapshot!.documents {
-                    print("document received")
-                    let eventData = document.data()
-                    let eventDate = (document.get("start_date") as! Timestamp).dateValue()
-                    let currentDate = NSDate() as Date
-                    if(eventDate > currentDate){
-                        if let event = Event(eventDict: eventData) {
-                            self.eventArray.events.append(event)
+        db.collection("users").whereField("username", isEqualTo: Auth.auth().currentUser?.displayName)
+            .getDocuments() { (querySnapshot, err) in
+                if let err = err {
+                    print("Error getting documents: \(err)")
+                } else {
+                    for document in querySnapshot!.documents {
+                        //let x = self.event?.username
+                        var followers = document.get("followers") as! [String]
+                        db.collection("events").order(by: sortBy).addSnapshotListener { (querySnapshot, error) in
+                            if error == nil && querySnapshot != nil {
+                                //clear event array to remove dupes
+                                self.eventArray.events.removeAll()
+                                for document in querySnapshot!.documents {
+                                    let eventData = document.data()
+                                    let eventDate = (document.get("start_date") as! Timestamp).dateValue()
+                                    let currentDate = NSDate() as Date
+                                    let eventUsername = document.get("username") as! String
+                                    if(eventDate > currentDate && (followers.contains(eventUsername) || eventUsername == Auth.auth().currentUser?.displayName)){
+                                        if let event = Event(eventDict: eventData) {
+                                            self.eventArray.events.append(event)
+                                        }
+                                    }
+                                }
+                                self.tableView.reloadData()
+                                if self.eventArray.events.count == 0 {
+                                    self.zeroStateView.isHidden = false
+                                }
+                            }
                         }
                     }
                 }
-                self.tableView.reloadData()
-                if self.eventArray.events.count == 0 {
-                    self.zeroStateView.isHidden = false
-                }
-            }
         }
     }
 }
