@@ -154,16 +154,16 @@ class SearchViewController: UIViewController {
         mappedEvent.numberOfLines = 3
         mappedEvent.textAlignment = .center
         topUserDisplay.titleLabel?.numberOfLines = 3
-        topUserDisplay.backgroundColor = UIColor.red
+        topUserDisplay.backgroundColor = Utilities.getRedUI()
         topUserDisplay.tintColor = UIColor.white
         topEventDisplay.titleLabel?.numberOfLines = 3
-        topEventDisplay.backgroundColor = UIColor.red
+        topEventDisplay.backgroundColor = Utilities.getRedUI()
         topEventDisplay.tintColor = UIColor.white
         topListDisplay1.titleLabel?.numberOfLines = 3
-        topListDisplay1.backgroundColor = UIColor.red
+        topListDisplay1.backgroundColor = Utilities.getRedUI()
         topListDisplay1.tintColor = UIColor.white
         topListDisplay2.titleLabel?.numberOfLines = 3
-        topListDisplay2.backgroundColor = UIColor.red
+        topListDisplay2.backgroundColor = Utilities.getRedUI()
         topListDisplay2.tintColor = UIColor.white
         featuredLabel.textAlignment = .center
         hideSearchResults(isHidden: true)
@@ -216,7 +216,7 @@ extension SearchViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         //Search Bar Results
         if let searchText = searchController.searchBar.text {
-            if searchText.count < 1 {
+            if(searchText.count < 1){
                 hideSearchResults(isHidden: true)
             }
             else {

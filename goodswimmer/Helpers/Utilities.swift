@@ -83,14 +83,14 @@ class Utilities {
     }
     
     static func styleButton(_ button: UIButton) {
-        //rounded button
         button.titleLabel?.font = UIFont(name: "Standard-Book", size: 21)
-        // button.layer.cornerRadius = 20.0
-        // button.title = button.titleLabel?.text?.uppercased() // did not work
         button.setTitle(button.title(for: .normal)?.uppercased(), for: .normal)
         button.layer.borderWidth = 1.0
         button.layer.borderColor = UIColor.black.cgColor
-        button.contentVerticalAlignment = UIControl.ContentVerticalAlignment.bottom
+        button.contentVerticalAlignment = UIControl.ContentVerticalAlignment.center
+        button.contentHorizontalAlignment = UIControl.ContentHorizontalAlignment.center
+        button.titleLabel?.baselineAdjustment = UIBaselineAdjustment.alignCenters
+        button.titleEdgeInsets.top = 2 // This font at 21p needs this offset to be truly centered
         
     }
     
@@ -102,7 +102,7 @@ class Utilities {
     
     /* password validation */
     static func isPasswordValid(_ password: String) -> Bool{
-        let passwordTest = NSPredicate(format: "SELF MATCHES %@", "^(?=.*[a-z])(?=.*[$@$#!%*?&])[A-Za-z\\d$@$#!%*?&]{8,}")
+        let passwordTest = NSPredicate(format: "SELF MATCHES %@", "(?=.*[A-Za-z])(?=.*\\d)(?=.*[@$!%*#?&])[A-Za-z\\d@$!%*#?&]{8,}$")
         return passwordTest.evaluate(with: password)
     }
     
@@ -126,7 +126,7 @@ class Utilities {
         
         let bar = controller.searchBar
        // bar.barStyle = .black
-        bar.barTintColor = UIColor.red
+        bar.barTintColor = getRedUI()
         bar.tintColor = UIColor.white
         
 //        UITextField.appearance().defaultTextAttributes = [NSAttributedString.Key.foregroundColor.rawValue: UIColor.white]
@@ -140,12 +140,20 @@ class Utilities {
 //
 
     }
+    
+    static func getRedCG() -> CGColor{
+        return CGColor(red: 1.0, green: 0.3, blue: 0.0, alpha: 1.0)
+    }
+    
+    static func getRedUI() -> UIColor{
+        return UIColor(cgColor: getRedCG())
+    }
 }
 
 extension UIImageView {
 
     func makeRounded(_cornerRadius: CGFloat) {
-
+        
         self.layer.borderWidth = 1
         self.layer.masksToBounds = false
         self.layer.borderColor = UIColor.black.cgColor

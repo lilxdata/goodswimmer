@@ -39,9 +39,15 @@ class ProfileViewController: UIViewController, FSCalendarDelegate, FSCalendarDat
     @IBOutlet weak var bioTextField: UITextField!
     @IBOutlet weak var bioLabel: UILabel!
     @IBOutlet weak var calendar: FSCalendar!
+   
+    @IBOutlet weak var eventsHostingLabel: UILabel!
     @IBOutlet weak var eventsHosting: UIButton!
+    @IBOutlet weak var eventHostingDate: UIButton!
+    @IBOutlet weak var eventHostingTitle: UIButton!
+    @IBOutlet weak var signOutButton: UIButton!
     
-    
+    @IBOutlet weak var privateInvitesLabel: UILabel!
+    @IBOutlet weak var updateBioButton: UIButton!
     
     
     @IBAction func bioButtonTapped(_ sender: Any) {
@@ -49,6 +55,7 @@ class ProfileViewController: UIViewController, FSCalendarDelegate, FSCalendarDat
             self.bioTextField.isHidden = false
             self.bioTextField.text = "Enter your new bio here!"
             self.bioButton.setTitle("Save changes?", for: state)
+            self.bioLabel.isHidden = true
         }
         else{
             self.bioLabel.text = self.bioTextField.text
@@ -56,6 +63,7 @@ class ProfileViewController: UIViewController, FSCalendarDelegate, FSCalendarDat
             db.collection("users").document(Auth.auth().currentUser!.uid).updateData(["bio" : self.bioTextField.text!])
             self.bioTextField.text = ""
             self.bioTextField.isHidden = true
+            self.bioLabel.isHidden = false
             self.bioButton.setTitle("Update Bio!", for: state)
         }
     }
@@ -111,6 +119,30 @@ class ProfileViewController: UIViewController, FSCalendarDelegate, FSCalendarDat
         bioLabel.numberOfLines = 5
         usernameLabel.text = Auth.auth().currentUser?.displayName
         usernameLabel.textAlignment = .center
+        
+        eventHostingDate.tintColor = .black
+        eventHostingDate.titleLabel?.numberOfLines = 2
+        eventHostingDate.titleLabel?.textAlignment = .left
+        
+        eventHostingTitle.tintColor = .black
+        eventHostingTitle.titleLabel?.numberOfLines = 2
+        eventHostingTitle.titleLabel?.textAlignment = .left
+        eventHostingTitle.titleLabel?.font = .boldSystemFont(ofSize: 21.0)
+        
+        signOutButton.setTitleColor(Utilities.getRedUI(), for: .normal)
+        signOutButton.layer.borderWidth = 2
+        signOutButton.layer.borderColor = CGColor(red: 1.0, green: 0.3, blue: 0.0, alpha: 1.0)
+        signOutButton.titleLabel?.textAlignment = .center
+        
+        
+        set_photo(button: updateBioButton, name: "change_bio_button.png")
+        
+        
+        Utilities.styleLabel(eventsHostingLabel, size: 12, uppercase: true)
+        
+        
+        Utilities.styleLabel(privateInvitesLabel, size: 12, uppercase: true)
+        
     }
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -137,22 +169,21 @@ class ProfileViewController: UIViewController, FSCalendarDelegate, FSCalendarDat
             var eventDate =  NSDate() as Date
             if event.username == Auth.auth().currentUser?.displayName {
                 if  (event.startDate?.dateValue())!  > eventDate {
-
                     eventDate = (event.startDate?.dateValue() as! NSDate) as Date
-                    print(eventDate)
-                    var imageView = UIImageView()
-                    //imageView.sd_setImage(with: URL(fileURLWithPath: event.photoURL ?? "https://firebasestorage.googleapis.com/v0/b/good-swimmer.appspot.com/o/goodswimmer%20stock%20profile.png?alt=media&token=174d3698-5a08-454d-805b-701997c68c61"))
-                    //imageView.sd_setImage(with: URL(fileURLWithPath: "https://firebasestorage.googleapis.com/v0/b/good-swimmer.appspot.com/o/decemberUserFull%20Event.jpg?alt=media&token=ab054ab9-8ebb-4ab7-ad75-fafce318220c"))
-                    self.eventsHosting.setImage(imageView.image, for: .normal)
-                    eventsHosting.sd_setImage(with: user?.photoURL, for: state, completed: nil)
+                    eventsHosting.sd_setImage(with: URL(string: event.photoURL!), for: state, completed: nil)
+                    let formatter4 = DateFormatter()
+                    formatter4.dateFormat = "HH:mm E, d MMM y"
+                    var eventDateText = formatter4.string(from: (event.startDate?.dateValue())!) + " · " + event.venue!
+                    eventHostingDate.setTitle(eventDateText, for: .normal)
+                    eventHostingTitle.setTitle(event.name, for: .normal)
                         
                 }
             }
         }
         
         
-        
-        
+        eventsHosting.layer.borderWidth = 10
+        eventsHosting.layer.borderColor = CGColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         
         calendar.delegate = self
         calendar.dataSource = self
@@ -172,6 +203,9 @@ class ProfileViewController: UIViewController, FSCalendarDelegate, FSCalendarDat
         calendar.appearance.weekdayTextColor = .black
         //eventsAttendingCV.delegate = self
         //eventsAttendingCV.dataSource = self
+        
+        
+        
     }
     
     //TODO: set user as not logged in...?
@@ -286,6 +320,29 @@ class ProfileViewController: UIViewController, FSCalendarDelegate, FSCalendarDat
         return nil //add your color for default
 
     }
+    
+    
+    func set_photo(button: UIButton, name: String) {
+        let imageRef = Storage.storage().reference().child(name)
+        // Fetch the download URL
+        imageRef.downloadURL { [self] url, error in
+          if let error = error {
+            // Handle any errors
+            print("Error retreiving stock photo:",error)
+          } else {
+            print("I am getting the sign out button")
+            print(url)
+            button.sd_setImage(with: url, for: state, completed: nil)
+          }
+        }
+       
+    }
+    
+    @IBAction func eventHostingTapped(_ sender: Any) {
+        print("I am pressing")
+    }
+    
+
 }
 
 

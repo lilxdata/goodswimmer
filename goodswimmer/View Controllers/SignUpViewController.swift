@@ -78,7 +78,7 @@ class SignUpViewController: UIViewController, GMSAutocompleteViewControllerDeleg
         let secure = Utilities.isPasswordValid(cleanedPassword)
     
         if !secure {
-            return "Let's make that \n password more secure!"
+            return "Let's make that \n password more secure!\nMinimum eight characters, at least one letter, one number and one special character required"
         }
         //Check that email is an email format (with @ etc)
         let usernameValid = Validators.isUsernameValid(userNameField.text!)

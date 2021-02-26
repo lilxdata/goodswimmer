@@ -32,13 +32,72 @@ class Validators {
         return usernamePred.evaluate(with: username)
         
     }
-    
-    /* date validation */
+    static func isDateValidHelper(month: String, day: String, year: String, is_leap: Bool) -> Bool{
+        if(["2"].contains(month)){
+            //If not a leap year, return false
+            if((Int(day) ?? 30) > 28){
+                if(is_leap && day == "29"){
+                    return true
+                }
+                return false
+            }
+            return true
+        }
+        else if(["4","6","9","11"].contains(month)){
+            if((Int(day) ?? 32) > 31){
+                return false
+            }
+            return true
+        }
+        else if(["1","3","5","7","8","10","12"].contains(month)){
+            if((Int(day) ?? 32) > 31){
+                return false
+            }
+            return true
+        }
+        return false
+    }
+    /* date validation
+       TODO: Implement mm/d/yyyy, m/d/yyyy, mm/dd/yy, mm/dd/yy, m/dd/yy, m/d/yy
+    */
     static func isDateValid(_ date: String) -> Bool {
-        let dateRegEx = "^(?:(?:31(\\/|-|\\.)(?:0?[13578]|1[02]))\\1|(?:(?:29|30)(\\/|-|\\.)(?:0?[1,3-9]|1[0-2])\\2))(?:(?:1[6-9]|[2-9]\\d)?\\d{2})$|^(?:29(\\/|-|\\.)0?2\\3(?:(?:(?:1[6-9]|[2-9]\\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\\d|2[0-8])(\\/|-|\\.)(?:(?:0?[1-9])|(?:1[0-2]))\\4(?:(?:1[6-9]|[2-9]\\d)?\\d{2})$"
-        let datePred = NSPredicate(format:"SELF MATCHES %@", dateRegEx)
-        return datePred.evaluate(with: date)
+        //Let's check if the date is m/dd/yyyy
+        let dateRegEx1 = "([1-9])[-\\/](0[1-9]|[12][0-9]|3[01])[-\\/.](19|20|21|22|23|24)[0-9][0-9]"
+        let datePred1 = NSPredicate(format:"SELF MATCHES %@", dateRegEx1)
+        //Let's check if the date is mm/dd/yyyy
+        let dateRegEx2 = "(0[1-9]|1[012])[-\\/.](0[1-9]|[12][0-9]|3[01])[-\\/.](19|20|21|22|23|24)[0-9][0-9]"
+        let datePred2 = NSPredicate(format:"SELF MATCHES %@", dateRegEx2)
+         
+        //Tester
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MM/dd/yyyy"
+        var adjusted_date = ""
+        //Setup Checks
+        if(datePred1.evaluate(with: date) == true) {
+            adjusted_date = "0"+date
+        }
+        else if(datePred2.evaluate(with: date) == true) {
+            adjusted_date = date
+        }
+        if dateFormatter.date(from: adjusted_date) != nil {
+            return true
+        }
+        else { return false }
         
+    }
+    
+    static func isLeap(year: Int) -> Bool {
+        let year_int = Int(year)
+        if(year_int % 400 == 0) {
+            return true
+        }
+        else if(year_int % 100 == 0) {
+            return false
+        }
+        else if(year_int % 4 == 0) {
+            return true
+        }
+        return false
     }
     
     /* date validation */

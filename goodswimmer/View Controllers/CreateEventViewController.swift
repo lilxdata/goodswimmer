@@ -52,6 +52,7 @@ class CreateEventViewController: UIViewController {
     @IBOutlet weak var inviteOnlyField: UITextView!
     @IBOutlet weak var multidayEventButton: UIButton!
     
+    @IBOutlet weak var createItTestLabel: UILabel!
     
     var accessibilityArray = ["wheelchair" : false,  "transit" : false, "restroom" : false, "NOTAFLOF" : false, "scentFree" : false, "other" : false]
     var inviteToGSState = false
@@ -105,7 +106,7 @@ class CreateEventViewController: UIViewController {
         addressField2.isUserInteractionEnabled = true
         addressField3.isUserInteractionEnabled = true
         
-        
+        createItTestLabel.font = UIFont(name: "Standard-Book", size: 21)
         
         Utilities.styleButton(createEventButton)
         Utilities.styleLabel(createEventHeader, size: headerSize, uppercase: false)
