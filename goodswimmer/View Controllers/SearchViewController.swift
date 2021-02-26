@@ -216,11 +216,6 @@ extension SearchViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         //Search Bar Results
         if let searchText = searchController.searchBar.text {
-            print(self.presentingViewController)
-            print(searchController.isActive)
-            if(tabBarController?.selectedIndex != 3) {
-                searchController.view.isHidden = true
-            }
             if(searchText.count < 1){
                 hideSearchResults(isHidden: true)
             }

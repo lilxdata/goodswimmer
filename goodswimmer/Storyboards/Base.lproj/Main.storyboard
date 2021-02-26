@@ -1308,10 +1308,10 @@
             </objects>
             <point key="canvasLocation" x="1376.8115942028987" y="1871.6517857142856"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--My Tab Bar Controller-->
         <scene sceneID="KZa-J6-c9e">
             <objects>
-                <tabBarController storyboardIdentifier="tabVC" id="t2G-Pr-Um6" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="tabVC" id="t2G-Pr-Um6" customClass="MyTabBarController" customModule="goodswimmer" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="9yT-6K-7Ua">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>

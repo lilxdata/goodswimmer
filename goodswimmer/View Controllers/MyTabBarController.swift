@@ -11,13 +11,21 @@ import UIKit
 
 class MyTabBarController: UITabBarController, UITabBarControllerDelegate {
     
+    var searchViewControllerReference = SearchViewController()
+    var hasSearchBeenLoaded = false
     override func viewDidLoad() {
         self.delegate = self
-    
+        searchViewControllerReference = viewControllers![3] as! SearchViewController
     }
-    // UITabBarDelegate
-    override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
-        print("Selected item")
+    override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem!) {
+        if(item == self.tabBar.items![3]) {
+            hasSearchBeenLoaded = true //Keep track that this view has been loaded
+        }
+        else {
+            if(hasSearchBeenLoaded){
+                searchViewControllerReference.searchController.isActive = false //We will get a null pointer exception if the
+            }                                            //SearchViewController has not loaded
+        }
     }
 
     // UITabBarControllerDelegate
