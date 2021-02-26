@@ -321,7 +321,7 @@ class CreateEventViewController: UIViewController {
         print("I am setting up")
         let buttons = [inviteToGSButton, WheelchairAccessibleButton, CloseToTransitButton,
                        accessibleRestroomButton, NOTAFLOFButton, scentFreeButton, otherAccButton,
-                       multidayEventButton]
+                       multidayEventButton, inviteOnlyButton]
         for button in buttons {
             setCheckMark(button: button!, check: false)
         }
