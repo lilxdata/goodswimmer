@@ -10,13 +10,15 @@ import UIKit
 import Firebase
 import SDWebImage
 
-class HomeViewController: UIViewController {
+class HomeViewController: UIViewController, UITabBarDelegate {
     
     @IBOutlet weak var headerLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var zeroStateView: UIView!
     @IBOutlet weak var sortBySwitch: UISwitch!
     @IBOutlet weak var sortByLabel: UILabel!
+    
+    var tabBarDel : UITabBarDelegate!
     
     let eventArray = EventArray.sharedInstance
     let menu = Menu.sharedInstance
@@ -30,11 +32,19 @@ class HomeViewController: UIViewController {
     let clicked = UIImage.imageWithColor(color: .black, size: CGSize(width: 50, height: 50))
     let animated = UIImage.imageWithColor(color: Utilities.getRedUI(), size: CGSize(width: 50, height: 50))
     
+    // UITabBarDelegate
+    func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
+        print("Selected item")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpElements()
         tableView.delegate = self
         tableView.dataSource = self
+        tabBarDel = self
+        
+        
         
         func numberOfSections(in tableView: UITableView) -> Int {
             return 1
@@ -156,7 +166,8 @@ class HomeViewController: UIViewController {
         tabBarController?.tabBar.tintColor = Utilities.getRedUI()
         
         
-        //searchController.isActive = false
+        
+        //tabBarController.
 
         let photoid = Auth.auth().currentUser!.uid
         let imageRef = Storage.storage().reference().child(photoid+".jpg")
@@ -186,7 +197,7 @@ class HomeViewController: UIViewController {
         
     }
     
-    
+ 
     
     /*This function resizes an image with same scale as original*/
     func resizeImage(image: UIImage, newWidth: CGFloat) -> UIImage {
