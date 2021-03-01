@@ -596,7 +596,7 @@
                                                     <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacing="37" translatesAutoresizingMaskIntoConstraints="NO" id="Qsu-E9-nm7">
                                                         <rect key="frame" x="0.0" y="561.5" width="320" height="20"/>
                                                         <subviews>
-                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="City/State" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iMn-cQ-k5C" userLabel="AddressField2">
+                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="City/State Abbreviation" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iMn-cQ-k5C" userLabel="AddressField2">
                                                                 <rect key="frame" x="0.0" y="0.0" width="175" height="18.5"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="175" id="BC8-UZ-z26"/>

@@ -44,6 +44,7 @@ class HomeViewController: UIViewController {
             return 1
         }
         REGEX_TESTS.run_regex_date_test()
+        REGEX_TESTS.run_regex_street_num_test()
 
         
         let listMenuWidth = 320

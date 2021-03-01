@@ -165,7 +165,7 @@ class CreateEventViewController: UIViewController {
         let ticketPrice = Int(ticketPriceField.text!) ?? 0
      
         
-        var errorMessage = "An error occurred:\n"
+        var errorMessage = ""
         
         //Event Name Validation
         let eventNameValid = Validators.isNameValid(eventNameInput)
@@ -198,13 +198,18 @@ class CreateEventViewController: UIViewController {
         //Date End Validation
         print("date_end_input", date_end_input)
         let date_end_valid = Validators.isDateValid(date_end_input)
-        if !date_end_valid {
+        if (!date_end_valid && (multiDayEventState == true)){
             date_end_input = "Invalid Date, please reenter"
             errorMessage = errorMessage + "\n"
             errorMessage = errorMessage + date_end_input
         }
-        let date_end = date_end_input
+       
+        if(multiDayEventState == false){
+            date_end_input = date_start_input
+        }
         
+        let date_end = date_end_input
+
         
         //Start Time Validation
         let time_start_valid = Validators.isTimeValid(time_start_input)
@@ -258,12 +263,12 @@ class CreateEventViewController: UIViewController {
             return
         }
         
-        
-        addErrorPopUp(_sender: self.view, errorMessage: errorMessage)
-         
+        if(errorMessage != ""){
+            addErrorPopUp(_sender: self.view, errorMessageInput: errorMessage)
+        }
         //combine start time & date and end time & date fields into 2 timestamp objects
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd/MM/yyyy hh:mma"
+        dateFormatter.dateFormat = "MM/dd/yyyy hh:mma"
         let dateTimeString = date_start + " " + time_start
         print("start date time string", dateTimeString)
         let endDateTimeString = date_end + " " + time_end
@@ -277,10 +282,7 @@ class CreateEventViewController: UIViewController {
         if(accessibilityArray["other"] == false) {
             otherDescription = ""
         }
-        if(multiDayEventState == false){
-            dateField2.isUserInteractionEnabled = false
-            endDate = startDate
-        }
+
         let eventDict = [
             "name": eventName,
             "description": description,
@@ -362,7 +364,8 @@ class CreateEventViewController: UIViewController {
         
     }
     //Move this later
-    func addErrorPopUp(_sender: UIView, errorMessage: String?) {
+    func addErrorPopUp(_sender: UIView, errorMessageInput: String?) {
+        let errorMessage = "An error occurred:\n" + errorMessageInput!
         let xPos = (_sender.frame.width)*0.1
         let yPos = (_sender.frame.height)*0.1
         let width = (_sender.frame.width)*0.8
@@ -379,10 +382,10 @@ class CreateEventViewController: UIViewController {
         errorMessageButton.contentHorizontalAlignment = .center
         errorPopUp.addSubview(errorMessageButton)
         errorMessageButton.titleLabel?.numberOfLines = 100
-        if (errorMessage != nil) {
-            errorMessageButton.setTitle(errorMessage, for: .normal)
-        }
+        print(errorMessage)
+        errorMessageButton.setTitle(errorMessage, for: .normal)
         _sender.addSubview(errorPopUp)
+        
     }
     
     func addSuccessPopUp(_sender: UIView) {

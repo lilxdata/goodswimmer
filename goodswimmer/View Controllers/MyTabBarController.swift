@@ -31,7 +31,7 @@ class MyTabBarController: UITabBarController, UITabBarControllerDelegate {
                 let profileImageView = UIImageView()
                 //Get the Profile Image
                 profileImageView.sd_setImage(with: url, completed:{ (image, error, cacheType, imageURL) in
-                    let size = 40
+                    let size = 35
                     //Resize the image for the tab bar
                     profileImageView.image = self.resizeAsCircleImage(image: (profileImageView.image)!, newRadius: CGFloat(size/2))
                     //Round the image
@@ -44,15 +44,15 @@ class MyTabBarController: UITabBarController, UITabBarControllerDelegate {
         }
         
         //Resizing Tab Bar Icons
-        self.tabBar.items?[0].selectedImage = self.resizeImage(image: (self.tabBar.items?[0].selectedImage)!, newWidth: 20)
+        self.tabBar.items?[0].selectedImage = self.resizeImage(image: (self.tabBar.items?[0].selectedImage)!, newWidth: 30)
         self.tabBar.items?[0].image = self.tabBar.items?[0].selectedImage
-        self.tabBar.items?[2].selectedImage = self.resizeImage(image: (self.tabBar.items?[2].selectedImage)!, newWidth: 20)
+        self.tabBar.items?[2].selectedImage = self.resizeImage(image: (self.tabBar.items?[2].selectedImage)!, newWidth: 30)
         self.tabBar.items?[2].image = self.tabBar.items?[2].selectedImage
-        self.tabBar.items?[3].selectedImage = self.resizeImage(image: (self.tabBar.items?[3].selectedImage)!, newWidth: 30)
+        self.tabBar.items?[3].selectedImage = self.resizeImage(image: (self.tabBar.items?[3].selectedImage)!, newWidth: 40)
         self.tabBar.items?[3].image = self.tabBar.items?[3].selectedImage
         
         
-        tabBarController?.tabBar.tintColor = Utilities.getRedUI()
+        self.tabBar.tintColor = Utilities.getRedUI()
         
     }
     override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem!) {

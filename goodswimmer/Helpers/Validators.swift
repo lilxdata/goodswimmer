@@ -19,7 +19,7 @@ class Validators {
     }
     /* name validation */ //TODO: Why doesn't ' work?
     static func isNameValid(_ name: String) -> Bool {
-        let nameRegEx = "[-a-zA-Z. ']{2,26}"
+        let nameRegEx = "[-a-zA-Z. '\']{2,26}"
         let namePred = NSPredicate(format:"SELF MATCHES %@", nameRegEx)
         return namePred.evaluate(with: name)
         
@@ -110,7 +110,7 @@ class Validators {
     
     /* street/number validation */
     static func isStreetNumberValid(_ addr: String) -> Bool {
-        let addrRegEx = "[0-9]{1,8}\\ [-a-zA-Z. ']{2,26}"
+        let addrRegEx = "[0-9]{1,8}\\ [-a-zA-Z0-9. \']{2,26}"
         let addrPred = NSPredicate(format:"SELF MATCHES %@", addrRegEx)
         return addrPred.evaluate(with: addr)
         
@@ -126,7 +126,7 @@ class Validators {
     
     /* city,state validation */
     static func isCityStateValid(_ addr: String) -> Bool {
-        let addrRegEx = "[-a-zA-Z. ']{2,26}\\,[ ]{0,1}(|AL|AK|AS|AZ|AR|CA|CO|CT|DE|DC|FM|FL|GA|GU|HI|ID|IL|IN|IA|KS|KY|LA|ME|MH|MD|MA|MI|MN|MS|MO|MT|NE|NV|NH|NJ|NM|NY|NC|ND|MP|OH|OK|OR|PW|PA|PR|RI|SC|SD|TN|TX|UT|VT|VI|VA|WA|WV|WI|WY|)"
+        let addrRegEx = "[0-9-a-zA-Z.' \']{2,26}\\,[ ]{0,1}(|AL|AK|AS|AZ|AR|CA|CO|CT|DE|DC|FM|FL|GA|GU|HI|ID|IL|IN|IA|KS|KY|LA|ME|MH|MD|MA|MI|MN|MS|MO|MT|NE|NV|NH|NJ|NM|NY|NC|ND|MP|OH|OK|OR|PW|PA|PR|RI|SC|SD|TN|TX|UT|VT|VI|VA|WA|WV|WI|WY|)"
         let addrPred = NSPredicate(format:"SELF MATCHES %@", addrRegEx)
         return addrPred.evaluate(with: addr)
         
