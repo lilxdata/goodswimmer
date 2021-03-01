@@ -14,11 +14,13 @@ import FirebaseStorage
 class MyTabBarController: UITabBarController, UITabBarControllerDelegate {
     
     var searchViewControllerReference = SearchViewController()
+    var createEventViewController = CreateEventViewController()
     var hasSearchBeenLoaded = false
+    var hasCreateBeenLoaded = false
     override func viewDidLoad() {
         self.delegate = self
         searchViewControllerReference = viewControllers![3] as! SearchViewController
-        
+        createEventViewController = viewControllers![2] as! CreateEventViewController
         
         let photoid = Auth.auth().currentUser!.uid
         let imageRef = Storage.storage().reference().child(photoid+".jpg")
@@ -56,9 +58,19 @@ class MyTabBarController: UITabBarController, UITabBarControllerDelegate {
         
     }
     override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem!) {
+        if(item == self.tabBar.items![2]){
+            createEventViewController.view.isHidden = false
+            hasCreateBeenLoaded = true
+        }
+        else {
+            if(hasCreateBeenLoaded){
+                createEventViewController.view.isHidden = true
+            }
+        }
         if(item == self.tabBar.items![3]) {
             hasSearchBeenLoaded = true //Keep track that this view has been loaded
         }
+        
         else {
             if(hasSearchBeenLoaded){
                 searchViewControllerReference.searchController.isActive = false //We will get a null pointer exception if the

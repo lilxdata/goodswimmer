@@ -169,8 +169,8 @@ class ProfileViewController: UIViewController, FSCalendarDelegate, FSCalendarDat
             var eventDate =  NSDate() as Date
             if event.username == Auth.auth().currentUser?.displayName {
                 if  (event.startDate?.dateValue())!  > eventDate {
-                    eventDate = (event.startDate?.dateValue() as! NSDate) as Date
-                    eventsHosting.sd_setImage(with: URL(string: event.photoURL!), for: state, completed: nil)
+                    eventDate = (event.startDate?.dateValue() as! NSDate) as Date                    
+                    eventsHosting.sd_setImage(with: URL(string: event.photoURL ?? Constants.Placeholders.placeholderURL), for: .normal)
                     let formatter4 = DateFormatter()
                     formatter4.dateFormat = "HH:mm E, d MMM y"
                     var eventDateText = formatter4.string(from: (event.startDate?.dateValue())!) + " · " + event.venue!

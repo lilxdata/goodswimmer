@@ -63,8 +63,10 @@ class CreateEventViewController: UIViewController {
     var uuid = ""
     let menu = Menu.sharedInstance
     var stockImages = ["checked": UIImageView(image: UIImage(systemName: "square")),
-                      "unchecked": UIImageView(image: UIImage(systemName: "square"))
+                      "unchecked": UIImageView(image: UIImage(systemName: "square")),
+                      "goodswimmer stock profile": UIImageView()
                       ]
+    var stockURL = ""
     
     //runs everytime page is shown
     override func viewWillAppear(_ animated: Bool) {
@@ -265,6 +267,7 @@ class CreateEventViewController: UIViewController {
         
         if(errorMessage != ""){
             addErrorPopUp(_sender: self.view, errorMessageInput: errorMessage)
+            return
         }
         //combine start time & date and end time & date fields into 2 timestamp objects
         let dateFormatter = DateFormatter()
@@ -331,8 +334,8 @@ class CreateEventViewController: UIViewController {
     }
     
     func loadStockPhotos() {
-        "I am downloading"
-        let filenames = ["checked", "unchecked"]
+        print("I am downloading")
+        let filenames = ["checked", "unchecked", "goodswimmer stock profile"]
         for filename in filenames {
             let imageRef = Storage.storage().reference().child(filename+".png")
             // Fetch the download URL
@@ -345,6 +348,11 @@ class CreateEventViewController: UIViewController {
                 self.stockImages[filename]?.sd_setImage(with: url, completed: { (_: UIImage?,_: Error?, _: SDImageCacheType, _: URL?) -> Void in
                     if filename == "unchecked" {
                         self.setupCheckBoxes()
+                    }
+                    if filename == "goodswimmer stock profile" {
+                        
+                        self.stockURL = url!.absoluteString
+                        print(self.stockURL)
                     }
                 })
               }
@@ -482,6 +490,5 @@ class CreateEventViewController: UIViewController {
             dateField2.isHidden = true
         }
     }
-    
-}
 
+}
