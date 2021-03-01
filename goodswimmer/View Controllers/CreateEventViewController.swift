@@ -307,6 +307,17 @@ class CreateEventViewController: UIViewController {
             "inviteOnly" : inviteOnlyState,
             "createdDate": NSDate(timeIntervalSince1970:(NSDate().timeIntervalSince1970)) ,
         ] as [String : Any]
+        let db = Firestore.firestore()
+        let curUser = db.collection("users").document(Auth.auth().currentUser!.uid)
+        curUser.getDocument { (document, error) in
+            if let document = document, document.exists {
+                db.collection("users").document(Auth.auth().currentUser!.uid).updateData([
+                    "events" : [username]
+                ])
+            } else {
+                print("Error adding event")
+            }
+        }
         
         self.eventService.createEvent(dictionary: eventDict, uuid: self.uuid)
         
