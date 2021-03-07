@@ -27,6 +27,7 @@ class CreateEventViewController: UIViewController {
     @IBOutlet weak var addressField1: UITextField!
     @IBOutlet weak var addressField2: UITextField!
     @IBOutlet weak var addressField3: UITextField!
+    @IBOutlet weak var stateAbbreviation: UITextField!
     @IBOutlet weak var inviteToGSButton: UIButton!
     @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var dateField1: UITextField!
@@ -99,7 +100,7 @@ class CreateEventViewController: UIViewController {
             Utilities.styleLabel(label!, size: labelSize, uppercase: true)
         }
         
-        let textfields = [titleField, locationField, dateField1, dateField2, timeField1, timeField2, addressField1, addressField2, addressField3, ticketPriceField]
+        let textfields = [titleField, locationField, dateField1, dateField2, timeField1, timeField2, addressField1, addressField2, addressField3, ticketPriceField, stateAbbreviation]
         
         for textfield in textfields {
             Utilities.styleTextField(textfield!, size: fieldSize)
@@ -107,7 +108,7 @@ class CreateEventViewController: UIViewController {
         addressField1.isUserInteractionEnabled = true
         addressField2.isUserInteractionEnabled = true
         addressField3.isUserInteractionEnabled = true
-        
+        stateAbbreviation.isUserInteractionEnabled = true
         createItTestLabel.font = UIFont(name: "Standard-Book", size: 21)
         
         Utilities.styleButton(createEventButton)
@@ -157,6 +158,8 @@ class CreateEventViewController: UIViewController {
         var address1Input = Utilities.cleanData(addressField1)
         var address2Input = Utilities.cleanData(addressField2)
         var address3Input = Utilities.cleanData(addressField3)
+        var stateAbbreviationInput = Utilities.cleanData(stateAbbreviation)
+        
         let description = descriptionText.text!.trimmingCharacters(in: .whitespacesAndNewlines)
         let participants = participantsField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
         var inviteList = inviteOnlyField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
@@ -170,7 +173,7 @@ class CreateEventViewController: UIViewController {
         var errorMessage = ""
         
         //Event Name Validation
-        let eventNameValid = Validators.isNameValid(eventNameInput)
+        let eventNameValid = Validators.isLocationValid(eventNameInput)
         if !eventNameValid {
             eventNameInput = "Invalid Event Name, please reenter"
             errorMessage = errorMessage + "\n"
@@ -179,7 +182,7 @@ class CreateEventViewController: UIViewController {
         let eventName = eventNameInput
         
         //Location Validation
-        let locationValid = Validators.isCityValid(locationInput)
+        let locationValid = Validators.isLocationValid(locationInput)
         if !locationValid {
             locationInput = "Invalid Location, please reenter"
             errorMessage = errorMessage + "\n"
@@ -242,9 +245,9 @@ class CreateEventViewController: UIViewController {
         let address1 = address1Input
         
         //City,State Validation
-        let address2Valid = Validators.isCityStateValid(address2Input)
+        let address2Valid = Validators.isCityValid(address2Input)
         if !address2Valid {
-            address2Input = "Invalid City,State, please reenter"
+            address2Input = "Invalid City, please reenter"
             errorMessage = errorMessage + "\n"
             errorMessage = errorMessage + address2Input
         }
@@ -259,6 +262,15 @@ class CreateEventViewController: UIViewController {
             
         }
         let address3 = address3Input
+        
+        let stateAbbreviationValid = Validators.isStateValid(stateAbbreviationInput)
+        if !stateAbbreviationValid {
+            stateAbbreviationInput = "Invalid Zip Code, please reenter"
+            errorMessage = errorMessage + "\n"
+            errorMessage = errorMessage + stateAbbreviationInput
+            
+        }
+        let stateAbbreviation = stateAbbreviationInput
         
         guard let user = Auth.auth().currentUser, let username = user.displayName else {
             print("user not logged in / username not found")
@@ -294,10 +306,11 @@ class CreateEventViewController: UIViewController {
             "start_date": Timestamp.init(date: startDate),
             "end_date": Timestamp.init(date: endDate),
             // TODO: change this date_end name to "time" and add date_end and time_end fields
-            "address" : "",
-            "address1": address1,
-            "address2": address2,
-            "address3": address3,
+            "address" : address1+", "+address2+", "+stateAbbreviation+" "+address3,
+            "street number": address1,
+            "city": address2,
+            "zip code": address3,
+            "state" : stateAbbreviation,
             "username": username,
             "accessibilityAs": accessibilityAs,
             "otherDescription": otherDescription,

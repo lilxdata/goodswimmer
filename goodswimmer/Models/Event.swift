@@ -33,6 +33,10 @@ struct Event {
     var inviteList:String?
     var inviteToGS: Bool?
     var inviteOnly: Bool?
+    var streetNumber : String?
+    var city : String?
+    var state : String?
+    var zipCode : String?
     private var createdDate: Timestamp?
     
     init?(eventDict: [String: Any]) {
@@ -50,6 +54,10 @@ struct Event {
         let inviteList = eventDict["inviteList"] as? String
         let inviteToGS = eventDict["inviteToGS"] as? Bool
         let inviteOnly = eventDict["inviteOnly"] as? Bool
+        let streetNumber = eventDict["street number"] as? String
+        let city = eventDict["city"] as? String
+        let state = eventDict["state"] as? String
+        let zipCode = eventDict["zip code"] as? String
         
         
         self.username = username
@@ -71,5 +79,9 @@ struct Event {
         self.inviteList = inviteList
         self.inviteToGS = inviteToGS
         self.inviteOnly = inviteOnly
+        self.streetNumber = streetNumber
+        self.city = city
+        self.state = state
+        self.zipCode = zipCode
     }
 }

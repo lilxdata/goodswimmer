@@ -43,8 +43,7 @@ class HomeViewController: UIViewController {
         func numberOfSections(in tableView: UITableView) -> Int {
             return 1
         }
-        REGEX_TESTS.run_regex_date_test()
-        REGEX_TESTS.run_regex_street_num_test()
+        REGEX_TESTS.run_regex()
 
         
         let listMenuWidth = 320

@@ -37,15 +37,22 @@ class EventCell: UITableViewCell {
         //TODO: check if same month / diff month, same day diff day
         if let startDate = eventToDisplay?.startDate, let endDate = eventToDisplay?.endDate {
             let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "E MMM d" //yy or yyyy for year
+            dateFormatter.dateFormat = "EEEE, MMM dd, yyyy" //yy or yyyy for year
             eventDate.text = dateFormatter.string(from: startDate.dateValue())
             
             //TODO: format end date
             
             dateFormatter.dateFormat = "hh:mma"
             
-            let startTimeString = dateFormatter.string(from: startDate.dateValue())
-            let endTimeString = dateFormatter.string(from: endDate.dateValue())
+            var startTimeString = dateFormatter.string(from: startDate.dateValue())
+            var endTimeString = dateFormatter.string(from: endDate.dateValue())
+            
+            if(startTimeString.first == "0"){
+                startTimeString.remove(at: startTimeString.startIndex)
+            }
+            if(endTimeString.first == "0"){
+                endTimeString.remove(at: endTimeString.startIndex)
+            }
             
             eventTime.text = startTimeString + "-" + endTimeString
             
@@ -63,8 +70,8 @@ class EventCell: UITableViewCell {
     func customizeElements() {
         Utilities.styleLabel(eventName, size: 35,  uppercase: false)
         Utilities.styleLabel(eventLocation, size: 15, uppercase: false)
-        Utilities.styleLabel(eventDate, size: 24, uppercase: false)
-        Utilities.styleLabel(eventTime, size: 24, uppercase: false)
+        Utilities.styleLabel(eventDate, size: 18, uppercase: false)
+        Utilities.styleLabel(eventTime, size: 18, uppercase: false)
         Utilities.styleLabel(username, size: 15, uppercase: false)
     }
     

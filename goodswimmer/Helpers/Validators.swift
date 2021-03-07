@@ -124,9 +124,9 @@ class Validators {
         
     }
     
-    /* city,state validation */
-    static func isCityStateValid(_ addr: String) -> Bool {
-        let addrRegEx = "[0-9-a-zA-Z.' \']{2,26}\\,[ ]{0,1}(|AL|AK|AS|AZ|AR|CA|CO|CT|DE|DC|FM|FL|GA|GU|HI|ID|IL|IN|IA|KS|KY|LA|ME|MH|MD|MA|MI|MN|MS|MO|MT|NE|NV|NH|NJ|NM|NY|NC|ND|MP|OH|OK|OR|PW|PA|PR|RI|SC|SD|TN|TX|UT|VT|VI|VA|WA|WV|WI|WY|)"
+    /* state validation */
+    static func isStateValid(_ addr: String) -> Bool {
+        let addrRegEx = "(|AL|AK|AS|AZ|AR|CA|CO|CT|DE|DC|FM|FL|GA|GU|HI|ID|IL|IN|IA|KS|KY|LA|ME|MH|MD|MA|MI|MN|MS|MO|MT|NE|NV|NH|NJ|NM|NY|NC|ND|MP|OH|OK|OR|PW|PA|PR|RI|SC|SD|TN|TX|UT|VT|VI|VA|WA|WV|WI|WY|)"
         let addrPred = NSPredicate(format:"SELF MATCHES %@", addrRegEx)
         return addrPred.evaluate(with: addr)
         
@@ -135,7 +135,23 @@ class Validators {
     /* city validation */
     /* to do; google places API to check it's actually a city*/
     static func isCityValid(_ city: String) -> Bool {
-        let cityRegEx = "[A-Z][A-Za-z\\s]+"
+        let cityRegEx = "[0-9A-Z][A-Za-z\\s]+"
+        let cityPred = NSPredicate(format:"SELF MATCHES %@", cityRegEx)
+        return cityPred.evaluate(with: city)
+    }
+    
+    /* city,state validation */
+    static func isCityStateValid(_ addr: String) -> Bool {
+        let addrRegEx = "[0-9-a-zA-Z.' \']{2,26}\\,[ ]{0,1}(|AL|AK|AS|AZ|AR|CA|CO|CT|DE|DC|FM|FL|GA|GU|HI|ID|IL|IN|IA|KS|KY|LA|ME|MH|MD|MA|MI|MN|MS|MO|MT|NE|NV|NH|NJ|NM|NY|NC|ND|MP|OH|OK|OR|PW|PA|PR|RI|SC|SD|TN|TX|UT|VT|VI|VA|WA|WV|WI|WY|)"
+        let addrPred = NSPredicate(format:"SELF MATCHES %@", addrRegEx)
+        return addrPred.evaluate(with: addr)
+        
+    }
+    
+    
+    /* location validation */
+    static func isLocationValid(_ city: String) -> Bool {
+        let cityRegEx = "[0-9-a-zA-Z.' \']{2,26}"
         let cityPred = NSPredicate(format:"SELF MATCHES %@", cityRegEx)
         return cityPred.evaluate(with: city)
     }
