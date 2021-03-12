@@ -16,6 +16,7 @@ struct User {
     var following:[String?]
     var followers:[String?]
     var bio:String?
+    var photoURL:String?
     var events:[String?]
 
 }

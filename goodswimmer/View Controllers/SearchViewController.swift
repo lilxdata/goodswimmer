@@ -48,6 +48,10 @@ class SearchViewController: UIViewController {
         //Initialize Location with Woodstock Music Festival
         setMapLocation(address: "200 Hurd Rd, Swan Lake, NY 12783")
         
+        //TESTING
+        let resultsView  = storyboard!.instantiateViewController(withIdentifier: "search_res_vc") as! SearchResultsViewController
+        self.present(resultsView, animated: true, completion: nil)
+        
     }
     
     func searchForTopUser(_ searchTerm: String){
