@@ -24,7 +24,17 @@ class UserSearchCell: UITableViewCell {
     var userToDisplay: User?
     
     @IBAction func followUser(_ sender: Any) {
-        print("I tapped follow")
+        let db = Firestore.firestore()
+        let curUser = db.collection("users").document(Auth.auth().currentUser!.uid)
+        curUser.getDocument { (document, error) in
+            if let document = document, document.exists {
+                db.collection("users").document(Auth.auth().currentUser!.uid).updateData([
+                    "followers" : FieldValue.arrayUnion([self.username.text!])
+                ])
+            } else {
+                print("Error following user")
+            }
+        }
     }
     
     
