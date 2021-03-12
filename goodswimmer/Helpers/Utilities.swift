@@ -74,6 +74,14 @@ class Utilities {
         }
     }
     
+    static func styleLabelBold(_ label: UILabel, size: Int, uppercase: Bool){
+        let fontSize = CGFloat(size)
+        label.font = UIFont(name: "Standard-Bold", size: fontSize)
+        if uppercase {
+            label.text = label.text?.uppercased()
+        }
+    }
+    
     static func styleEventHeader(_ header: String) {
         let fontSize = CGFloat(15)
       //  header.
@@ -96,7 +104,7 @@ class Utilities {
     
     static func styleError(_ label: UILabel) {
         styleSubHeader(label)
-        label.textColor = UIColor.red
+        label.textColor = getRedUI()
         label.numberOfLines = 0
     }
     

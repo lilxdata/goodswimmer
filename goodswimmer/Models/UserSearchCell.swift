@@ -48,8 +48,9 @@ class UserSearchCell: UITableViewCell {
     }
     
     func customizeElements() {
-        Utilities.styleLabel(username, size: 15,  uppercase: false)
+        Utilities.styleLabelBold(username, size: 15,  uppercase: false)
         Utilities.styleLabel(bio, size: 15,  uppercase: false)
+        followButton.tintColor = Utilities.getRedUI()
     }
     
 }

@@ -25,6 +25,7 @@ class SearchResultsViewController: UIViewController {
         searchResults.delegate = self
         searchResults.dataSource = self
         loadUsers()
+    
         
         func numberOfSections(in searchResults: UITableView) -> Int {
             return 1
