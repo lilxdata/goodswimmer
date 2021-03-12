@@ -22,22 +22,24 @@ class UserSearchCell: UITableViewCell {
     
     
     var userToDisplay: User?
-    //TODO: ADD START DATE / END DATE, START TIME / END TIME
-    func displayEvent(_ user: User) {
+    
+    @IBAction func followUser(_ sender: Any) {
+        print("I tapped follow")
+    }
+    
+    
+    func displayUser(_ user: User) {
         userToDisplay = user
-        
         let imageURL = URL(string: userToDisplay?.photoURL ?? Constants.Placeholders.placeholderURL)
-        
         profileImage.sd_setImage(with: imageURL, completed: nil)
+        bio.text =  userToDisplay?.bio
+        username.text = userToDisplay?.username
         customizeElements()
     }
     
     func customizeElements() {
-        /*Utilities.styleLabel(, size: 35,  uppercase: false)
-        Utilities.styleLabel(, size: 15, uppercase: false)
-        Utilities.styleLabel(, size: 18, uppercase: false)
-        Utilities.styleLabel(, size: 18, uppercase: false)
-        Utilities.styleLabel(, size: 15, uppercase: false)*/
+        Utilities.styleLabel(username, size: 15,  uppercase: false)
+        Utilities.styleLabel(bio, size: 15,  uppercase: false)
     }
     
 }
