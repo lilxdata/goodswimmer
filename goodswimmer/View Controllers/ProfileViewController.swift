@@ -73,45 +73,40 @@ class ProfileViewController: UIViewController, FSCalendarDelegate, FSCalendarDat
             let photoid = Auth.auth().currentUser!.uid
             let imageRef = Storage.storage().reference().child(photoid+".jpg")
             let user = Auth.auth().currentUser
-            let stockPhotoRef = Storage.storage().reference().child("goodswimmer stock profile.png")
-            // Fetch the download URL
-            stockPhotoRef.downloadURL { stock_url, error in
-              if let error = error {
-                // Handle any errors
-                print("Error retreiving stock photo:",error)
-              } else {
-                //Removes image from storage
-                if(stock_url != user?.photoURL){
-                    imageRef.delete { error in
-                        if let error = error {
-                            print(error)
-                        } else {
-                            print("Removed old profile picture, adding uploaded image")
-                        }
-                    }
-                }
-                else {
-                    print("Updating from stock photo")
-                }
-              }
-            }
+            Storage.storage().reference().child(photoid + ".jpg").delete {_ in }
             StorageService.uploadImage(image, at: imageRef) { (downloadURL) in
                 guard let downloadURL = downloadURL else {
                     return
                 }
-                let urlString = downloadURL.absoluteString
-                print("image URL: \(urlString)")
+                let db = Firestore.firestore()
+                db.collection("users").document(Auth.auth().currentUser!.uid).updateData(["photoURL" : downloadURL.absoluteString])
                 let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
-                changeRequest?.photoURL = URL(string: urlString)
-                self.profileImage.sd_setImage(with: user?.photoURL, for: self.state, completed: nil)
+                changeRequest?.photoURL = URL(string: downloadURL.absoluteString)
+                self.profileImage.sd_setImage(with: downloadURL, for: self.state, completed: {_,_,_,_ in
+                    var image = self.profileImage.image(for: .normal)?.roundedImage
+                    image = self.resizeAsCircleImage(image: image! , newRadius: CGFloat(35/2))
+                    self.tabBarController?.tabBar.items?[1].image = image
+                    self.tabBarController?.tabBar.items?[1].image = self.tabBarController?.tabBar.items?[1].image!.withRenderingMode(.alwaysOriginal)
+                    self.tabBarController?.tabBar.items?[1].selectedImage = self.tabBarController?.tabBar.items?[1].image!.withRenderingMode(.alwaysOriginal)
+                })
+                
+                
                 changeRequest?.commitChanges { (error) in
-                }
+                }    
             }
+            
         }
         photoHelper.presentActionSheet(from: self)
     }
          
-    
+    func resizeAsCircleImage(image: UIImage, newRadius: CGFloat) -> UIImage {
+        UIGraphicsBeginImageContext(CGSize(width: newRadius*2, height: newRadius*2))
+        image.draw(in: CGRect(x: 0, y: 0, width: newRadius*2, height: newRadius*2))
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+        
+        return newImage
+    }
     
     func setUpElements() {
         //Utilities.styleButton(bioButton)
