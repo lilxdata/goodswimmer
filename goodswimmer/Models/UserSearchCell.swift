@@ -42,6 +42,7 @@ class UserSearchCell: UITableViewCell {
         userToDisplay = user
         let imageURL = URL(string: userToDisplay?.photoURL ?? Constants.Placeholders.placeholderURL)
         profileImage.sd_setImage(with: imageURL, completed: nil)
+        profileImage.makeRounded(_cornerRadius: profileImage.fs_width)
         bio.text =  userToDisplay?.bio
         username.text = userToDisplay?.username
         customizeElements()

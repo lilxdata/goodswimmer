@@ -78,18 +78,24 @@ class SearchResultsViewController: UIViewController {
     func loadUsers(){
         let users = db.collection("users").order(by: "username")
         print(users)
-        
         users.getDocuments() { (querySnapshot, err) in
             if let err = err {
                 print("Error getting documents: \(err)")
             } else {
                 for document in querySnapshot!.documents {
 
-                    //let userURL = (document.get("profileURL") as! String)
-                    //let userBio = document.get("bio") as! String
+                    let userURL_q = document.get("profileURL")
+                    let userURL:String
+                    if userURL_q == nil {
+                        userURL = Constants.Placeholders.placeholderURL
+                    }
+                    else {
+                        userURL = userURL_q as! String
+                    }
+                    let userBio = document.get("bio") as! String
                     let userUsername = document.get("username") as! String
 
-                    let user = User(username: userUsername, userId: "", following: [], followers: [], bio: "", photoURL: "", events: [])
+                    let user = User(username: userUsername, userId: "", following: [], followers: [], bio: userBio, photoURL: userURL, events: [])
                     self.userArray.append(user)
                 
                     
