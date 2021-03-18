@@ -84,7 +84,8 @@ class SearchResultsViewController: UIViewController {
             } else {
                 for document in querySnapshot!.documents {
 
-                    let userURL_q = document.get("profileURL")
+                    let userURL_q = document.get("photoURL")
+
                     let userURL:String
                     if userURL_q == nil {
                         userURL = Constants.Placeholders.placeholderURL

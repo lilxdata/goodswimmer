@@ -143,7 +143,6 @@ class ProfileViewController: UIViewController, FSCalendarDelegate, FSCalendarDat
         super.viewDidLoad()
         setUpElements()
         let user = Auth.auth().currentUser
-        print(user?.photoURL)
         profileImage.sd_setImage(with: user?.photoURL, for: state, completed: nil)
         profileImage.imageView?.makeRounded(_cornerRadius: profileImage.frame.height)
         self.bioTextField.isHidden = true
