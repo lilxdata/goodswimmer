@@ -325,7 +325,7 @@ class CreateEventViewController: UIViewController {
         curUser.getDocument { (document, error) in
             if let document = document, document.exists {
                 db.collection("users").document(Auth.auth().currentUser!.uid).updateData([
-                    "events" : [username]
+                    "events" : [eventName]
                 ])
             } else {
                 print("Error adding event")

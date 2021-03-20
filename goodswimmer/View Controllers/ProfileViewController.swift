@@ -24,7 +24,11 @@ class ProfileViewController: UIViewController, FSCalendarDelegate, FSCalendarDat
     var myEventsArr = [" "]
     var uuid = ""
     var state : UIControl.State = []
+    var profileOwner = User(following: [], followers: [], events: [])
+    let user = Auth.auth().currentUser
+    var isCurUser = true
     
+    var calendarRef = FSCalendar()
     
     // Get a reference to the storage service using the default Firebase App
     let storage = Storage.storage()
@@ -68,11 +72,12 @@ class ProfileViewController: UIViewController, FSCalendarDelegate, FSCalendarDat
         }
     }
     @IBAction func profileImageTapped(_ sender: Any) {
+        print(self.profileOwner.userId, self.user?.uid)
+        if(self.profileOwner.userId == self.user?.uid){
         photoHelper.completionHandler =  { image in
             //make unique identifier for image
             let photoid = Auth.auth().currentUser!.uid
             let imageRef = Storage.storage().reference().child(photoid+".jpg")
-            let user = Auth.auth().currentUser
             Storage.storage().reference().child(photoid + ".jpg").delete {_ in }
             StorageService.uploadImage(image, at: imageRef) { (downloadURL) in
                 guard let downloadURL = downloadURL else {
@@ -94,6 +99,7 @@ class ProfileViewController: UIViewController, FSCalendarDelegate, FSCalendarDat
             }
         }
         photoHelper.presentActionSheet(from: self)
+        }
     }
          
     func resizeAsCircleImage(image: UIImage, newRadius: CGFloat) -> UIImage {
@@ -106,10 +112,10 @@ class ProfileViewController: UIViewController, FSCalendarDelegate, FSCalendarDat
     }
     
     func setUpElements() {
-        //Utilities.styleButton(bioButton)
+        calendarRef = self.calendar
         Utilities.styleLabel(bioLabel, size: 12, uppercase: true)
         bioLabel.numberOfLines = 5
-        usernameLabel.text = Auth.auth().currentUser?.displayName
+        usernameLabel.text = profileOwner.username
         usernameLabel.textAlignment = .center
         
         eventHostingDate.tintColor = .black
@@ -120,28 +126,33 @@ class ProfileViewController: UIViewController, FSCalendarDelegate, FSCalendarDat
         eventHostingTitle.titleLabel?.numberOfLines = 2
         eventHostingTitle.titleLabel?.textAlignment = .left
         eventHostingTitle.titleLabel?.font = .boldSystemFont(ofSize: 21.0)
-        
-        signOutButton.setTitleColor(Utilities.getRedUI(), for: .normal)
-        signOutButton.layer.borderWidth = 2
-        signOutButton.layer.borderColor = CGColor(red: 1.0, green: 0.3, blue: 0.0, alpha: 1.0)
-        signOutButton.titleLabel?.textAlignment = .center
-        
-        
-        set_photo(button: updateBioButton, name: "change_bio_button.png")
-        
-        
+        if(isCurUser){
+            signOutButton.setTitleColor(Utilities.getRedUI(), for: .normal)
+            signOutButton.layer.borderWidth = 2
+            signOutButton.layer.borderColor = CGColor(red: 1.0, green: 0.3, blue: 0.0, alpha: 1.0)
+            signOutButton.titleLabel?.textAlignment = .center
+            signOutButton.isHidden = false
+            Utilities.styleLabel(privateInvitesLabel, size: 12, uppercase: true)
+            privateInvitesLabel.isHidden = false
+            set_photo(button: updateBioButton, name: "change_bio_button.png")
+            updateBioButton.isHidden = false
+        }
+        else{
+            signOutButton.isHidden = true
+            privateInvitesLabel.isHidden = true
+            updateBioButton.isHidden = true
+        }
         Utilities.styleLabel(eventsHostingLabel, size: 12, uppercase: true)
+    
         
-        
-        Utilities.styleLabel(privateInvitesLabel, size: 12, uppercase: true)
         
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         setUpElements()
-        let user = Auth.auth().currentUser
-        profileImage.sd_setImage(with: user?.photoURL, for: state, completed: nil)
-        profileImage.imageView?.makeRounded(_cornerRadius: profileImage.frame.height)
+        
+        
         self.bioTextField.isHidden = true
         let db = Firestore.firestore()
         let curUser = db.collection("users").document(Auth.auth().currentUser!.uid)
@@ -150,6 +161,18 @@ class ProfileViewController: UIViewController, FSCalendarDelegate, FSCalendarDat
                 self.bioLabel.text = document.get("bio") as? String ?? "Error retreiving bio"
                 self.myEventsArr = document.get("events") as! [String]
                 self.calendar.reloadData()
+                var photoURL = URL(string: self.profileOwner.photoURL ?? Constants.Placeholders.placeholderURL)
+                if(self.isCurUser){
+                self.profileOwner.bio = document.get("bio") as? String
+                self.profileOwner.events = document.get("events") as! [String]
+                self.profileOwner.followers = document.get("followers") as! [String]
+                self.profileOwner.following = document.get("following") as! [String]
+                self.profileOwner.photoURL = document.get("photoURL") as! String
+                self.profileOwner.userId = document.get("userId") as! String
+                self.profileOwner.username = document.get("username") as! String
+                photoURL = URL(string: document.get("photoURL") as! String)
+                }
+                self.profileImage.sd_setImage(with: photoURL, for: self.state, completed: {_,_,_,_ in self.profileImage.imageView?.makeRounded(_cornerRadius: self.profileImage.frame.height)})
             } else {
                 print("Error retreiving bio")
             }
@@ -257,6 +280,7 @@ class ProfileViewController: UIViewController, FSCalendarDelegate, FSCalendarDat
         //calendar_vc
         if let vc = storyboard?.instantiateViewController(withIdentifier: "calendar_vc") as? CalendarViewController {
             vc.eventsToday = eventsToday
+            self.calendar.reloadData()
             //vc.modalPresentationStyle = .fullScreen
             present(vc, animated: true, completion: nil)
         }
@@ -321,8 +345,6 @@ class ProfileViewController: UIViewController, FSCalendarDelegate, FSCalendarDat
             // Handle any errors
             print("Error retreiving stock photo:",error)
           } else {
-            print("I am getting the sign out button")
-            print(url)
             button.sd_setImage(with: url, for: state, completed: nil)
           }
         }

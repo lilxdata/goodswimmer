@@ -15,8 +15,10 @@ class MyTabBarController: UITabBarController, UITabBarControllerDelegate {
     
     var searchViewControllerReference = SearchViewController()
     var createEventViewController = CreateEventViewController()
+    var profileEventViewController = ProfileViewController()
     var hasSearchBeenLoaded = false
     var hasCreateBeenLoaded = false
+    var hasProfileBeenLoaded = false
     override func viewDidLoad() {
         self.delegate = self
         searchViewControllerReference = viewControllers![3] as! SearchViewController
@@ -26,23 +28,27 @@ class MyTabBarController: UITabBarController, UITabBarControllerDelegate {
         let imageRef = Storage.storage().reference().child(photoid+".jpg")
  
         imageRef.downloadURL { url, error in
-          if let error = error {
-            // Handle any errors
-            print(error)
-          } else {
-                let profileImageView = UIImageView()
+            let profileImageView = UIImageView()
+            var photoURL: URL
+            if let error = error {
+                // Handle any errors
+                print(error)
+                photoURL = URL(string: Constants.Placeholders.placeholderURL)!
+            } else {
+                
                 //Get the Profile Image
-                profileImageView.sd_setImage(with: url, completed:{ (image, error, cacheType, imageURL) in
-                    let size = 35
-                    //Resize the image for the tab bar
-                    profileImageView.image = self.resizeAsCircleImage(image: (profileImageView.image)!, newRadius: CGFloat(size/2))
-                    //Round the image
-                    self.tabBar.items?[1].image = profileImageView.image?.roundedImage
-                    //Set rendering to original so our photo shows up
-                    self.tabBar.items?[1].selectedImage = self.tabBar.items?[1].image!.withRenderingMode(.alwaysOriginal)
-                    self.tabBar.items?[1].image = self.tabBar.items?[1].image!.withRenderingMode(.alwaysOriginal)
-               })
-          }
+                photoURL = url ?? URL(string: Constants.Placeholders.placeholderURL)!
+            }
+            profileImageView.sd_setImage(with: photoURL, completed:{ (image, error, cacheType, imageURL) in
+                let size = 35
+                //Resize the image for the tab bar
+                profileImageView.image = self.resizeAsCircleImage(image: (profileImageView.image)!, newRadius: CGFloat(size/2))
+                //Round the image
+                self.tabBar.items?[1].image = profileImageView.image?.roundedImage
+                //Set rendering to original so our photo shows up
+                self.tabBar.items?[1].selectedImage = self.tabBar.items?[1].image!.withRenderingMode(.alwaysOriginal)
+                self.tabBar.items?[1].image = self.tabBar.items?[1].image!.withRenderingMode(.alwaysOriginal)
+           })
         }
         
         //Resizing Tab Bar Icons
@@ -74,7 +80,14 @@ class MyTabBarController: UITabBarController, UITabBarControllerDelegate {
         else {
             if(hasSearchBeenLoaded){
                 searchViewControllerReference.searchController.isActive = false //We will get a null pointer exception if the
-            }                                            //SearchViewController has not loaded
+            }       //ViewController has not loaded
+        }
+        if(item == self.tabBar.items![1]) {
+            if(hasProfileBeenLoaded){
+                print("I am trying to reload data")
+                profileEventViewController.calendarRef.reloadData() //We will get a null pointer exception if the
+            }
+            hasProfileBeenLoaded = true //Keep track that this view has been loaded
         }
     }
 

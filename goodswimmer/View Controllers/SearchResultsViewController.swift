@@ -18,6 +18,7 @@ class SearchResultsViewController: UIViewController {
     @IBOutlet weak var searchResults: UITableView!
     let db = Firestore.firestore()
     var userArray = [User]()
+    var userId = ""
     
     override func viewDidLoad() {
         //searchResults.register(UITableViewCell.self, forCellReuseIdentifier: "UserSearchCell")
@@ -94,9 +95,15 @@ class SearchResultsViewController: UIViewController {
                         userURL = userURL_q as! String
                     }
                     let userBio = document.get("bio") as! String
+                   
+                    
+                    let userEvents = document.get("events") as! [String]
+                    let userFollowers = document.get("followers") as! [String]
+                    let userFollowing = document.get("following") as! [String]
+                    let userId = document.get("userId") as! String
                     let userUsername = document.get("username") as! String
-
-                    let user = User(username: userUsername, userId: "", following: [], followers: [], bio: userBio, photoURL: userURL, events: [])
+                    
+                    let user = User(username: userUsername, userId: userId, following:userFollowing, followers:userFollowers, bio: userBio, photoURL: userURL, events: userEvents)
                     self.userArray.append(user)
                 
                     
@@ -134,6 +141,9 @@ extension SearchResultsViewController : UITableViewDelegate, UITableViewDataSour
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("I tapped a cell")
         let profile_view  = storyboard!.instantiateViewController(withIdentifier: "profile_vc") as! ProfileViewController
+        profile_view.profileOwner = self.userArray[indexPath.row]
+        profile_view.isCurUser = false
+        print(profile_view.profileOwner)
         self.present(profile_view, animated: true, completion: nil)
     }
 }
