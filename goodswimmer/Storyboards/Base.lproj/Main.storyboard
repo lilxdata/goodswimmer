@@ -992,7 +992,7 @@
         <!--Profile View Controller-->
         <scene sceneID="Qy0-5j-bCM">
             <objects>
-                <viewController id="b6l-6S-5dU" customClass="ProfileViewController" customModule="goodswimmer" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="profile_vc" id="b6l-6S-5dU" customClass="ProfileViewController" customModule="goodswimmer" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="a8n-vR-hCL">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1529,6 +1529,21 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0hu-E1-mR1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-3430.434782608696" y="1850.8928571428571"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="8Dy-tv-6bt">
+            <objects>
+                <viewController id="pm0-11-A4Z" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="0z3-56-Vbe">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="edC-fd-TcF"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Jjd-LP-oyc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-3728" y="1178"/>
         </scene>
     </scenes>
     <resources>

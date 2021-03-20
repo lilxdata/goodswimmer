@@ -133,14 +133,8 @@ extension SearchResultsViewController : UITableViewDelegate, UITableViewDataSour
     //called everytime cell is tapped
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("I tapped a cell")
-      /*
-      //  self.performSegue(withIdentifier: "detailSegue2", sender: <#T##Any?#>)
-        if let vc = storyboard?.instantiateViewController(withIdentifier: "detailVC2") as? DetailViewController {
-            vc.selectedEvent = self.eventArray.events[indexPath.row]
-            vc.modalPresentationStyle = .fullScreen
-            present(vc, animated: true, completion: nil)
-        }
-        */
+        let profile_view  = storyboard!.instantiateViewController(withIdentifier: "profile_vc") as! ProfileViewController
+        self.present(profile_view, animated: true, completion: nil)
     }
 }
 

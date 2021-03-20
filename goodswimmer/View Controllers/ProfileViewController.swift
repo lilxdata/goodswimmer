@@ -89,12 +89,9 @@ class ProfileViewController: UIViewController, FSCalendarDelegate, FSCalendarDat
                     self.tabBarController?.tabBar.items?[1].image = self.tabBarController?.tabBar.items?[1].image!.withRenderingMode(.alwaysOriginal)
                     self.tabBarController?.tabBar.items?[1].selectedImage = self.tabBarController?.tabBar.items?[1].image!.withRenderingMode(.alwaysOriginal)
                 })
-                
-                
-                changeRequest?.commitChanges { (error) in
+              changeRequest?.commitChanges { (error) in
                 }    
             }
-            
         }
         photoHelper.presentActionSheet(from: self)
     }
