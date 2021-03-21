@@ -94,7 +94,6 @@ class MyTabBarController: UITabBarController, UITabBarControllerDelegate {
         }
         if(item == self.tabBar.items![0]) {
             if(hasHomeBeenLoaded){
-                print("I am trying to reload home data")
                 var sortBy = ""
                 if(homeViewController.sortBySwitch.isOn){ sortBy = "start_date"}
                 else{ sortBy = "createdDate"}

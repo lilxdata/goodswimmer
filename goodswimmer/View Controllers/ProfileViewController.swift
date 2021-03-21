@@ -71,7 +71,6 @@ class ProfileViewController: UIViewController, FSCalendarDelegate, FSCalendarDat
         }
     }
     @IBAction func profileImageTapped(_ sender: Any) {
-        print(self.profileOwner.userId, self.user?.uid)
         if(self.profileOwner.userId == self.user?.uid){
         photoHelper.completionHandler =  { image in
             //make unique identifier for image
@@ -157,11 +156,10 @@ class ProfileViewController: UIViewController, FSCalendarDelegate, FSCalendarDat
         let curUser = db.collection("users").document(Auth.auth().currentUser!.uid)
         curUser.getDocument { (document, error) in
             if let document = document, document.exists {
-                self.bioLabel.text = document.get("bio") as? String ?? "Error retreiving bio"
-                self.myEventsArr = document.get("events") as! [String]
-                self.calendar.reloadData()
                 var photoURL = URL(string: self.profileOwner.photoURL ?? Constants.Placeholders.placeholderURL)
                 if(self.isCurUser){
+                self.myEventsArr = document.get("events") as! [String]
+                self.bioLabel.text = document.get("bio") as? String ?? "Error retreiving bio"
                 self.profileOwner.bio = document.get("bio") as? String
                 self.profileOwner.events = document.get("events") as! [String]
                 self.profileOwner.followers = document.get("followers") as! [String]
@@ -171,7 +169,11 @@ class ProfileViewController: UIViewController, FSCalendarDelegate, FSCalendarDat
                 self.profileOwner.username = document.get("username") as! String
                 photoURL = URL(string: document.get("photoURL") as! String)
                 }
-                self.profileImage.sd_setImage(with: photoURL, for: self.state, completed: {_,_,_,_ in self.profileImage.imageView?.makeRounded(_cornerRadius: self.profileImage.frame.height)})
+                self.profileImage.sd_setImage(with: photoURL, for: self.state, completed:
+                    {_,_,_,_ in
+                    self.profileImage.imageView?.makeRounded(_cornerRadius: self.profileImage.frame.height)
+                    self.calendar.reloadData()
+                    })
                 self.setUpElements()
             } else {
                 print("Error retreiving bio")
@@ -294,11 +296,24 @@ class ProfileViewController: UIViewController, FSCalendarDelegate, FSCalendarDat
     }()
 
     func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
+        if(profileOwner.userId != nil){
+        let profileC = Firestore.firestore().collection("users").document(profileOwner.userId ?? "")
+        profileC.getDocument { (document, error) in
+            if let document = document, document.exists {
+                if let eventsQ = document.get("events") {
+                   self.myEventsArr = eventsQ as! [String]
+                }
+            } else {
+                print("Error adding event")
+            }
+        }
+        }
+
         let dateString = self.dateFormatter2.string(from: date)
         var eventCount = 0
         for event in eventArray.events{
-            var eventDate = event.startDate?.dateValue()
-            var eventDateString = self.dateFormatter2.string(from: eventDate!)
+            let eventDate = event.startDate?.dateValue()
+            let eventDateString = self.dateFormatter2.string(from: eventDate!)
             if eventDateString.contains(dateString) && self.myEventsArr.contains(event.name!) {
                 eventCount = eventCount + 1
             }
@@ -308,9 +323,8 @@ class ProfileViewController: UIViewController, FSCalendarDelegate, FSCalendarDat
     
 
     func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, fillDefaultColorFor date: Date) -> UIColor? {
-
+        
         //format date according your need
-
         let dateString = self.dateFormatter2.string(from: date)
         //your events date array
         var eventCount = 0

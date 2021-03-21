@@ -85,6 +85,7 @@ class EventCell: UITableViewCell {
                 db.collection("users").document(Auth.auth().currentUser!.uid).updateData([
                     "events" : FieldValue.arrayUnion([self.eventName.text!])
                 ])
+                document.get("events")
             } else {
                 print("Error adding event")
             }
