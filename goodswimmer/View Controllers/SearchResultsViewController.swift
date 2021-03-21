@@ -140,10 +140,11 @@ extension SearchResultsViewController : UITableViewDelegate, UITableViewDataSour
         print("I tapped a cell")
         let profile_view  = storyboard!.instantiateViewController(withIdentifier: "profile_vc") as! ProfileViewController
         profile_view.profileOwner = self.userArray[indexPath.row]
-        profile_view.isCurUser = false
         profile_view.myEventsArr = self.userArray[indexPath.row].events as [String]
-        print(self.userArray[indexPath.row].events)
-        print(profile_view.profileOwner)
+        if(profile_view.profileOwner.userId == Auth.auth().currentUser?.uid){
+            profile_view.isCurUser = true
+        }
+        else {profile_view.isCurUser = false}
         self.present(profile_view, animated: true, completion: nil)
     }
 }
