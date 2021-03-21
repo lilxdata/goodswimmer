@@ -150,7 +150,7 @@ class ProfileViewController: UIViewController, FSCalendarDelegate, FSCalendarDat
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setUpElements()
+        
         
         
         self.bioTextField.isHidden = true
@@ -173,6 +173,7 @@ class ProfileViewController: UIViewController, FSCalendarDelegate, FSCalendarDat
                 photoURL = URL(string: document.get("photoURL") as! String)
                 }
                 self.profileImage.sd_setImage(with: photoURL, for: self.state, completed: {_,_,_,_ in self.profileImage.imageView?.makeRounded(_cornerRadius: self.profileImage.frame.height)})
+                self.setUpElements()
             } else {
                 print("Error retreiving bio")
             }

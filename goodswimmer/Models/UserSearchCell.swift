@@ -20,7 +20,6 @@ class UserSearchCell: UITableViewCell {
     @IBOutlet weak var followButton: UIButton!
     
     
-    
     var userToDisplay: User?
     
     @IBAction func followUser(_ sender: Any) {
@@ -28,8 +27,12 @@ class UserSearchCell: UITableViewCell {
         let curUser = db.collection("users").document(Auth.auth().currentUser!.uid)
         curUser.getDocument { (document, error) in
             if let document = document, document.exists {
+                db.collection("users").document(self.userToDisplay?.userId ?? "").updateData([
+                    "followers" : FieldValue.arrayUnion([Auth.auth().currentUser!.displayName])
+                ])
+                
                 db.collection("users").document(Auth.auth().currentUser!.uid).updateData([
-                    "followers" : FieldValue.arrayUnion([self.username.text!])
+                    "following" : FieldValue.arrayUnion([self.username.text!])
                 ])
             } else {
                 print("Error following user")
@@ -46,7 +49,6 @@ class UserSearchCell: UITableViewCell {
             //self.profileImage.image = self.profileImage.image?.roundedImage
             //self.profileImage.makeRounded(_cornerRadius: profileImage.frame.height)
         })
-        
         bio.text =  userToDisplay?.bio
         username.text = userToDisplay?.username
         customizeElements()
