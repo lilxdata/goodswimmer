@@ -217,10 +217,6 @@ class ProfileViewController: UIViewController, FSCalendarDelegate, FSCalendarDat
         calendar.appearance.todaySelectionColor = .red
         calendar.appearance.headerTitleColor = .black
         calendar.appearance.weekdayTextColor = .black
-        //eventsAttendingCV.delegate = self
-        //eventsAttendingCV.dataSource = self
-        
-        
         
     }
     
@@ -296,19 +292,6 @@ class ProfileViewController: UIViewController, FSCalendarDelegate, FSCalendarDat
     }()
 
     func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
-        if(profileOwner.userId != nil){
-        let profileC = Firestore.firestore().collection("users").document(profileOwner.userId ?? "")
-        profileC.getDocument { (document, error) in
-            if let document = document, document.exists {
-                if let eventsQ = document.get("events") {
-                   self.myEventsArr = eventsQ as! [String]
-                }
-            } else {
-                print("Error adding event")
-            }
-        }
-        }
-
         let dateString = self.dateFormatter2.string(from: date)
         var eventCount = 0
         for event in eventArray.events{

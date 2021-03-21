@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 import FirebaseAuth
 import FirebaseStorage
+import FirebaseFirestore
 
 class MyTabBarController: UITabBarController, UITabBarControllerDelegate {
     
@@ -88,6 +89,18 @@ class MyTabBarController: UITabBarController, UITabBarControllerDelegate {
         }
         if(item == self.tabBar.items![1]) {
             if(hasProfileBeenLoaded){
+                
+                let profileC = Firestore.firestore().collection("users").document(Auth.auth().currentUser!.uid)
+                profileC.getDocument { (document, error) in
+                    if let document = document, document.exists {
+                        if let eventsQ = document.get("events") {
+                            self.profileEventViewController.myEventsArr = eventsQ as! [String]
+                        }
+                    } else {
+                        print("Error getting events")
+                    }
+                }
+                
                 profileEventViewController.calendar.reloadData() //We will get a null pointer exception if the
             }
             hasProfileBeenLoaded = true //Keep track that this view has been loaded
