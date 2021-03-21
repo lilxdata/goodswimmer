@@ -28,7 +28,6 @@ class ProfileViewController: UIViewController, FSCalendarDelegate, FSCalendarDat
     let user = Auth.auth().currentUser
     var isCurUser = true
     
-    var calendarRef = FSCalendar()
     
     // Get a reference to the storage service using the default Firebase App
     let storage = Storage.storage()
@@ -112,7 +111,7 @@ class ProfileViewController: UIViewController, FSCalendarDelegate, FSCalendarDat
     }
     
     func setUpElements() {
-        calendarRef = self.calendar
+
         Utilities.styleLabel(bioLabel, size: 12, uppercase: true)
         bioLabel.numberOfLines = 5
         usernameLabel.text = profileOwner.username

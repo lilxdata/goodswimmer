@@ -240,7 +240,7 @@ class HomeViewController: UIViewController {
                 } else {
                     for document in querySnapshot!.documents {
                         //let x = self.event?.username
-                        var followers = document.get("followers") as! [String]
+                        var followers = document.get("following") as! [String]
                         db.collection("events").order(by: sortBy).addSnapshotListener { (querySnapshot, error) in
                             if error == nil && querySnapshot != nil {
                                 //clear event array to remove dupes
@@ -310,4 +310,5 @@ extension UIImage {
         return image!
     }
 }
+
 

@@ -21,8 +21,6 @@ class SearchResultsViewController: UIViewController {
     var userId = ""
     
     override func viewDidLoad() {
-        //searchResults.register(UITableViewCell.self, forCellReuseIdentifier: "UserSearchCell")
-        
         searchResults.delegate = self
         searchResults.dataSource = self
         loadUsers()

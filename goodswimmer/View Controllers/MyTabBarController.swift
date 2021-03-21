@@ -16,13 +16,17 @@ class MyTabBarController: UITabBarController, UITabBarControllerDelegate {
     var searchViewControllerReference = SearchViewController()
     var createEventViewController = CreateEventViewController()
     var profileEventViewController = ProfileViewController()
+    var homeViewController = HomeViewController()
     var hasSearchBeenLoaded = false
     var hasCreateBeenLoaded = false
     var hasProfileBeenLoaded = false
+    var hasHomeBeenLoaded = true
     override func viewDidLoad() {
         self.delegate = self
         searchViewControllerReference = viewControllers![3] as! SearchViewController
         createEventViewController = viewControllers![2] as! CreateEventViewController
+        profileEventViewController = viewControllers![1] as! ProfileViewController
+        homeViewController = viewControllers![0] as! HomeViewController
         
         let photoid = Auth.auth().currentUser!.uid
         let imageRef = Storage.storage().reference().child(photoid+".jpg")
@@ -84,10 +88,19 @@ class MyTabBarController: UITabBarController, UITabBarControllerDelegate {
         }
         if(item == self.tabBar.items![1]) {
             if(hasProfileBeenLoaded){
-                print("I am trying to reload data")
-                profileEventViewController.calendarRef.reloadData() //We will get a null pointer exception if the
+                profileEventViewController.calendar.reloadData() //We will get a null pointer exception if the
             }
             hasProfileBeenLoaded = true //Keep track that this view has been loaded
+        }
+        if(item == self.tabBar.items![0]) {
+            if(hasHomeBeenLoaded){
+                print("I am trying to reload home data")
+                var sortBy = ""
+                if(homeViewController.sortBySwitch.isOn){ sortBy = "start_date"}
+                else{ sortBy = "createdDate"}
+                homeViewController.sortTableView(sortBy: sortBy) //We will get a null pointer exception if the
+            }
+            hasHomeBeenLoaded = true //Keep track that this view has been loaded
         }
     }
 
