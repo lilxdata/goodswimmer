@@ -36,9 +36,9 @@ class DetailViewController: UIViewController, UICollectionViewDelegate,
         
         
         if let event = selectedEvent {
-            print("I am trying to figure out why the event isn't reporting all it's info on the view controller")
+            /*print("I am trying to figure out why the event isn't reporting all it's info on the view controller")
             print(event)
-            print(event.startDate)
+            print(event.startDate)*/
             let photoURL = URL(string: event.photoURL ?? Constants.Placeholders.placeholderURL)
             let title = event.name ?? Constants.Placeholders.placeholderText
             let location = event.venue ?? Constants.Placeholders.placeholderText

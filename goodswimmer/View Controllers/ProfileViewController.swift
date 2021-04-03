@@ -28,6 +28,8 @@ class ProfileViewController: UIViewController, FSCalendarDelegate, FSCalendarDat
     let user = Auth.auth().currentUser
     var isCurUser = true
     
+    var updateBioActive = false
+    
     
     // Get a reference to the storage service using the default Firebase App
     let storage = Storage.storage()
@@ -54,10 +56,10 @@ class ProfileViewController: UIViewController, FSCalendarDelegate, FSCalendarDat
     
     
     @IBAction func bioButtonTapped(_ sender: Any) {
-        if(self.bioButton.currentTitle == "Update Bio!"){
+        if(updateBioActive == false){
             self.bioTextField.isHidden = false
             self.bioTextField.text = "Enter your new bio here!"
-            self.bioButton.setTitle("Save changes?", for: state)
+            self.updateBioActive = true
             self.bioLabel.isHidden = true
         }
         else{
@@ -67,7 +69,7 @@ class ProfileViewController: UIViewController, FSCalendarDelegate, FSCalendarDat
             self.bioTextField.text = ""
             self.bioTextField.isHidden = true
             self.bioLabel.isHidden = false
-            self.bioButton.setTitle("Update Bio!", for: state)
+            self.updateBioActive = false
         }
     }
     @IBAction func profileImageTapped(_ sender: Any) {
@@ -109,10 +111,74 @@ class ProfileViewController: UIViewController, FSCalendarDelegate, FSCalendarDat
         return newImage
     }
     
+    func constraintsBuilder(item: Any, superview: Any, leading: Int, top: Int, height: Int, width: Int, centerX: Bool, centerY: Bool){
+        let iPhoneH = view.fs_height
+        let iPhoneW = view.fs_width
+       
+        let frameH = CGFloat(1/iPhoneH)
+        let frameW = CGFloat(1/iPhoneW)
+
+        var leadingEdgeConstraint: NSLayoutConstraint
+        var topSpaceConstraint: NSLayoutConstraint
+        var hConstraint: NSLayoutConstraint
+        var wConstraint: NSLayoutConstraint
+        var centerXConstraint: NSLayoutConstraint
+        var centerYConstraint: NSLayoutConstraint
+
+        if leading > 0 {
+            leadingEdgeConstraint = NSLayoutConstraint(item: item, attribute: .leading, relatedBy: .equal, toItem: superview, attribute: .leading, multiplier: 1.0, constant: CGFloat(leading))
+            view.addConstraint(leadingEdgeConstraint)
+        }
+        if top > 0 {
+            topSpaceConstraint = NSLayoutConstraint(item: item, attribute: .top, relatedBy: .equal, toItem: superview, attribute: .top, multiplier: 1.0, constant: CGFloat(top))
+            view.addConstraint(topSpaceConstraint)
+        }
+        
+        if height > 0 {
+            hConstraint = NSLayoutConstraint(item: item, attribute: .height, relatedBy: .equal, toItem: view, attribute: .height, multiplier: frameH, constant: CGFloat(height))
+            view.addConstraint(hConstraint)
+        }
+        if width > 0 {
+            wConstraint = NSLayoutConstraint(item: item, attribute: .width, relatedBy: .equal, toItem: view, attribute: .width, multiplier: frameW, constant: CGFloat(width))
+            view.addConstraint(wConstraint)
+        }
+        if centerX {
+            centerXConstraint = NSLayoutConstraint(item: item, attribute: .centerX, relatedBy: .equal, toItem: superview, attribute: .centerX, multiplier: 1, constant: 1)
+            view.addConstraint(centerXConstraint)
+        }
+        if centerY {
+            centerYConstraint = NSLayoutConstraint(item: item, attribute: .centerY, relatedBy: .equal, toItem: superview, attribute: .centerY, multiplier: 1, constant: 1)
+            view.addConstraint(centerYConstraint)
+        }
+    }
+    
+    func updateViewController(curUser: Bool){
+        let containerView = profileImage.superview!
+        profileImage.removeConstraints(profileImage.constraints)
+        
+        containerView.removeConstraints(containerView.constraints)
+    
+        if(curUser){
+            constraintsBuilder(item: profileImage!, superview: containerView, leading: 21, top: 31, height: 129, width: 129, centerX: false, centerY: false)
+            constraintsBuilder(item: bioLabel!, superview: containerView, leading: 169, top: 58, height: 39, width: 216, centerX: false, centerY: false)
+            constraintsBuilder(item: bioTextField!, superview: containerView, leading: 169, top: 58, height: 39, width: 216, centerX: false, centerY: false)
+            constraintsBuilder(item: bioButton!, superview: containerView, leading: 359, top: 128, height: 17, width: 16, centerX: false, centerY: false)
+            constraintsBuilder(item: containerView, superview: containerView.superview! as Any, leading: -1, top: -1, height: 161, width: -1 , centerX: true, centerY: false)
+        }
+        else {
+            constraintsBuilder(item: profileImage!, superview: containerView, leading: -1, top: 31, height: 200, width: 200, centerX: true, centerY: false)
+            constraintsBuilder(item: bioLabel!, superview: containerView, leading: -1, top: 262, height: 39, width: 216, centerX: true, centerY: false)
+            constraintsBuilder(item: bioTextField!, superview: containerView, leading: -1, top: 262, height: 39, width: 216, centerX: true, centerY: false)
+            constraintsBuilder(item: containerView, superview: containerView.superview as Any, leading: -1, top: -1, height: 295, width: -1, centerX: true, centerY: false)
+        }
+    }
+    
+    
     func setUpElements() {
 
-        Utilities.styleLabel(bioLabel, size: 12, uppercase: true)
+        Utilities.styleLabel(bioLabel, size: 12, uppercase: false)
         bioLabel.numberOfLines = 5
+        //bioTextField.text
         usernameLabel.text = profileOwner.username
         usernameLabel.textAlignment = .center
         
@@ -134,11 +200,14 @@ class ProfileViewController: UIViewController, FSCalendarDelegate, FSCalendarDat
             privateInvitesLabel.isHidden = false
             set_photo(button: updateBioButton, name: "change_bio_button.png")
             updateBioButton.isHidden = false
+            bioLabel.textAlignment = .left
+            
         }
         else{
             signOutButton.isHidden = true
             privateInvitesLabel.isHidden = true
             updateBioButton.isHidden = true
+            bioLabel.textAlignment = .center
         }
         Utilities.styleLabel(eventsHostingLabel, size: 12, uppercase: true)
     
@@ -149,7 +218,7 @@ class ProfileViewController: UIViewController, FSCalendarDelegate, FSCalendarDat
         super.viewDidLoad()
         
         
-        
+        updateViewController(curUser: self.isCurUser)
         
         self.bioTextField.isHidden = true
         let db = Firestore.firestore()
@@ -159,7 +228,7 @@ class ProfileViewController: UIViewController, FSCalendarDelegate, FSCalendarDat
                 var photoURL = URL(string: self.profileOwner.photoURL ?? Constants.Placeholders.placeholderURL)
                 if(self.isCurUser){
                 self.myEventsArr = document.get("events") as! [String]
-                self.bioLabel.text = document.get("bio") as? String ?? "Error retreiving bio"
+                
                 self.profileOwner.bio = document.get("bio") as? String
                 self.profileOwner.events = document.get("events") as! [String]
                 self.profileOwner.followers = document.get("followers") as! [String]
@@ -171,8 +240,9 @@ class ProfileViewController: UIViewController, FSCalendarDelegate, FSCalendarDat
                 }
                 self.profileImage.sd_setImage(with: photoURL, for: self.state, completed:
                     {_,_,_,_ in
-                    self.profileImage.imageView?.makeRounded(_cornerRadius: self.profileImage.frame.height)
-                    self.calendar.reloadData()
+                        self.profileImage.imageView?.makeRounded(_cornerRadius: self.profileImage.frame.height)
+                        self.calendar.reloadData()
+                        self.bioLabel.text = self.profileOwner.bio
                     })
                 self.setUpElements()
             } else {

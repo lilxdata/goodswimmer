@@ -13,7 +13,7 @@ import FirebaseAuth
 import FirebaseStorage
 import SDWebImage
 
-class CreateEventViewController: UIViewController {
+class CreateEventViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var createEventScrollView: UIScrollView!
     @IBOutlet weak var stackView: UIStackView!
@@ -440,6 +440,16 @@ class CreateEventViewController: UIViewController {
         successMessageButton.titleLabel?.numberOfLines = 100
         _sender.addSubview(successPopUp)
         print(_sender)
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+            guard let textFieldText = textField.text,
+                let rangeOfTextToReplace = Range(range, in: textFieldText) else {
+                    return false
+            }
+            let substringToReplace = textFieldText[rangeOfTextToReplace]
+            let count = textFieldText.count - substringToReplace.count + string.count
+            return count <= 1000
     }
     
     @IBAction func wheelchairAccessiblePressed(_ sender: Any) {

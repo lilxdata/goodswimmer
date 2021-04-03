@@ -19,7 +19,7 @@ class Validators {
     }
     /* name validation */ //TODO: Why doesn't ' work?
     static func isNameValid(_ name: String) -> Bool {
-        let nameRegEx = "[-a-zA-Z. '\']{2,26}"
+        let nameRegEx = "[-a-zA-Z. '\']{2,56}"
         let namePred = NSPredicate(format:"SELF MATCHES %@", nameRegEx)
         return namePred.evaluate(with: name)
         
@@ -110,7 +110,7 @@ class Validators {
     
     /* street/number validation */
     static func isStreetNumberValid(_ addr: String) -> Bool {
-        let addrRegEx = "[0-9]{1,8}\\ [-a-zA-Z0-9. \']{2,26}"
+        let addrRegEx = "[0-9]{1,8}\\ [-a-zA-Z0-9. '\']{2,26}"
         let addrPred = NSPredicate(format:"SELF MATCHES %@", addrRegEx)
         return addrPred.evaluate(with: addr)
         
@@ -151,7 +151,7 @@ class Validators {
     
     /* location validation */
     static func isLocationValid(_ city: String) -> Bool {
-        let cityRegEx = "[0-9-a-zA-Z.' \']{2,26}"
+        let cityRegEx = ".{2,126}"
         let cityPred = NSPredicate(format:"SELF MATCHES %@", cityRegEx)
         return cityPred.evaluate(with: city)
     }

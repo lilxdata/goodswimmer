@@ -45,7 +45,7 @@ class REGEX_TESTS {
     
     static func run_regex_name_test() -> Void {
         name_regex_tester(name: "Tony Stark")
-        name_regex_tester(name: "Chinwe Okona")
+        name_regex_tester(name: "Chinw'e Okona")
         name_regex_tester(name: "Chinwe Okonafdsaffs")
     }
     
