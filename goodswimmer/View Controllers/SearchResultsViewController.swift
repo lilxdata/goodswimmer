@@ -107,7 +107,6 @@ class SearchResultsViewController: UIViewController {
                     
                 }
             }
-            print(self.userArray)
             self.searchResults.reloadData()
         }
     }

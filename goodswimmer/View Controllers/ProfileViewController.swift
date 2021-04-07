@@ -54,6 +54,8 @@ class ProfileViewController: UIViewController, FSCalendarDelegate, FSCalendarDat
     @IBOutlet weak var privateInvitesLabel: UILabel!
     @IBOutlet weak var updateBioButton: UIButton!
     
+    @IBOutlet weak var followButton: UIButton!
+    
     
     @IBAction func bioButtonTapped(_ sender: Any) {
         if(updateBioActive == false){
@@ -170,6 +172,7 @@ class ProfileViewController: UIViewController, FSCalendarDelegate, FSCalendarDat
             constraintsBuilder(item: bioLabel!, superview: containerView, leading: -1, top: 262, height: 39, width: 216, centerX: true, centerY: false)
             constraintsBuilder(item: bioTextField!, superview: containerView, leading: -1, top: 262, height: 39, width: 216, centerX: true, centerY: false)
             constraintsBuilder(item: containerView, superview: containerView.superview as Any, leading: -1, top: -1, height: 295, width: -1, centerX: true, centerY: false)
+            constraintsBuilder(item: containerView.superview!, superview: view!, leading: -1, top: -1, height: -1, width: -1, centerX: true, centerY: false)
         }
     }
     
@@ -190,6 +193,15 @@ class ProfileViewController: UIViewController, FSCalendarDelegate, FSCalendarDat
         eventHostingTitle.titleLabel?.numberOfLines = 2
         eventHostingTitle.titleLabel?.textAlignment = .left
         eventHostingTitle.titleLabel?.font = .boldSystemFont(ofSize: 21.0)
+        
+        Utilities.styleLabel(followButton.titleLabel!, size: 12, uppercase: true)
+        followButton.setTitle("FOLLOW", for: .normal)
+        followButton.layer.borderWidth = 1
+        followButton.layer.borderColor = Utilities.getRedCG()
+        followButton.setTitleColor(Utilities.getRedUI(), for: .normal)
+        
+        
+        
         if(isCurUser){
             signOutButton.setTitleColor(Utilities.getRedUI(), for: .normal)
             signOutButton.layer.borderWidth = 2
@@ -201,6 +213,7 @@ class ProfileViewController: UIViewController, FSCalendarDelegate, FSCalendarDat
             set_photo(button: updateBioButton, name: "change_bio_button.png")
             updateBioButton.isHidden = false
             bioLabel.textAlignment = .left
+            followButton.isHidden = true
             
         }
         else{
@@ -208,6 +221,7 @@ class ProfileViewController: UIViewController, FSCalendarDelegate, FSCalendarDat
             privateInvitesLabel.isHidden = true
             updateBioButton.isHidden = true
             bioLabel.textAlignment = .center
+            followButton.isHidden = false
         }
         Utilities.styleLabel(eventsHostingLabel, size: 12, uppercase: true)
     
@@ -422,7 +436,23 @@ class ProfileViewController: UIViewController, FSCalendarDelegate, FSCalendarDat
         print("I am pressing")
     }
     
-
+    
+    @IBAction func followPressed(_ sender: Any) {
+        let db = Firestore.firestore()
+        let curUser = db.collection("users").document(Auth.auth().currentUser!.uid)
+        curUser.getDocument { (document, error) in
+            if let document = document, document.exists {
+                db.collection("users").document(self.profileOwner.userId ?? "").updateData([
+                    "followers" : FieldValue.arrayUnion([Auth.auth().currentUser!.displayName!])
+                ])      
+                db.collection("users").document(Auth.auth().currentUser!.uid).updateData([
+                    "following" : FieldValue.arrayUnion([self.profileOwner.username!])
+                ])
+            } else {
+                print("Error following user")
+            }
+        }
+    }
 }
 
 

@@ -1013,7 +1013,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" distribution="equalSpacing" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="c2f-za-3tB">
-                                                <rect key="frame" x="0.0" y="20.5" width="414" height="1680.5"/>
+                                                <rect key="frame" x="0.0" y="20.5" width="414" height="1731.5"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oYq-Gr-ejc">
                                                         <rect key="frame" x="0.0" y="0.0" width="414" height="161"/>
@@ -1080,8 +1080,19 @@
                                                             <constraint firstItem="4uN-IZ-IXU" firstAttribute="top" secondItem="oYq-Gr-ejc" secondAttribute="top" constant="58" id="t1r-Yj-Pz5"/>
                                                         </constraints>
                                                     </view>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WMZ-Yj-GZb">
+                                                        <rect key="frame" x="0.0" y="186" width="414" height="26"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="69" id="PwZ-nb-sOA"/>
+                                                            <constraint firstAttribute="height" constant="26" id="cMI-6r-0e8"/>
+                                                        </constraints>
+                                                        <state key="normal" title="Button"/>
+                                                        <connections>
+                                                            <action selector="followPressed:" destination="b6l-6S-5dU" eventType="touchUpInside" id="xab-yG-0vq"/>
+                                                        </connections>
+                                                    </button>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ghm-Rn-Oiw">
-                                                        <rect key="frame" x="0.0" y="186" width="414" height="400"/>
+                                                        <rect key="frame" x="0.0" y="237" width="414" height="400"/>
                                                         <subviews>
                                                             <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="S7J-Pk-IoX" customClass="FSCalendar">
                                                                 <rect key="frame" x="0.0" y="-36.5" width="414" height="200"/>
@@ -1097,25 +1108,25 @@
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="741-UB-iNV">
-                                                        <rect key="frame" x="0.0" y="611" width="414" height="128"/>
+                                                        <rect key="frame" x="0.0" y="662" width="414" height="128"/>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T00-mN-mb3">
-                                                        <rect key="frame" x="0.0" y="764" width="414" height="375.5"/>
+                                                        <rect key="frame" x="0.0" y="815" width="414" height="375.5"/>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="poo-yw-RLu">
-                                                        <rect key="frame" x="0.0" y="1164.5" width="414" height="128"/>
+                                                        <rect key="frame" x="0.0" y="1215.5" width="414" height="128"/>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                     </view>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="EVENTS I'M HOSTING" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CNx-uQ-eGc">
-                                                        <rect key="frame" x="0.0" y="1317.5" width="414" height="20.5"/>
+                                                        <rect key="frame" x="0.0" y="1368.5" width="414" height="20.5"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DK1-Jx-3uO">
-                                                        <rect key="frame" x="0.0" y="1363" width="414" height="96"/>
+                                                        <rect key="frame" x="0.0" y="1414" width="414" height="96"/>
                                                         <subviews>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mTT-Ta-r6P">
                                                                 <rect key="frame" x="0.0" y="0.0" width="198" height="96"/>
@@ -1152,16 +1163,16 @@
                                                         </subviews>
                                                     </stackView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Private Event Invites" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iQQ-bs-SIl">
-                                                        <rect key="frame" x="0.0" y="1484" width="414" height="20.5"/>
+                                                        <rect key="frame" x="0.0" y="1535" width="414" height="20.5"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a1W-kj-Hph">
-                                                        <rect key="frame" x="0.0" y="1529.5" width="414" height="96"/>
+                                                        <rect key="frame" x="0.0" y="1580.5" width="414" height="96"/>
                                                         <subviews>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D37-iR-oxn">
-                                                                <rect key="frame" x="0.0" y="0.0" width="198" height="96"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="368" height="96"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="96" id="BcW-9w-kQs"/>
                                                                     <constraint firstAttribute="width" constant="198" id="cdo-ku-hDz"/>
@@ -1169,14 +1180,14 @@
                                                                 <state key="normal" title="Button" image="sad_cloud.png"/>
                                                             </button>
                                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="n3Q-8j-c8S">
-                                                                <rect key="frame" x="198" y="0.0" width="216" height="96"/>
+                                                                <rect key="frame" x="368" y="0.0" width="46" height="96"/>
                                                                 <subviews>
                                                                     <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EjR-qP-ZZb">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="216" height="66"/>
+                                                                        <rect key="frame" x="0.0" y="0.0" width="46" height="66"/>
                                                                         <state key="normal" title="Button"/>
                                                                     </button>
                                                                     <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VWI-oD-Din">
-                                                                        <rect key="frame" x="0.0" y="66" width="216" height="30"/>
+                                                                        <rect key="frame" x="0.0" y="66" width="46" height="30"/>
                                                                         <state key="normal" title="Button"/>
                                                                     </button>
                                                                 </subviews>
@@ -1184,7 +1195,7 @@
                                                         </subviews>
                                                     </stackView>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Uy-qT-IqQ" userLabel="Sign Out">
-                                                        <rect key="frame" x="0.0" y="1650.5" width="414" height="30"/>
+                                                        <rect key="frame" x="0.0" y="1701.5" width="414" height="30"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="84" id="5fc-Ib-t0w"/>
                                                         </constraints>
@@ -1195,8 +1206,8 @@
                                                     </button>
                                                 </subviews>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="414" id="9Sp-2z-OTm"/>
                                                     <constraint firstItem="Ghm-Rn-Oiw" firstAttribute="width" secondItem="c2f-za-3tB" secondAttribute="width" id="KK2-ds-YDi"/>
+                                                    <constraint firstItem="WMZ-Yj-GZb" firstAttribute="centerX" secondItem="c2f-za-3tB" secondAttribute="centerX" id="xUm-45-kRE"/>
                                                 </constraints>
                                             </stackView>
                                         </subviews>
@@ -1209,6 +1220,9 @@
                                         </constraints>
                                     </view>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="414" id="RXO-wv-Kah"/>
+                                </constraints>
                                 <viewLayoutGuide key="contentLayoutGuide" id="6vk-vH-zZh"/>
                                 <viewLayoutGuide key="frameLayoutGuide" id="O9p-wS-Iso"/>
                             </scrollView>
@@ -1234,6 +1248,7 @@
                         <outlet property="eventHostingTitle" destination="T7e-1w-EAm" id="Eqy-YA-JGq"/>
                         <outlet property="eventsHosting" destination="mTT-Ta-r6P" id="zad-2r-8eV"/>
                         <outlet property="eventsHostingLabel" destination="CNx-uQ-eGc" id="cSk-3i-wYM"/>
+                        <outlet property="followButton" destination="WMZ-Yj-GZb" id="siO-Cw-vVc"/>
                         <outlet property="privateInvitesLabel" destination="iQQ-bs-SIl" id="3WI-MG-EyW"/>
                         <outlet property="profileImage" destination="IBa-bW-DKN" id="49u-OA-HYp"/>
                         <outlet property="signOutButton" destination="8Uy-qT-IqQ" id="nyN-qv-UFU"/>

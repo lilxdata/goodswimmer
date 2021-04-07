@@ -36,24 +36,26 @@ class DetailViewController: UIViewController, UICollectionViewDelegate,
         
         
         if let event = selectedEvent {
-            /*print("I am trying to figure out why the event isn't reporting all it's info on the view controller")
-            print(event)
-            print(event.startDate)*/
+            let df = DateFormatter()
+            df.dateFormat = "EEEE, MMM dd"
+            
             let photoURL = URL(string: event.photoURL ?? Constants.Placeholders.placeholderURL)
             let title = event.name ?? Constants.Placeholders.placeholderText
             let location = event.venue ?? Constants.Placeholders.placeholderText
-            let date = event.startDate!
-            //TODO: make a timestamp obj placeholder for optional unwrapping ?? Constants.Placeholders.placeholderText
-            
-            //event.time
-            let time = event.time ?? Constants.Placeholders.placeholderText
+            let date = event.startDate!.dateValue()
             let description = event.description ?? Constants.Placeholders.placeholderText
             
             eventTitle.text = title
             eventLocation.text = location
             eventImage.sd_setImage(with: photoURL, completed: nil)
-            //   eventDate?.text = date
-            eventTime.text = time
+            eventDate.text = df.string(from: date)
+            print("I am trying to get the date as a string", df.string(from: date))
+            df.dateFormat = "hh:mma"
+            print("I am trying to get the time as a string", df.string(from: date))
+            eventTime.text = df.string(from: date)
+            if(eventTime.text?.first == "0"){
+                eventTime.text?.remove(at: eventTime.text!.startIndex)
+            }
             eventDesc.text = description
         }
         

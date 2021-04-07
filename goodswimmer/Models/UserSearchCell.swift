@@ -51,6 +51,9 @@ class UserSearchCell: UITableViewCell {
         })
         bio.text =  userToDisplay?.bio
         username.text = userToDisplay?.username
+        if(userToDisplay?.username == Auth.auth().currentUser?.displayName) {
+            followButton.isHidden = true
+        }
         customizeElements()
     }
     
