@@ -59,17 +59,14 @@ class ProfileViewController: UIViewController, FSCalendarDelegate, FSCalendarDat
     @IBOutlet weak var cancelBioUpdateButton: UIButton!
     
     @IBAction func cancelUpdateBio(_ sender: Any) {
-        print("I am cancelling the update")
         self.updateBioActive = false
         self.bioTextField.text = ""
         self.bioTextField.isHidden = true
         self.bioLabel.isHidden = false
+        cancelBioUpdateButton.isHidden = true
         
     }
     
-    
-
-
     
     @IBAction func bioButtonTapped(_ sender: Any) {
         if(updateBioActive == false){
@@ -77,6 +74,7 @@ class ProfileViewController: UIViewController, FSCalendarDelegate, FSCalendarDat
             self.bioTextField.text = "Enter your new bio here!"
             self.updateBioActive = true
             self.bioLabel.isHidden = true
+            cancelBioUpdateButton.isHidden = false
         }
         else{
             self.bioLabel.text = self.bioTextField.text
@@ -86,6 +84,7 @@ class ProfileViewController: UIViewController, FSCalendarDelegate, FSCalendarDat
             self.bioTextField.isHidden = true
             self.bioLabel.isHidden = false
             self.updateBioActive = false
+            cancelBioUpdateButton.isHidden = true
         }
     }
     @IBAction func profileImageTapped(_ sender: Any) {
@@ -181,6 +180,7 @@ class ProfileViewController: UIViewController, FSCalendarDelegate, FSCalendarDat
             constraintsBuilder(item: bioTextField!, superview: containerView, leading: 169, top: 58, height: 39, width: 216, centerX: false, centerY: false)
             constraintsBuilder(item: bioButton!, superview: containerView, leading: 359, top: 128, height: 17, width: 16, centerX: false, centerY: false)
             constraintsBuilder(item: containerView, superview: containerView.superview! as Any, leading: -1, top: -1, height: 161, width: -1 , centerX: true, centerY: false)
+            constraintsBuilder(item: cancelBioUpdateButton!, superview: containerView, leading: 338, top: 128, height: 17, width: 16, centerX: false, centerY: false)
         }
         else {
             constraintsBuilder(item: profileImage!, superview: containerView, leading: -1, top: 31, height: 200, width: 200, centerX: true, centerY: false)
@@ -193,10 +193,9 @@ class ProfileViewController: UIViewController, FSCalendarDelegate, FSCalendarDat
     
     
     func setUpElements() {
-
         Utilities.styleLabel(bioLabel, size: 12, uppercase: false)
         bioLabel.numberOfLines = 5
-        //bioTextField.text
+        
         usernameLabel.text = profileOwner.username
         usernameLabel.textAlignment = .center
         
@@ -215,7 +214,7 @@ class ProfileViewController: UIViewController, FSCalendarDelegate, FSCalendarDat
         followButton.layer.borderColor = Utilities.getRedCG()
         followButton.setTitleColor(Utilities.getRedUI(), for: .normal)
         
-
+        cancelBioUpdateButton.isHidden = true
         
         if(isCurUser){
             Utilities.styleLabel(signOutButton.titleLabel!, size: 12, uppercase: true)
@@ -230,7 +229,6 @@ class ProfileViewController: UIViewController, FSCalendarDelegate, FSCalendarDat
             updateBioButton.isHidden = false
             bioLabel.textAlignment = .left
             followButton.isHidden = true
-            
         }
         else{
             signOutButton.isHidden = true
@@ -240,10 +238,8 @@ class ProfileViewController: UIViewController, FSCalendarDelegate, FSCalendarDat
             followButton.isHidden = false
         }
         Utilities.styleLabel(eventsHostingLabel, size: 12, uppercase: true)
-    
-        
-        
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         updateViewController(curUser: self.isCurUser)
@@ -303,7 +299,8 @@ class ProfileViewController: UIViewController, FSCalendarDelegate, FSCalendarDat
         
         calendar.delegate = self
         calendar.dataSource = self
-        calendar.scope = .week
+        calendar.scope = .month
+        
         calendar.scrollDirection = .vertical
         calendar.appearance.borderSelectionColor = .black
         calendar.appearance.selectionColor = .red
@@ -316,6 +313,7 @@ class ProfileViewController: UIViewController, FSCalendarDelegate, FSCalendarDat
         calendar.appearance.todaySelectionColor = .red
         calendar.appearance.headerTitleColor = .black
         calendar.appearance.weekdayTextColor = .black
+        //calendar.appearance.
         
     }
     

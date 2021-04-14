@@ -102,8 +102,9 @@ class SearchResultsViewController: UIViewController {
                     let userUsername = document.get("username") as! String
                     
                     let user = User(username: userUsername, userId: userId, following:userFollowing, followers:userFollowers, bio: userBio, photoURL: userURL, events: userEvents)
-                    self.userArray.append(user)
-                
+                    if(userId != Auth.auth().currentUser?.uid){
+                        self.userArray.append(user)
+                    }
                     
                 }
             }

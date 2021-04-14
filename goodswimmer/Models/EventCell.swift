@@ -21,6 +21,7 @@ class EventCell: UITableViewCell {
     @IBOutlet weak var eventTime: UILabel!
     @IBOutlet weak var username: UILabel!
     @IBOutlet weak var inviteButton: UIButton!    
+    @IBOutlet weak var usernameButton: UIButton!
     @IBOutlet weak var addToListButton: UIButton!
     @IBOutlet weak var addToCalendarButton: UIButton!
     
@@ -30,7 +31,7 @@ class EventCell: UITableViewCell {
     //TODO: ADD START DATE / END DATE, START TIME / END TIME
     func displayEvent(_ event: Event) {
         eventToDisplay = event
-        username.text = eventToDisplay?.username ?? Constants.Placeholders.placeholderText
+        usernameButton.setTitle(eventToDisplay?.username, for: .normal)
         eventName.text = eventToDisplay?.name ?? Constants.Placeholders.placeholderTitle
         eventLocation.text = eventToDisplay?.venue ?? Constants.Placeholders.placeholderText
                     
@@ -72,7 +73,8 @@ class EventCell: UITableViewCell {
         Utilities.styleLabel(eventLocation, size: 15, uppercase: false)
         Utilities.styleLabel(eventDate, size: 18, uppercase: false)
         Utilities.styleLabel(eventTime, size: 18, uppercase: false)
-        Utilities.styleLabel(username, size: 15, uppercase: false)
+        Utilities.styleLabel(usernameButton.titleLabel!, size: 15, uppercase: false)
+        usernameButton.setTitleColor(.black, for: .normal)
     }
     
     @IBAction func addToCalendar(_ sender: Any) {
@@ -116,5 +118,22 @@ class EventCell: UITableViewCell {
                 print("Error following user")
             }
         }
+    }
+    
+    @IBAction func usernamePressed(_ sender: Any) {
+        print("i tapped user")
+        /*
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+              
+        let profile_view  = storyboard.instantiateViewController(withIdentifier: "profile_vc") as! ProfileViewController
+        
+         profile_view.profileOwner.username = usernameButton.titleLabel?.text
+        if(profile_view.profileOwner.userId == Auth.auth().currentUser?.uid){
+         profile_view.isCurUser = true
+        }
+        else {profile_view.isCurUser = false}*/
+        //profile_view.present(profile_view, animated: true, completion: nil)
+        
+    
     }
 }

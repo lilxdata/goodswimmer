@@ -16,7 +16,7 @@ class MyTabBarController: UITabBarController, UITabBarControllerDelegate {
     
     var searchViewControllerReference = SearchViewController()
     var createEventViewController = CreateEventViewController()
-    var profileEventViewController = ProfileViewController()
+    var profileViewController = ProfileViewController()
     var homeViewController = HomeViewController()
     var hasSearchBeenLoaded = false
     var hasCreateBeenLoaded = false
@@ -26,7 +26,7 @@ class MyTabBarController: UITabBarController, UITabBarControllerDelegate {
         self.delegate = self
         searchViewControllerReference = viewControllers![3] as! SearchViewController
         createEventViewController = viewControllers![2] as! CreateEventViewController
-        profileEventViewController = viewControllers![1] as! ProfileViewController
+        profileViewController = viewControllers![1] as! ProfileViewController
         homeViewController = viewControllers![0] as! HomeViewController
         
         let photoid = Auth.auth().currentUser!.uid
@@ -93,14 +93,14 @@ class MyTabBarController: UITabBarController, UITabBarControllerDelegate {
                 profileC.getDocument { (document, error) in
                     if let document = document, document.exists {
                         if let eventsQ = document.get("events") {
-                            self.profileEventViewController.myEventsArr = eventsQ as! [String]
+                            self.profileViewController.myEventsArr = eventsQ as! [String]
                         }
                     } else {
                         print("Error getting events")
                     }
                 }
-                profileEventViewController.isCurUser = true
-                profileEventViewController.calendar.reloadData() //We will get a null pointer exception if the
+                profileViewController.isCurUser = true
+                profileViewController.calendar.reloadData() //We will get a null pointer exception if the
             }
             hasProfileBeenLoaded = true //Keep track that this view has been loaded
         }

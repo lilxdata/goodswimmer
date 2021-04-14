@@ -169,6 +169,7 @@ class SearchViewController: UIViewController {
         topListDisplay2.tintColor = UIColor.white
         featuredLabel.textAlignment = .center
         hideSearchResults(isHidden: true)
+        self.mapView.isHidden = true
     }
     
     func setMapLocation(address: String) {

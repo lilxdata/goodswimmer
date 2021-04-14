@@ -37,7 +37,8 @@ class HomeViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
 
-        
+        sortBySwitch.isHidden = true
+        sortByLabel.isHidden = true
         
         
         func numberOfSections(in tableView: UITableView) -> Int {
