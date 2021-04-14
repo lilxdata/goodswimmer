@@ -89,7 +89,6 @@ class MyTabBarController: UITabBarController, UITabBarControllerDelegate {
         }
         if(item == self.tabBar.items![1]) {
             if(hasProfileBeenLoaded){
-                
                 let profileC = Firestore.firestore().collection("users").document(Auth.auth().currentUser!.uid)
                 profileC.getDocument { (document, error) in
                     if let document = document, document.exists {
@@ -100,7 +99,7 @@ class MyTabBarController: UITabBarController, UITabBarControllerDelegate {
                         print("Error getting events")
                     }
                 }
-                
+                profileEventViewController.isCurUser = true
                 profileEventViewController.calendar.reloadData() //We will get a null pointer exception if the
             }
             hasProfileBeenLoaded = true //Keep track that this view has been loaded

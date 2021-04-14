@@ -55,7 +55,21 @@ class ProfileViewController: UIViewController, FSCalendarDelegate, FSCalendarDat
     @IBOutlet weak var updateBioButton: UIButton!
     
     @IBOutlet weak var followButton: UIButton!
+
+    @IBOutlet weak var cancelBioUpdateButton: UIButton!
     
+    @IBAction func cancelUpdateBio(_ sender: Any) {
+        print("I am cancelling the update")
+        self.updateBioActive = false
+        self.bioTextField.text = ""
+        self.bioTextField.isHidden = true
+        self.bioLabel.isHidden = false
+        
+    }
+    
+    
+
+
     
     @IBAction func bioButtonTapped(_ sender: Any) {
         if(updateBioActive == false){
@@ -75,6 +89,7 @@ class ProfileViewController: UIViewController, FSCalendarDelegate, FSCalendarDat
         }
     }
     @IBAction func profileImageTapped(_ sender: Any) {
+
         if(self.profileOwner.userId == self.user?.uid){
         photoHelper.completionHandler =  { image in
             //make unique identifier for image
@@ -159,7 +174,7 @@ class ProfileViewController: UIViewController, FSCalendarDelegate, FSCalendarDat
         profileImage.removeConstraints(profileImage.constraints)
         
         containerView.removeConstraints(containerView.constraints)
-    
+        bioButton.addTarget(self, action:#selector(bioButtonTapped), for: .touchUpInside)
         if(curUser){
             constraintsBuilder(item: profileImage!, superview: containerView, leading: 21, top: 31, height: 129, width: 129, centerX: false, centerY: false)
             constraintsBuilder(item: bioLabel!, superview: containerView, leading: 169, top: 58, height: 39, width: 216, centerX: false, centerY: false)
@@ -200,12 +215,13 @@ class ProfileViewController: UIViewController, FSCalendarDelegate, FSCalendarDat
         followButton.layer.borderColor = Utilities.getRedCG()
         followButton.setTitleColor(Utilities.getRedUI(), for: .normal)
         
-        
+
         
         if(isCurUser){
+            Utilities.styleLabel(signOutButton.titleLabel!, size: 12, uppercase: true)
             signOutButton.setTitleColor(Utilities.getRedUI(), for: .normal)
             signOutButton.layer.borderWidth = 2
-            signOutButton.layer.borderColor = CGColor(red: 1.0, green: 0.3, blue: 0.0, alpha: 1.0)
+            signOutButton.layer.borderColor = Utilities.getRedCG()
             signOutButton.titleLabel?.textAlignment = .center
             signOutButton.isHidden = false
             Utilities.styleLabel(privateInvitesLabel, size: 12, uppercase: true)
@@ -230,10 +246,8 @@ class ProfileViewController: UIViewController, FSCalendarDelegate, FSCalendarDat
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
         updateViewController(curUser: self.isCurUser)
-        
+
         self.bioTextField.isHidden = true
         let db = Firestore.firestore()
         let curUser = db.collection("users").document(Auth.auth().currentUser!.uid)
@@ -255,6 +269,8 @@ class ProfileViewController: UIViewController, FSCalendarDelegate, FSCalendarDat
                 self.profileImage.sd_setImage(with: photoURL, for: self.state, completed:
                     {_,_,_,_ in
                         self.profileImage.imageView?.makeRounded(_cornerRadius: self.profileImage.frame.height)
+                        print("Getting frame size")
+                        print(self.profileImage.frame)
                         self.calendar.reloadData()
                         self.bioLabel.text = self.profileOwner.bio
                     })
@@ -289,7 +305,6 @@ class ProfileViewController: UIViewController, FSCalendarDelegate, FSCalendarDat
         calendar.dataSource = self
         calendar.scope = .week
         calendar.scrollDirection = .vertical
-        //calendar.appearance.borderDefaultColor = .black
         calendar.appearance.borderSelectionColor = .black
         calendar.appearance.selectionColor = .red
         calendar.appearance.titleFont = UIFont.systemFont(ofSize: 17.0)
