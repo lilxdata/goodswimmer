@@ -31,6 +31,15 @@ class ProfileViewController: UIViewController, FSCalendarDelegate, FSCalendarDat
     var updateBioActive = false
     
     
+    //Calendar Vars
+    fileprivate let gregorian = Calendar(identifier: .gregorian)
+    fileprivate let formatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        return formatter
+    }()
+    
+    
     // Get a reference to the storage service using the default Firebase App
     let storage = Storage.storage()
 
@@ -296,26 +305,58 @@ class ProfileViewController: UIViewController, FSCalendarDelegate, FSCalendarDat
         
         eventsHosting.layer.borderWidth = 10
         eventsHosting.layer.borderColor = CGColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
-        
-        calendar.delegate = self
-        calendar.dataSource = self
-        calendar.scope = .month
-        
-        calendar.scrollDirection = .vertical
-        calendar.appearance.borderSelectionColor = .black
-        calendar.appearance.selectionColor = .red
-        calendar.appearance.titleFont = UIFont.systemFont(ofSize: 17.0)
-        calendar.appearance.headerTitleFont = UIFont.boldSystemFont(ofSize: 17.0)
-        calendar.appearance.weekdayFont = UIFont.boldSystemFont(ofSize: 17.0)
-        
-        calendar.appearance.todayColor = .black
-        calendar.appearance.titleTodayColor = .white
-        calendar.appearance.todaySelectionColor = .red
-        calendar.appearance.headerTitleColor = .black
-        calendar.appearance.weekdayTextColor = .black
-        //calendar.appearance.
-        
+
+        calendar.register(DIYCalendarCell.self, forCellReuseIdentifier: "cell")
+        formatCalendar(calendar: calendar, profile_vc: self)
     }
+    /*
+    func calendar(_ calendar: FSCalendar, willDisplay cell: FSCalendarCell, for date: Date, at position: FSCalendarMonthPosition) {
+           self.configure(cell: cell, for: date, at: position)
+    }
+    private func configure(cell: FSCalendarCell, for date: Date, at position: FSCalendarMonthPosition) {
+           
+           let diyCell = (cell as! DIYCalendarCell)
+           // Custom today circle
+           diyCell.circleImageView.isHidden = !self.gregorian.isDateInToday(date)
+           // Configure selection layer
+           if position == .current {
+               
+               var selectionType = SelectionType.none
+               
+               if calendar.selectedDates.contains(date) {
+                   let previousDate = self.gregorian.date(byAdding: .day, value: -1, to: date)!
+                   let nextDate = self.gregorian.date(byAdding: .day, value: 1, to: date)!
+                   if calendar.selectedDates.contains(date) {
+                       if calendar.selectedDates.contains(previousDate) && calendar.selectedDates.contains(nextDate) {
+                           selectionType = .middle
+                       }
+                       else if calendar.selectedDates.contains(previousDate) && calendar.selectedDates.contains(date) {
+                           selectionType = .rightBorder
+                       }
+                       else if calendar.selectedDates.contains(nextDate) {
+                           selectionType = .leftBorder
+                       }
+                       else {
+                           selectionType = .single
+                       }
+                   }
+               }
+               else {
+                   selectionType = .none
+               }
+               if selectionType == .none {
+                   diyCell.selectionLayer.isHidden = true
+                   return
+               }
+               diyCell.selectionLayer.isHidden = false
+               diyCell.selectionType = selectionType
+               
+           } else {
+               diyCell.circleImageView.isHidden = true
+               diyCell.selectionLayer.isHidden = true
+           }
+       }
+    */
     
     //TODO: set user as not logged in...?
     @IBAction func signOutTapped(_ sender: Any) {
@@ -444,7 +485,7 @@ class ProfileViewController: UIViewController, FSCalendarDelegate, FSCalendarDat
         }
        
     }
-    
+
     @IBAction func eventHostingTapped(_ sender: Any) {
         print("I am pressing")
     }

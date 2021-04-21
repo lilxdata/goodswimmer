@@ -48,6 +48,7 @@
 		64870E85F93983CEBB9B319F /* Pods_goodswimmer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D09BF077A0B42778B27167B /* Pods_goodswimmer.framework */; };
 		8657328425FAE85300456426 /* UserSearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8657328325FAE85300456426 /* UserSearchCell.swift */; };
 		8657328725FAEE9D00456426 /* SearchResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8657328625FAEE9D00456426 /* SearchResultsViewController.swift */; };
+		865FDAB1263014490015F428 /* CalendarModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865FDAB0263014490015F428 /* CalendarModel.swift */; };
 		8661EB0A25E5FB8B00F080B1 /* REGEX_TESTS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8661EB0925E5FB8B00F080B1 /* REGEX_TESTS.swift */; };
 		8661EB0E25E8E14A00F080B1 /* MyTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8661EB0D25E8E14A00F080B1 /* MyTabBarController.swift */; };
 		86706D2D2599D6FA0040EAFA /* List.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86706D2C2599D6FA0040EAFA /* List.swift */; };
@@ -102,6 +103,7 @@
 		3D09BF077A0B42778B27167B /* Pods_goodswimmer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_goodswimmer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8657328325FAE85300456426 /* UserSearchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSearchCell.swift; sourceTree = "<group>"; };
 		8657328625FAEE9D00456426 /* SearchResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsViewController.swift; sourceTree = "<group>"; };
+		865FDAB0263014490015F428 /* CalendarModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarModel.swift; sourceTree = "<group>"; };
 		8661EB0925E5FB8B00F080B1 /* REGEX_TESTS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = REGEX_TESTS.swift; sourceTree = "<group>"; };
 		8661EB0D25E8E14A00F080B1 /* MyTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTabBarController.swift; sourceTree = "<group>"; };
 		86706D2C2599D6FA0040EAFA /* List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = List.swift; sourceTree = "<group>"; };
@@ -148,6 +150,7 @@
 				86908788254F8E3A00E3ED49 /* myEventsCell.swift */,
 				86706D2C2599D6FA0040EAFA /* List.swift */,
 				8657328325FAE85300456426 /* UserSearchCell.swift */,
+				865FDAB0263014490015F428 /* CalendarModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -448,6 +451,7 @@
 				86CD670E25AC377F0099EA48 /* Menu.swift in Sources */,
 				86908789254F8E3A00E3ED49 /* myEventsCell.swift in Sources */,
 				047CF3DD2493ED1A002ADFE8 /* EventCell.swift in Sources */,
+				865FDAB1263014490015F428 /* CalendarModel.swift in Sources */,
 				04BB10F9244CFD4D00BFF9A2 /* Constants.swift in Sources */,
 				86706D2D2599D6FA0040EAFA /* List.swift in Sources */,
 				0401729B246CEA4000297ECA /* CreateEventViewController.swift in Sources */,
