@@ -15,7 +15,9 @@ class Menu {
     
     @objc func closeAddTolistMenu(_sender: UIButton!) {
         _sender.superview?.isHidden = true
-        
     }
     
+    @objc func closePopUp(_sender: UIView) {
+        _sender.superview?.isHidden = true
+    }
 }

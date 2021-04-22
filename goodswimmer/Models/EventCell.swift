@@ -25,6 +25,8 @@ class EventCell: UITableViewCell {
     @IBOutlet weak var addToListButton: UIButton!
     @IBOutlet weak var addToCalendarButton: UIButton!
     
+    weak var viewcontroller: HomeViewController?
+    
     
     
     var eventToDisplay: Event?
@@ -88,10 +90,11 @@ class EventCell: UITableViewCell {
                     "events" : FieldValue.arrayUnion([self.eventName.text!])
                 ])
                 document.get("events")
+                self.viewcontroller?.addSuccessNotif(message: "You added this event to your calendar!")
             } else {
                 print("Error adding event")
             }
-        }
+        }      
     }
     
     @IBAction func addToList(_ sender: Any) {
@@ -122,18 +125,6 @@ class EventCell: UITableViewCell {
     
     @IBAction func usernamePressed(_ sender: Any) {
         print("i tapped user")
-        /*
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-              
-        let profile_view  = storyboard.instantiateViewController(withIdentifier: "profile_vc") as! ProfileViewController
-        
-         profile_view.profileOwner.username = usernameButton.titleLabel?.text
-        if(profile_view.profileOwner.userId == Auth.auth().currentUser?.uid){
-         profile_view.isCurUser = true
-        }
-        else {profile_view.isCurUser = false}*/
-        //profile_view.present(profile_view, animated: true, completion: nil)
-        
-    
+        viewcontroller?.showUser(username: (usernameButton.titleLabel?.text)!) 
     }
 }

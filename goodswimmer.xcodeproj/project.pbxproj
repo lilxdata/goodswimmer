@@ -49,6 +49,7 @@
 		8657328425FAE85300456426 /* UserSearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8657328325FAE85300456426 /* UserSearchCell.swift */; };
 		8657328725FAEE9D00456426 /* SearchResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8657328625FAEE9D00456426 /* SearchResultsViewController.swift */; };
 		865FDAB1263014490015F428 /* CalendarModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865FDAB0263014490015F428 /* CalendarModel.swift */; };
+		865FDAB42630C8FA0015F428 /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865FDAB32630C8FA0015F428 /* Notifications.swift */; };
 		8661EB0A25E5FB8B00F080B1 /* REGEX_TESTS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8661EB0925E5FB8B00F080B1 /* REGEX_TESTS.swift */; };
 		8661EB0E25E8E14A00F080B1 /* MyTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8661EB0D25E8E14A00F080B1 /* MyTabBarController.swift */; };
 		86706D2D2599D6FA0040EAFA /* List.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86706D2C2599D6FA0040EAFA /* List.swift */; };
@@ -104,6 +105,7 @@
 		8657328325FAE85300456426 /* UserSearchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSearchCell.swift; sourceTree = "<group>"; };
 		8657328625FAEE9D00456426 /* SearchResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsViewController.swift; sourceTree = "<group>"; };
 		865FDAB0263014490015F428 /* CalendarModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarModel.swift; sourceTree = "<group>"; };
+		865FDAB32630C8FA0015F428 /* Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
 		8661EB0925E5FB8B00F080B1 /* REGEX_TESTS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = REGEX_TESTS.swift; sourceTree = "<group>"; };
 		8661EB0D25E8E14A00F080B1 /* MyTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTabBarController.swift; sourceTree = "<group>"; };
 		86706D2C2599D6FA0040EAFA /* List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = List.swift; sourceTree = "<group>"; };
@@ -151,6 +153,7 @@
 				86706D2C2599D6FA0040EAFA /* List.swift */,
 				8657328325FAE85300456426 /* UserSearchCell.swift */,
 				865FDAB0263014490015F428 /* CalendarModel.swift */,
+				865FDAB32630C8FA0015F428 /* Notifications.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -436,6 +439,7 @@
 				0401729D246CEAE600297ECA /* ProfileViewController.swift in Sources */,
 				046E1C80252E60DF004D7A4D /* AttendeeCell.swift in Sources */,
 				04D77F82245D471300599CBD /* Validators.swift in Sources */,
+				865FDAB42630C8FA0015F428 /* Notifications.swift in Sources */,
 				04CFB70824CF374300DDCB75 /* LocalStorageService.swift in Sources */,
 				047C977F249982160062D860 /* PhotoHelper.swift in Sources */,
 				04EB0DF024327B5000B532F8 /* SceneDelegate.swift in Sources */,

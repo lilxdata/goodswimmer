@@ -30,9 +30,14 @@ class HomeViewController: UIViewController {
     let clicked = UIImage.imageWithColor(color: .black, size: CGSize(width: 50, height: 50))
     let animated = UIImage.imageWithColor(color: Utilities.getRedUI(), size: CGSize(width: 50, height: 50))
     
+    var notif: Notifications?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        notif = Notifications()
+        
+        
         setUpElements()
         tableView.delegate = self
         tableView.dataSource = self
@@ -191,6 +196,27 @@ class HomeViewController: UIViewController {
         
     }
     
+    func showUser(username: String) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+              
+        let profile_view  = storyboard.instantiateViewController(withIdentifier: "profile_vc") as! ProfileViewController
+        
+        profile_view.profileOwner.username = username
+        if(username == Auth.auth().currentUser?.displayName){
+         profile_view.isCurUser = true
+        }
+        else {profile_view.isCurUser = false}
+        
+        let nav = self.navigationController //grab an instance of the current navigationController
+        DispatchQueue.main.async { //make sure all UI updates are on the main thread.
+                nav?.view.layer.add(CATransition().segueFromLeft(), forKey: nil)
+                nav?.pushViewController(profile_view, animated: false)
+        }
+        
+        
+        self.present(profile_view, animated: true, completion: nil)
+    }
+    
     func setUpElements() {
         Utilities.styleHeader(headerLabel)
         Utilities.styleLabel(sortByLabel, size: 12, uppercase: false)
@@ -202,6 +228,10 @@ class HomeViewController: UIViewController {
         sortBySwitch.onTintColor = Utilities.getRedUI()
         sortBySwitch.tintColor = Utilities.getRedUI()
         sortBySwitch.backgroundColor = Utilities.getRedUI()
+    }
+    
+    func addSuccessNotif(message: String){
+        self.notif?.addSuccessPopUp(_sender: self.view, message: message)
     }
     
     @IBAction func inviteFriend(_ sender: Any) {
@@ -281,6 +311,8 @@ extension HomeViewController : UITableViewDelegate, UITableViewDataSource {
         //get event
         let event = self.eventArray.events[indexPath.row]
         
+        cell.viewcontroller = self
+        
         //customize cell
         cell.displayEvent(event)
         
@@ -313,3 +345,48 @@ extension UIImage {
 }
 
 
+
+
+extension CATransition {
+
+//New viewController will appear from bottom of screen.
+func segueFromBottom() -> CATransition {
+    self.duration = 0.375 //set the duration to whatever you'd like.
+    self.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
+    self.type = CATransitionType.moveIn
+    self.subtype = CATransitionSubtype.fromTop
+    return self
+}
+//New viewController will appear from top of screen.
+func segueFromTop() -> CATransition {
+    self.duration = 0.375 //set the duration to whatever you'd like.
+    self.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
+    self.type = CATransitionType.moveIn
+    self.subtype = CATransitionSubtype.fromBottom
+    return self
+}
+ //New viewController will appear from left side of screen.
+func segueFromLeft() -> CATransition {
+    self.duration = 0.1 //set the duration to whatever you'd like.
+    self.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
+    self.type = CATransitionType.moveIn
+    self.subtype = CATransitionSubtype.fromLeft
+    return self
+}
+//New viewController will pop from right side of screen.
+func popFromRight() -> CATransition {
+    self.duration = 0.1 //set the duration to whatever you'd like.
+    self.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
+    self.type = CATransitionType.reveal
+    self.subtype = CATransitionSubtype.fromRight
+    return self
+}
+//New viewController will appear from left side of screen.
+func popFromLeft() -> CATransition {
+    self.duration = 0.1 //set the duration to whatever you'd like.
+    self.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
+    self.type = CATransitionType.reveal
+    self.subtype = CATransitionSubtype.fromLeft
+    return self
+   }
+}
