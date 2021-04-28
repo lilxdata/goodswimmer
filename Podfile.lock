@@ -285,7 +285,7 @@ PODS:
   - FirebaseStorage (3.9.1):
     - FirebaseCore (~> 6.10)
     - GTMSessionFetcher/Core (~> 1.1)
-  - FSCalendar (2.8.2)
+  - FSCalendar (2.7.3)
   - GoogleAppMeasurement (6.9.0):
     - GoogleUtilities/AppDelegateSwizzler (~> 6.7)
     - GoogleUtilities/MethodSwizzler (~> 6.7)
@@ -364,7 +364,7 @@ DEPENDENCIES:
   - Firebase/Firestore
   - Firebase/Storage
   - FirebaseFirestoreSwift
-  - FSCalendar
+  - FSCalendar (= 2.7.3)
   - GoogleMaps (= 4.0.0)
   - GooglePlaces (= 4.0.0)
   - SDWebImage
@@ -410,7 +410,7 @@ SPEC CHECKSUMS:
   FirebaseFirestoreSwift: 2c46dbc1156db97dc4f6dd798d4f5b57b9c7fab6
   FirebaseInstallations: 466c7b4d1f58fe16707693091da253726a731ed2
   FirebaseStorage: 15e0f15ef3c7fec3d1899d68623e47d4447066b4
-  FSCalendar: e6a2eb9c571bf0719ed797ef807e08426753c241
+  FSCalendar: 574388d70778c22719eed9341653e1743b345573
   GoogleAppMeasurement: a6a3a066369828db64eda428cb2856dc1cdc7c4e
   GoogleDataTransport: f56af7caa4ed338dc8e138a5d7c5973e66440833
   GoogleMaps: b7f7fc569a9b354a3af0d9729dbec40957b7d41e
@@ -424,6 +424,6 @@ SPEC CHECKSUMS:
   PromisesObjC: 3113f7f76903778cf4a0586bd1ab89329a0b7b97
   SDWebImage: a7f831e1a65eb5e285e3fb046a23fcfbf08e696d
 
-PODFILE CHECKSUM: 3a337a08e2bf923b495faaa421eec3a3589e90d3
+PODFILE CHECKSUM: f0ab6452a436f673ab304072a6981bfa34904afd
 
 COCOAPODS: 1.8.4
