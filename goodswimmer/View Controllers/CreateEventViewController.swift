@@ -29,7 +29,6 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var addressField3: UITextField!
     @IBOutlet weak var stateAbbreviation: UITextField!
     @IBOutlet weak var inviteToGSButton: UIButton!
-    @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var dateField1: UITextField!
     @IBOutlet weak var dateField2: UITextField!
     @IBOutlet weak var timeField1: UITextField!
@@ -50,10 +49,10 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var ticketPriceLabel: UILabel!
     @IBOutlet weak var ticketPriceField: UITextField!
     @IBOutlet weak var inviteOnlyButton: UIButton!
-    @IBOutlet weak var inviteOnlyField: UITextView!
+    //@IBOutlet weak var inviteOnlyField: UITextView!
     @IBOutlet weak var multidayEventButton: UIButton!
     
-    @IBOutlet weak var createItTestLabel: UILabel!
+    //@IBOutlet weak var createItTestLabel: UILabel!
     
     var accessibilityArray = ["wheelchair" : false,  "transit" : false, "restroom" : false, "NOTAFLOF" : false, "scentFree" : false, "other" : false]
     var inviteToGSState = false
@@ -93,7 +92,7 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate {
         let headerSize = 35
         
         //label styling
-        let labels = [titleLabel, participantsLabel, locationLabel,descriptionLabel, dateLabel, addressLabel, imageLabel, ticketPriceLabel]
+        let labels = [titleLabel, participantsLabel, locationLabel,descriptionLabel, dateLabel, imageLabel, ticketPriceLabel]
         
         for label in labels {
             stackView.setCustomSpacing(16, after: label!)
@@ -109,7 +108,7 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate {
         addressField2.isUserInteractionEnabled = true
         addressField3.isUserInteractionEnabled = true
         stateAbbreviation.isUserInteractionEnabled = true
-        createItTestLabel.font = UIFont(name: "Standard-Book", size: 21)
+        //createItTestLabel.font = UIFont(name: "Standard-Book", size: 21)
         
         Utilities.styleButton(createEventButton)
         Utilities.styleLabel(createEventHeader, size: headerSize, uppercase: false)
@@ -125,11 +124,11 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate {
         participantsField.layer.borderWidth = 1
         participantsField.isUserInteractionEnabled = true
 
-        
+        /*
         inviteOnlyField.layer.borderColor = UIColor.black.cgColor
         inviteOnlyField.layer.borderWidth = 1
         inviteOnlyField.isUserInteractionEnabled = false
-        
+        */
         dateField2.isUserInteractionEnabled = false
         dateField2.isHidden = true
         
@@ -162,9 +161,9 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate {
         
         let description = descriptionText.text!.trimmingCharacters(in: .whitespacesAndNewlines)
         let participants = participantsField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
-        var inviteList = inviteOnlyField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+        //var inviteList = inviteOnlyField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
         if(inviteOnlyState == false) {
-            inviteList = ""
+            //inviteList = ""
         }
         
         let ticketPrice = Int(ticketPriceField.text!) ?? 0
@@ -314,7 +313,7 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate {
             "username": username,
             "accessibilityAs": accessibilityAs,
             "otherDescription": otherDescription,
-            "inviteList" : inviteList,
+            "inviteList" : "",//inviteList,
             "ticketPrice" : ticketPrice,
             "inviteToGS" : inviteToGSState,
             "inviteOnly" : inviteOnlyState,
@@ -503,12 +502,12 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate {
         setCheckMark(button: inviteOnlyButton, check: inviteOnlyState)
         let fieldSize = 15
         if(inviteOnlyState == true){
-            inviteOnlyField.isUserInteractionEnabled = true
-            Utilities.styleDisabledTextView(inviteOnlyField, size: fieldSize)
+            //inviteOnlyField.isUserInteractionEnabled = true
+            //Utilities.styleDisabledTextView(inviteOnlyField, size: fieldSize)
         }
         else {
-            inviteOnlyField.isUserInteractionEnabled = false
-            Utilities.styleTextView(inviteOnlyField, size: fieldSize)
+            //inviteOnlyField.isUserInteractionEnabled = false
+            //Utilities.styleTextView(inviteOnlyField, size: fieldSize)
         }
     }
     

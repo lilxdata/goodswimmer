@@ -16,5 +16,5 @@ target 'goodswimmer' do
   pod 'SDWebImage'
   pod 'GoogleMaps', '4.0.0'
   pod 'GooglePlaces', '4.0.0'
-  pod 'FSCalendar'
+  pod 'FSCalendar', '2.7.3'
 end
