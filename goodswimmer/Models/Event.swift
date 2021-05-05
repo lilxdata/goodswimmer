@@ -37,6 +37,7 @@ struct Event {
     var city : String?
     var state : String?
     var zipCode : String?
+    var virtualEvent : Bool?
     private var createdDate: Timestamp?
     
     init?(eventDict: [String: Any]) {
@@ -58,6 +59,7 @@ struct Event {
         let city = eventDict["city"] as? String
         let state = eventDict["state"] as? String
         let zipCode = eventDict["zip code"] as? String
+        let virtualEvent = eventDict["virtualEvent"] as? Bool
         
         
         self.username = username
@@ -83,5 +85,6 @@ struct Event {
         self.city = city
         self.state = state
         self.zipCode = zipCode
+        self.virtualEvent = virtualEvent
     }
 }

@@ -154,7 +154,15 @@ class Utilities {
     }
     
     static func getRedUI() -> UIColor{
-        return UIColor(cgColor: getRedCG())
+        return UIColor(red: 1.0, green: 0.3, blue: 0.0, alpha: 1.0)
+    }
+    
+    static func getGreyCG() -> CGColor{
+        return CGColor(red: 0.74, green: 0.74, blue: 0.74, alpha: 1.0)
+    }
+    
+    static func getGreyUI() -> UIColor{
+        return UIColor(red: 0.74, green: 0.74, blue: 0.74, alpha: 1.0)
     }
 }
 

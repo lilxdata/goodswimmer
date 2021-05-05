@@ -29,7 +29,7 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate,
     var isCurUser = true
     
     var updateBioActive = false
-    
+    let calendar = FSCalendar(frame: CGRect(x: 0, y: 0, width: 414, height: 300))
     
     //Calendar Vars
     var firstDate: Date?
@@ -58,7 +58,7 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate,
     @IBOutlet weak var bioButton: UIButton!
     @IBOutlet weak var bioTextField: UITextField!
     @IBOutlet weak var bioLabel: UILabel!
-    @IBOutlet weak var calendar: FSCalendar!
+   
    
     @IBOutlet weak var eventsHostingLabel: UILabel!
     @IBOutlet weak var eventsHosting: UIButton!
@@ -72,6 +72,8 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate,
     @IBOutlet weak var followButton: UIButton!
 
     @IBOutlet weak var cancelBioUpdateButton: UIButton!
+    
+    @IBOutlet weak var calendarView: UIView!
     
     @IBAction func cancelUpdateBio(_ sender: Any) {
         self.updateBioActive = false
@@ -258,6 +260,18 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate,
     override func viewDidLoad() {
         super.viewDidLoad()
         updateViewController(curUser: self.isCurUser)
+        calendarView.addSubview(calendar)
+        //constraintsBuilder(item: calendar, superview: calendarView!, leading: 0, top: 0, height: Int(calendarView.fs_height), width: Int(calendarView.fs_width), centerX: false, centerY: false)
+        formatCalendar(calendar: calendar, profile_vc: self)
+        print("Why isn't my calendar stuff showing up?")
+        print(calendar.frame)
+        print(calendarView.frame)
+        print(calendar.fs_height, calendar.fs_width)
+        print(calendarView.subviews)
+        print(Int(calendarView.fs_height),Int(calendarView.fs_width))
+
+        
+        
 
         self.bioTextField.isHidden = true
         let db = Firestore.firestore()
@@ -280,8 +294,7 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate,
                 self.profileImage.sd_setImage(with: photoURL, for: self.state, completed:
                     {_,_,_,_ in
                         self.profileImage.imageView?.makeRounded(_cornerRadius: self.profileImage.frame.height)
-                        print("Getting frame size")
-                        print(self.profileImage.frame)
+
                         self.calendar.reloadData()
                         self.bioLabel.text = self.profileOwner.bio
                     })
@@ -311,8 +324,6 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate,
         
         eventsHosting.layer.borderWidth = 10
         eventsHosting.layer.borderColor = CGColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
-        
-        formatCalendar(calendar: calendar, profile_vc: self)
     }
     
 
@@ -361,81 +372,6 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate,
         return formatter
     }()
     
-    /*
-    func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "EEEE MM-dd-YYYY"
-        let dateString = formatter.string(from: date)
-        print("Selected", dateString)
-        print("Today's Events are: ")
-        var eventsToday: [Event?] = []
-        for event in eventArray.events{
-            var eventDate = event.startDate?.dateValue()
-            var eventDateString = formatter.string(from: eventDate!)
-            if(eventDateString == dateString && self.myEventsArr.contains(event.name!)){
-                print(event)
-                eventsToday.append(event)
-            }
-        }
-        //Go to
-        //calendar_vc
-        if let vc = storyboard?.instantiateViewController(withIdentifier: "calendar_vc") as? CalendarViewController {
-            vc.eventsToday = eventsToday
-            self.calendar.reloadData()
-            //vc.modalPresentationStyle = .fullScreen
-            present(vc, animated: true, completion: nil)
-        }
-    }
-    
-
-    fileprivate lazy var dateFormatter2: DateFormatter = {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd"
-        return formatter
-    }()
-
-    func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
-        let dateString = self.dateFormatter2.string(from: date)
-        var eventCount = 0
-        for event in eventArray.events{
-            let eventDate = event.startDate?.dateValue()
-            let eventDateString = self.dateFormatter2.string(from: eventDate!)
-            if eventDateString.contains(dateString) && self.myEventsArr.contains(event.name!) {
-                eventCount = eventCount + 1
-            }
-        }
-        return 0
-    }
-    
-
-    func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, fillDefaultColorFor date: Date) -> UIColor? {
-        
-        //format date according your need
-        let dateString = self.dateFormatter2.string(from: date)
-        //your events date array
-        var eventCount = 0
-        for event in eventArray.events{
-            var eventDate = event.startDate?.dateValue()
-            var eventDateString = self.dateFormatter2.string(from: eventDate!)
-            if eventDateString.contains(dateString) && self.myEventsArr.contains(event.name!) {
-                eventCount = eventCount + 1
-            }
-        }
-        if(eventCount == 0){
-            return nil
-        }
-        
-        else if(eventCount == 1){
-            return UIColor.blue
-        }
-        else {
-            return UIColor.green
-        }
-
-        return nil //add your color for default
-
-    }
-    */
     
     func set_photo(button: UIButton, name: String) {
         let imageRef = Storage.storage().reference().child(name)
@@ -494,43 +430,7 @@ extension ProfileViewController {
         if calendar.selectedDates.contains(date!) {
             diyCell.selectionLayer.fillColor = Utilities.getRedCG()
         }
-        /* original code https://stackoverflow.com/questions/58424445/how-to-customise-cell-in-fscalendar
-        if position == .current {
-            
-            var selectionType = SelectionType.none
-
-            if calendar.selectedDates.contains(date!) {
-                let previousDate = self.gregorian.date(byAdding: .day, value: -1, to: date!)!
-                let nextDate = self.gregorian.date(byAdding: .day, value: 1, to: date!)!
-                if calendar.selectedDates.contains(date!) {
-                    if calendar.selectedDates.contains(previousDate) && calendar.selectedDates.contains(nextDate) {
-                        diyCell.selectionLayer.fillColor = highlightedColorForRange.cgColor
-                        selectionType = .middle
-                    }
-                    else if calendar.selectedDates.contains(previousDate) && calendar.selectedDates.contains(date!) {
-                        selectionType = .single // .rightBorder
-                    }
-                    else if calendar.selectedDates.contains(nextDate) {
-                        selectionType = .single // .leftBorder
-                    }
-                    else {
-                        selectionType = .middle //.single
-                    }
-                }
-            }
-            else {
-                selectionType = .none
-            }
-            if selectionType == .none {
-                diyCell.selectionLayer.isHidden = true
-                return
-            }
-            diyCell.selectionLayer.isHidden = false
-            diyCell.selectionType = selectionType
-
-        } else {
-            diyCell.selectionLayer.isHidden = true
-        }*/
+        // original code https://stackoverflow.com/questions/58424445/how-to-customise-cell-in-fscalendar
     }
 
     func datesRange(from: Date, to: Date) -> [Date] {
@@ -636,9 +536,6 @@ extension ProfileViewController:FSCalendarDelegate,FSCalendarDataSource,FSCalend
         configureVisibleCells()
     }
 
-    func calendarCurrentPageDidChange(_ calendar: FSCalendar) {
-
-    }
 
     func calendar(_ calendar: FSCalendar, cellFor date: Date, at position: FSCalendarMonthPosition) -> FSCalendarCell {
         let cell = calendar.dequeueReusableCell(withIdentifier: "cell", for: date, at: position)

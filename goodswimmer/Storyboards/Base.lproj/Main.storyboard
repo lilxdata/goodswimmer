@@ -561,21 +561,49 @@
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                     </textView>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o9m-d5-UtB" userLabel="Invite Only Button">
-                                                        <rect key="frame" x="0.0" y="331.5" width="152" height="18.5"/>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GvN-Ih-uyR">
+                                                        <rect key="frame" x="0.0" y="331.5" width="354" height="18.5"/>
+                                                        <subviews>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o9m-d5-UtB" userLabel="Invite Only Button">
+                                                                <rect key="frame" x="0.0" y="0.0" width="152" height="18.5"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" constant="152" id="WbE-p7-Z69"/>
+                                                                </constraints>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <inset key="titleEdgeInsets" minX="6" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                                <state key="normal" title="Invite Only" image="square" catalog="system">
+                                                                    <color key="titleColor" systemColor="labelColor"/>
+                                                                </state>
+                                                                <connections>
+                                                                    <action selector="inviteOnlyPressed:" destination="Ncr-nI-DQr" eventType="touchUpInside" id="mE1-HS-OM9"/>
+                                                                </connections>
+                                                            </button>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YWf-pY-uds">
+                                                                <rect key="frame" x="154" y="0.0" width="152" height="18.5"/>
+                                                                <rect key="contentStretch" x="0.0" y="0.0" width="0.0" height="0.0"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                                <inset key="titleEdgeInsets" minX="7" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                                <state key="normal" title="Virtual Event" image="square" catalog="system">
+                                                                    <color key="titleColor" systemColor="labelColor"/>
+                                                                </state>
+                                                                <connections>
+                                                                    <action selector="virtualEventPressed:" destination="Ncr-nI-DQr" eventType="touchUpInside" id="hNc-if-C9m"/>
+                                                                </connections>
+                                                            </button>
+                                                        </subviews>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="width" constant="152" id="WbE-p7-Z69"/>
+                                                            <constraint firstItem="YWf-pY-uds" firstAttribute="leading" secondItem="GvN-Ih-uyR" secondAttribute="leading" constant="154" id="8bQ-Ht-M2e"/>
+                                                            <constraint firstItem="YWf-pY-uds" firstAttribute="centerY" secondItem="GvN-Ih-uyR" secondAttribute="centerY" id="AgM-ZO-Dvn"/>
+                                                            <constraint firstItem="YWf-pY-uds" firstAttribute="height" secondItem="o9m-d5-UtB" secondAttribute="height" id="Fwo-lz-AX9"/>
+                                                            <constraint firstAttribute="height" constant="18.5" id="XA6-hx-DxK"/>
+                                                            <constraint firstItem="YWf-pY-uds" firstAttribute="width" secondItem="o9m-d5-UtB" secondAttribute="width" id="bBd-tQ-XJm"/>
+                                                            <constraint firstItem="o9m-d5-UtB" firstAttribute="height" secondItem="GvN-Ih-uyR" secondAttribute="height" id="cqj-eC-C2z"/>
+                                                            <constraint firstItem="o9m-d5-UtB" firstAttribute="centerY" secondItem="GvN-Ih-uyR" secondAttribute="centerY" id="tSG-bn-ZsJ"/>
+                                                            <constraint firstItem="o9m-d5-UtB" firstAttribute="leading" secondItem="GvN-Ih-uyR" secondAttribute="leading" id="x9d-bF-PkE"/>
                                                         </constraints>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <inset key="titleEdgeInsets" minX="6" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                                        <state key="normal" title="Invite Only" image="square" catalog="system">
-                                                            <color key="titleColor" systemColor="labelColor"/>
-                                                        </state>
-                                                        <connections>
-                                                            <action selector="inviteOnlyPressed:" destination="Ncr-nI-DQr" eventType="touchUpInside" id="mE1-HS-OM9"/>
-                                                        </connections>
-                                                    </button>
+                                                    </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0wg-3j-afD">
                                                         <rect key="frame" x="0.0" y="387" width="354" height="132"/>
                                                         <subviews>
@@ -599,10 +627,11 @@
                                                             </textView>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WkK-p0-9bw">
                                                                 <rect key="frame" x="0.0" y="76.5" width="350" height="54"/>
+                                                                <color key="tintColor" red="0.73725490196078436" green="0.73725490196078436" blue="0.73725490196078436" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <string key="text">Enter Good Swimmer usernames, or email addresses for participants (email addresses will be sent an invite to be part of Good Swimmer.</string>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                                <nil key="textColor"/>
-                                                                <nil key="highlightedColor"/>
+                                                                <color key="textColor" red="0.73725490196078436" green="0.73725490196078436" blue="0.73725490196078436" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <color key="highlightedColor" red="0.73725490196078436" green="0.73725490196078436" blue="0.73725490196078436" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             </label>
                                                         </subviews>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -635,7 +664,7 @@
                                                                     <constraint firstAttribute="width" constant="127" id="xAc-CP-Tcn"/>
                                                                 </constraints>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                                <nil key="textColor"/>
+                                                                <color key="textColor" red="0.73725490196078436" green="0.73725490196078436" blue="0.73725490196078436" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                                 <size key="shadowOffset" width="0.0" height="0.0"/>
                                                             </label>
@@ -683,8 +712,15 @@
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6AI-Pg-edH">
                                                         <rect key="frame" x="0.0" y="662" width="354" height="115"/>
                                                         <subviews>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dQi-y2-qWp" userLabel="Cancel MD">
+                                                                <rect key="frame" x="326" y="27.5" width="24" height="22"/>
+                                                                <state key="normal" image="xmark.rectangle" catalog="system"/>
+                                                                <connections>
+                                                                    <action selector="multiDayEventCanceled:" destination="Ncr-nI-DQr" eventType="touchUpInside" id="u16-1m-Pe7"/>
+                                                                </connections>
+                                                            </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3mk-EE-5k6">
-                                                                <rect key="frame" x="0.0" y="0.0" width="150" height="18.5"/>
+                                                                <rect key="frame" x="194" y="27.5" width="150" height="18.5"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="150" id="mEW-L1-8ao"/>
                                                                 </constraints>
@@ -699,14 +735,27 @@
                                                                 </connections>
                                                             </button>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="When is it?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bcz-bG-PhY">
-                                                                <rect key="frame" x="0.0" y="25.5" width="83.5" height="20.5"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="83.5" height="20.5"/>
                                                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
+                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="End Time" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TFF-b2-kPn" userLabel="TimeField2">
+                                                                <rect key="frame" x="194" y="66" width="156" height="18.5"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" constant="156" id="Xnc-h1-uXr"/>
+                                                                </constraints>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
+                                                            </textField>
+                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="End Date  (mm/dd/yyyy)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7GY-eW-lIm" userLabel="DateField2">
+                                                                <rect key="frame" x="194" y="27.5" width="130" height="18.5"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
+                                                            </textField>
                                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalCentering" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="ith-j2-Nym" userLabel="Time Stack View">
-                                                                <rect key="frame" x="0.0" y="53" width="157" height="57"/>
+                                                                <rect key="frame" x="0.0" y="27.5" width="157" height="57"/>
                                                                 <subviews>
                                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Start Date (mm/dd/yyyy)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1Bw-rd-gpP" userLabel="DateField1">
                                                                         <rect key="frame" x="0.0" y="0.0" width="157" height="18.5"/>
@@ -726,39 +775,23 @@
                                                                     <constraint firstItem="iSx-bC-4Bf" firstAttribute="width" secondItem="ith-j2-Nym" secondAttribute="width" id="keh-AK-ARr"/>
                                                                 </constraints>
                                                             </stackView>
-                                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalCentering" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="nW6-da-I4u" userLabel="Date Stack View">
-                                                                <rect key="frame" x="194" y="53" width="156" height="57"/>
-                                                                <subviews>
-                                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="End Date  (mm/dd/yyyy)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7GY-eW-lIm" userLabel="DateField2">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="156" height="18.5"/>
-                                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                        <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
-                                                                    </textField>
-                                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="End Time" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TFF-b2-kPn" userLabel="TimeField2">
-                                                                        <rect key="frame" x="0.0" y="38.5" width="156" height="18.5"/>
-                                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                        <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
-                                                                    </textField>
-                                                                </subviews>
-                                                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                <constraints>
-                                                                    <constraint firstAttribute="width" constant="156" id="IXt-4Z-4DI"/>
-                                                                    <constraint firstItem="TFF-b2-kPn" firstAttribute="width" secondItem="nW6-da-I4u" secondAttribute="width" id="VeN-wA-lsr"/>
-                                                                    <constraint firstItem="7GY-eW-lIm" firstAttribute="width" secondItem="nW6-da-I4u" secondAttribute="width" id="s0z-xU-wDi"/>
-                                                                </constraints>
-                                                            </stackView>
                                                         </subviews>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                         <constraints>
+                                                            <constraint firstItem="TFF-b2-kPn" firstAttribute="leading" secondItem="6AI-Pg-edH" secondAttribute="leading" constant="194" id="0Uj-2r-8M8"/>
+                                                            <constraint firstItem="7GY-eW-lIm" firstAttribute="width" secondItem="TFF-b2-kPn" secondAttribute="width" multiplier="0.833333" id="FTz-wC-xEk"/>
                                                             <constraint firstAttribute="height" constant="115" id="FiB-QP-ESd"/>
-                                                            <constraint firstItem="3mk-EE-5k6" firstAttribute="leading" secondItem="6AI-Pg-edH" secondAttribute="leading" id="J5D-kI-7Lh"/>
-                                                            <constraint firstItem="nW6-da-I4u" firstAttribute="top" secondItem="Bcz-bG-PhY" secondAttribute="bottom" constant="7" id="Mod-58-9JN"/>
+                                                            <constraint firstItem="dQi-y2-qWp" firstAttribute="leading" secondItem="6AI-Pg-edH" secondAttribute="leading" constant="326" id="Izn-15-EbQ"/>
+                                                            <constraint firstItem="3mk-EE-5k6" firstAttribute="leading" secondItem="6AI-Pg-edH" secondAttribute="leading" constant="194" id="J5D-kI-7Lh"/>
+                                                            <constraint firstItem="3mk-EE-5k6" firstAttribute="top" secondItem="Bcz-bG-PhY" secondAttribute="bottom" constant="7" id="Yqp-zm-imu"/>
+                                                            <constraint firstItem="Bcz-bG-PhY" firstAttribute="top" secondItem="6AI-Pg-edH" secondAttribute="top" id="eE3-mh-pkZ"/>
+                                                            <constraint firstItem="dQi-y2-qWp" firstAttribute="top" secondItem="Bcz-bG-PhY" secondAttribute="bottom" constant="7" id="kxM-pl-Srd"/>
                                                             <constraint firstItem="Bcz-bG-PhY" firstAttribute="leading" secondItem="6AI-Pg-edH" secondAttribute="leading" id="mMh-rM-Fvg"/>
                                                             <constraint firstItem="ith-j2-Nym" firstAttribute="top" secondItem="Bcz-bG-PhY" secondAttribute="bottom" constant="7" id="mvK-jj-skf"/>
-                                                            <constraint firstItem="nW6-da-I4u" firstAttribute="leading" secondItem="6AI-Pg-edH" secondAttribute="leading" constant="194" id="nFN-ai-TYx"/>
-                                                            <constraint firstItem="Bcz-bG-PhY" firstAttribute="top" secondItem="3mk-EE-5k6" secondAttribute="bottom" constant="7" id="pfr-0n-ecb"/>
+                                                            <constraint firstItem="7GY-eW-lIm" firstAttribute="top" secondItem="Bcz-bG-PhY" secondAttribute="bottom" constant="7" id="psi-V3-8qc"/>
+                                                            <constraint firstItem="TFF-b2-kPn" firstAttribute="top" secondItem="7GY-eW-lIm" secondAttribute="bottom" constant="20" id="rB8-aj-xvO"/>
                                                             <constraint firstItem="ith-j2-Nym" firstAttribute="leading" secondItem="6AI-Pg-edH" secondAttribute="leading" id="vfV-hg-b1W"/>
-                                                            <constraint firstItem="3mk-EE-5k6" firstAttribute="top" secondItem="6AI-Pg-edH" secondAttribute="top" id="yF6-Pg-HCM"/>
+                                                            <constraint firstItem="7GY-eW-lIm" firstAttribute="leading" secondItem="6AI-Pg-edH" secondAttribute="leading" constant="194" id="wDP-vT-y3f"/>
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nWH-kd-LHJ">
@@ -871,7 +904,7 @@
                                                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                                         <inset key="titleEdgeInsets" minX="6" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                                         <state key="normal" title="Wheelchair Accessible" image="square" catalog="system">
-                                                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                            <color key="titleColor" red="0.73725490196078436" green="0.73725490196078436" blue="0.73725490196078436" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         </state>
                                                                         <connections>
                                                                             <action selector="wheelchairAccessiblePressed:" destination="Ncr-nI-DQr" eventType="touchUpInside" id="uGK-ws-uRP"/>
@@ -882,7 +915,7 @@
                                                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                                         <inset key="titleEdgeInsets" minX="6" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                                         <state key="normal" title="Accessible Restroom" image="square" catalog="system">
-                                                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                            <color key="titleColor" red="0.73725490196078436" green="0.73725490196078436" blue="0.73725490196078436" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         </state>
                                                                         <connections>
                                                                             <action selector="accessibleRestroomPressed:" destination="Ncr-nI-DQr" eventType="touchUpInside" id="idr-F9-eEq"/>
@@ -894,7 +927,7 @@
                                                                         <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         <inset key="titleEdgeInsets" minX="6" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                                         <state key="normal" title="Scent-Free" image="square" catalog="system">
-                                                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                            <color key="titleColor" red="0.73725490196078436" green="0.73725490196078436" blue="0.73725490196078436" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         </state>
                                                                         <connections>
                                                                             <action selector="scentFreePressed:" destination="Ncr-nI-DQr" eventType="touchUpInside" id="lYh-g3-EY5"/>
@@ -906,7 +939,7 @@
                                                                         <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         <inset key="titleEdgeInsets" minX="6" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                                         <state key="normal" title="Other" image="square" catalog="system">
-                                                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                            <color key="titleColor" red="0.73725490196078436" green="0.73725490196078436" blue="0.73725490196078436" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         </state>
                                                                         <connections>
                                                                             <action selector="otherAccPressed:" destination="Ncr-nI-DQr" eventType="touchUpInside" id="IfL-cg-k6k"/>
@@ -930,7 +963,7 @@
                                                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                                         <inset key="titleEdgeInsets" minX="6" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                                         <state key="normal" title="Close to Transit" image="square" catalog="system">
-                                                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                            <color key="titleColor" red="0.73725490196078436" green="0.73725490196078436" blue="0.73725490196078436" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         </state>
                                                                         <connections>
                                                                             <action selector="closeToTransitPressed:" destination="Ncr-nI-DQr" eventType="touchUpInside" id="moz-o9-Seq"/>
@@ -941,7 +974,7 @@
                                                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                                         <inset key="titleEdgeInsets" minX="6" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                                         <state key="normal" title="NOTAFLOF" image="square" catalog="system">
-                                                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                            <color key="titleColor" red="0.73725490196078436" green="0.73725490196078436" blue="0.73725490196078436" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         </state>
                                                                         <connections>
                                                                             <action selector="NOTAFLOFPressed:" destination="Ncr-nI-DQr" eventType="touchUpInside" id="Ngu-CE-5iw"/>
@@ -982,6 +1015,7 @@
                                                 </subviews>
                                                 <constraints>
                                                     <constraint firstItem="Gdv-Ar-qf1" firstAttribute="width" secondItem="orv-0s-JHq" secondAttribute="width" id="32D-Fl-bSU"/>
+                                                    <constraint firstItem="GvN-Ih-uyR" firstAttribute="width" secondItem="wRk-1v-eYi" secondAttribute="width" id="uPb-xQ-v7u"/>
                                                 </constraints>
                                             </stackView>
                                             <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QPR-mb-Dr1" userLabel="Create Event">
@@ -1053,6 +1087,7 @@
                         <outlet property="addressField1" destination="5z6-0E-w8Z" id="jOW-ZT-1iz"/>
                         <outlet property="addressField2" destination="iMn-cQ-k5C" id="Vmd-n7-Abv"/>
                         <outlet property="addressField3" destination="wUL-hP-NT6" id="Xea-UP-raz"/>
+                        <outlet property="cancelMultiDate" destination="dQi-y2-qWp" id="Peh-T3-a9F"/>
                         <outlet property="createEventButton" destination="QPR-mb-Dr1" id="6Nz-IQ-yAo"/>
                         <outlet property="createEventHeader" destination="yf4-5u-9O6" id="6pE-hA-gE5"/>
                         <outlet property="createEventScrollView" destination="aY4-uK-w6J" id="qqG-l9-36L"/>
@@ -1079,6 +1114,7 @@
                         <outlet property="timeField2" destination="TFF-b2-kPn" id="ye7-9z-EzP"/>
                         <outlet property="titleField" destination="H6z-5g-1uJ" id="JSA-qN-m6a"/>
                         <outlet property="titleLabel" destination="i9W-rH-8Ie" id="Zjt-ue-9ky"/>
+                        <outlet property="virtualEventButton" destination="YWf-pY-uds" id="SGH-je-0OT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="w7F-uL-Aet" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1109,7 +1145,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="c2f-za-3tB">
-                                                <rect key="frame" x="0.0" y="20.5" width="414" height="1158.5"/>
+                                                <rect key="frame" x="0.0" y="20.5" width="414" height="1258.5"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oYq-Gr-ejc">
                                                         <rect key="frame" x="0.0" y="0.0" width="414" height="161"/>
@@ -1155,7 +1191,7 @@
                                                                 <rect key="frame" x="169" y="58" width="216" height="39"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="39" id="2My-s4-Ojz"/>
-                                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="216" id="C6W-Q3-4ls"/>
+                                                                    <constraint firstAttribute="width" constant="216" id="C6W-Q3-4ls"/>
                                                                 </constraints>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                                                 <nil key="textColor"/>
@@ -1235,36 +1271,24 @@
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ghm-Rn-Oiw">
-                                                        <rect key="frame" x="0.0" y="346" width="414" height="200"/>
-                                                        <subviews>
-                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S7J-Pk-IoX" customClass="FSCalendar">
-                                                                <rect key="frame" x="0.0" y="0.0" width="414" height="200"/>
-                                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                                                <constraints>
-                                                                    <constraint firstAttribute="height" constant="200" id="fWP-8O-SDd"/>
-                                                                    <constraint firstAttribute="width" constant="414" id="huU-Hl-Xdl"/>
-                                                                </constraints>
-                                                            </view>
-                                                        </subviews>
+                                                        <rect key="frame" x="0.0" y="346" width="414" height="300"/>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                         <constraints>
-                                                            <constraint firstItem="S7J-Pk-IoX" firstAttribute="leading" secondItem="Ghm-Rn-Oiw" secondAttribute="leading" id="BL4-Cb-spQ"/>
-                                                            <constraint firstItem="S7J-Pk-IoX" firstAttribute="height" secondItem="Ghm-Rn-Oiw" secondAttribute="height" id="Bob-PZ-4ET"/>
-                                                            <constraint firstItem="S7J-Pk-IoX" firstAttribute="top" secondItem="Ghm-Rn-Oiw" secondAttribute="top" id="vM9-xA-EIm"/>
+                                                            <constraint firstAttribute="height" constant="300" id="Xmr-AZ-F5p"/>
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T00-mN-mb3">
-                                                        <rect key="frame" x="0.0" y="571" width="414" height="375.5"/>
+                                                        <rect key="frame" x="0.0" y="671" width="414" height="375.5"/>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                     </view>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="EVENTS I'M HOSTING" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CNx-uQ-eGc">
-                                                        <rect key="frame" x="0.0" y="971.5" width="414" height="20.5"/>
+                                                        <rect key="frame" x="0.0" y="1071.5" width="414" height="20.5"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DK1-Jx-3uO">
-                                                        <rect key="frame" x="0.0" y="1017" width="414" height="96"/>
+                                                        <rect key="frame" x="0.0" y="1117" width="414" height="96"/>
                                                         <subviews>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mTT-Ta-r6P">
                                                                 <rect key="frame" x="0.0" y="0.0" width="198" height="96"/>
@@ -1300,7 +1324,7 @@
                                                         </subviews>
                                                     </stackView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Private Event Invites" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iQQ-bs-SIl">
-                                                        <rect key="frame" x="0.0" y="1138" width="414" height="20.5"/>
+                                                        <rect key="frame" x="0.0" y="1238" width="414" height="20.5"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -1349,7 +1373,7 @@
                         <outlet property="bioButton" destination="jHG-Le-eeo" id="MSK-fs-2Ty"/>
                         <outlet property="bioLabel" destination="4uN-IZ-IXU" id="0EE-jk-AVw"/>
                         <outlet property="bioTextField" destination="4ib-z1-lOg" id="M5E-CO-1UU"/>
-                        <outlet property="calendar" destination="S7J-Pk-IoX" id="kfA-CC-5AM"/>
+                        <outlet property="calendarView" destination="Ghm-Rn-Oiw" id="jg8-B1-LyE"/>
                         <outlet property="cancelBioUpdateButton" destination="hFR-VJ-Rpt" id="vQV-n8-ta6"/>
                         <outlet property="eventHostingDate" destination="BFp-33-G3I" id="ZRy-Lt-p0K"/>
                         <outlet property="eventHostingTitle" destination="T7e-1w-EAm" id="Eqy-YA-JGq"/>
@@ -1716,6 +1740,7 @@
         <image name="sad_cloud.png" width="144" height="96"/>
         <image name="square" catalog="system" width="128" height="114"/>
         <image name="view" width="43" height="43"/>
+        <image name="xmark.rectangle" catalog="system" width="128" height="93"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

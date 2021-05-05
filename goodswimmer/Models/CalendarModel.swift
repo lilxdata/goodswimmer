@@ -51,7 +51,6 @@ func formatCalendar(calendar: FSCalendar, profile_vc: ProfileViewController){
 
 }
 
-
 enum SelectionType {
     case none
     case single

@@ -54,10 +54,13 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate {
     
     //@IBOutlet weak var createItTestLabel: UILabel!
     
+    @IBOutlet weak var virtualEventButton: UIButton!
+    @IBOutlet weak var cancelMultiDate: UIButton!
     var accessibilityArray = ["wheelchair" : false,  "transit" : false, "restroom" : false, "NOTAFLOF" : false, "scentFree" : false, "other" : false]
     var inviteToGSState = false
     var inviteOnlyState = false
     var multiDayEventState = false
+    var virtualEventState = false
     let photoHelper = PhotoHelper()
     let eventService = EventService.sharedInstance
     var uuid = ""
@@ -131,6 +134,7 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate {
         */
         dateField2.isUserInteractionEnabled = false
         dateField2.isHidden = true
+        cancelMultiDate.isHidden = true
         
         self.transitionToHome()
         
@@ -317,6 +321,7 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate {
             "ticketPrice" : ticketPrice,
             "inviteToGS" : inviteToGSState,
             "inviteOnly" : inviteOnlyState,
+            "virtualEvent" : virtualEventButton,
             "createdDate": NSDate(timeIntervalSince1970:(NSDate().timeIntervalSince1970)) ,
         ] as [String : Any]
         let db = Firestore.firestore()
@@ -349,7 +354,7 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate {
         print("I am setting up")
         let buttons = [inviteToGSButton, WheelchairAccessibleButton, CloseToTransitButton,
                        accessibleRestroomButton, NOTAFLOFButton, scentFreeButton, otherAccButton,
-                       multidayEventButton, inviteOnlyButton]
+                       multidayEventButton, inviteOnlyButton, virtualEventButton]
         for button in buttons {
             setCheckMark(button: button!, check: false)
         }
@@ -500,28 +505,38 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate {
     @IBAction func inviteOnlyPressed(_ sender: Any) {
         inviteOnlyState = !inviteOnlyState
         setCheckMark(button: inviteOnlyButton, check: inviteOnlyState)
-        let fieldSize = 15
-        if(inviteOnlyState == true){
-            //inviteOnlyField.isUserInteractionEnabled = true
-            //Utilities.styleDisabledTextView(inviteOnlyField, size: fieldSize)
-        }
-        else {
-            //inviteOnlyField.isUserInteractionEnabled = false
-            //Utilities.styleTextView(inviteOnlyField, size: fieldSize)
-        }
     }
     
-    @IBAction func multiDayEventPressed(_ sender: Any) {
-        multiDayEventState = !multiDayEventState
-        setCheckMark(button: multidayEventButton, check: multiDayEventState)
+    @IBAction func virtualEventPressed(_ sender: Any) {
+        virtualEventState = !virtualEventState
+        setCheckMark(button: virtualEventButton, check: virtualEventState)
+    }
+    
+    
+    func multiDayToggle() {
+        //setCheckMark(button: multidayEventButton, check: multiDayEventState)
+        self.multiDayEventState = !self.multiDayEventState
         if(multiDayEventState == true){
             dateField2.isUserInteractionEnabled = true
             dateField2.isHidden = false
+            multidayEventButton.isHidden = true
+            cancelMultiDate.isHidden = false
+            
         }
         else {
             dateField2.isUserInteractionEnabled = false
             dateField2.isHidden = true
+            multidayEventButton.isHidden = false
+            cancelMultiDate.isHidden = true
         }
     }
+    @IBAction func multiDayEventPressed(_ sender: Any) {
+        multiDayToggle()
+        print("I pressed the box")
+    }
 
+    @IBAction func multiDayEventCanceled(_ sender: Any) {
+        multiDayToggle()
+        print("I pressed cancel")
+    }
 }
