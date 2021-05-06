@@ -56,6 +56,9 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var virtualEventButton: UIButton!
     @IBOutlet weak var cancelMultiDate: UIButton!
+    
+    @IBOutlet weak var accessiblityTitleLabel: UILabel!
+    
     var accessibilityArray = ["wheelchair" : false,  "transit" : false, "restroom" : false, "NOTAFLOF" : false, "scentFree" : false, "other" : false]
     var inviteToGSState = false
     var inviteOnlyState = false
@@ -95,7 +98,7 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate {
         let headerSize = 35
         
         //label styling
-        let labels = [titleLabel, participantsLabel, locationLabel,descriptionLabel, dateLabel, imageLabel, ticketPriceLabel]
+        let labels = [titleLabel, participantsLabel, locationLabel,descriptionLabel, dateLabel, imageLabel, ticketPriceLabel, accessiblityTitleLabel]
         
         for label in labels {
             stackView.setCustomSpacing(16, after: label!)
@@ -321,7 +324,7 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate {
             "ticketPrice" : ticketPrice,
             "inviteToGS" : inviteToGSState,
             "inviteOnly" : inviteOnlyState,
-            "virtualEvent" : virtualEventButton,
+            "virtualEvent" : virtualEventState,
             "createdDate": NSDate(timeIntervalSince1970:(NSDate().timeIntervalSince1970)) ,
         ] as [String : Any]
         let db = Firestore.firestore()
