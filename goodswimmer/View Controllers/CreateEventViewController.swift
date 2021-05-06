@@ -497,6 +497,7 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate {
 
     }
     @IBAction func inviteToGSPressed(_ sender: Any) {
+        print("I am being pressed")
         inviteToGSState = !inviteToGSState
         setCheckMark(button: inviteToGSButton, check: inviteToGSState)
     }
