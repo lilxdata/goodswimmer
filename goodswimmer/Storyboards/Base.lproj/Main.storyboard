@@ -795,7 +795,7 @@
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nWH-kd-LHJ">
-                                                        <rect key="frame" x="0.0" y="814" width="185" height="168"/>
+                                                        <rect key="frame" x="0.0" y="814" width="354" height="168"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q7b-Dd-A8G">
                                                                 <rect key="frame" x="0.0" y="0.0" width="65.5" height="20.5"/>
@@ -804,6 +804,21 @@
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="top" lineBreakMode="wordWrap" pointerInteraction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="htX-Mf-xGm">
+                                                                <rect key="frame" x="215" y="20" width="120" height="150"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="150" id="HBO-Vs-Ewl"/>
+                                                                    <constraint firstAttribute="width" constant="120" id="Tn4-co-Dzb"/>
+                                                                </constraints>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                                <inset key="titleEdgeInsets" minX="-24" minY="27" maxX="0.0" maxY="0.0"/>
+                                                                <state key="normal" title="Invite venue to Good Swimmer" image="square" catalog="system">
+                                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                </state>
+                                                                <connections>
+                                                                    <action selector="inviteToGSPressed:" destination="Ncr-nI-DQr" eventType="touchUpInside" id="Zdy-hD-83o"/>
+                                                                </connections>
+                                                            </button>
                                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="top" spacing="17" translatesAutoresizingMaskIntoConstraints="NO" id="Qsu-E9-nm7">
                                                                 <rect key="frame" x="0.0" y="27.5" width="185" height="160.5"/>
                                                                 <subviews>
@@ -849,40 +864,15 @@
                                                                     <constraint firstAttribute="width" constant="185" id="zLT-pO-o7W"/>
                                                                 </constraints>
                                                             </stackView>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="M0R-O1-BbG">
-                                                                <rect key="frame" x="227" y="17" width="19.5" height="20"/>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                                <state key="normal" image="square" catalog="system">
-                                                                    <color key="titleColor" systemColor="labelColor"/>
-                                                                </state>
-                                                                <connections>
-                                                                    <action selector="inviteToGSPressed:" destination="Ncr-nI-DQr" eventType="touchUpInside" id="U4M-4A-2D0"/>
-                                                                </connections>
-                                                            </button>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Invite venue to Good Swimmer" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BP0-6w-7LY">
-                                                                <rect key="frame" x="227" y="44" width="122" height="34"/>
-                                                                <rect key="contentStretch" x="0.0" y="0.0" width="0.0" height="1"/>
-                                                                <constraints>
-                                                                    <constraint firstAttribute="height" constant="34" id="a1j-ti-jbc"/>
-                                                                    <constraint firstAttribute="width" constant="122" id="jEp-FT-UD0"/>
-                                                                </constraints>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                <nil key="textColor"/>
-                                                                <nil key="highlightedColor"/>
-                                                                <size key="shadowOffset" width="0.0" height="0.0"/>
-                                                            </label>
                                                         </subviews>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                         <constraints>
+                                                            <constraint firstItem="htX-Mf-xGm" firstAttribute="top" secondItem="nWH-kd-LHJ" secondAttribute="top" constant="20" id="2gb-9U-hmJ"/>
                                                             <constraint firstItem="Qsu-E9-nm7" firstAttribute="top" secondItem="Q7b-Dd-A8G" secondAttribute="bottom" constant="7" id="2vX-xD-h4X"/>
-                                                            <constraint firstItem="M0R-O1-BbG" firstAttribute="top" secondItem="nWH-kd-LHJ" secondAttribute="top" constant="17" id="HjL-gW-vtB"/>
+                                                            <constraint firstItem="htX-Mf-xGm" firstAttribute="leading" secondItem="nWH-kd-LHJ" secondAttribute="leading" constant="215" id="F2k-q8-eu3"/>
                                                             <constraint firstAttribute="height" constant="168" id="IQC-hU-9mo"/>
-                                                            <constraint firstItem="BP0-6w-7LY" firstAttribute="top" secondItem="M0R-O1-BbG" secondAttribute="bottom" constant="7" id="JUq-fK-8Py"/>
-                                                            <constraint firstItem="BP0-6w-7LY" firstAttribute="leading" secondItem="nWH-kd-LHJ" secondAttribute="leading" constant="227" id="M2x-ax-BfD"/>
                                                             <constraint firstItem="Qsu-E9-nm7" firstAttribute="leading" secondItem="nWH-kd-LHJ" secondAttribute="leading" id="dJ7-Dq-lBs"/>
                                                             <constraint firstItem="Q7b-Dd-A8G" firstAttribute="top" secondItem="nWH-kd-LHJ" secondAttribute="top" id="dLE-Bz-tVK"/>
-                                                            <constraint firstAttribute="width" secondItem="Qsu-E9-nm7" secondAttribute="width" id="enX-9K-7qY"/>
-                                                            <constraint firstItem="M0R-O1-BbG" firstAttribute="leading" secondItem="nWH-kd-LHJ" secondAttribute="leading" constant="227" id="lM8-lz-bba"/>
                                                             <constraint firstItem="Q7b-Dd-A8G" firstAttribute="leading" secondItem="nWH-kd-LHJ" secondAttribute="leading" id="xCJ-0H-0Mw"/>
                                                         </constraints>
                                                     </view>
@@ -1015,6 +1005,7 @@
                                                 </subviews>
                                                 <constraints>
                                                     <constraint firstItem="Gdv-Ar-qf1" firstAttribute="width" secondItem="orv-0s-JHq" secondAttribute="width" id="32D-Fl-bSU"/>
+                                                    <constraint firstItem="nWH-kd-LHJ" firstAttribute="width" secondItem="wRk-1v-eYi" secondAttribute="width" id="Zdu-Eg-SjR"/>
                                                     <constraint firstItem="GvN-Ih-uyR" firstAttribute="width" secondItem="wRk-1v-eYi" secondAttribute="width" id="uPb-xQ-v7u"/>
                                                 </constraints>
                                             </stackView>
@@ -1083,6 +1074,7 @@
                         <outlet property="NOTAFLOFButton" destination="uhl-Bs-xo0" id="8Bt-IR-75O"/>
                         <outlet property="OtherAccessibilityText" destination="iog-ly-88K" id="zCb-TE-P0g"/>
                         <outlet property="WheelchairAccessibleButton" destination="Uvh-il-Toq" id="tSf-eo-Dmi"/>
+                        <outlet property="accessibilityLabel" destination="SNS-Z1-PMQ" id="qmS-wB-X79"/>
                         <outlet property="accessibleRestroomButton" destination="CCt-sJ-sXF" id="9ET-y2-fHv"/>
                         <outlet property="addressField1" destination="5z6-0E-w8Z" id="jOW-ZT-1iz"/>
                         <outlet property="addressField2" destination="iMn-cQ-k5C" id="Vmd-n7-Abv"/>
@@ -1098,7 +1090,7 @@
                         <outlet property="descriptionText" destination="orv-0s-JHq" id="xHY-SB-7Uw"/>
                         <outlet property="imageLabel" destination="xjV-Jg-ROD" id="f4a-63-1A2"/>
                         <outlet property="inviteOnlyButton" destination="o9m-d5-UtB" id="zo6-1m-AmW"/>
-                        <outlet property="inviteToGSButton" destination="M0R-O1-BbG" id="ytw-LZ-QSc"/>
+                        <outlet property="inviteToGSButton" destination="htX-Mf-xGm" id="Kbf-a6-EWb"/>
                         <outlet property="locationField" destination="33K-wP-jbI" id="eNA-EP-jM4"/>
                         <outlet property="locationLabel" destination="Q7b-Dd-A8G" id="7XD-zS-yeg"/>
                         <outlet property="multidayEventButton" destination="3mk-EE-5k6" id="Ein-9Y-4hR"/>
