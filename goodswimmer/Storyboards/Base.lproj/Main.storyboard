@@ -879,11 +879,10 @@
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U7z-Kh-ioN">
                                                         <rect key="frame" x="0.0" y="1019" width="354" height="140"/>
                                                         <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Accessibility" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SNS-Z1-PMQ">
-                                                                <rect key="frame" x="0.0" y="0.0" width="94.5" height="20.5"/>
-                                                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                <nil key="textColor"/>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Accessibility" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RP4-ST-Len">
+                                                                <rect key="frame" x="0.0" y="0.0" width="85.5" height="18"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="GKr-OC-o9G">
@@ -983,10 +982,10 @@
                                                             <constraint firstItem="SeY-Nj-fra" firstAttribute="leading" secondItem="GKr-OC-o9G" secondAttribute="trailing" id="CSg-3D-WfL"/>
                                                             <constraint firstItem="SeY-Nj-fra" firstAttribute="top" secondItem="U7z-Kh-ioN" secondAttribute="top" constant="21" id="Pft-3t-fo6"/>
                                                             <constraint firstItem="GKr-OC-o9G" firstAttribute="top" secondItem="U7z-Kh-ioN" secondAttribute="top" constant="21" id="VhK-PQ-fP5"/>
-                                                            <constraint firstItem="SNS-Z1-PMQ" firstAttribute="top" secondItem="U7z-Kh-ioN" secondAttribute="top" id="ZmT-RW-Tqu"/>
                                                             <constraint firstAttribute="trailing" secondItem="SeY-Nj-fra" secondAttribute="trailing" id="fA4-k5-9tM"/>
                                                             <constraint firstItem="GKr-OC-o9G" firstAttribute="leading" secondItem="U7z-Kh-ioN" secondAttribute="leading" id="fna-to-VrL"/>
-                                                            <constraint firstItem="SNS-Z1-PMQ" firstAttribute="leading" secondItem="U7z-Kh-ioN" secondAttribute="leading" id="jmc-wD-iC9"/>
+                                                            <constraint firstItem="RP4-ST-Len" firstAttribute="top" secondItem="U7z-Kh-ioN" secondAttribute="top" id="glg-QL-9n9"/>
+                                                            <constraint firstItem="RP4-ST-Len" firstAttribute="leading" secondItem="U7z-Kh-ioN" secondAttribute="leading" id="tTv-Jd-Me1"/>
                                                             <constraint firstAttribute="height" constant="140" id="xNj-6Z-Haa"/>
                                                         </constraints>
                                                     </view>
@@ -1074,8 +1073,8 @@
                         <outlet property="NOTAFLOFButton" destination="uhl-Bs-xo0" id="8Bt-IR-75O"/>
                         <outlet property="OtherAccessibilityText" destination="iog-ly-88K" id="zCb-TE-P0g"/>
                         <outlet property="WheelchairAccessibleButton" destination="Uvh-il-Toq" id="tSf-eo-Dmi"/>
-                        <outlet property="accessibilityLabel" destination="SNS-Z1-PMQ" id="qmS-wB-X79"/>
                         <outlet property="accessibleRestroomButton" destination="CCt-sJ-sXF" id="9ET-y2-fHv"/>
+                        <outlet property="accessiblityTitleLabel" destination="RP4-ST-Len" id="dWf-93-H1h"/>
                         <outlet property="addressField1" destination="5z6-0E-w8Z" id="jOW-ZT-1iz"/>
                         <outlet property="addressField2" destination="iMn-cQ-k5C" id="Vmd-n7-Abv"/>
                         <outlet property="addressField3" destination="wUL-hP-NT6" id="Xea-UP-raz"/>
