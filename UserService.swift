@@ -7,9 +7,7 @@
 //
 
 import Foundation
-import FirebaseStorage
-import FirebaseAuth
-import FirebaseFirestore
+import Firebase
 
 class UserService {
     let db = Firestore.firestore()
