@@ -20,17 +20,13 @@ func formatCalendar(calendar: FSCalendar, profile_vc: ProfileViewController){
     calendar.scrollDirection = .vertical
     
     calendar.backgroundColor = .white //trying to get black borders
-    calendar.calendarHeaderView.isHidden = true
-    calendar.calendarWeekdayView.isHidden = true
+
     //Don't want to show this?
     calendar.weekdayHeight = 0
-    calendar.headerHeight = 0
     
     calendar.appearance.borderDefaultColor = .black
     calendar.appearance.borderSelectionColor = .black
 
-    //Turn off current day highlight
-    //calendar.today = nil
     
     //Make not all text black
     calendar.appearance.titleDefaultColor = .black
@@ -38,6 +34,8 @@ func formatCalendar(calendar: FSCalendar, profile_vc: ProfileViewController){
     calendar.appearance.titleSelectionColor = .black
     calendar.appearance.titleFont = UIFont(name: "Standard-Book", size: 12)
     calendar.appearance.titleOffset = CGPoint(x: 20, y: 11)
+    
+    calendar.tintColor = .black
     //calendar.placeholderType = .none
     
     calendar.appearance.eventDefaultColor = .black
@@ -58,7 +56,7 @@ enum SelectionType {
     case middle
     case rightBorder
 }
-
+/*
 class CalendarCollectionViewCell: FSCalendarCell {
 
     weak var circleImageView: UIImageView?
@@ -153,7 +151,7 @@ class CalendarCollectionViewCell: FSCalendarCell {
         }
     }
 }
-
+*/
 
 class DIYCalendarCell: FSCalendarCell {
     
@@ -218,10 +216,9 @@ class DIYCalendarCell: FSCalendarCell {
         // Override the build-in appearance configuration
         if self.isPlaceholder {
             self.eventIndicator.isHidden = true
-            self.titleLabel.textColor = UIColor.lightGray
+            //self.titleLabel.textColor = UIColor.lightGray
         }
     }
     
 }
-
 

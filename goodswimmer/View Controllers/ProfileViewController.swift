@@ -60,13 +60,10 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate,
     @IBOutlet weak var bioLabel: UILabel!
    
    
-    @IBOutlet weak var eventsHostingLabel: UILabel!
-    @IBOutlet weak var eventsHosting: UIButton!
-    @IBOutlet weak var eventHostingDate: UIButton!
-    @IBOutlet weak var eventHostingTitle: UIButton!
+
     @IBOutlet weak var signOutButton: UIButton!
     
-    @IBOutlet weak var privateInvitesLabel: UILabel!
+
     @IBOutlet weak var updateBioButton: UIButton!
     
     @IBOutlet weak var followButton: UIButton!
@@ -191,21 +188,21 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate,
         
         containerView.removeConstraints(containerView.constraints)
         bioButton.addTarget(self, action:#selector(bioButtonTapped), for: .touchUpInside)
-        if(curUser){
+        /*if(curUser){
             constraintsBuilder(item: profileImage!, superview: containerView, leading: 21, top: 31, height: 129, width: 129, centerX: false, centerY: false)
             constraintsBuilder(item: bioLabel!, superview: containerView, leading: 169, top: 58, height: 39, width: 216, centerX: false, centerY: false)
             constraintsBuilder(item: bioTextField!, superview: containerView, leading: 169, top: 58, height: 39, width: 216, centerX: false, centerY: false)
             constraintsBuilder(item: bioButton!, superview: containerView, leading: 359, top: 128, height: 17, width: 16, centerX: false, centerY: false)
             constraintsBuilder(item: containerView, superview: containerView.superview! as Any, leading: -1, top: -1, height: 161, width: -1 , centerX: true, centerY: false)
             constraintsBuilder(item: cancelBioUpdateButton!, superview: containerView, leading: 338, top: 128, height: 17, width: 16, centerX: false, centerY: false)
-        }
-        else {
+        }*/
+        //else {
             constraintsBuilder(item: profileImage!, superview: containerView, leading: -1, top: 31, height: 200, width: 200, centerX: true, centerY: false)
             constraintsBuilder(item: bioLabel!, superview: containerView, leading: -1, top: 262, height: 39, width: 216, centerX: true, centerY: false)
             constraintsBuilder(item: bioTextField!, superview: containerView, leading: -1, top: 262, height: 39, width: 216, centerX: true, centerY: false)
             constraintsBuilder(item: containerView, superview: containerView.superview as Any, leading: -1, top: -1, height: 295, width: -1, centerX: true, centerY: false)
             constraintsBuilder(item: containerView.superview!, superview: view!, leading: -1, top: -1, height: -1, width: -1, centerX: true, centerY: false)
-        }
+        //}
     }
     
     
@@ -216,15 +213,7 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate,
         usernameLabel.text = profileOwner.username
         usernameLabel.textAlignment = .center
         
-        eventHostingDate.tintColor = .black
-        eventHostingDate.titleLabel?.numberOfLines = 2
-        eventHostingDate.titleLabel?.textAlignment = .left
-        
-        eventHostingTitle.tintColor = .black
-        eventHostingTitle.titleLabel?.numberOfLines = 2
-        eventHostingTitle.titleLabel?.textAlignment = .left
-        eventHostingTitle.titleLabel?.font = .boldSystemFont(ofSize: 21.0)
-        
+
         Utilities.styleLabel(followButton.titleLabel!, size: 15, uppercase: true)
         followButton.setTitle("FOLLOW", for: .normal)
         followButton.layer.borderWidth = 1
@@ -240,8 +229,7 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate,
             signOutButton.layer.borderColor = Utilities.getRedCG()
             signOutButton.titleLabel?.textAlignment = .center
             signOutButton.isHidden = false
-            Utilities.styleLabel(privateInvitesLabel, size: 12, uppercase: true)
-            privateInvitesLabel.isHidden = false
+
             set_photo(button: updateBioButton, name: "change_bio_button.png")
             updateBioButton.isHidden = false
             bioLabel.textAlignment = .left
@@ -249,12 +237,12 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate,
         }
         else{
             signOutButton.isHidden = true
-            privateInvitesLabel.isHidden = true
+
             updateBioButton.isHidden = true
             bioLabel.textAlignment = .center
             followButton.isHidden = false
         }
-        Utilities.styleLabel(eventsHostingLabel, size: 15, uppercase: true)
+
     }
     
     override func viewDidLoad() {
@@ -263,12 +251,7 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate,
         calendarView.addSubview(calendar)
         //constraintsBuilder(item: calendar, superview: calendarView!, leading: 0, top: 0, height: Int(calendarView.fs_height), width: Int(calendarView.fs_width), centerX: false, centerY: false)
         formatCalendar(calendar: calendar, profile_vc: self)
-        print("Why isn't my calendar stuff showing up?")
-        print(calendar.frame)
-        print(calendarView.frame)
-        print(calendar.fs_height, calendar.fs_width)
-        print(calendarView.subviews)
-        print(Int(calendarView.fs_height),Int(calendarView.fs_width))
+
 
         
         
@@ -305,25 +288,10 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate,
         }
         
         
-        for event in eventArray.events {
-            var eventDate =  NSDate() as Date
-            if event.username == Auth.auth().currentUser?.displayName {
-                if  (event.startDate?.dateValue())!  > eventDate {
-                    eventDate = (event.startDate?.dateValue() as! NSDate) as Date                    
-                    eventsHosting.sd_setImage(with: URL(string: event.photoURL ?? Constants.Placeholders.placeholderURL), for: .normal)
-                    let formatter4 = DateFormatter()
-                    formatter4.dateFormat = "HH:mm E, d MMM y"
-                    var eventDateText = formatter4.string(from: (event.startDate?.dateValue())!) + " · " + event.venue!
-                    eventHostingDate.setTitle(eventDateText, for: .normal)
-                    eventHostingTitle.setTitle(event.name, for: .normal)
-                        
-                }
-            }
-        }
+
         
         
-        eventsHosting.layer.borderWidth = 10
-        eventsHosting.layer.borderColor = CGColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+
     }
     
 

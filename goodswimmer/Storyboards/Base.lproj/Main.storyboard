@@ -1136,7 +1136,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="c2f-za-3tB">
-                                                <rect key="frame" x="0.0" y="20.5" width="414" height="1258.5"/>
+                                                <rect key="frame" x="0.0" y="20.5" width="414" height="646"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oYq-Gr-ejc">
                                                         <rect key="frame" x="0.0" y="0.0" width="414" height="161"/>
@@ -1268,58 +1268,6 @@
                                                             <constraint firstAttribute="height" constant="300" id="Xmr-AZ-F5p"/>
                                                         </constraints>
                                                     </view>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T00-mN-mb3">
-                                                        <rect key="frame" x="0.0" y="671" width="414" height="375.5"/>
-                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                                    </view>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="EVENTS I'M HOSTING" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CNx-uQ-eGc">
-                                                        <rect key="frame" x="0.0" y="1071.5" width="414" height="20.5"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                        <nil key="textColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DK1-Jx-3uO">
-                                                        <rect key="frame" x="0.0" y="1117" width="414" height="96"/>
-                                                        <subviews>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mTT-Ta-r6P">
-                                                                <rect key="frame" x="0.0" y="0.0" width="198" height="96"/>
-                                                                <constraints>
-                                                                    <constraint firstAttribute="height" constant="96" id="uxn-gM-qOj"/>
-                                                                </constraints>
-                                                                <state key="normal" title="Button" image="sad_cloud.png"/>
-                                                                <connections>
-                                                                    <action selector="eventHostingTapped:" destination="b6l-6S-5dU" eventType="touchUpInside" id="Mpf-GL-wJe"/>
-                                                                </connections>
-                                                            </button>
-                                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="i6d-ei-0dm">
-                                                                <rect key="frame" x="198" y="0.0" width="216" height="96"/>
-                                                                <subviews>
-                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="top" buttonType="system" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="BFp-33-G3I">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="38" height="40"/>
-                                                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                                        <state key="normal" title="Button"/>
-                                                                        <connections>
-                                                                            <action selector="eventHostingTapped:" destination="b6l-6S-5dU" eventType="touchUpInside" id="eV2-5q-QRp"/>
-                                                                        </connections>
-                                                                    </button>
-                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="T7e-1w-EAm">
-                                                                        <rect key="frame" x="0.0" y="40" width="61" height="56"/>
-                                                                        <fontDescription key="fontDescription" type="system" pointSize="21"/>
-                                                                        <state key="normal" title="Button"/>
-                                                                        <connections>
-                                                                            <action selector="eventHostingTapped:" destination="b6l-6S-5dU" eventType="touchUpInside" id="se6-py-8OB"/>
-                                                                        </connections>
-                                                                    </button>
-                                                                </subviews>
-                                                            </stackView>
-                                                        </subviews>
-                                                    </stackView>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Private Event Invites" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iQQ-bs-SIl">
-                                                        <rect key="frame" x="0.0" y="1238" width="414" height="20.5"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                        <nil key="textColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
                                                 </subviews>
                                                 <constraints>
                                                     <constraint firstItem="Ghm-Rn-Oiw" firstAttribute="width" secondItem="c2f-za-3tB" secondAttribute="width" id="KK2-ds-YDi"/>
@@ -1355,6 +1303,7 @@
                             <constraint firstItem="iFR-ud-lOc" firstAttribute="trailing" secondItem="haP-qg-lo7" secondAttribute="trailing" id="BGk-m5-wIO"/>
                             <constraint firstAttribute="width" secondItem="Eaf-ia-7U9" secondAttribute="width" id="R0S-EP-utl"/>
                             <constraint firstItem="iFR-ud-lOc" firstAttribute="top" secondItem="haP-qg-lo7" secondAttribute="top" id="Tpb-Jk-5xC"/>
+                            <constraint firstItem="iFR-ud-lOc" firstAttribute="width" secondItem="a8n-vR-hCL" secondAttribute="width" id="Tr0-Qf-QGo"/>
                             <constraint firstItem="iFR-ud-lOc" firstAttribute="leading" secondItem="haP-qg-lo7" secondAttribute="leading" id="lH7-bu-GiO"/>
                             <constraint firstItem="haP-qg-lo7" firstAttribute="bottom" secondItem="iFR-ud-lOc" secondAttribute="bottom" id="mFQ-B5-zEG"/>
                         </constraints>
@@ -1366,12 +1315,7 @@
                         <outlet property="bioTextField" destination="4ib-z1-lOg" id="M5E-CO-1UU"/>
                         <outlet property="calendarView" destination="Ghm-Rn-Oiw" id="jg8-B1-LyE"/>
                         <outlet property="cancelBioUpdateButton" destination="hFR-VJ-Rpt" id="vQV-n8-ta6"/>
-                        <outlet property="eventHostingDate" destination="BFp-33-G3I" id="ZRy-Lt-p0K"/>
-                        <outlet property="eventHostingTitle" destination="T7e-1w-EAm" id="Eqy-YA-JGq"/>
-                        <outlet property="eventsHosting" destination="mTT-Ta-r6P" id="zad-2r-8eV"/>
-                        <outlet property="eventsHostingLabel" destination="CNx-uQ-eGc" id="cSk-3i-wYM"/>
                         <outlet property="followButton" destination="WMZ-Yj-GZb" id="siO-Cw-vVc"/>
-                        <outlet property="privateInvitesLabel" destination="iQQ-bs-SIl" id="3WI-MG-EyW"/>
                         <outlet property="profileImage" destination="IBa-bW-DKN" id="49u-OA-HYp"/>
                         <outlet property="signOutButton" destination="8Uy-qT-IqQ" id="nyN-qv-UFU"/>
                         <outlet property="updateBioButton" destination="jHG-Le-eeo" id="9uJ-6x-ljE"/>
@@ -1728,7 +1672,6 @@
         <image name="magnifyingglass" catalog="system" width="128" height="115"/>
         <image name="pencil" catalog="system" width="128" height="113"/>
         <image name="pencil.slash" catalog="system" width="128" height="113"/>
-        <image name="sad_cloud.png" width="144" height="96"/>
         <image name="square" catalog="system" width="128" height="114"/>
         <image name="view" width="43" height="43"/>
         <image name="xmark.rectangle" catalog="system" width="128" height="93"/>

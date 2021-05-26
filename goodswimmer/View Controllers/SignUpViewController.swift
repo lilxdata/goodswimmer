@@ -142,7 +142,9 @@ class SignUpViewController: UIViewController, GMSAutocompleteViewControllerDeleg
                         "followers": [String](),
                         "bio": "",
                         "events": [String](),
-                        "photoURL": Constants.Placeholders.placeholderURL
+                        "photoURL": Constants.Placeholders.placeholderURL,
+                        "profileLink": Constants.Placeholders.placeholderProfileLink
+                        
                     ] as [String : Any]
                     let db = Firestore.firestore()
                     db.collection("users").document((result?.user.uid)!).setData(userDict, merge: true) { err in

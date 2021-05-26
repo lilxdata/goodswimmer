@@ -18,6 +18,7 @@ struct User {
     var bio:String?
     var photoURL:String?
     var events:[String?]
+    var profileLink:String?
 
 }
 

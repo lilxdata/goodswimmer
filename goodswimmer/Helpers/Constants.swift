@@ -22,6 +22,7 @@ struct Constants {
         static let placeholderURL = "https://firebasestorage.googleapis.com/v0/b/good-swimmer.appspot.com/o/goodswimmer%20stock%20profile.png?alt=media&token=174d3698-5a08-454d-805b-701997c68c61"
         static let placeholderText = "TBA"
         static let placeholderTitle = "Unnamed Event"
+        static let placeholderProfileLink = "http://www.justincarder.net/good-swimmer"
         
         
     }
