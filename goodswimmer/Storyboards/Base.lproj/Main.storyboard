@@ -1137,10 +1137,10 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="c2f-za-3tB">
-                                                <rect key="frame" x="0.0" y="20.5" width="414" height="646"/>
+                                                <rect key="frame" x="0.0" y="20.5" width="414" height="696"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oYq-Gr-ejc">
-                                                        <rect key="frame" x="0.0" y="0.0" width="414" height="161"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="414" height="211"/>
                                                         <subviews>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IBa-bW-DKN">
                                                                 <rect key="frame" x="21" y="31" width="129" height="129"/>
@@ -1163,7 +1163,7 @@
                                                                     <constraint firstAttribute="width" constant="216" id="52B-em-tnO"/>
                                                                     <constraint firstAttribute="height" constant="39" id="An2-Z4-2xE"/>
                                                                 </constraints>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                                 <textInputTraits key="textInputTraits"/>
                                                             </textField>
                                                             <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceLeftToRight" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jHG-Le-eeo">
@@ -1189,6 +1189,17 @@
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tvj-aL-ZOU">
+                                                                <rect key="frame" x="169" y="147" width="216" height="39"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dUP-lH-dDx">
+                                                                <rect key="frame" x="169" y="147" width="216" height="39"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                                <textInputTraits key="textInputTraits"/>
+                                                            </textField>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hFR-VJ-Rpt">
                                                                 <rect key="frame" x="338" y="128" width="16" height="17"/>
                                                                 <constraints>
@@ -1200,8 +1211,23 @@
                                                                     <action selector="cancelUpdateBio:" destination="b6l-6S-5dU" eventType="touchUpInside" id="Rrf-Qr-Dwx"/>
                                                                 </connections>
                                                             </button>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="baI-Rg-hCa">
+                                                                <rect key="frame" x="359" y="195" width="16" height="17"/>
+                                                                <state key="normal" image="pencil" catalog="system"/>
+                                                                <connections>
+                                                                    <action selector="updateProfileLinkPressed:" destination="b6l-6S-5dU" eventType="touchUpInside" id="6q9-jc-ndP"/>
+                                                                </connections>
+                                                            </button>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PDF-DK-P2i">
+                                                                <rect key="frame" x="338" y="195" width="16" height="17"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                                <state key="normal" image="pencil.slash" catalog="system"/>
+                                                                <connections>
+                                                                    <action selector="cancelProfileLinkUpdatePressed:" destination="b6l-6S-5dU" eventType="touchUpInside" id="oag-ZT-idw"/>
+                                                                </connections>
+                                                            </button>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uVl-3T-b9o">
-                                                                <rect key="frame" x="0.0" y="159" width="414" height="1"/>
+                                                                <rect key="frame" x="0.0" y="209" width="414" height="1"/>
                                                                 <color key="backgroundColor" systemColor="labelColor"/>
                                                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <constraints>
@@ -1212,23 +1238,39 @@
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                         <constraints>
                                                             <constraint firstAttribute="bottom" secondItem="uVl-3T-b9o" secondAttribute="bottom" constant="1" id="4dK-pK-kem"/>
+                                                            <constraint firstItem="Tvj-aL-ZOU" firstAttribute="height" secondItem="4uN-IZ-IXU" secondAttribute="height" id="4zv-db-6MJ"/>
                                                             <constraint firstAttribute="width" constant="414" id="7pR-tx-9Jt"/>
                                                             <constraint firstItem="4ib-z1-lOg" firstAttribute="top" secondItem="oYq-Gr-ejc" secondAttribute="top" constant="58" id="924-sH-pD0"/>
                                                             <constraint firstItem="jHG-Le-eeo" firstAttribute="top" secondItem="oYq-Gr-ejc" secondAttribute="top" constant="128" id="BaR-UO-i1P"/>
+                                                            <constraint firstItem="PDF-DK-P2i" firstAttribute="top" secondItem="hFR-VJ-Rpt" secondAttribute="bottom" constant="50" id="CrA-AH-tsx"/>
+                                                            <constraint firstItem="dUP-lH-dDx" firstAttribute="leading" secondItem="oYq-Gr-ejc" secondAttribute="leading" constant="169" id="EoT-Cp-R2v"/>
                                                             <constraint firstItem="uVl-3T-b9o" firstAttribute="leading" secondItem="oYq-Gr-ejc" secondAttribute="leading" id="ErI-UJ-MtZ"/>
                                                             <constraint firstItem="hFR-VJ-Rpt" firstAttribute="leading" secondItem="oYq-Gr-ejc" secondAttribute="leading" constant="338" id="HsM-B1-zYQ"/>
+                                                            <constraint firstItem="baI-Rg-hCa" firstAttribute="width" secondItem="jHG-Le-eeo" secondAttribute="width" id="I6g-8n-Ng1"/>
+                                                            <constraint firstItem="baI-Rg-hCa" firstAttribute="top" secondItem="jHG-Le-eeo" secondAttribute="bottom" constant="50" id="L02-ej-aRm"/>
                                                             <constraint firstItem="IBa-bW-DKN" firstAttribute="leading" secondItem="oYq-Gr-ejc" secondAttribute="leading" constant="21" id="L5I-sO-5ex"/>
+                                                            <constraint firstItem="dUP-lH-dDx" firstAttribute="width" secondItem="4ib-z1-lOg" secondAttribute="width" id="NSP-WO-Ik1"/>
+                                                            <constraint firstItem="baI-Rg-hCa" firstAttribute="leading" secondItem="oYq-Gr-ejc" secondAttribute="leading" constant="359" id="Ndy-kE-P1x"/>
                                                             <constraint firstItem="IBa-bW-DKN" firstAttribute="top" secondItem="oYq-Gr-ejc" secondAttribute="top" constant="31" id="QV7-15-fqE"/>
+                                                            <constraint firstItem="baI-Rg-hCa" firstAttribute="height" secondItem="jHG-Le-eeo" secondAttribute="height" id="YMY-UA-Hin"/>
                                                             <constraint firstItem="4ib-z1-lOg" firstAttribute="leading" secondItem="oYq-Gr-ejc" secondAttribute="leading" constant="169" id="Z8r-1V-ifY"/>
-                                                            <constraint firstAttribute="height" constant="161" id="eeJ-Ft-Lln"/>
+                                                            <constraint firstItem="dUP-lH-dDx" firstAttribute="height" secondItem="4ib-z1-lOg" secondAttribute="height" id="aXB-Aa-2aP"/>
+                                                            <constraint firstItem="Tvj-aL-ZOU" firstAttribute="leading" secondItem="oYq-Gr-ejc" secondAttribute="leading" constant="169" id="awR-KJ-TOg"/>
+                                                            <constraint firstItem="Tvj-aL-ZOU" firstAttribute="top" secondItem="4uN-IZ-IXU" secondAttribute="bottom" constant="50" id="bUd-gA-zMu"/>
+                                                            <constraint firstAttribute="height" constant="211" id="eeJ-Ft-Lln"/>
+                                                            <constraint firstItem="Tvj-aL-ZOU" firstAttribute="width" secondItem="4uN-IZ-IXU" secondAttribute="width" id="eqc-wD-2d5"/>
                                                             <constraint firstItem="jHG-Le-eeo" firstAttribute="leading" secondItem="oYq-Gr-ejc" secondAttribute="leading" constant="359" id="fhR-rn-EH5"/>
                                                             <constraint firstItem="hFR-VJ-Rpt" firstAttribute="top" secondItem="oYq-Gr-ejc" secondAttribute="top" constant="128" id="ghT-Wu-fDE"/>
                                                             <constraint firstItem="4uN-IZ-IXU" firstAttribute="leading" secondItem="oYq-Gr-ejc" secondAttribute="leading" constant="169" id="hYv-CX-HCB"/>
+                                                            <constraint firstItem="PDF-DK-P2i" firstAttribute="height" secondItem="hFR-VJ-Rpt" secondAttribute="height" id="lbx-xM-Td0"/>
+                                                            <constraint firstItem="PDF-DK-P2i" firstAttribute="width" secondItem="hFR-VJ-Rpt" secondAttribute="width" id="n6s-rg-a7Q"/>
+                                                            <constraint firstItem="dUP-lH-dDx" firstAttribute="top" secondItem="4ib-z1-lOg" secondAttribute="bottom" constant="50" id="pNy-T5-4yX"/>
                                                             <constraint firstItem="4uN-IZ-IXU" firstAttribute="top" secondItem="oYq-Gr-ejc" secondAttribute="top" constant="58" id="t1r-Yj-Pz5"/>
+                                                            <constraint firstItem="PDF-DK-P2i" firstAttribute="leading" secondItem="oYq-Gr-ejc" secondAttribute="leading" constant="338" id="xrR-YD-pmq"/>
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="741-UB-iNV">
-                                                        <rect key="frame" x="0.0" y="186" width="414" height="60"/>
+                                                        <rect key="frame" x="0.0" y="236" width="414" height="60"/>
                                                         <subviews>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WMZ-Yj-GZb">
                                                                 <rect key="frame" x="172.5" y="17" width="69" height="26"/>
@@ -1250,14 +1292,14 @@
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ghm-Rn-Oiw">
-                                                        <rect key="frame" x="0.0" y="271" width="414" height="300"/>
+                                                        <rect key="frame" x="0.0" y="321" width="414" height="300"/>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="300" id="Xmr-AZ-F5p"/>
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="poo-yw-RLu">
-                                                        <rect key="frame" x="0.0" y="596" width="414" height="50"/>
+                                                        <rect key="frame" x="0.0" y="646" width="414" height="50"/>
                                                         <subviews>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Uy-qT-IqQ" userLabel="Sign Out">
                                                                 <rect key="frame" x="165" y="11.5" width="84" height="27"/>
@@ -1327,11 +1369,15 @@
                         <outlet property="bioTextField" destination="4ib-z1-lOg" id="M5E-CO-1UU"/>
                         <outlet property="calendarView" destination="Ghm-Rn-Oiw" id="jg8-B1-LyE"/>
                         <outlet property="cancelBioUpdateButton" destination="hFR-VJ-Rpt" id="vQV-n8-ta6"/>
+                        <outlet property="cancelProfileLink" destination="PDF-DK-P2i" id="K6B-hU-dQf"/>
                         <outlet property="followButton" destination="WMZ-Yj-GZb" id="siO-Cw-vVc"/>
                         <outlet property="profileBorderLine" destination="uVl-3T-b9o" id="kgk-e9-b4r"/>
                         <outlet property="profileImage" destination="IBa-bW-DKN" id="49u-OA-HYp"/>
+                        <outlet property="profileLink" destination="Tvj-aL-ZOU" id="D1Q-I8-hbO"/>
+                        <outlet property="profileLinkTextField" destination="dUP-lH-dDx" id="5i3-fs-EzY"/>
                         <outlet property="signOutButton" destination="8Uy-qT-IqQ" id="nyN-qv-UFU"/>
                         <outlet property="updateBioButton" destination="jHG-Le-eeo" id="9uJ-6x-ljE"/>
+                        <outlet property="updateProfileLink" destination="baI-Rg-hCa" id="Sho-9d-vC2"/>
                         <outlet property="usernameLabel" destination="oNP-xs-XpO" id="7iG-i1-GKv"/>
                     </connections>
                 </viewController>

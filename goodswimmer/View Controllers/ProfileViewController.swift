@@ -29,6 +29,7 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate,
     var isCurUser = true
     
     var updateBioActive = false
+    var updateLinkActive = false
     let calendar = FSCalendar(frame: CGRect(x: 0, y: 0, width: 414, height: 300))
     
     //Calendar Vars
@@ -58,9 +59,12 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate,
     @IBOutlet weak var bioButton: UIButton!
     @IBOutlet weak var bioTextField: UITextField!
     @IBOutlet weak var bioLabel: UILabel!
-   
-   
-
+    @IBOutlet weak var profileLink: UILabel!
+    @IBOutlet weak var updateProfileLink: UIButton!
+    @IBOutlet weak var cancelProfileLink: UIButton!
+    
+    @IBOutlet weak var profileLinkTextField: UITextField!
+    
     @IBOutlet weak var signOutButton: UIButton!
     
     @IBOutlet weak var profileBorderLine: UIView!
@@ -72,6 +76,37 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate,
     @IBOutlet weak var cancelBioUpdateButton: UIButton!
     
     @IBOutlet weak var calendarView: UIView!
+    
+    
+    
+    
+    @IBAction func cancelProfileLinkUpdatePressed(_ sender: Any) {
+        self.updateLinkActive = false
+        self.profileLinkTextField.text = ""
+        self.profileLinkTextField.isHidden = true
+        self.profileLink.isHidden = false
+        cancelProfileLink.isHidden = true
+
+    }
+    @IBAction func updateProfileLinkPressed(_ sender: Any) {
+        if(updateLinkActive == false){
+            self.profileLinkTextField.isHidden = false
+            self.profileLinkTextField.text = "Enter your new profile link here!"
+            self.updateLinkActive = true
+            self.profileLink.isHidden = true
+            cancelProfileLink.isHidden = false
+        }
+        else{
+            self.profileLink.text = self.profileLinkTextField.text
+            let db = Firestore.firestore()
+            db.collection("users").document(Auth.auth().currentUser!.uid).updateData(["profileLink" : self.bioTextField.text!])
+            self.profileLinkTextField.text = ""
+            self.profileLinkTextField.isHidden = true
+            self.profileLink.isHidden = false
+            self.updateLinkActive = false
+            cancelProfileLink.isHidden = true
+        }
+    }
     
     @IBAction func cancelUpdateBio(_ sender: Any) {
         self.updateBioActive = false
@@ -190,19 +225,28 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate,
         containerView.removeConstraints(containerView.constraints)
         bioButton.addTarget(self, action:#selector(bioButtonTapped), for: .touchUpInside)
             constraintsBuilder(item: profileImage!, superview: containerView, leading: -1, top: 31, height: 200, width: 200, centerX: true, centerY: false)
-            constraintsBuilder(item: bioLabel!, superview: containerView, leading: -1, top: 262, height: 39, width: 216, centerX: true, centerY: false)
-            constraintsBuilder(item: bioTextField!, superview: containerView, leading: -1, top: 262, height: 39, width: 216, centerX: true, centerY: false)
-            constraintsBuilder(item: containerView, superview: containerView.superview as Any, leading: -1, top: -1, height: 295, width: -1, centerX: true, centerY: false)
-            constraintsBuilder(item: containerView.superview!, superview: view!, leading: -1, top: -1, height: -1, width: -1, centerX: true, centerY: false)
-            constraintsBuilder(item: bioButton!, superview: containerView, leading: 330, top: 262+11, height: 17, width: 16, centerX: false, centerY: false)
-            constraintsBuilder(item: cancelBioUpdateButton!, superview: containerView, leading: 330+16+15, top: 262+11, height: 17, width: 16, centerX: false, centerY: false)
-            constraintsBuilder(item: profileBorderLine!, superview: containerView, leading: -1, top: Int(containerView.fs_height)-1, height: 1, width: Int(containerView.fs_width), centerX: true, centerY: false)
+        constraintsBuilder(item: bioLabel!, superview: containerView, leading: -1, top: 262, height: 39, width: 216, centerX: true, centerY: false)
+        constraintsBuilder(item: bioTextField!, superview: containerView, leading: -1, top: 262, height: 39, width: 216, centerX: true, centerY: false)
+        constraintsBuilder(item: containerView, superview: containerView.superview as Any, leading: -1, top: -1, height: 50+295, width: -1, centerX: true, centerY: false)
+        constraintsBuilder(item: containerView.superview!, superview: view!, leading: -1, top: -1, height: -1, width: -1, centerX: true, centerY: false)
+        constraintsBuilder(item: bioButton!, superview: containerView, leading: 330, top: 262+11, height: 17, width: 16, centerX: false, centerY: false)
+        constraintsBuilder(item: cancelBioUpdateButton!, superview: containerView, leading: 330+16+15, top: 262+11, height: 17, width: 16, centerX: false, centerY: false)
+        constraintsBuilder(item: profileLink!, superview: containerView, leading: -1, top: 50+262, height: 39, width: 216, centerX: true, centerY: false)
+        constraintsBuilder(item: profileLinkTextField!, superview: containerView, leading: -1, top: 50+262, height: 39, width: 216, centerX: true, centerY: false)
+        constraintsBuilder(item: updateProfileLink!, superview: containerView, leading: 330, top: 50+262+11, height: 17, width: 16, centerX: false, centerY: false)
+        constraintsBuilder(item: cancelProfileLink!, superview: containerView, leading: 330+16+15, top: 50+262+11, height: 17, width: 16, centerX: false, centerY: false)
+        
+        
+        constraintsBuilder(item: profileBorderLine!, superview: containerView, leading: -1, top: 358, height: 1, width: Int(containerView.fs_width), centerX: true, centerY: false)
     }
     
     
     func setUpElements() {
         Utilities.styleLabel(bioLabel, size: 15, uppercase: false)
+        Utilities.styleLabel(profileLink, size: 15, uppercase: false)
+        cancelProfileLinkUpdatePressed("")
         Utilities.styleTextField(bioTextField, size: 15)
+        Utilities.styleTextField(profileLinkTextField, size:15)
         bioLabel.numberOfLines = 5
         
         usernameLabel.text = profileOwner.username
@@ -226,6 +270,7 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate,
             signOutButton.isHidden = false
 
             set_photo(button: updateBioButton, name: "change_bio_button.png")
+            set_photo(button:updateProfileLink, name: "change_bio_button.png")
             updateBioButton.isHidden = false
             bioLabel.textAlignment = .center
             followButton.isHidden = true
@@ -244,7 +289,6 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate,
         super.viewDidLoad()
         updateViewController(curUser: self.isCurUser)
         calendarView.addSubview(calendar)
-        //constraintsBuilder(item: calendar, superview: calendarView!, leading: 0, top: 0, height: Int(calendarView.fs_height), width: Int(calendarView.fs_width), centerX: false, centerY: false)
         formatCalendar(calendar: calendar, profile_vc: self)
 
 
@@ -267,7 +311,8 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate,
                 self.profileOwner.photoURL = document.get("photoURL") as! String
                 self.profileOwner.userId = document.get("userId") as! String
                 self.profileOwner.username = document.get("username") as! String
-                photoURL = URL(string: document.get("photoURL") as! String)
+                    self.profileOwner.profileLink = document.get("profileLink") as! String
+                    photoURL = URL(string: document.get("photoURL") as! String)
                 }
                 self.profileImage.sd_setImage(with: photoURL, for: self.state, completed:
                     {_,_,_,_ in
