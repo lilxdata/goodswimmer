@@ -21,19 +21,36 @@ class UserSearchCell: UITableViewCell {
     
     
     var userToDisplay: User?
+    var followState = false
     
     @IBAction func followUser(_ sender: Any) {
         let db = Firestore.firestore()
         let curUser = db.collection("users").document(Auth.auth().currentUser!.uid)
+
         curUser.getDocument { (document, error) in
             if let document = document, document.exists {
-                db.collection("users").document(self.userToDisplay?.userId ?? "").updateData([
-                    "followers" : FieldValue.arrayUnion([Auth.auth().currentUser!.displayName])
-                ])
+                self.followState = !self.followState
+                if(self.followState){
+                    db.collection("users").document(self.userToDisplay?.userId ?? "").updateData([
+                        "followers" : FieldValue.arrayUnion([Auth.auth().currentUser!.displayName!])
+                    ])
+                    
+                    db.collection("users").document(Auth.auth().currentUser!.uid).updateData([
+                        "following" : FieldValue.arrayUnion([self.username.text!])
+                    ])
+                }
+                else {
+                    db.collection("users").document(self.userToDisplay?.userId ?? "").updateData([
+                        "followers" : FieldValue.arrayRemove([Auth.auth().currentUser!.displayName!])
+                    ])
+                    
+                    db.collection("users").document(Auth.auth().currentUser!.uid).updateData([
+                        "following" : FieldValue.arrayRemove([self.username.text!])
+                    ])
+                }
                 
-                db.collection("users").document(Auth.auth().currentUser!.uid).updateData([
-                    "following" : FieldValue.arrayUnion([self.username.text!])
-                ])
+                self.customizeElements()
+                
             } else {
                 print("Error following user")
             }
@@ -46,21 +63,44 @@ class UserSearchCell: UITableViewCell {
         let imageURL = URL(string: userToDisplay?.photoURL ?? Constants.Placeholders.placeholderURL)
         self.profileImage.makeRounded(_cornerRadius: profileImage.frame.height)
         profileImage.sd_setImage(with: imageURL, completed: {image,_,_,_ in
-            //self.profileImage.image = self.profileImage.image?.roundedImage
-            //self.profileImage.makeRounded(_cornerRadius: profileImage.frame.height)
         })
         bio.text =  userToDisplay?.bio
         username.text = userToDisplay?.username
         if(userToDisplay?.username == Auth.auth().currentUser?.displayName) {
             followButton.isHidden = true
         }
-        customizeElements()
+        let db = Firestore.firestore()
+        let curUser = db.collection("users").document(Auth.auth().currentUser!.uid)
+        var following: [String] = [];
+        curUser.getDocument { (document, error) in
+            if let document = document, document.exists {
+                let group = DispatchGroup()
+                group.enter()
+                DispatchQueue.main.async {
+                    following = document.get("following") as! [String]
+                    group.leave()
+                }
+                
+                group.notify(queue: .main) {
+                    if(following.contains(user.username!)){
+                        self.followState = true
+                    }
+                    self.customizeElements()
+                }
+            }
+        }
     }
     
     func customizeElements() {
         Utilities.styleLabelBold(username, size: 15,  uppercase: false)
         Utilities.styleLabel(bio, size: 15,  uppercase: false)
         followButton.tintColor = Utilities.getRedUI()
+        if(self.followState){
+            self.followButton.setTitle("Unfollow", for: .normal)
+        }
+        else {
+            self.followButton.setTitle("Follow", for: .normal)
+        }
     }
     
 }

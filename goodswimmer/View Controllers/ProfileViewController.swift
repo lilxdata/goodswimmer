@@ -27,6 +27,7 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate,
     var profileOwner = User(following: [], followers: [], events: [])
     let user = Auth.auth().currentUser
     var isCurUser = true
+    var followActive = false
     
     var updateBioActive = false
     var updateLinkActive = false
@@ -254,7 +255,15 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate,
         
 
         Utilities.styleLabel(followButton.titleLabel!, size: 15, uppercase: true)
-        followButton.setTitle("FOLLOW", for: .normal)
+        print(followActive)
+        print(profileOwner.username)
+        if(followActive){
+            followButton.setTitle("UNFOLLOW", for: .normal)
+        }
+        else{
+            followButton.setTitle("FOLLOW", for: .normal)
+        }
+        
         followButton.layer.borderWidth = 1
         followButton.layer.borderColor = Utilities.getRedCG()
         followButton.setTitleColor(Utilities.getRedUI(), for: .normal)
@@ -284,7 +293,7 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate,
         }
 
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         updateViewController(curUser: self.isCurUser)
@@ -395,22 +404,32 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate,
        
     }
 
-    @IBAction func eventHostingTapped(_ sender: Any) {
-        print("I am pressing")
-    }
     
     
-    @IBAction func followPressed(_ sender: Any) {
+    @IBAction func followButtonPressed(_ sender: Any) {
         let db = Firestore.firestore()
         let curUser = db.collection("users").document(Auth.auth().currentUser!.uid)
         curUser.getDocument { (document, error) in
             if let document = document, document.exists {
-                db.collection("users").document(self.profileOwner.userId ?? "").updateData([
-                    "followers" : FieldValue.arrayUnion([Auth.auth().currentUser!.displayName!])
-                ])      
-                db.collection("users").document(Auth.auth().currentUser!.uid).updateData([
-                    "following" : FieldValue.arrayUnion([self.profileOwner.username!])
-                ])
+                self.followActive = !self.followActive
+                if(self.followActive){
+                    db.collection("users").document(self.profileOwner.userId ?? "").updateData([
+                        "followers" : FieldValue.arrayUnion([Auth.auth().currentUser!.displayName!])
+                    ])
+                    db.collection("users").document(Auth.auth().currentUser!.uid).updateData([
+                        "following" : FieldValue.arrayUnion([self.profileOwner.username!])
+                    ])
+                    self.followButton.setTitle("UNFOLLOW", for: .normal)
+                }
+                else {
+                    db.collection("users").document(self.profileOwner.userId ?? "").updateData([
+                        "followers" : FieldValue.arrayRemove([Auth.auth().currentUser!.displayName!])
+                    ])
+                    db.collection("users").document(Auth.auth().currentUser!.uid).updateData([
+                        "following" : FieldValue.arrayRemove([self.profileOwner.username!])
+                    ])
+                    self.followButton.setTitle("FOLLOW", for: .normal)
+                }
             } else {
                 print("Error following user")
             }

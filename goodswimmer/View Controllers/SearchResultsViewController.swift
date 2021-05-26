@@ -145,7 +145,31 @@ extension SearchResultsViewController : UITableViewDelegate, UITableViewDataSour
             profile_view.isCurUser = true
         }
         else {profile_view.isCurUser = false}
-        self.present(profile_view, animated: true, completion: nil)
+        let db = Firestore.firestore()
+        let curUser = db.collection("users").document(Auth.auth().currentUser!.uid)
+        var following: [String]  = []
+        curUser.getDocument { (document, error) in
+            if let document = document, document.exists {
+                let group = DispatchGroup()
+                group.enter()
+                DispatchQueue.main.async {
+                    following = document.get("following") as! [String]
+                    group.leave()
+                }
+                group.notify(queue: .main) {
+                    print(following)
+                    print(profile_view.profileOwner.username!)
+                    print(following.contains(profile_view.profileOwner.username!))
+                    if(following.contains(profile_view.profileOwner.username!)){
+                        profile_view.followActive = true
+                    }
+                    else {
+                        profile_view.followActive = false
+                    }
+                    self.present(profile_view, animated: true, completion: nil)
+                }
+            }
+        } 
     }
 }
 

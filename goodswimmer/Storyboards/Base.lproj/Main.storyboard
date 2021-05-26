@@ -1272,23 +1272,23 @@
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="741-UB-iNV">
                                                         <rect key="frame" x="0.0" y="236" width="414" height="60"/>
                                                         <subviews>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WMZ-Yj-GZb">
-                                                                <rect key="frame" x="172.5" y="17" width="69" height="26"/>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0jF-jZ-Hdl">
+                                                                <rect key="frame" x="157.5" y="17" width="99" height="26"/>
                                                                 <constraints>
-                                                                    <constraint firstAttribute="height" constant="26" id="cMI-6r-0e8"/>
+                                                                    <constraint firstAttribute="height" constant="26" id="LeP-SV-ipR"/>
                                                                 </constraints>
                                                                 <state key="normal" title="Button"/>
                                                                 <connections>
-                                                                    <action selector="followPressed:" destination="b6l-6S-5dU" eventType="touchUpInside" id="xab-yG-0vq"/>
+                                                                    <action selector="followButtonPressed:" destination="b6l-6S-5dU" eventType="touchUpInside" id="2Z4-6e-Y3V"/>
                                                                 </connections>
                                                             </button>
                                                         </subviews>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                         <constraints>
-                                                            <constraint firstItem="WMZ-Yj-GZb" firstAttribute="centerY" secondItem="741-UB-iNV" secondAttribute="centerY" id="H4E-uH-oEx"/>
-                                                            <constraint firstItem="WMZ-Yj-GZb" firstAttribute="centerX" secondItem="741-UB-iNV" secondAttribute="centerX" id="Sei-Dr-723"/>
+                                                            <constraint firstItem="0jF-jZ-Hdl" firstAttribute="width" secondItem="741-UB-iNV" secondAttribute="width" multiplier="0.24" id="1aq-gy-FCT"/>
+                                                            <constraint firstItem="0jF-jZ-Hdl" firstAttribute="centerX" secondItem="741-UB-iNV" secondAttribute="centerX" id="C24-fL-C62"/>
                                                             <constraint firstAttribute="height" constant="60" id="YVx-dl-MID"/>
-                                                            <constraint firstItem="WMZ-Yj-GZb" firstAttribute="width" secondItem="741-UB-iNV" secondAttribute="width" multiplier="0.166667" id="Yev-zu-dGf"/>
+                                                            <constraint firstItem="0jF-jZ-Hdl" firstAttribute="centerY" secondItem="741-UB-iNV" secondAttribute="centerY" id="ikE-pB-iH2"/>
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ghm-Rn-Oiw">
@@ -1370,7 +1370,7 @@
                         <outlet property="calendarView" destination="Ghm-Rn-Oiw" id="jg8-B1-LyE"/>
                         <outlet property="cancelBioUpdateButton" destination="hFR-VJ-Rpt" id="vQV-n8-ta6"/>
                         <outlet property="cancelProfileLink" destination="PDF-DK-P2i" id="K6B-hU-dQf"/>
-                        <outlet property="followButton" destination="WMZ-Yj-GZb" id="siO-Cw-vVc"/>
+                        <outlet property="followButton" destination="0jF-jZ-Hdl" id="ekQ-97-fbg"/>
                         <outlet property="profileBorderLine" destination="uVl-3T-b9o" id="kgk-e9-b4r"/>
                         <outlet property="profileImage" destination="IBa-bW-DKN" id="49u-OA-HYp"/>
                         <outlet property="profileLink" destination="Tvj-aL-ZOU" id="D1Q-I8-hbO"/>
