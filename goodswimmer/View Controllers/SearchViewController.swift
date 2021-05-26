@@ -20,8 +20,7 @@ class SearchViewController: UIViewController {
     
     
     @IBOutlet var searchContainerView: UIView!    
-    @IBOutlet weak var mapView: MKMapView!
-    @IBOutlet weak var featuredLabel: UILabel!    
+    @IBOutlet weak var mapView: MKMapView!   
     @IBOutlet weak var mappedEvent: UILabel!
     @IBOutlet weak var searchStack: UIStackView!
     @IBOutlet weak var topUserDisplay: UIButton!
@@ -151,7 +150,6 @@ class SearchViewController: UIViewController {
     }
     func setUpElements() {
         Utilities.customizeSearchBar(searchController)
-        Utilities.styleLabel(featuredLabel, size: 12, uppercase: true)
         Utilities.styleLabel(mappedEvent, size: 12, uppercase: true)
         mappedEvent.numberOfLines = 3
         mappedEvent.textAlignment = .center
@@ -167,7 +165,7 @@ class SearchViewController: UIViewController {
         topListDisplay2.titleLabel?.numberOfLines = 3
         topListDisplay2.backgroundColor = Utilities.getRedUI()
         topListDisplay2.tintColor = UIColor.white
-        featuredLabel.textAlignment = .center
+
         hideSearchResults(isHidden: true)
         self.mapView.isHidden = true
     }

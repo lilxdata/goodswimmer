@@ -193,8 +193,8 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate,
             constraintsBuilder(item: bioTextField!, superview: containerView, leading: -1, top: 262, height: 39, width: 216, centerX: true, centerY: false)
             constraintsBuilder(item: containerView, superview: containerView.superview as Any, leading: -1, top: -1, height: 295, width: -1, centerX: true, centerY: false)
             constraintsBuilder(item: containerView.superview!, superview: view!, leading: -1, top: -1, height: -1, width: -1, centerX: true, centerY: false)
-        constraintsBuilder(item: bioButton!, superview: bioLabel!, leading: 15, top: 0, height: 17, width: 16, centerX: false, centerY: false)
-        constraintsBuilder(item: cancelBioUpdateButton!, superview: bioLabel!, leading: 15, top: 0, height: 17, width: 16, centerX: false, centerY: false)
+        constraintsBuilder(item: bioButton!, superview: containerView, leading: 330, top: 262, height: 17+11, width: 16, centerX: false, centerY: false)
+        constraintsBuilder(item: cancelBioUpdateButton!, superview: containerView, leading: 330, top: 262+11, height: 17, width: 16, centerX: false, centerY: false)
     }
     
     
@@ -224,7 +224,7 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate,
 
             set_photo(button: updateBioButton, name: "change_bio_button.png")
             updateBioButton.isHidden = false
-            bioLabel.textAlignment = .left
+            bioLabel.textAlignment = .center
             followButton.isHidden = true
         }
         else{
