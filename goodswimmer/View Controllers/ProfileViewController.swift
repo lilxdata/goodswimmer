@@ -63,7 +63,8 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate,
 
     @IBOutlet weak var signOutButton: UIButton!
     
-
+    @IBOutlet weak var profileBorderLine: UIView!
+    
     @IBOutlet weak var updateBioButton: UIButton!
     
     @IBOutlet weak var followButton: UIButton!
@@ -193,13 +194,15 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate,
             constraintsBuilder(item: bioTextField!, superview: containerView, leading: -1, top: 262, height: 39, width: 216, centerX: true, centerY: false)
             constraintsBuilder(item: containerView, superview: containerView.superview as Any, leading: -1, top: -1, height: 295, width: -1, centerX: true, centerY: false)
             constraintsBuilder(item: containerView.superview!, superview: view!, leading: -1, top: -1, height: -1, width: -1, centerX: true, centerY: false)
-        constraintsBuilder(item: bioButton!, superview: containerView, leading: 330, top: 262, height: 17+11, width: 16, centerX: false, centerY: false)
-        constraintsBuilder(item: cancelBioUpdateButton!, superview: containerView, leading: 330, top: 262+11, height: 17, width: 16, centerX: false, centerY: false)
+            constraintsBuilder(item: bioButton!, superview: containerView, leading: 330, top: 262+11, height: 17, width: 16, centerX: false, centerY: false)
+            constraintsBuilder(item: cancelBioUpdateButton!, superview: containerView, leading: 330+16+15, top: 262+11, height: 17, width: 16, centerX: false, centerY: false)
+            constraintsBuilder(item: profileBorderLine!, superview: containerView, leading: -1, top: Int(containerView.fs_height)-1, height: 1, width: Int(containerView.fs_width), centerX: true, centerY: false)
     }
     
     
     func setUpElements() {
         Utilities.styleLabel(bioLabel, size: 15, uppercase: false)
+        Utilities.styleTextField(bioTextField, size: 15)
         bioLabel.numberOfLines = 5
         
         usernameLabel.text = profileOwner.username

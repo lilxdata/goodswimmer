@@ -1163,7 +1163,7 @@
                                                                     <constraint firstAttribute="width" constant="216" id="52B-em-tnO"/>
                                                                     <constraint firstAttribute="height" constant="39" id="An2-Z4-2xE"/>
                                                                 </constraints>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                                 <textInputTraits key="textInputTraits"/>
                                                             </textField>
                                                             <button opaque="NO" contentMode="scaleToFill" semanticContentAttribute="forceLeftToRight" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jHG-Le-eeo">
@@ -1185,7 +1185,7 @@
                                                                     <constraint firstAttribute="height" constant="39" id="2My-s4-Ojz"/>
                                                                     <constraint firstAttribute="width" constant="216" id="C6W-Q3-4ls"/>
                                                                 </constraints>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
@@ -1200,12 +1200,22 @@
                                                                     <action selector="cancelUpdateBio:" destination="b6l-6S-5dU" eventType="touchUpInside" id="Rrf-Qr-Dwx"/>
                                                                 </connections>
                                                             </button>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uVl-3T-b9o">
+                                                                <rect key="frame" x="0.0" y="159" width="414" height="1"/>
+                                                                <color key="backgroundColor" systemColor="labelColor"/>
+                                                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="1" id="36i-Aj-dw3"/>
+                                                                </constraints>
+                                                            </view>
                                                         </subviews>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                         <constraints>
+                                                            <constraint firstAttribute="bottom" secondItem="uVl-3T-b9o" secondAttribute="bottom" constant="1" id="4dK-pK-kem"/>
                                                             <constraint firstAttribute="width" constant="414" id="7pR-tx-9Jt"/>
                                                             <constraint firstItem="4ib-z1-lOg" firstAttribute="top" secondItem="oYq-Gr-ejc" secondAttribute="top" constant="58" id="924-sH-pD0"/>
                                                             <constraint firstItem="jHG-Le-eeo" firstAttribute="top" secondItem="oYq-Gr-ejc" secondAttribute="top" constant="128" id="BaR-UO-i1P"/>
+                                                            <constraint firstItem="uVl-3T-b9o" firstAttribute="leading" secondItem="oYq-Gr-ejc" secondAttribute="leading" id="ErI-UJ-MtZ"/>
                                                             <constraint firstItem="hFR-VJ-Rpt" firstAttribute="leading" secondItem="oYq-Gr-ejc" secondAttribute="leading" constant="338" id="HsM-B1-zYQ"/>
                                                             <constraint firstItem="IBa-bW-DKN" firstAttribute="leading" secondItem="oYq-Gr-ejc" secondAttribute="leading" constant="21" id="L5I-sO-5ex"/>
                                                             <constraint firstItem="IBa-bW-DKN" firstAttribute="top" secondItem="oYq-Gr-ejc" secondAttribute="top" constant="31" id="QV7-15-fqE"/>
@@ -1272,6 +1282,7 @@
                                                 </subviews>
                                                 <constraints>
                                                     <constraint firstItem="Ghm-Rn-Oiw" firstAttribute="width" secondItem="c2f-za-3tB" secondAttribute="width" id="KK2-ds-YDi"/>
+                                                    <constraint firstItem="uVl-3T-b9o" firstAttribute="width" secondItem="c2f-za-3tB" secondAttribute="width" id="cvz-bH-jgU"/>
                                                 </constraints>
                                             </stackView>
                                         </subviews>
@@ -1317,6 +1328,7 @@
                         <outlet property="calendarView" destination="Ghm-Rn-Oiw" id="jg8-B1-LyE"/>
                         <outlet property="cancelBioUpdateButton" destination="hFR-VJ-Rpt" id="vQV-n8-ta6"/>
                         <outlet property="followButton" destination="WMZ-Yj-GZb" id="siO-Cw-vVc"/>
+                        <outlet property="profileBorderLine" destination="uVl-3T-b9o" id="kgk-e9-b4r"/>
                         <outlet property="profileImage" destination="IBa-bW-DKN" id="49u-OA-HYp"/>
                         <outlet property="signOutButton" destination="8Uy-qT-IqQ" id="nyN-qv-UFU"/>
                         <outlet property="updateBioButton" destination="jHG-Le-eeo" id="9uJ-6x-ljE"/>
