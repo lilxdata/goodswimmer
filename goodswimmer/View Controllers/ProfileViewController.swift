@@ -269,12 +269,14 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate,
         cancelBioUpdateButton.isHidden = true
         
         if(isCurUser){
+            Utilities.styleButton(signOutButton)
             Utilities.styleLabel(signOutButton.titleLabel!, size: 15, uppercase: true)
             signOutButton.setTitleColor(Utilities.getRedUI(), for: .normal)
             signOutButton.layer.borderWidth = 2
             signOutButton.layer.borderColor = Utilities.getRedCG()
             signOutButton.titleLabel?.textAlignment = .center
             signOutButton.isHidden = false
+            
 
             set_photo(button: updateBioButton, name: "change_bio_button.png")
             set_photo(button:updateProfileLink, name: "change_bio_button.png")
@@ -599,7 +601,7 @@ extension ProfileViewController:FSCalendarDelegate,FSCalendarDataSource,FSCalend
             }
         }
         
-        return eventCount
+        return eventCount 
     }
     
     func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, fillDefaultColorFor date: Date) -> UIColor? {

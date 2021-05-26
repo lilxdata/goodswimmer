@@ -39,7 +39,7 @@ func formatCalendar(calendar: FSCalendar, profile_vc: ProfileViewController){
     
     calendar.appearance.eventDefaultColor = Utilities.getRedUI()
     calendar.appearance.eventSelectionColor = Utilities.getRedUI()
-    calendar.appearance.eventOffset = CGPoint(x: -5, y: -20)
+    calendar.appearance.eventOffset = CGPoint(x: -15, y: -25)
     
     calendar.register(DIYCalendarCell.self, forCellReuseIdentifier: "cell")
 
