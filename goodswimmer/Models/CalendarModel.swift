@@ -26,8 +26,7 @@ func formatCalendar(calendar: FSCalendar, profile_vc: ProfileViewController){
     
     calendar.appearance.borderDefaultColor = .black
     calendar.appearance.borderSelectionColor = .black
-
-    
+    calendar.select(Date())
     //Make not all text black
     calendar.appearance.titleDefaultColor = .black
     calendar.appearance.titleTodayColor = .black
@@ -43,7 +42,7 @@ func formatCalendar(calendar: FSCalendar, profile_vc: ProfileViewController){
     
     calendar.register(DIYCalendarCell.self, forCellReuseIdentifier: "cell")
 
-    calendar.allowsMultipleSelection = true
+    calendar.allowsMultipleSelection = false
     calendar.clipsToBounds = true
 
 }

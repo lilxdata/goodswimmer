@@ -168,6 +168,12 @@ class SearchViewController: UIViewController {
 
         hideSearchResults(isHidden: true)
         self.mapView.isHidden = true
+        self.mappedEvent.isHidden = true
+        self.topListDisplay1.isHidden = true
+        self.topListDisplay2.isHidden = true
+        self.topUserDisplay.isHidden = true
+        self.topEventDisplay.isHidden = true
+        self.searchContainerView.isHidden = true
     }
     
     func setMapLocation(address: String) {
@@ -202,10 +208,10 @@ class SearchViewController: UIViewController {
                 elem.isHidden = isHidden
             }
             else if(elem == mapView){
-                elem.isHidden = !isHidden
+                elem.isHidden = isHidden
             }
             else if(elem == mappedEvent){
-                elem.isHidden = !isHidden
+                elem.isHidden = isHidden
             }
         }
     }
@@ -228,7 +234,8 @@ extension SearchViewController: UISearchResultsUpdating {
                 hideSearchResults(isHidden: true)
             }
             else {
-                hideSearchResults(isHidden: false)
+                //hideSearchResults(isHidden: false) if the view to show results isn't done hide this feature entirely
+                hideSearchResults(isHidden: true)
             }
             filterEvents(searchText,false)
             searchForTopUser(searchText)
