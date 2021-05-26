@@ -1157,7 +1157,7 @@
                                                                     <action selector="profileImageTapped:" destination="b6l-6S-5dU" eventType="touchUpInside" id="hex-cK-Ont"/>
                                                                 </connections>
                                                             </button>
-                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" text="Enter Bio Here" borderStyle="roundedRect" clearsOnBeginEditing="YES" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4ib-z1-lOg">
+                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" text="Enter Bio Here" borderStyle="line" textAlignment="center" clearsOnBeginEditing="YES" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4ib-z1-lOg">
                                                                 <rect key="frame" x="169" y="58" width="216" height="39"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="216" id="52B-em-tnO"/>
@@ -1179,7 +1179,7 @@
                                                                     <action selector="bioButtonTapped:" destination="b6l-6S-5dU" eventType="touchUpInside" id="FdR-AG-tL4"/>
                                                                 </connections>
                                                             </button>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4uN-IZ-IXU">
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4uN-IZ-IXU">
                                                                 <rect key="frame" x="169" y="58" width="216" height="39"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="39" id="2My-s4-Ojz"/>

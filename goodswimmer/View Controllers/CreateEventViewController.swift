@@ -50,10 +50,10 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var ticketPriceLabel: UILabel!
     @IBOutlet weak var ticketPriceField: UITextField!
     @IBOutlet weak var inviteOnlyButton: UIButton!
-    //@IBOutlet weak var inviteOnlyField: UITextView!
+
     @IBOutlet weak var multidayEventButton: UIButton!
     
-    //@IBOutlet weak var createItTestLabel: UILabel!
+
     
     @IBOutlet weak var virtualEventButton: UIButton!
     @IBOutlet weak var cancelMultiDate: UIButton!
@@ -90,8 +90,7 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate {
         
         loadStockPhotos()
         var filename = "checked"
-        //self.stockImages[filename]?.image = self.photoHelper.resizeImage(image: (self.stockImages[filename]?.image)!, newWidth: 200.0)
-        
+
         // Do any additional setup after loading the view.
         
         let labelSize = 12
@@ -138,9 +137,6 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate {
         
         self.transitionToHome()
         
-        //TODO: disable address field until location field is filled out - make it some sort of state, once location is put in, check DB if it exists, if not enable address  field, then send noti to us to send postcard inviting them to join. if location does exist, populate with address
-        
-        //TODO: add red asterisks to mandatory categories; helper isMandatory or something
     }
     
     @IBAction func addImageTapped(_ sender: Any) {
@@ -165,7 +161,6 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate {
                     // Handle any errors
                     print("An error occurred while setting the photo", error)
                 } else {
-                    print(url)
                     self.addImageButton.sd_setImage(with: url, for: .normal, completed: {_,_,_,_ in
                                                         let image = self.addImageButton.image(for: .normal)
                                                         let newWidth = 200
@@ -199,10 +194,6 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate {
         
         let description = descriptionText.text!.trimmingCharacters(in: .whitespacesAndNewlines)
         let participants = participantsField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
-        //var inviteList = inviteOnlyField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
-        if(inviteOnlyState == false) {
-            //inviteList = ""
-        }
         
         let ticketPrice = Int(ticketPriceField.text!) ?? 0
         
@@ -473,7 +464,7 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate {
         successMessageButton.setTitle("Your event was created!", for: .normal)
         successMessageButton.setTitleColor(UIColor.green, for: .normal)
         successMessageButton.contentHorizontalAlignment = .center
-        //successMessageButton.titleLabel?.
+
         successPopUp.addSubview(successMessageButton)
         successMessageButton.titleLabel?.numberOfLines = 100
         _sender.addSubview(successPopUp)
@@ -549,7 +540,6 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate {
     
     
     func multiDayToggle() {
-        //setCheckMark(button: multidayEventButton, check: multiDayEventState)
         self.multiDayEventState = !self.multiDayEventState
         if(multiDayEventState == true){
             dateField2.isUserInteractionEnabled = true
