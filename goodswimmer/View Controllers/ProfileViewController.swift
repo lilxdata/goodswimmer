@@ -255,8 +255,6 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate,
         
 
         Utilities.styleLabel(followButton.titleLabel!, size: 15, uppercase: true)
-        print(followActive)
-        print(profileOwner.username)
         if(followActive){
             followButton.setTitle("UNFOLLOW", for: .normal)
         }
@@ -283,6 +281,7 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate,
             updateBioButton.isHidden = false
             bioLabel.textAlignment = .center
             followButton.isHidden = true
+            followButton.superview?.isHidden = true
         }
         else{
             signOutButton.isHidden = true
@@ -290,6 +289,7 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate,
             updateBioButton.isHidden = true
             bioLabel.textAlignment = .center
             followButton.isHidden = false
+            followButton.superview?.isHidden = false
         }
 
     }
@@ -598,7 +598,8 @@ extension ProfileViewController:FSCalendarDelegate,FSCalendarDataSource,FSCalend
                 eventCount = eventCount + 1
             }
         }
-        return 0
+        
+        return eventCount
     }
     
     func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance, fillDefaultColorFor date: Date) -> UIColor? {
@@ -614,17 +615,15 @@ extension ProfileViewController:FSCalendarDelegate,FSCalendarDataSource,FSCalend
                 eventCount = eventCount + 1
             }
         }
+        
         if(eventCount == 0){
             return nil
         }
         
-        else if(eventCount == 1){
-            return UIColor.blue
-        }
         else {
-            return UIColor.green
+            return Utilities.getRedUI()
         }
-
+        
         return nil //add your color for default
 
     }

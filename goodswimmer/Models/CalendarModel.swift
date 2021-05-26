@@ -35,16 +35,15 @@ func formatCalendar(calendar: FSCalendar, profile_vc: ProfileViewController){
     calendar.appearance.titleFont = UIFont(name: "Standard-Book", size: 12)
     calendar.appearance.titleOffset = CGPoint(x: 20, y: 11)
     
-    calendar.tintColor = .black
-    //calendar.placeholderType = .none
+
     
-    calendar.appearance.eventDefaultColor = .black
-    calendar.appearance.eventSelectionColor = .black
-    calendar.appearance.eventOffset = CGPoint(x: 0, y: 0)
+    calendar.appearance.eventDefaultColor = Utilities.getRedUI()
+    calendar.appearance.eventSelectionColor = Utilities.getRedUI()
+    calendar.appearance.eventOffset = CGPoint(x: -5, y: -20)
     
     calendar.register(DIYCalendarCell.self, forCellReuseIdentifier: "cell")
-    //I am trying to figure out how they color boxes
-    //calendar.allowsMultipleSelection = true
+
+    calendar.allowsMultipleSelection = true
     calendar.clipsToBounds = true
 
 }
