@@ -15,6 +15,7 @@ import SDWebImage
 
 class CreateEventViewController: UIViewController, UITextFieldDelegate {
     
+    @IBOutlet weak var addImageButton: UIButton!
     @IBOutlet weak var createEventScrollView: UIScrollView!
     @IBOutlet weak var stackView: UIStackView!
     @IBOutlet weak var createEventHeader: UILabel!
@@ -69,9 +70,9 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate {
     var uuid = ""
     let menu = Menu.sharedInstance
     var stockImages = ["checked": UIImageView(image: UIImage(systemName: "square")),
-                      "unchecked": UIImageView(image: UIImage(systemName: "square")),
-                      "goodswimmer stock profile": UIImageView()
-                      ]
+                       "unchecked": UIImageView(image: UIImage(systemName: "square")),
+                       "goodswimmer stock profile": UIImageView()
+    ]
     var stockURL = ""
     
     //runs everytime page is shown
@@ -90,7 +91,7 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate {
         loadStockPhotos()
         var filename = "checked"
         //self.stockImages[filename]?.image = self.photoHelper.resizeImage(image: (self.stockImages[filename]?.image)!, newWidth: 200.0)
-
+        
         // Do any additional setup after loading the view.
         
         let labelSize = 12
@@ -114,7 +115,7 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate {
         addressField2.isUserInteractionEnabled = true
         addressField3.isUserInteractionEnabled = true
         stateAbbreviation.isUserInteractionEnabled = true
-        //createItTestLabel.font = UIFont(name: "Standard-Book", size: 21)
+        
         
         Utilities.styleButton(createEventButton)
         Utilities.styleLabel(createEventHeader, size: headerSize, uppercase: false)
@@ -129,12 +130,8 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate {
         participantsField.layer.borderColor = UIColor.black.cgColor
         participantsField.layer.borderWidth = 1
         participantsField.isUserInteractionEnabled = true
-
-        /*
-        inviteOnlyField.layer.borderColor = UIColor.black.cgColor
-        inviteOnlyField.layer.borderWidth = 1
-        inviteOnlyField.isUserInteractionEnabled = false
-        */
+        
+        
         dateField2.isUserInteractionEnabled = false
         dateField2.isHidden = true
         cancelMultiDate.isHidden = true
@@ -147,11 +144,45 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func addImageTapped(_ sender: Any) {
-        print(Auth.auth().currentUser!.displayName!)
-        photoHelper.completionHandler =  { image in
-            self.eventService.uploadImage(for: image, id: self.uuid, name:Auth.auth().currentUser!.displayName!+Utilities.cleanData(self.titleField))
+        let group = DispatchGroup()
+        group.enter()
+        DispatchQueue.main.async {
+            self.photoHelper.completionHandler =  { image in
+                self.eventService.uploadImage(for: image, id: self.uuid, name:Auth.auth().currentUser!.displayName!+Utilities.cleanData(self.titleField))
+            }
+            self.photoHelper.presentActionSheet(from: self)
+            group.leave()
         }
-        photoHelper.presentActionSheet(from: self)
+        
+        // does not wait. But the code in notify() gets run
+        // after enter() and leave() calls are balanced
+        
+        group.notify(queue: .main) {
+            let filename = Auth.auth().currentUser!.displayName!+Utilities.cleanData(self.titleField)
+            let imageRef = Storage.storage().reference().child(filename+".jpg")
+            imageRef.downloadURL { url, error in
+                if let error = error {
+                    // Handle any errors
+                    print("An error occurred while setting the photo", error)
+                } else {
+                    print(url)
+                    self.addImageButton.sd_setImage(with: url, for: .normal, completed: {_,_,_,_ in
+                                                        let image = self.addImageButton.image(for: .normal)
+                                                        let newWidth = 200
+                                                        let newHeight = 69
+                                                        UIGraphicsBeginImageContext(CGSize(width: newWidth, height: newHeight))
+                                                        image?.draw(in: CGRect(x: 0, y: 0, width: newWidth, height: newHeight))
+                                                        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+                                                        UIGraphicsEndImageContext()
+                                                        self.addImageButton.setImage(newImage, for: .normal)
+                        
+                    })
+                    print(self.addImageButton.frame)
+                    
+                }
+            }
+        }
+        
     }
     
     @IBAction func createEventTapped(_ sender: Any) {
@@ -174,7 +205,7 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate {
         }
         
         let ticketPrice = Int(ticketPriceField.text!) ?? 0
-     
+        
         
         var errorMessage = ""
         
@@ -214,13 +245,13 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate {
             errorMessage = errorMessage + "\n"
             errorMessage = errorMessage + date_end_input
         }
-       
+        
         if(multiDayEventState == false){
             date_end_input = date_start_input
         }
         
         let date_end = date_end_input
-
+        
         
         //Start Time Validation
         let time_start_valid = Validators.isTimeValid(time_start_input)
@@ -237,7 +268,7 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate {
             time_end_input = "Invalid Time, please reenter"
             errorMessage = errorMessage + "\n"
             errorMessage = errorMessage + time_end_input
-
+            
         }
         let time_end = time_end_input
         
@@ -297,13 +328,13 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate {
         guard let startDate = dateFormatter.date(from: dateTimeString), var endDate = dateFormatter.date(from: endDateTimeString) else {
             print("something wrong with date")
             return
-        }        
+        }
         let accessibilityAs = [accessibilityArray["wheelchair"], accessibilityArray["transit"], accessibilityArray["restroom"], accessibilityArray["NOTAFLOF"], accessibilityArray["scentFree"], accessibilityArray["other"]]
         var otherDescription = OtherAccessibilityText.text
         if(accessibilityArray["other"] == false) {
             otherDescription = ""
         }
-
+        
         let eventDict = [
             "name": eventName,
             "description": description,
@@ -371,26 +402,26 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate {
             let imageRef = Storage.storage().reference().child(filename+".png")
             // Fetch the download URL
             imageRef.downloadURL { url, error in
-              if let error = error {
-                // Handle any errors
-                print("An error ocurred while getting stock photos:", error)
-              } else {
-                // Get the download URL
-                self.stockImages[filename]?.sd_setImage(with: url, completed: { (_: UIImage?,_: Error?, _: SDImageCacheType, _: URL?) -> Void in
-                    if filename == "unchecked" {
-                        self.setupCheckBoxes()
-                    }
-                    if filename == "goodswimmer stock profile" {
-                        
-                        self.stockURL = url!.absoluteString
-                        print(self.stockURL)
-                    }
-                })
-              }
+                if let error = error {
+                    // Handle any errors
+                    print("An error ocurred while getting stock photos:", error)
+                } else {
+                    // Get the download URL
+                    self.stockImages[filename]?.sd_setImage(with: url, completed: { (_: UIImage?,_: Error?, _: SDImageCacheType, _: URL?) -> Void in
+                        if filename == "unchecked" {
+                            self.setupCheckBoxes()
+                        }
+                        if filename == "goodswimmer stock profile" {
+                            
+                            self.stockURL = url!.absoluteString
+                            print(self.stockURL)
+                        }
+                    })
+                }
             }
         }
     }
-
+    
     
     
     func setCheckMark(button: UIButton, check: Bool) {
@@ -450,13 +481,13 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate {
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-            guard let textFieldText = textField.text,
-                let rangeOfTextToReplace = Range(range, in: textFieldText) else {
-                    return false
-            }
-            let substringToReplace = textFieldText[rangeOfTextToReplace]
-            let count = textFieldText.count - substringToReplace.count + string.count
-            return count <= 1000
+        guard let textFieldText = textField.text,
+              let rangeOfTextToReplace = Range(range, in: textFieldText) else {
+            return false
+        }
+        let substringToReplace = textFieldText[rangeOfTextToReplace]
+        let count = textFieldText.count - substringToReplace.count + string.count
+        return count <= 1000
     }
     
     @IBAction func wheelchairAccessiblePressed(_ sender: Any) {
@@ -467,7 +498,7 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate {
         accessibilityArray["transit"] = !(accessibilityArray["transit"] ?? true)
         setCheckMark(button: CloseToTransitButton, check: accessibilityArray["transit"] ?? false)
     }
-   
+    
     @IBAction func accessibleRestroomPressed(_ sender: Any) {
         accessibilityArray["restroom"] = !(accessibilityArray["restroom"] ?? true)
         setCheckMark(button: accessibleRestroomButton, check: accessibilityArray["restroom"] ?? false)
@@ -497,7 +528,7 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate {
             OtherAccessibilityText.isHidden = true
             Utilities.styleTextView(OtherAccessibilityText, size: fieldSize)
         }
-
+        
     }
     @IBAction func inviteToGSPressed(_ sender: Any) {
         print("I am being pressed")
@@ -505,7 +536,7 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate {
         setCheckMark(button: inviteToGSButton, check: inviteToGSState)
     }
     
-   
+    
     @IBAction func inviteOnlyPressed(_ sender: Any) {
         inviteOnlyState = !inviteOnlyState
         setCheckMark(button: inviteOnlyButton, check: inviteOnlyState)
@@ -538,7 +569,7 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate {
         multiDayToggle()
         print("I pressed the box")
     }
-
+    
     @IBAction func multiDayEventCanceled(_ sender: Any) {
         multiDayToggle()
         print("I pressed cancel")

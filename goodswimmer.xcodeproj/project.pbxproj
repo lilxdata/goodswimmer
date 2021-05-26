@@ -57,7 +57,7 @@
 		86915C8725400869002BE724 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86915C8625400869002BE724 /* UserService.swift */; };
 		86A16C90257DF56D00C390C6 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A16C8F257DF56D00C390C6 /* CalendarViewController.swift */; };
 		86CD670E25AC377F0099EA48 /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CD670D25AC377F0099EA48 /* Menu.swift */; };
-		E407935B14EA95A25A51CCDF /* Pods_goodswimmer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C0DAEA6CC3BFFFAEA5E0253 /* Pods_goodswimmer.framework */; };
+		BE3B426B98898B394B7D2B8E /* Pods_goodswimmer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 107AE72A5357DE321AE0734D /* Pods_goodswimmer.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -101,9 +101,9 @@
 		04EB0E0124327BA600B532F8 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		04EB0E0324327BB200B532F8 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		04EB0E0524327BBD00B532F8 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
-		6402AA5630E2F3E8BA832D9C /* Pods-goodswimmer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-goodswimmer.release.xcconfig"; path = "Target Support Files/Pods-goodswimmer/Pods-goodswimmer.release.xcconfig"; sourceTree = "<group>"; };
-		6851900940519F2FF799F5F0 /* Pods-goodswimmer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-goodswimmer.debug.xcconfig"; path = "Target Support Files/Pods-goodswimmer/Pods-goodswimmer.debug.xcconfig"; sourceTree = "<group>"; };
-		7C0DAEA6CC3BFFFAEA5E0253 /* Pods_goodswimmer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_goodswimmer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		107AE72A5357DE321AE0734D /* Pods_goodswimmer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_goodswimmer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		10BC7740A943DFCA2575A740 /* Pods-goodswimmer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-goodswimmer.release.xcconfig"; path = "Target Support Files/Pods-goodswimmer/Pods-goodswimmer.release.xcconfig"; sourceTree = "<group>"; };
+		4CD40CBE3B34D1C382437751 /* Pods-goodswimmer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-goodswimmer.debug.xcconfig"; path = "Target Support Files/Pods-goodswimmer/Pods-goodswimmer.debug.xcconfig"; sourceTree = "<group>"; };
 		8657328325FAE85300456426 /* UserSearchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSearchCell.swift; sourceTree = "<group>"; };
 		8657328625FAEE9D00456426 /* SearchResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsViewController.swift; sourceTree = "<group>"; };
 		865FDAB0263014490015F428 /* CalendarModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarModel.swift; sourceTree = "<group>"; };
@@ -123,7 +123,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E407935B14EA95A25A51CCDF /* Pods_goodswimmer.framework in Frameworks */,
+				BE3B426B98898B394B7D2B8E /* Pods_goodswimmer.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -205,7 +205,7 @@
 				04EB0DEC24327B5000B532F8 /* goodswimmer */,
 				04EB0DEB24327B5000B532F8 /* Products */,
 				FA14938E7F2743884AD318A7 /* Pods */,
-				570EC1802E93643D6DD6773C /* Frameworks */,
+				8878444007B25F9CD20E6469 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -255,14 +255,6 @@
 			path = "View Controllers";
 			sourceTree = "<group>";
 		};
-		570EC1802E93643D6DD6773C /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				7C0DAEA6CC3BFFFAEA5E0253 /* Pods_goodswimmer.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		8661EB0825E5FB5600F080B1 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
@@ -271,11 +263,19 @@
 			path = Tests;
 			sourceTree = "<group>";
 		};
+		8878444007B25F9CD20E6469 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				107AE72A5357DE321AE0734D /* Pods_goodswimmer.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		FA14938E7F2743884AD318A7 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				6851900940519F2FF799F5F0 /* Pods-goodswimmer.debug.xcconfig */,
-				6402AA5630E2F3E8BA832D9C /* Pods-goodswimmer.release.xcconfig */,
+				4CD40CBE3B34D1C382437751 /* Pods-goodswimmer.debug.xcconfig */,
+				10BC7740A943DFCA2575A740 /* Pods-goodswimmer.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -287,12 +287,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 04EB0DFE24327B5500B532F8 /* Build configuration list for PBXNativeTarget "goodswimmer" */;
 			buildPhases = (
-				BA9A129458B4B5587FD8637A /* [CP] Check Pods Manifest.lock */,
+				3A7D53BA10896CC397EDCAD8 /* [CP] Check Pods Manifest.lock */,
 				04EB0DE624327B5000B532F8 /* Sources */,
 				04EB0DE724327B5000B532F8 /* Frameworks */,
 				04EB0DE824327B5000B532F8 /* Resources */,
-				66193BCD225BDC566731B9DE /* [CP] Embed Pods Frameworks */,
-				ED8437C4BCE6A8FB19680F75 /* [CP] Copy Pods Resources */,
+				7F812E1DF09E74DB00F1E323 /* [CP] Embed Pods Frameworks */,
+				5D146B625DC6AE2AAB8D1D83 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -358,24 +358,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		66193BCD225BDC566731B9DE /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-goodswimmer/Pods-goodswimmer-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-goodswimmer/Pods-goodswimmer-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-goodswimmer/Pods-goodswimmer-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		BA9A129458B4B5587FD8637A /* [CP] Check Pods Manifest.lock */ = {
+		3A7D53BA10896CC397EDCAD8 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -397,7 +380,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		ED8437C4BCE6A8FB19680F75 /* [CP] Copy Pods Resources */ = {
+		5D146B625DC6AE2AAB8D1D83 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -412,6 +395,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-goodswimmer/Pods-goodswimmer-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7F812E1DF09E74DB00F1E323 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-goodswimmer/Pods-goodswimmer-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-goodswimmer/Pods-goodswimmer-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-goodswimmer/Pods-goodswimmer-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -601,7 +601,7 @@
 		};
 		04EB0DFF24327B5500B532F8 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6851900940519F2FF799F5F0 /* Pods-goodswimmer.debug.xcconfig */;
+			baseConfigurationReference = 4CD40CBE3B34D1C382437751 /* Pods-goodswimmer.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -620,7 +620,7 @@
 		};
 		04EB0E0024327B5500B532F8 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6402AA5630E2F3E8BA832D9C /* Pods-goodswimmer.release.xcconfig */;
+			baseConfigurationReference = 10BC7740A943DFCA2575A740 /* Pods-goodswimmer.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

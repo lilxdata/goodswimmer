@@ -188,15 +188,6 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate,
         
         containerView.removeConstraints(containerView.constraints)
         bioButton.addTarget(self, action:#selector(bioButtonTapped), for: .touchUpInside)
-        /*if(curUser){
-            constraintsBuilder(item: profileImage!, superview: containerView, leading: 21, top: 31, height: 129, width: 129, centerX: false, centerY: false)
-            constraintsBuilder(item: bioLabel!, superview: containerView, leading: 169, top: 58, height: 39, width: 216, centerX: false, centerY: false)
-            constraintsBuilder(item: bioTextField!, superview: containerView, leading: 169, top: 58, height: 39, width: 216, centerX: false, centerY: false)
-            constraintsBuilder(item: bioButton!, superview: containerView, leading: 359, top: 128, height: 17, width: 16, centerX: false, centerY: false)
-            constraintsBuilder(item: containerView, superview: containerView.superview! as Any, leading: -1, top: -1, height: 161, width: -1 , centerX: true, centerY: false)
-            constraintsBuilder(item: cancelBioUpdateButton!, superview: containerView, leading: 338, top: 128, height: 17, width: 16, centerX: false, centerY: false)
-        }*/
-        //else {
             constraintsBuilder(item: profileImage!, superview: containerView, leading: -1, top: 31, height: 200, width: 200, centerX: true, centerY: false)
             constraintsBuilder(item: bioLabel!, superview: containerView, leading: -1, top: 262, height: 39, width: 216, centerX: true, centerY: false)
             constraintsBuilder(item: bioTextField!, superview: containerView, leading: -1, top: 262, height: 39, width: 216, centerX: true, centerY: false)
