@@ -29,6 +29,7 @@ class HomeViewController: UIViewController {
     let notClicked = UIImage.imageWithColor(color: .white, size: CGSize(width: 50, height: 50))
     let clicked = UIImage.imageWithColor(color: .black, size: CGSize(width: 50, height: 50))
     let animated = UIImage.imageWithColor(color: Utilities.getRedUI(), size: CGSize(width: 50, height: 50))
+    var viewAll = false
     
     var notif: Notifications?
     
@@ -50,7 +51,10 @@ class HomeViewController: UIViewController {
             return 1
         }
         REGEX_TESTS.run_regex()
-
+        notif!.showHomeAll(_sender: self.zeroStateView, message: "Oh hi! Welcome to Good Swimmer\n\nThis screen is your feed. Normally, events will appear here from people, spaces, and lists you follow.\n\nFor testing purposes, click below for a full view of users and events!\n\nALL USERS\n\nALL EVENTS")
+        let showAll = zeroStateView.subviews[1] as! UIButton
+        showAll.addTarget(self, action: #selector(self.revealAll), for: .touchUpInside)
+        
         
         let listMenuWidth = 320
         let listMenuHeight = 400
@@ -152,6 +156,14 @@ class HomeViewController: UIViewController {
         }
     }
     
+    
+    // Reveal all events in the Home View Controller
+    @objc func revealAll(sender: UIButton) {
+        print(self.viewAll)
+        self.viewAll = true
+        self.sortTableView(sortBy: "start_date")
+    }
+    
     @objc func pressed(_sender: UIButton!) {
         print("I pressed")
         //_sender.isSelected = true
@@ -166,7 +178,6 @@ class HomeViewController: UIViewController {
     }
     
     @objc func closeAddTolistMenu(_sender: UIButton!) {
-        print("I am getting my parent")
         print(_sender.superview)
         _sender.superview?.superview?.isHidden = true
         
@@ -281,15 +292,24 @@ class HomeViewController: UIViewController {
                                     let eventDate = (document.get("start_date") as! Timestamp).dateValue()
                                     let currentDate = NSDate() as Date
                                     let eventUsername = document.get("username") as! String
-                                    if(eventDate > currentDate && (followers.contains(eventUsername) || eventUsername == Auth.auth().currentUser?.displayName)){
+                                    print("I am getting events")
+                                    print(self.viewAll)
+                                    print(eventData)
+                                    if(self.viewAll || (eventDate > currentDate && (followers.contains(eventUsername) || eventUsername == Auth.auth().currentUser?.displayName))){
+                                        print("am I getting here?")
                                         if let event = Event(eventDict: eventData) {
                                             self.eventArray.events.append(event)
                                         }
+                                        print(self.eventArray.events)
                                     }
                                 }
                                 self.tableView.reloadData()
+                                print(self.eventArray.events.count)
                                 if self.eventArray.events.count == 0 {
                                     self.zeroStateView.isHidden = false
+                                }
+                                else {
+                                    self.zeroStateView.isHidden = true
                                 }
                             }
                         }

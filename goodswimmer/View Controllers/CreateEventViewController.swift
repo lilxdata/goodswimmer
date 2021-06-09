@@ -163,7 +163,7 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate {
                 } else {
                     self.addImageButton.sd_setImage(with: url, for: .normal, completed: {_,_,_,_ in
                                                         let image = self.addImageButton.image(for: .normal)
-                                                        let newWidth = 200
+                                                        let newWidth = 69
                                                         let newHeight = 69
                                                         UIGraphicsBeginImageContext(CGSize(width: newWidth, height: newHeight))
                                                         image?.draw(in: CGRect(x: 0, y: 0, width: newWidth, height: newHeight))
@@ -172,8 +172,6 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate {
                                                         self.addImageButton.setImage(newImage, for: .normal)
                         
                     })
-                    print(self.addImageButton.frame)
-                    
                 }
             }
         }

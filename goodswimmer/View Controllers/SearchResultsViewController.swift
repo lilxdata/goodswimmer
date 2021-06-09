@@ -157,9 +157,6 @@ extension SearchResultsViewController : UITableViewDelegate, UITableViewDataSour
                     group.leave()
                 }
                 group.notify(queue: .main) {
-                    print(following)
-                    print(profile_view.profileOwner.username!)
-                    print(following.contains(profile_view.profileOwner.username!))
                     if(following.contains(profile_view.profileOwner.username!)){
                         profile_view.followActive = true
                     }

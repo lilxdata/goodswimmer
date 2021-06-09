@@ -9,6 +9,7 @@
 import UIKit
 import MapKit
 import FirebaseFirestore
+import FirebaseAuth
 
 class SearchViewController: UIViewController {
     var searchController: UISearchController!
@@ -27,7 +28,7 @@ class SearchViewController: UIViewController {
     @IBOutlet weak var topEventDisplay: UIButton!
     @IBOutlet weak var topListDisplay1: UIButton!
     @IBOutlet weak var topListDisplay2: UIButton!
-    
+    @IBOutlet weak var temporaryShowAllUsersButton: UIButton!
     
     
     override func viewDidLoad() {
@@ -48,8 +49,32 @@ class SearchViewController: UIViewController {
         setMapLocation(address: "200 Hurd Rd, Swan Lake, NY 12783")
         
         
-        
+        let notif = Notifications()
+        notif.showHomeAll(_sender: self.view, message: "For testing purposes you can click below for a full list of everything happening on the app!\n\nALL USERS\n\nALL EVENTS")
+        let showAll = view.subviews[1] as! UIButton
+        print(view.subviews)
+        showAll.addTarget(self, action: #selector(self.followAllUsers), for: .touchUpInside)
     }
+    
+    @objc func followAllUsers(sender: UIButton){
+        let db = Firestore.firestore()
+        let users = db.collection("users").order(by: "username")
+        users.getDocuments() { (querySnapshot, err) in
+            if let err = err {
+                print("Error getting documents: \(err)")
+            } else {
+            for document in querySnapshot!.documents {
+                let userID = document.get("userId") as! String
+                let username = document.get("username") as! String
+                    db.collection("users").document(userID).updateData([
+                        "followers" : FieldValue.arrayUnion([Auth.auth().currentUser!.displayName!])
+                    ])
+                    
+                    db.collection("users").document(Auth.auth().currentUser!.uid).updateData([
+                        "following" : FieldValue.arrayUnion([username])
+                    ])
+         
+            }}}}
     
     func searchForTopUser(_ searchTerm: String){
         var topUserEditDistance = [2^32,2^32] //[Current,Previous]
@@ -165,7 +190,12 @@ class SearchViewController: UIViewController {
         topListDisplay2.titleLabel?.numberOfLines = 3
         topListDisplay2.backgroundColor = Utilities.getRedUI()
         topListDisplay2.tintColor = UIColor.white
-
+        
+        temporaryShowAllUsersButton.setTitleColor(Utilities.getRedUI(), for: .normal)
+        temporaryShowAllUsersButton.titleLabel?.textAlignment = .center
+        temporaryShowAllUsersButton.titleLabel?.font = UIFont(name: "CutiveMono-Regular", size: 21)
+        temporaryShowAllUsersButton.setTitle("Show all users!", for: .normal)
+        
         hideSearchResults(isHidden: true)
         self.mapView.isHidden = true
         self.mappedEvent.isHidden = true
