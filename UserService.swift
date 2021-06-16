@@ -9,10 +9,16 @@
 import Foundation
 import Firebase
 
+// JUNE 2021 TODO: Create more placeholders for the new user generation
+
 class UserService {
-    let db = Firestore.firestore()
+    let db = Firestore.firestore() // Firebase database
+    // Shared instances allows multiple view controllers to use these functions
+    // without having to instantiate a new class each time
     static let sharedInstance = UserService()
     
+    
+    // Retrieves the bio of the current user
     func getCurrentBio() -> String {
         let curUser = db.collection("users").document(Auth.auth().currentUser!.uid)
         var bioRetreived:String = ""        
@@ -26,6 +32,8 @@ class UserService {
         return bioRetreived
     }
     
+    
+    // Creates firebase user using username and userID, followers, following, and bio are blank
     func createFirestoreUser(username: String, userID: String) {
         //This is the create user functionality, could benefit from a userService class
         let userDict = [

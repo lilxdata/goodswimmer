@@ -9,14 +9,16 @@
 import Foundation
 
 class LocalStorageService {
+    
+    // Creates a user with preset constants
     static func saveCurrentUser(user: User) {
         // Get standard user defaults
-        
         let defaults = UserDefaults.standard
         defaults.set(user.userId, forKey: Constants.LocalStorage.storedUserId)
         defaults.set(user.username, forKey: Constants.LocalStorage.storedUsername)
     }
     
+    // Gets current user to to be updated in individual view controllers
     static func loadCurrentUser() -> User? {
         // Get standard user defaults
         

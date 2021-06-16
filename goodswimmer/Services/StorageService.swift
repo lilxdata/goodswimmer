@@ -31,8 +31,8 @@ struct StorageService {
                     return completion(nil)
                 }
                 completion(url)
+            })
         })
-    })
-    
-}
+        
+    }
 }

@@ -18,7 +18,7 @@ class EventService {
     // without having to instantiate a new class each time
     let eventArray = EventArray.sharedInstance
     static let sharedInstance = EventService()
-
+    
     
     // Uploads image using UIImage object type
     // Requires id for firebase storage as well as a filename
@@ -35,8 +35,8 @@ class EventService {
             
             self.db.collection("events").document(id).setData([
                 "photoURL": urlString
-                ], merge: true
-                )
+            ], merge: true
+            )
         }
     }
     
@@ -44,11 +44,11 @@ class EventService {
     // Creates an event in Firebase using the event dictionary model
     func createEvent(dictionary: [String: Any], uuid: String) {
         db.collection("events").document(uuid).setData(dictionary, merge: true) { err in
-                   if let err = err {
-                       print("Error")
-                   } else {
-                       print("The event was successfully written to Firebase!")  // event created success pop up
-                   }
-               }
+            if let err = err {
+                print("Error creating event: ", err)
+            } else {
+                print("The event was successfully written to Firebase!")  // event created success pop up
+            }
+        }
     }
 }
