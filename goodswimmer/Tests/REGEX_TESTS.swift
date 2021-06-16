@@ -6,15 +6,24 @@
 //  Copyright © 2021 madi. All rights reserved.
 //
 
+
+// JUNE 2021 TODO: Add more tests and automate testing -> gather
+// what are "valid inputs" and check to see if the validator
+// reported only valid inputs correctly.
+
 import Foundation
 class REGEX_TESTS {
     
+    // Call this function in a view did load to check these tests
     static func run_regex() -> Void {
         run_regex_date_test()
         run_regex_street_num_test()
         run_regex_name_test()
     }
-
+    
+    
+    // Runs regular expression test on strings as dates.
+    // This function does not return any values
     static func run_regex_date_test() -> Void {
         date_regex_tester(dateString: "07/31/2050")
         date_regex_tester(dateString: "7/31/2050")
@@ -35,6 +44,8 @@ class REGEX_TESTS {
 
     }
     
+    // Runs regular expression test on strings as addresses.
+    // This function does not return any values
     static func run_regex_street_num_test() -> Void {
         street_num_regex_tester(addr: "860 E 119th ST.")
         street_num_regex_tester(addr: "860 E 119th ST")
@@ -43,21 +54,26 @@ class REGEX_TESTS {
         street_num_regex_tester(addr: "860 ")
     }
     
+    
+    // Runs regular expression test on strings as names.
+    // This function does not return any values
     static func run_regex_name_test() -> Void {
         name_regex_tester(name: "Tony Stark")
         name_regex_tester(name: "Chinw'e Okona")
         name_regex_tester(name: "Chinwe Okonafdsaffs")
     }
     
+    // Prints dateString and whether or not it's a valid date
     static func date_regex_tester(dateString: String) -> Void {
         print("dateString is", dateString, Validators.isDateValid(dateString))
     }
     
-    
+    // Prints addr and whether or not it's a valid address
     static func street_num_regex_tester(addr: String) -> Void {
         print("addr is", addr, Validators.isStreetNumberValid(addr))
     }
     
+    // Prints name and whether or not it's a valid name
     static func name_regex_tester(name: String) -> Void {
         print("name is", name, Validators.isNameValid(name))
     }
