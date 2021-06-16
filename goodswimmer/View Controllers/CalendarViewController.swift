@@ -8,8 +8,10 @@
 
 import UIKit
 
+// Template for a page with just a calendar
+
 class CalendarViewController: UIViewController {
-        
+    
     @IBOutlet weak var navBar: UINavigationBar!
     @IBOutlet weak var testEventButton: UIButton!
     
@@ -19,7 +21,6 @@ class CalendarViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpElements()
-        print(eventsToday)
         var todaysEvents = ""
         for event in eventsToday {
             todaysEvents += (event?.name ?? "") + "\n"
@@ -27,7 +28,7 @@ class CalendarViewController: UIViewController {
         testEventButton.titleLabel?.numberOfLines = 10
         testEventButton.setTitle(todaysEvents, for: .normal
         )
-       
+        
     }
     
     
@@ -35,13 +36,11 @@ class CalendarViewController: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
     
-
-    
     func setUpElements() {
         print("setting up stuff")
     }
     
-
+    
     
     
 }

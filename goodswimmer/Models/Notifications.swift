@@ -9,10 +9,10 @@
 import Foundation
 import UIKit
 
+// This class was made to display the pop ups seen in good swimmer
+ 
 class Notifications: UIView {
-    
-        
-    
+    // Adds a success pop up with given input as message
     func addSuccessPopUp(_sender: UIView, message: String) {
         //Initialize frame
         let xPos = 80//(_sender.frame.width)*0.1
@@ -33,7 +33,7 @@ class Notifications: UIView {
         _sender.addSubview(successMessageButton)
     }
     
-    
+    // Closes the notification
     @objc func closeNotif(sender: UIView) {
         //Close the view
         sender.removeFromSuperview()
@@ -52,7 +52,7 @@ class Notifications: UIView {
     }
     
 
-    
+    // Adds a  pop up with given input as message
     func showHomeAll(_sender: UIView, message: String) {
         //Initialize frame
         let xPos = 48
@@ -61,8 +61,6 @@ class Notifications: UIView {
         let height = 475
         let button = UIButton(type: UIButton.ButtonType.system)
         button.frame = CGRect(x: xPos, y: yPos, width:width, height:height)
-        
-        
         
         //Customize Notification Display
         button.setTitle(message, for: .normal)

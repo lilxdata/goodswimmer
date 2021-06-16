@@ -35,22 +35,22 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate,
     
     //Calendar Vars
     var firstDate: Date?
-        var lastDate: Date?
-        var datesRange: [Date]?
-        fileprivate let gregorian = Calendar(identifier: .gregorian)
-        fileprivate let formatter: DateFormatter = {
-            let formatter = DateFormatter()
-            formatter.dateFormat = "yyyy-MM-dd"
-            return formatter
-        }()
-        let highlightedColorForRange = UIColor.init(red: 2/255, green: 138/255, blue: 75/238, alpha: 0.2)
-
-
+    var lastDate: Date?
+    var datesRange: [Date]?
+    fileprivate let gregorian = Calendar(identifier: .gregorian)
+    fileprivate let formatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        return formatter
+    }()
+    let highlightedColorForRange = UIColor.init(red: 2/255, green: 138/255, blue: 75/238, alpha: 0.2)
+    
+    
     
     
     // Get a reference to the storage service using the default Firebase App
     let storage = Storage.storage()
-
+    
     // Create a storage reference from our storage service
     let storageRef = Storage.storage().reference()
     
@@ -73,7 +73,7 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate,
     @IBOutlet weak var updateBioButton: UIButton!
     
     @IBOutlet weak var followButton: UIButton!
-
+    
     @IBOutlet weak var cancelBioUpdateButton: UIButton!
     
     @IBOutlet weak var calendarView: UIView!
@@ -87,7 +87,7 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate,
         self.profileLinkTextField.isHidden = true
         self.profileLink.isHidden = false
         cancelProfileLink.isHidden = true
-
+        
     }
     @IBAction func updateProfileLinkPressed(_ sender: Any) {
         if(updateLinkActive == false){
@@ -139,36 +139,36 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate,
         }
     }
     @IBAction func profileImageTapped(_ sender: Any) {
-
+        
         if(self.profileOwner.userId == self.user?.uid){
-        photoHelper.completionHandler =  { image in
-            //make unique identifier for image
-            let photoid = Auth.auth().currentUser!.uid
-            let imageRef = Storage.storage().reference().child(photoid+".jpg")
-            Storage.storage().reference().child(photoid + ".jpg").delete {_ in }
-            StorageService.uploadImage(image, at: imageRef) { (downloadURL) in
-                guard let downloadURL = downloadURL else {
-                    return
+            photoHelper.completionHandler =  { image in
+                //make unique identifier for image
+                let photoid = Auth.auth().currentUser!.uid
+                let imageRef = Storage.storage().reference().child(photoid+".jpg")
+                Storage.storage().reference().child(photoid + ".jpg").delete {_ in }
+                StorageService.uploadImage(image, at: imageRef) { (downloadURL) in
+                    guard let downloadURL = downloadURL else {
+                        return
+                    }
+                    let db = Firestore.firestore()
+                    db.collection("users").document(Auth.auth().currentUser!.uid).updateData(["photoURL" : downloadURL.absoluteString])
+                    let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
+                    changeRequest?.photoURL = URL(string: downloadURL.absoluteString)
+                    self.profileImage.sd_setImage(with: downloadURL, for: self.state, completed: {_,_,_,_ in
+                        var image = self.profileImage.image(for: .normal)?.roundedImage
+                        image = self.resizeAsCircleImage(image: image! , newRadius: CGFloat(35/2))
+                        self.tabBarController?.tabBar.items?[1].image = image
+                        self.tabBarController?.tabBar.items?[1].image = self.tabBarController?.tabBar.items?[1].image!.withRenderingMode(.alwaysOriginal)
+                        self.tabBarController?.tabBar.items?[1].selectedImage = self.tabBarController?.tabBar.items?[1].image!.withRenderingMode(.alwaysOriginal)
+                    })
+                    changeRequest?.commitChanges { (error) in
+                    }    
                 }
-                let db = Firestore.firestore()
-                db.collection("users").document(Auth.auth().currentUser!.uid).updateData(["photoURL" : downloadURL.absoluteString])
-                let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
-                changeRequest?.photoURL = URL(string: downloadURL.absoluteString)
-                self.profileImage.sd_setImage(with: downloadURL, for: self.state, completed: {_,_,_,_ in
-                    var image = self.profileImage.image(for: .normal)?.roundedImage
-                    image = self.resizeAsCircleImage(image: image! , newRadius: CGFloat(35/2))
-                    self.tabBarController?.tabBar.items?[1].image = image
-                    self.tabBarController?.tabBar.items?[1].image = self.tabBarController?.tabBar.items?[1].image!.withRenderingMode(.alwaysOriginal)
-                    self.tabBarController?.tabBar.items?[1].selectedImage = self.tabBarController?.tabBar.items?[1].image!.withRenderingMode(.alwaysOriginal)
-                })
-              changeRequest?.commitChanges { (error) in
-                }    
             }
-        }
-        photoHelper.presentActionSheet(from: self)
+            photoHelper.presentActionSheet(from: self)
         }
     }
-         
+    
     func resizeAsCircleImage(image: UIImage, newRadius: CGFloat) -> UIImage {
         UIGraphicsBeginImageContext(CGSize(width: newRadius*2, height: newRadius*2))
         image.draw(in: CGRect(x: 0, y: 0, width: newRadius*2, height: newRadius*2))
@@ -181,17 +181,17 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate,
     func constraintsBuilder(item: Any, superview: Any, leading: Int, top: Int, height: Int, width: Int, centerX: Bool, centerY: Bool){
         let iPhoneH = view.fs_height
         let iPhoneW = view.fs_width
-       
+        
         let frameH = CGFloat(1/iPhoneH)
         let frameW = CGFloat(1/iPhoneW)
-
+        
         var leadingEdgeConstraint: NSLayoutConstraint
         var topSpaceConstraint: NSLayoutConstraint
         var hConstraint: NSLayoutConstraint
         var wConstraint: NSLayoutConstraint
         var centerXConstraint: NSLayoutConstraint
         var centerYConstraint: NSLayoutConstraint
-
+        
         if leading > 0 {
             leadingEdgeConstraint = NSLayoutConstraint(item: item, attribute: .leading, relatedBy: .equal, toItem: superview, attribute: .leading, multiplier: 1.0, constant: CGFloat(leading))
             view.addConstraint(leadingEdgeConstraint)
@@ -225,7 +225,7 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate,
         
         containerView.removeConstraints(containerView.constraints)
         bioButton.addTarget(self, action:#selector(bioButtonTapped), for: .touchUpInside)
-            constraintsBuilder(item: profileImage!, superview: containerView, leading: -1, top: 31, height: 200, width: 200, centerX: true, centerY: false)
+        constraintsBuilder(item: profileImage!, superview: containerView, leading: -1, top: 31, height: 200, width: 200, centerX: true, centerY: false)
         constraintsBuilder(item: bioLabel!, superview: containerView, leading: -1, top: 262, height: 39, width: 216, centerX: true, centerY: false)
         constraintsBuilder(item: bioTextField!, superview: containerView, leading: -1, top: 262, height: 39, width: 216, centerX: true, centerY: false)
         constraintsBuilder(item: containerView, superview: containerView.superview as Any, leading: -1, top: -1, height: 50+295, width: -1, centerX: true, centerY: false)
@@ -253,7 +253,7 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate,
         usernameLabel.text = profileOwner.username
         usernameLabel.textAlignment = .center
         
-
+        
         Utilities.styleLabel(followButton.titleLabel!, size: 15, uppercase: true)
         if(followActive){
             followButton.setTitle("UNFOLLOW", for: .normal)
@@ -277,7 +277,7 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate,
             signOutButton.titleLabel?.textAlignment = .center
             signOutButton.isHidden = false
             
-
+            
             set_photo(button: updateBioButton, name: "change_bio_button.png")
             set_photo(button:updateProfileLink, name: "change_bio_button.png")
             updateBioButton.isHidden = false
@@ -287,25 +287,25 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate,
         }
         else{
             signOutButton.isHidden = true
-
+            
             updateBioButton.isHidden = true
             bioLabel.textAlignment = .center
             followButton.isHidden = false
             followButton.superview?.isHidden = false
         }
-
+        
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         updateViewController(curUser: self.isCurUser)
         calendarView.addSubview(calendar)
         formatCalendar(calendar: calendar, profile_vc: self)
-
-
         
         
-
+        
+        
+        
         self.bioTextField.isHidden = true
         let db = Firestore.firestore()
         let curUser = db.collection("users").document(Auth.auth().currentUser!.uid)
@@ -313,25 +313,25 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate,
             if let document = document, document.exists {
                 var photoURL = URL(string: self.profileOwner.photoURL ?? Constants.Placeholders.placeholderURL)
                 if(self.isCurUser){
-                self.myEventsArr = document.get("events") as! [String]
-                
-                self.profileOwner.bio = document.get("bio") as? String
-                self.profileOwner.events = document.get("events") as! [String]
-                self.profileOwner.followers = document.get("followers") as! [String]
-                self.profileOwner.following = document.get("following") as! [String]
-                self.profileOwner.photoURL = document.get("photoURL") as! String
-                self.profileOwner.userId = document.get("userId") as! String
-                self.profileOwner.username = document.get("username") as! String
+                    self.myEventsArr = document.get("events") as! [String]
+                    
+                    self.profileOwner.bio = document.get("bio") as? String
+                    self.profileOwner.events = document.get("events") as! [String]
+                    self.profileOwner.followers = document.get("followers") as! [String]
+                    self.profileOwner.following = document.get("following") as! [String]
+                    self.profileOwner.photoURL = document.get("photoURL") as! String
+                    self.profileOwner.userId = document.get("userId") as! String
+                    self.profileOwner.username = document.get("username") as! String
                     self.profileOwner.profileLink = document.get("profileLink") as! String
                     photoURL = URL(string: document.get("photoURL") as! String)
                 }
                 self.profileImage.sd_setImage(with: photoURL, for: self.state, completed:
-                    {_,_,_,_ in
-                        self.profileImage.imageView?.makeRounded(_cornerRadius: self.profileImage.frame.height)
-
-                        self.calendar.reloadData()
-                        self.bioLabel.text = self.profileOwner.bio
-                    })
+                                                {_,_,_,_ in
+                                                    self.profileImage.imageView?.makeRounded(_cornerRadius: self.profileImage.frame.height)
+                                                    
+                                                    self.calendar.reloadData()
+                                                    self.bioLabel.text = self.profileOwner.bio
+                                                })
                 self.setUpElements()
             } else {
                 print("Error retreiving bio")
@@ -339,13 +339,13 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate,
         }
         
         
-
         
         
-
+        
+        
     }
     
-
+    
     //TODO: set user as not logged in...?
     @IBAction func signOutTapped(_ sender: Any) {
         do {
@@ -367,12 +367,12 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate,
         present(loginViewController, animated: true, completion: nil)
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-     //   return selectedEvent?.attendees?.count ?? 0 //number of attendees
+        //   return selectedEvent?.attendees?.count ?? 0 //number of attendees
         return 3
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-            return UICollectionViewCell()
+        return UICollectionViewCell()
     }
     
     fileprivate lazy var dateFormatter2: DateFormatter = {
@@ -386,16 +386,16 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate,
         let imageRef = Storage.storage().reference().child(name)
         // Fetch the download URL
         imageRef.downloadURL { [self] url, error in
-          if let error = error {
-            // Handle any errors
-            print("Error retreiving stock photo:",error)
-          } else {
-            button.sd_setImage(with: url, for: state, completed: nil)
-          }
+            if let error = error {
+                // Handle any errors
+                print("Error retreiving stock photo:",error)
+            } else {
+                button.sd_setImage(with: url, for: state, completed: nil)
+            }
         }
-       
+        
     }
-
+    
     
     
     @IBAction func followButtonPressed(_ sender: Any) {
@@ -430,7 +430,7 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate,
 }
 
 extension ProfileViewController {
-
+    
     func configureVisibleCells() {
         self.calendar.visibleCells().forEach { (cell) in
             let date = self.calendar.date(for: cell)
@@ -438,7 +438,7 @@ extension ProfileViewController {
             self.configureCell(cell, for: date, at: position)
         }
     }
-
+    
     func configureCell(_ cell: FSCalendarCell?, for date: Date?, at position: FSCalendarMonthPosition) {
         let diyCell = (cell as! DIYCalendarCell)
         
@@ -451,31 +451,31 @@ extension ProfileViewController {
         }
         // original code https://stackoverflow.com/questions/58424445/how-to-customise-cell-in-fscalendar
     }
-
+    
     func datesRange(from: Date, to: Date) -> [Date] {
         // in case of the "from" date is more than "to" date,
         // it should returns an empty array:
         if from > to { return [Date]() }
-
+        
         var tempDate = from
         var array = [tempDate]
-
+        
         while tempDate < to {
             tempDate = Calendar.current.date(byAdding: .day, value: 1, to: tempDate)!
             array.append(tempDate)
         }
-
+        
         return array
     }
-
+    
 }
 
 extension ProfileViewController:FSCalendarDelegate,FSCalendarDataSource,FSCalendarDelegateAppearance {
-
+    
     func calendar(_ calendar: FSCalendar, boundingRectWillChange bounds: CGRect, animated: Bool) {
         self.calendar.frame.size.height = bounds.height
     }
-
+    
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         
         let formatter = DateFormatter()
@@ -507,10 +507,10 @@ extension ProfileViewController:FSCalendarDelegate,FSCalendarDataSource,FSCalend
             firstDate = date
             datesRange = [firstDate!]
             print("datesRange contains: \(datesRange!)")
-             configureVisibleCells()
+            configureVisibleCells()
             return
         }
-
+        
         // only first date is selected:
         if firstDate != nil && lastDate == nil {
             // handle the case of if the last date is less than the first date:
@@ -518,61 +518,61 @@ extension ProfileViewController:FSCalendarDelegate,FSCalendarDataSource,FSCalend
                 calendar.deselect(firstDate!)
                 firstDate = date
                 datesRange = [firstDate!]
-
+                
                 print("datesRange contains: \(datesRange!)")
                 configureVisibleCells()
                 return
             }
-
+            
             let range = datesRange(from: firstDate!, to: date)
-
+            
             lastDate = range.last
-
+            
             for d in range {
                 calendar.select(d)
             }
-
+            
             datesRange = range
-
+            
             print("datesRange contains: \(datesRange!)")
             configureVisibleCells()
             return
         }
-
+        
         // both are selected:
         if firstDate != nil && lastDate != nil {
             for d in calendar.selectedDates {
                 calendar.deselect(d)
             }
-
+            
             lastDate = nil
             firstDate = nil
-
+            
             datesRange = []
-
+            
             print("datesRange contains: \(datesRange!)")
         }
         configureVisibleCells()
     }
-
-
+    
+    
     func calendar(_ calendar: FSCalendar, cellFor date: Date, at position: FSCalendarMonthPosition) -> FSCalendarCell {
         let cell = calendar.dequeueReusableCell(withIdentifier: "cell", for: date, at: position)
         return cell
     }
-
+    
     func calendar(_ calendar: FSCalendar, willDisplay cell: FSCalendarCell, for date: Date, at monthPosition: FSCalendarMonthPosition) {
         self.configureCell(cell, for: date, at: monthPosition)
     }
-
+    
     func calendar(_ calendar: FSCalendar, shouldSelect date: Date, at monthPosition: FSCalendarMonthPosition) -> Bool {
         return monthPosition == FSCalendarMonthPosition.current
     }
-
+    
     func calendar(_ calendar: FSCalendar, shouldDeselect date: Date, at monthPosition: FSCalendarMonthPosition) -> Bool {
         return false
     }
-
+    
     func calendar(_ calendar: FSCalendar, didDeselect date: Date, at monthPosition: FSCalendarMonthPosition) {
         print("did deselect date \(self.formatter.string(from: date))")
         configureVisibleCells()
@@ -617,7 +617,7 @@ extension ProfileViewController:FSCalendarDelegate,FSCalendarDataSource,FSCalend
         }
         
         return nil //add your color for default
-
+        
     }
-
+    
 }

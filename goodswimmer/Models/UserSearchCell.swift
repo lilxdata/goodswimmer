@@ -12,6 +12,8 @@ import SDWebImage
 import FirebaseFirestore
 import FirebaseAuth
 
+// JUNE 2021 TODO: Use consolidated follow function.
+
 class UserSearchCell: UITableViewCell {
     
     @IBOutlet weak var profileImage: UIImageView!
@@ -23,10 +25,12 @@ class UserSearchCell: UITableViewCell {
     var userToDisplay: User?
     var followState = false
     
+    
+    // Follow function for each button in the collection view
     @IBAction func followUser(_ sender: Any) {
         let db = Firestore.firestore()
         let curUser = db.collection("users").document(Auth.auth().currentUser!.uid)
-
+        
         curUser.getDocument { (document, error) in
             if let document = document, document.exists {
                 self.followState = !self.followState
@@ -57,7 +61,7 @@ class UserSearchCell: UITableViewCell {
         }
     }
     
-    
+    // Controls how a user is displayed in the collection view
     func displayUser(_ user: User) {
         userToDisplay = user
         let imageURL = URL(string: userToDisplay?.photoURL ?? Constants.Placeholders.placeholderURL)
@@ -91,6 +95,7 @@ class UserSearchCell: UITableViewCell {
         }
     }
     
+    // Style elements in this class
     func customizeElements() {
         Utilities.styleLabelBold(username, size: 15,  uppercase: false)
         Utilities.styleLabel(bio, size: 15,  uppercase: false)

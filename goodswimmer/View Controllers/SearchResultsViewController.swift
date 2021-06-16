@@ -24,7 +24,7 @@ class SearchResultsViewController: UIViewController {
         searchResults.delegate = self
         searchResults.dataSource = self
         loadUsers()
-    
+        
         
         func numberOfSections(in searchResults: UITableView) -> Int {
             return 1
@@ -32,27 +32,27 @@ class SearchResultsViewController: UIViewController {
         
         let photoid = Auth.auth().currentUser!.uid
         let imageRef = Storage.storage().reference().child(photoid+".jpg")
- 
+        
         imageRef.downloadURL { url, error in
-          if let error = error {
-            // Handle any errors
-            print(error)
-          } else {
+            if let error = error {
+                // Handle any errors
+                print(error)
+            } else {
                 let profileImageView = UIImageView()
                 //Get the Profile Image
                 profileImageView.sd_setImage(with: url, completed:{ (image, error, cacheType, imageURL) in
                     let size = 35
                     //Resize the image for the tab bar
                     profileImageView.image = self.resizeAsCircleImage(image: (profileImageView.image)!, newRadius: CGFloat(size/2))
-
-               })
-          }
+                    
+                })
+            }
         }
-
+        
         
     }
-
-
+    
+    
     /*This function resizes an image with same scale as original*/
     func resizeImage(image: UIImage, newWidth: CGFloat) -> UIImage {
         let scale = newWidth / image.size.width
@@ -61,7 +61,7 @@ class SearchResultsViewController: UIViewController {
         image.draw(in: CGRect(x: 0, y: 0, width: newWidth, height: newHeight))
         let newImage = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
-
+        
         return newImage
     }
     
@@ -82,9 +82,9 @@ class SearchResultsViewController: UIViewController {
                 print("Error getting documents: \(err)")
             } else {
                 for document in querySnapshot!.documents {
-
+                    
                     let userURL_q = document.get("photoURL")
-
+                    
                     let userURL:String
                     if userURL_q == nil {
                         userURL = Constants.Placeholders.placeholderURL
@@ -93,7 +93,7 @@ class SearchResultsViewController: UIViewController {
                         userURL = userURL_q as! String
                     }
                     let userBio = document.get("bio") as! String
-                   
+                    
                     
                     let userEvents = document.get("events") as! [String]
                     let userFollowers = document.get("followers") as! [String]
@@ -114,7 +114,7 @@ class SearchResultsViewController: UIViewController {
 }
 
 extension SearchResultsViewController : UITableViewDelegate, UITableViewDataSource {
-
+    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return userArray.count
@@ -127,7 +127,7 @@ extension SearchResultsViewController : UITableViewDelegate, UITableViewDataSour
         
         //get user
         let user = userArray[indexPath.row]
-
+        
         //customize cell
         cell.displayUser(user)
         

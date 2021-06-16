@@ -12,6 +12,9 @@ import FirebaseAuth
 import FirebaseStorage
 import FirebaseFirestore
 
+
+// Class that controls tab bar 
+
 class MyTabBarController: UITabBarController, UITabBarControllerDelegate {
     
     var searchViewControllerReference = SearchViewController()
@@ -31,7 +34,7 @@ class MyTabBarController: UITabBarController, UITabBarControllerDelegate {
         
         let photoid = Auth.auth().currentUser!.uid
         let imageRef = Storage.storage().reference().child(photoid+".jpg")
- 
+        
         imageRef.downloadURL { url, error in
             let profileImageView = UIImageView()
             var photoURL: URL
@@ -53,7 +56,7 @@ class MyTabBarController: UITabBarController, UITabBarControllerDelegate {
                 //Set rendering to original so our photo shows up
                 self.tabBar.items?[1].selectedImage = self.tabBar.items?[1].image!.withRenderingMode(.alwaysOriginal)
                 self.tabBar.items?[1].image = self.tabBar.items?[1].image!.withRenderingMode(.alwaysOriginal)
-           })
+            })
         }
         
         //Resizing Tab Bar Icons
@@ -114,7 +117,7 @@ class MyTabBarController: UITabBarController, UITabBarControllerDelegate {
             hasHomeBeenLoaded = true //Keep track that this view has been loaded
         }
     }
-
+    
     // UITabBarControllerDelegate
     func tabBarController(tabBarController: UITabBarController, didSelectViewController viewController: UIViewController) {
         print("Selected view controller")
@@ -128,7 +131,7 @@ class MyTabBarController: UITabBarController, UITabBarControllerDelegate {
         image.draw(in: CGRect(x: 0, y: 0, width: newWidth, height: newHeight))
         let newImage = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
-
+        
         return newImage
     }
     

@@ -50,10 +50,10 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var ticketPriceLabel: UILabel!
     @IBOutlet weak var ticketPriceField: UITextField!
     @IBOutlet weak var inviteOnlyButton: UIButton!
-
+    
     @IBOutlet weak var multidayEventButton: UIButton!
     
-
+    
     
     @IBOutlet weak var virtualEventButton: UIButton!
     @IBOutlet weak var cancelMultiDate: UIButton!
@@ -90,7 +90,7 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate {
         
         loadStockPhotos()
         var filename = "checked"
-
+        
         // Do any additional setup after loading the view.
         
         let labelSize = 12
@@ -162,14 +162,14 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate {
                     print("An error occurred while setting the photo", error)
                 } else {
                     self.addImageButton.sd_setImage(with: url, for: .normal, completed: {_,_,_,_ in
-                                                        let image = self.addImageButton.image(for: .normal)
-                                                        let newWidth = 69
-                                                        let newHeight = 69
-                                                        UIGraphicsBeginImageContext(CGSize(width: newWidth, height: newHeight))
-                                                        image?.draw(in: CGRect(x: 0, y: 0, width: newWidth, height: newHeight))
-                                                        let newImage = UIGraphicsGetImageFromCurrentImageContext()
-                                                        UIGraphicsEndImageContext()
-                                                        self.addImageButton.setImage(newImage, for: .normal)
+                        let image = self.addImageButton.image(for: .normal)
+                        let newWidth = 69
+                        let newHeight = 69
+                        UIGraphicsBeginImageContext(CGSize(width: newWidth, height: newHeight))
+                        image?.draw(in: CGRect(x: 0, y: 0, width: newWidth, height: newHeight))
+                        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+                        UIGraphicsEndImageContext()
+                        self.addImageButton.setImage(newImage, for: .normal)
                         
                     })
                 }
@@ -422,7 +422,7 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate {
         }
         
     }
-    //Move this later
+    
     func addErrorPopUp(_sender: UIView, errorMessageInput: String?) {
         let errorMessage = "An error occurred:\n" + errorMessageInput!
         let xPos = (_sender.frame.width)*0.1
@@ -462,7 +462,7 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate {
         successMessageButton.setTitle("Your event was created!", for: .normal)
         successMessageButton.setTitleColor(UIColor.green, for: .normal)
         successMessageButton.contentHorizontalAlignment = .center
-
+        
         successPopUp.addSubview(successMessageButton)
         successMessageButton.titleLabel?.numberOfLines = 100
         _sender.addSubview(successPopUp)

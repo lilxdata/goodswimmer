@@ -16,7 +16,7 @@ import FirebaseAuth
 
 class DetailViewController: UIViewController, UICollectionViewDelegate,
                             UICollectionViewDataSource {
-        
+    
     @IBOutlet weak var navBar: UINavigationBar!
     // @IBOutlet weak var eventHeader: UILabel!
     @IBOutlet weak var eventTitle: UILabel!
@@ -71,7 +71,7 @@ class DetailViewController: UIViewController, UICollectionViewDelegate,
     @IBAction func addToCal(_ sender: Any) {
         print("add to calendar tapped")
     }
-
+    
     @IBAction func shareEvent(_ sender: Any) {
         print("share event button tapped")
     }

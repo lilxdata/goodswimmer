@@ -107,7 +107,11 @@ class EventCell: UITableViewCell {
         }      
     }
     
-    
+    // Once the list functionality is sorted, use this function to add an event
+    // on the home screen to your list(s)
+    @IBAction func addToList(_ sender: Any) {
+        print("add to list pressed!")
+    }
     
     // Adds the event creator to logged in user's following list
     @IBAction func addToFollowing(_ sender: Any) {
@@ -116,7 +120,7 @@ class EventCell: UITableViewCell {
         curUser.getDocument { (document, error) in
             if let document = document, document.exists {
                 db.collection("users").document(Auth.auth().currentUser!.uid).updateData([
-                    "followers" : FieldValue.arrayUnion([self.username.text!])
+                    "followers" : FieldValue.arrayUnion([self.usernameButton.titleLabel!.text!])
                 ])
             } else {
                 print("Error following user")

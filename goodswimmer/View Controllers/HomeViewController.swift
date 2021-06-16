@@ -17,7 +17,7 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var zeroStateView: UIView!
     @IBOutlet weak var sortBySwitch: UISwitch!
     @IBOutlet weak var sortByLabel: UILabel!
-
+    
     let eventArray = EventArray.sharedInstance
     let menu = Menu.sharedInstance
     
@@ -42,147 +42,36 @@ class HomeViewController: UIViewController {
         setUpElements()
         tableView.delegate = self
         tableView.dataSource = self
-
+        
         sortBySwitch.isHidden = true
         sortByLabel.isHidden = true
         
-        
-        func numberOfSections(in tableView: UITableView) -> Int {
-            return 1
-        }
-        REGEX_TESTS.run_regex()
+        // Sets up zero state view
         notif!.showHomeAll(_sender: self.zeroStateView, message: "Oh hi! Welcome to Good Swimmer\n\nThis screen is your feed. Normally, events will appear here from people, spaces, and lists you follow.\n\nFor testing purposes, click below for a full view of users and events!\n\nALL USERS\n\nALL EVENTS")
         let showAll = zeroStateView.subviews[1] as! UIButton
         showAll.addTarget(self, action: #selector(self.revealAll), for: .touchUpInside)
-        
-        
-        let listMenuWidth = 320
-        let listMenuHeight = 400
-        let listMenuMargin = 20
-        let listMenuRowWidth = CGFloat(listMenuWidth)*0.75
-        let xPos = (self.view.frame.width)*0.1
-        let yPos = (self.view.frame.height)*0.3
-        let listMenuView = UIView(frame: CGRect(x: xPos, y: yPos, width:320, height:400))
-        listMenuView.backgroundColor = Utilities.getRedUI()
-        
-        let listMenuViewTest = UIView(frame: CGRect(x: 0, y: 0, width:300, height:100))
-        listMenuViewTest.backgroundColor = UIColor.black
-       
-        
-        
-        var addToListMenuTitle = UILabel(frame: CGRect(x: 0, y: Int(Double(listMenuHeight)*0), width:listMenuWidth, height:200))
-        addToListMenuTitle.textAlignment = .center
-        addToListMenuTitle.font = addToListMenuTitle.font.withSize(28)
-        addToListMenuTitle.text = "Add to List"
-        addToListMenuTitle.textColor = .white
-        
-        
-        
-        
-        var createListButton = UIButton(type: UIButton.ButtonType.system)
-        
-        createListButton.addTarget(self, action: #selector(pressed), for: .touchUpInside)
-        createListButton.setTitle("+ Create New List", for: .normal)
-        createListButton.setTitleColor(UIColor.black, for: .normal)
-        createListButton.contentHorizontalAlignment = .center
-
-        
-        var exitListMenuButton = UIButton(type: UIButton.ButtonType.system)
-        
-        exitListMenuButton.addTarget(self, action: #selector(closeAddTolistMenu), for: .touchUpInside)
-        exitListMenuButton.setTitle("Close", for: .normal)
-        exitListMenuButton.setTitleColor(UIColor.black, for: .normal)
-        exitListMenuButton.contentHorizontalAlignment = .center
-        
-        
-        //Stack View
-        let listMenuStackView   = UIStackView()
-        listMenuStackView.frame = listMenuView.frame
-        listMenuStackView.addArrangedSubview(addToListMenuTitle)
-        for i in 0...maxButton-1 {
-            buttonArray[i] = UIButton(type: UIButton.ButtonType.custom)
-            setUpListMenuButton(button: buttonArray[i] )
-            listMenuStackView.addArrangedSubview(buttonArray[i] )
-            
-        }
-        
-        listMenuStackView.addArrangedSubview(createListButton)
-        listMenuStackView.addArrangedSubview(exitListMenuButton)
-        
-        
-        listMenuStackView.axis  = .vertical
-        listMenuStackView.distribution  = UIStackView.Distribution.equalSpacing
-        listMenuStackView.alignment = UIStackView.Alignment.center
-        listMenuStackView.spacing   = 0.0
-        listMenuStackView.translatesAutoresizingMaskIntoConstraints = false
-        
-        listMenuView.addSubview(listMenuStackView)
-        listMenuStackView.addArrangedSubview(listMenuViewTest)
-        self.view.addSubview(listMenuView)
-        
-        listMenuView.isHidden = true
-        
-        
-        
-        view.addConstraint(NSLayoutConstraint(item: listMenuStackView, attribute: .top, relatedBy: .equal, toItem: listMenuView, attribute: .top, multiplier: 1.0, constant: 0.0))
-        view.addConstraint(NSLayoutConstraint(item: listMenuStackView, attribute: .leading, relatedBy: .equal, toItem: listMenuView, attribute: .leading, multiplier: 1.0, constant: 0.0))
-        view.addConstraint(NSLayoutConstraint(item: listMenuStackView, attribute: .trailing, relatedBy: .equal, toItem: listMenuView, attribute: .trailing, multiplier: 1.0, constant: 0.0))
-        
-        for listButton in buttonArray {
-            view.addConstraint(NSLayoutConstraint(item: listButton, attribute: NSLayoutConstraint.Attribute.width, relatedBy: NSLayoutConstraint.Relation.equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant:  listMenuRowWidth))
-        }
-        
-
-        view.addConstraint(NSLayoutConstraint(item: createListButton, attribute: NSLayoutConstraint.Attribute.width, relatedBy: NSLayoutConstraint.Relation.equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: listMenuRowWidth))
-    
-        //Make Buttons Have Firebase Connections
-        let db = Firestore.firestore()
-        db.collection("lists").whereField("username", arrayContains: Auth.auth().currentUser?.displayName).getDocuments() { (querySnapshot, err) in
-            if let err = err {
-                print("Error getting lists: \(err)")
-            } else {
-                for document in querySnapshot!.documents {
-                    var listName = document.get("listName")
-                    if(listName != nil) {
-                        print(document.get("listName") as! String)
-                        self.buttonArray[self.numOfLists].setTitle(document.get("listName") as! String, for: .normal)
-                        self.buttonArray[self.numOfLists].isHidden = false
-                        self.numOfLists = self.numOfLists + 1
-                        
-                    }
-                    
-                }
-            }
-        }
     }
     
     
     // Reveal all events in the Home View Controller
     @objc func revealAll(sender: UIButton) {
-        print(self.viewAll)
         self.viewAll = true
         self.sortTableView(sortBy: "start_date")
     }
     
     @objc func pressed(_sender: UIButton!) {
-        print("I pressed")
-        //_sender.isSelected = true
         if(_sender.image(for: .normal) == notClicked) {
             _sender.setImage(clicked, for: .normal)
         }
         else if(_sender.image(for: .normal) == clicked){
             _sender.setImage(notClicked, for: .normal)
-            
         }
-        
     }
     
     @objc func closeAddTolistMenu(_sender: UIButton!) {
-        print(_sender.superview)
         _sender.superview?.superview?.isHidden = true
-        
     }
-
+    
     
     func setUpListMenuButton(button: UIButton){
         button.backgroundColor = UIColor.white
@@ -209,19 +98,19 @@ class HomeViewController: UIViewController {
     
     func showUser(username: String) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-              
+        
         let profile_view  = storyboard.instantiateViewController(withIdentifier: "profile_vc") as! ProfileViewController
         
         profile_view.profileOwner.username = username
         if(username == Auth.auth().currentUser?.displayName){
-         profile_view.isCurUser = true
+            profile_view.isCurUser = true
         }
         else {profile_view.isCurUser = false}
         
         let nav = self.navigationController //grab an instance of the current navigationController
         DispatchQueue.main.async { //make sure all UI updates are on the main thread.
-                nav?.view.layer.add(CATransition().segueFromLeft(), forKey: nil)
-                nav?.pushViewController(profile_view, animated: false)
+            nav?.view.layer.add(CATransition().segueFromLeft(), forKey: nil)
+            nav?.pushViewController(profile_view, animated: false)
         }
         
         
@@ -315,7 +204,7 @@ class HomeViewController: UIViewController {
                         }
                     }
                 }
-        }
+            }
     }
 }
 
@@ -343,7 +232,7 @@ extension HomeViewController : UITableViewDelegate, UITableViewDataSource {
     //called everytime cell is tapped
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-      //  self.performSegue(withIdentifier: "detailSegue2", sender: <#T##Any?#>)
+        //  self.performSegue(withIdentifier: "detailSegue2", sender: <#T##Any?#>)
         if let vc = storyboard?.instantiateViewController(withIdentifier: "detailVC2") as? DetailViewController {
             vc.selectedEvent = self.eventArray.events[indexPath.row]
             vc.modalPresentationStyle = .fullScreen
@@ -368,45 +257,45 @@ extension UIImage {
 
 
 extension CATransition {
-
-//New viewController will appear from bottom of screen.
-func segueFromBottom() -> CATransition {
-    self.duration = 0.375 //set the duration to whatever you'd like.
-    self.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
-    self.type = CATransitionType.moveIn
-    self.subtype = CATransitionSubtype.fromTop
-    return self
-}
-//New viewController will appear from top of screen.
-func segueFromTop() -> CATransition {
-    self.duration = 0.375 //set the duration to whatever you'd like.
-    self.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
-    self.type = CATransitionType.moveIn
-    self.subtype = CATransitionSubtype.fromBottom
-    return self
-}
- //New viewController will appear from left side of screen.
-func segueFromLeft() -> CATransition {
-    self.duration = 0.1 //set the duration to whatever you'd like.
-    self.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
-    self.type = CATransitionType.moveIn
-    self.subtype = CATransitionSubtype.fromLeft
-    return self
-}
-//New viewController will pop from right side of screen.
-func popFromRight() -> CATransition {
-    self.duration = 0.1 //set the duration to whatever you'd like.
-    self.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
-    self.type = CATransitionType.reveal
-    self.subtype = CATransitionSubtype.fromRight
-    return self
-}
-//New viewController will appear from left side of screen.
-func popFromLeft() -> CATransition {
-    self.duration = 0.1 //set the duration to whatever you'd like.
-    self.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
-    self.type = CATransitionType.reveal
-    self.subtype = CATransitionSubtype.fromLeft
-    return self
-   }
+    
+    //New viewController will appear from bottom of screen.
+    func segueFromBottom() -> CATransition {
+        self.duration = 0.375 //set the duration to whatever you'd like.
+        self.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
+        self.type = CATransitionType.moveIn
+        self.subtype = CATransitionSubtype.fromTop
+        return self
+    }
+    //New viewController will appear from top of screen.
+    func segueFromTop() -> CATransition {
+        self.duration = 0.375 //set the duration to whatever you'd like.
+        self.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
+        self.type = CATransitionType.moveIn
+        self.subtype = CATransitionSubtype.fromBottom
+        return self
+    }
+    //New viewController will appear from left side of screen.
+    func segueFromLeft() -> CATransition {
+        self.duration = 0.1 //set the duration to whatever you'd like.
+        self.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
+        self.type = CATransitionType.moveIn
+        self.subtype = CATransitionSubtype.fromLeft
+        return self
+    }
+    //New viewController will pop from right side of screen.
+    func popFromRight() -> CATransition {
+        self.duration = 0.1 //set the duration to whatever you'd like.
+        self.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
+        self.type = CATransitionType.reveal
+        self.subtype = CATransitionSubtype.fromRight
+        return self
+    }
+    //New viewController will appear from left side of screen.
+    func popFromLeft() -> CATransition {
+        self.duration = 0.1 //set the duration to whatever you'd like.
+        self.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
+        self.type = CATransitionType.reveal
+        self.subtype = CATransitionSubtype.fromLeft
+        return self
+    }
 }

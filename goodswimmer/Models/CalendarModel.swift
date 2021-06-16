@@ -10,41 +10,42 @@ import Foundation
 import FSCalendar
 import UIKit
 
+// This class is used to format the FSCalendar used in the profile view controller.
+
 public var selectedColor = UIColor.init(red: 2/255, green: 138/255, blue: 75/255, alpha: 1)
 
-
 func formatCalendar(calendar: FSCalendar, profile_vc: ProfileViewController){
+    // Because this is not in the profile view controller we need to
+    // set the delegate so swift knows which one we are trying to modify
     calendar.delegate = profile_vc
     calendar.dataSource = profile_vc
     calendar.scope = .month
     calendar.scrollDirection = .vertical
     
     calendar.backgroundColor = .white //trying to get black borders
-
-    //Don't want to show this?
+    
+    // Set height to zero to not display it
     calendar.weekdayHeight = 0
     
     calendar.appearance.borderDefaultColor = .black
     calendar.appearance.borderSelectionColor = .black
     calendar.select(Date())
-    //Make not all text black
+    
+    // Set Text Colors
     calendar.appearance.titleDefaultColor = .black
     calendar.appearance.titleTodayColor = .black
     calendar.appearance.titleSelectionColor = .black
     calendar.appearance.titleFont = UIFont(name: "Standard-Book", size: 12)
     calendar.appearance.titleOffset = CGPoint(x: 20, y: 11)
-    
-
-    
     calendar.appearance.eventDefaultColor = Utilities.getRedUI()
     calendar.appearance.eventSelectionColor = Utilities.getRedUI()
     calendar.appearance.eventOffset = CGPoint(x: -15, y: -25)
     
+    // Register the DIYCalendarCell so the FSCalendar uses it
     calendar.register(DIYCalendarCell.self, forCellReuseIdentifier: "cell")
-
     calendar.allowsMultipleSelection = false
     calendar.clipsToBounds = true
-
+    
 }
 
 enum SelectionType {
@@ -54,103 +55,11 @@ enum SelectionType {
     case middle
     case rightBorder
 }
-/*
-class CalendarCollectionViewCell: FSCalendarCell {
 
-    weak var circleImageView: UIImageView?
-    weak var selectionLayer: CAShapeLayer?
-    weak var roundedLayer: CAShapeLayer?
 
-    var selectionType: SelectionType = .none {
-        didSet {
-            setNeedsLayout()
-        }
-    }
 
-    required init!(coder aDecoder: NSCoder!) {
-        super.init(coder: aDecoder)
-        commonInit()
-    }
-
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        commonInit()
-    }
-
-    private func commonInit() {
-        let selectionLayer = CAShapeLayer()
-        selectionLayer.fillColor = UIColor.lightGray.cgColor
-        selectionLayer.actions = ["hidden": NSNull()]
-        self.contentView.layer.insertSublayer(selectionLayer, below: self.titleLabel?.layer)
-        self.selectionLayer = selectionLayer
-
-        let roundedLayer = CAShapeLayer()
-        roundedLayer.fillColor = UIColor.blue.cgColor
-        roundedLayer.actions = ["hidden": NSNull()]
-        self.contentView.layer.insertSublayer(roundedLayer, below: self.titleLabel?.layer)
-        self.roundedLayer = roundedLayer
-
-        self.shapeLayer.isHidden = true
-        let view = UIView(frame: self.bounds)
-        self.backgroundView = view
-    }
-
-    override func layoutSubviews() {
-        super.layoutSubviews()
-
-        guard let selectionLayer = selectionLayer, let roundedLayer = roundedLayer else { return }
-        self.backgroundView?.frame = self.bounds.insetBy(dx: 1, dy: 1)
-        self.selectionLayer?.frame = self.contentView.bounds
-        self.roundedLayer?.frame = self.contentView.bounds
-
-        switch selectionType {
-        case .middle:
-            self.selectionLayer?.isHidden = false
-            self.selectionLayer?.path = UIBezierPath(rect: selectionLayer.bounds).cgPath
-            self.roundedLayer?.isHidden = true
-
-        case .leftBorder:
-            let selectionRect = selectionLayer.bounds.insetBy(dx: selectionLayer.frame.width / 4, dy: 0.0).offsetBy(dx: selectionLayer.frame.width / 4, dy: 0.0)
-            self.selectionLayer?.isHidden = false
-            self.selectionLayer?.path = UIBezierPath(rect: selectionRect).cgPath
-
-            let diameter: CGFloat = min(roundedLayer.frame.height, roundedLayer.frame.width)
-            let rect = CGRect(x: self.contentView.frame.width / 2 - diameter / 2, y: self.contentView.frame.height / 2 - diameter / 2, width: diameter, height: diameter)
-            self.roundedLayer?.isHidden = false
-            self.roundedLayer?.path = UIBezierPath(ovalIn: rect).cgPath
-
-        case .rightBorder:
-            let selectionRect = selectionLayer.bounds.insetBy(dx: selectionLayer.frame.width / 4, dy: 0.0).offsetBy(dx: -selectionLayer.frame.width / 4, dy: 0.0)
-            self.selectionLayer?.isHidden = false
-            self.selectionLayer?.path = UIBezierPath(rect: selectionRect).cgPath
-
-            let diameter: CGFloat = min(roundedLayer.frame.height, roundedLayer.frame.width)
-            let rect = CGRect(x: self.contentView.frame.width / 2 - diameter / 2, y: self.contentView.frame.height / 2 - diameter / 2, width: diameter, height: diameter)
-            self.roundedLayer?.isHidden = false
-            self.roundedLayer?.path = UIBezierPath(ovalIn: rect).cgPath
-
-        case .single:
-            self.selectionLayer?.isHidden = true
-            self.roundedLayer?.isHidden = false
-            let diameter: CGFloat = min(roundedLayer.frame.height, roundedLayer.frame.width)
-            self.roundedLayer?.path = UIBezierPath(ovalIn: CGRect(x: self.contentView.frame.width / 2 - diameter / 2, y: self.contentView.frame.height / 2 - diameter / 2, width: diameter, height: diameter)).cgPath
-
-        case .none:
-            self.selectionLayer?.isHidden = true
-            self.roundedLayer?.isHidden = true
-        }
-    }
-
-    override func configureAppearance() {
-        super.configureAppearance()
-        // Override the build-in appearance configuration
-        if self.isPlaceholder {
-            self.eventIndicator.isHidden = true
-        }
-    }
-}
-*/
-
+// This class is responsible for editing the way the a calendar cell looks in
+// a profile's calendar
 class DIYCalendarCell: FSCalendarCell {
     
     weak var circleImageView: UIImageView!
@@ -214,9 +123,7 @@ class DIYCalendarCell: FSCalendarCell {
         // Override the build-in appearance configuration
         if self.isPlaceholder {
             self.eventIndicator.isHidden = true
-            //self.titleLabel.textColor = UIColor.lightGray
         }
     }
-    
 }
 

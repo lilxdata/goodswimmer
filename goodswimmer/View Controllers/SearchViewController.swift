@@ -63,9 +63,9 @@ class SearchViewController: UIViewController {
             if let err = err {
                 print("Error getting documents: \(err)")
             } else {
-            for document in querySnapshot!.documents {
-                let userID = document.get("userId") as! String
-                let username = document.get("username") as! String
+                for document in querySnapshot!.documents {
+                    let userID = document.get("userId") as! String
+                    let username = document.get("username") as! String
                     db.collection("users").document(userID).updateData([
                         "followers" : FieldValue.arrayUnion([Auth.auth().currentUser!.displayName!])
                     ])
@@ -73,8 +73,8 @@ class SearchViewController: UIViewController {
                     db.collection("users").document(Auth.auth().currentUser!.uid).updateData([
                         "following" : FieldValue.arrayUnion([username])
                     ])
-         
-            }}}}
+                    
+                }}}}
     
     func searchForTopUser(_ searchTerm: String){
         var topUserEditDistance = [2^32,2^32] //[Current,Previous]
@@ -90,13 +90,13 @@ class SearchViewController: UIViewController {
                 for document in querySnapshot!.documents {
                     print()
                     //if(topUserEditDistance[0] < topUserEditDistance[1]) {
-                        //topUser = document.get(<#T##field: Any##Any#>)
+                    //topUser = document.get(<#T##field: Any##Any#>)
                     var userBio = document.get("bio") as? String ?? "No User Found"
                     var userUsername = document.get("username") as? String ?? ""
                     var topUserLabel = userUsername + "\n" + userBio
-                        self.topUserDisplay.setTitle(topUserLabel, for: .normal)
-                        print(self.topUserDisplay.title(for: .normal))
-                        topUserEditDistance[1] = topUserEditDistance[0]
+                    self.topUserDisplay.setTitle(topUserLabel, for: .normal)
+                    print(self.topUserDisplay.title(for: .normal))
+                    topUserEditDistance[1] = topUserEditDistance[0]
                     //}
                 }
             }
@@ -143,7 +143,7 @@ class SearchViewController: UIViewController {
         //Create a table to store results of subproblems
         var dp = Array(repeating: Array(repeating: 0, count: n+1), count: m+1)
         // Fill dp[][] in bottom up manner
-
+        
         for i in 0...m{ //swift for loops are inclusive!
             for j in 0...n{
                 //If first string is empty, only option is to
@@ -164,10 +164,10 @@ class SearchViewController: UIViewController {
                 //If last character are different, consider all
                 //possibilities and find minimum
                 else {
-
+                    
                     dp[i][j] = 1 + min(dp[i-1][j]    //Insert
-                                  ,dp[i][j-1],   //Erase
-                                   dp[i-1][j-1]) //Substitute
+                                       ,dp[i][j-1],   //Erase
+                                       dp[i-1][j-1]) //Substitute
                 }
             }
         }
@@ -245,8 +245,6 @@ class SearchViewController: UIViewController {
             }
         }
     }
-
-    //TEMP FUNCTION
     
     @IBAction func displayUserList(_ sender: Any) {
         //TESTING

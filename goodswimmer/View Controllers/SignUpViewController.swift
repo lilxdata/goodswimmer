@@ -76,7 +76,7 @@ class SignUpViewController: UIViewController, GMSAutocompleteViewControllerDeleg
         let cleanedPassword = passwordField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
         
         let secure = Utilities.isPasswordValid(cleanedPassword)
-    
+        
         if !secure {
             return "Let's make that \n password more secure!\nMinimum eight characters, at least one letter, one number and one special character required"
         }
@@ -107,10 +107,9 @@ class SignUpViewController: UIViewController, GMSAutocompleteViewControllerDeleg
     
     
     @IBAction func backButtonTapped(_ sender: Any) {
-        
-     //TODO
-        
+        //TODO
     }
+    
     //handle sign up button tap
     @IBAction func signUpTapped(_ sender: Any) {
         //Validate fields
@@ -165,34 +164,34 @@ class SignUpViewController: UIViewController, GMSAutocompleteViewControllerDeleg
                     let stockPhotoRef = storageRef.child("goodswimmer stock profile.png")
                     // Fetch the download URL
                     stockPhotoRef.downloadURL { url, error in
-                      if let error = error {
-                        // Handle any errors
-                        print("Error retreiving stock photo",error)
-                        changeRequest?.commitChanges { ( error ) in
-                            if error != nil {
-                                self.showError("Error")
-                                self.deleteUser()
-                                return
+                        if let error = error {
+                            // Handle any errors
+                            print("Error retreiving stock photo",error)
+                            changeRequest?.commitChanges { ( error ) in
+                                if error != nil {
+                                    self.showError("Error")
+                                    self.deleteUser()
+                                    return
+                                }
+                                self.transitionToHome()
                             }
-                            self.transitionToHome()
-                        }
-                      } else {
-                        // Get the download URL
-                        //Setting profile pic to default swimming pic in firebase
-                        changeRequest?.photoURL = url
-                        changeRequest?.commitChanges { ( error ) in
-                            if error != nil {
-                                self.showError("Error")
-                                self.deleteUser()
-                                return
+                        } else {
+                            // Get the download URL
+                            //Setting profile pic to default swimming pic in firebase
+                            changeRequest?.photoURL = url
+                            changeRequest?.commitChanges { ( error ) in
+                                if error != nil {
+                                    self.showError("Error")
+                                    self.deleteUser()
+                                    return
+                                }
+                                self.transitionToHome()
                             }
-                            self.transitionToHome()
                         }
-                    }
                     }
                 }
                 
-
+                
             }
         }
     }
