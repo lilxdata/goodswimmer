@@ -76,7 +76,6 @@ class SearchResultsViewController: UIViewController {
     }
     func loadUsers(){
         let users = db.collection("users").order(by: "username")
-        print(users)
         users.getDocuments() { (querySnapshot, err) in
             if let err = err {
                 print("Error getting documents: \(err)")
@@ -137,7 +136,6 @@ extension SearchResultsViewController : UITableViewDelegate, UITableViewDataSour
     
     //called everytime cell is tapped
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("I tapped a cell")
         let profile_view  = storyboard!.instantiateViewController(withIdentifier: "profile_vc") as! ProfileViewController
         profile_view.profileOwner = self.userArray[indexPath.row]
         profile_view.myEventsArr = self.userArray[indexPath.row].events as [String]

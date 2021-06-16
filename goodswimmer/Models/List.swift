@@ -121,3 +121,32 @@ struct List {
 //
 //        }
 //    }
+
+//
+//@objc func closeAddTolistMenu(_sender: UIButton!) {
+//    _sender.superview?.superview?.isHidden = true
+//}
+//
+//
+//func setUpListMenuButton(button: UIButton){
+//    button.backgroundColor = UIColor.white
+//    button.addTarget(self, action: #selector(pressed), for: .touchUpInside)
+//    button.setTitle("Create your List!", for: .normal)
+//    button.setTitleColor(UIColor.black, for: .normal)
+//    button.contentHorizontalAlignment = .center
+//    //List Row
+//    let listRowCheckBoxFrame = CGRect(x: 0, y: 0, width:40, height:50)
+//    
+//    let listRowCheckBoxCG = CIContext().createCGImage(CIImage(color: .white), from: listRowCheckBoxFrame)!
+//    
+//    let listCheckBox = UIImage(cgImage: listRowCheckBoxCG)
+//    button.setImage(self.notClicked, for: .normal)
+//    button.setImage(self.animated, for: .selected)
+//    button.layer.borderWidth = 1
+//    button.layer.borderColor = UIColor.black.cgColor
+//    button.contentHorizontalAlignment = .left
+//    button.titleEdgeInsets.left = 10
+//    button.isHidden = true
+//    
+//    
+//}

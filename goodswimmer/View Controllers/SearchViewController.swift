@@ -28,7 +28,7 @@ class SearchViewController: UIViewController {
     @IBOutlet weak var topEventDisplay: UIButton!
     @IBOutlet weak var topListDisplay1: UIButton!
     @IBOutlet weak var topListDisplay2: UIButton!
-    @IBOutlet weak var temporaryShowAllUsersButton: UIButton!
+    @IBOutlet weak var temporaryShowAllEventsButton: UIButton!
     
     
     override func viewDidLoad() {
@@ -50,13 +50,12 @@ class SearchViewController: UIViewController {
         
         
         let notif = Notifications()
-        notif.showHomeAll(_sender: self.view, message: "For testing purposes you can click below for a full list of everything happening on the app!\n\nALL USERS\n\nALL EVENTS")
-        let showAll = view.subviews[1] as! UIButton
-        print(view.subviews)
-        showAll.addTarget(self, action: #selector(self.followAllUsers), for: .touchUpInside)
+        notif.searchShowAll(_sender: self.view, message: "For testing purposes you can click below for a full list of everything happening on the app!\n\nALL USERS")
+        let showAll = view.subviews[2] as! UIButton
+        showAll.addTarget(self, action: #selector(self.displayUserList), for: .touchUpInside)
     }
     
-    @objc func followAllUsers(sender: UIButton){
+    @IBAction func followAllUsersForAllEvents(_ sender: Any) {
         let db = Firestore.firestore()
         let users = db.collection("users").order(by: "username")
         users.getDocuments() { (querySnapshot, err) in
@@ -81,23 +80,17 @@ class SearchViewController: UIViewController {
         var topUser = User(following: [""], followers: [""], events: [""])
         let db = Firestore.firestore()
         let users = db.collection("users")
-        //print("Am I being called?")
-        //print(searchTerm)
         users.whereField("username", isEqualTo: searchTerm).getDocuments() { (querySnapshot, err) in
             if let err = err {
                 print("Error getting users: \(err)")
             } else {
                 for document in querySnapshot!.documents {
-                    print()
-                    //if(topUserEditDistance[0] < topUserEditDistance[1]) {
-                    //topUser = document.get(<#T##field: Any##Any#>)
-                    var userBio = document.get("bio") as? String ?? "No User Found"
-                    var userUsername = document.get("username") as? String ?? ""
-                    var topUserLabel = userUsername + "\n" + userBio
+                    let userBio = document.get("bio") as? String ?? "No User Found"
+                    let userUsername = document.get("username") as? String ?? ""
+                    let topUserLabel = userUsername + "\n" + userBio
                     self.topUserDisplay.setTitle(topUserLabel, for: .normal)
-                    print(self.topUserDisplay.title(for: .normal))
                     topUserEditDistance[1] = topUserEditDistance[0]
-                    //}
+                    
                 }
             }
         }
@@ -129,7 +122,7 @@ class SearchViewController: UIViewController {
             let date = topEvent?.startDate?.dateValue()
             let dateString = formatter.string(from: date ?? NSDate() as Date)
             self.mappedEvent.text = eventName + "\n"  + eventAddr + "\n" + dateString
-            var topEventLabel = eventName + "\n" + (topEvent?.description ?? "Event Description Missing")
+            let topEventLabel = eventName + "\n" + (topEvent?.description ?? "Event Description Missing")
             topEventDisplay.setTitle(topEventLabel, for: .normal)
             
         }
@@ -191,10 +184,10 @@ class SearchViewController: UIViewController {
         topListDisplay2.backgroundColor = Utilities.getRedUI()
         topListDisplay2.tintColor = UIColor.white
         
-        temporaryShowAllUsersButton.setTitleColor(Utilities.getRedUI(), for: .normal)
-        temporaryShowAllUsersButton.titleLabel?.textAlignment = .center
-        temporaryShowAllUsersButton.titleLabel?.font = UIFont(name: "CutiveMono-Regular", size: 21)
-        temporaryShowAllUsersButton.setTitle("Show all users!", for: .normal)
+        temporaryShowAllEventsButton.setTitleColor(Utilities.getRedUI(), for: .normal)
+        temporaryShowAllEventsButton.titleLabel?.textAlignment = .center
+        temporaryShowAllEventsButton.titleLabel?.font = UIFont(name: "CutiveMono-Regular", size: 21)
+        temporaryShowAllEventsButton.setTitle("ALL EVENTS", for: .normal)
         
         hideSearchResults(isHidden: true)
         self.mapView.isHidden = true
@@ -246,8 +239,7 @@ class SearchViewController: UIViewController {
         }
     }
     
-    @IBAction func displayUserList(_ sender: Any) {
-        //TESTING
+    @objc func displayUserList(_ sender: Any) {
         let resultsView  = storyboard!.instantiateViewController(withIdentifier: "search_res_vc") as! SearchResultsViewController
         self.present(resultsView, animated: true, completion: nil)
     }

@@ -68,34 +68,6 @@ class HomeViewController: UIViewController {
         }
     }
     
-    @objc func closeAddTolistMenu(_sender: UIButton!) {
-        _sender.superview?.superview?.isHidden = true
-    }
-    
-    
-    func setUpListMenuButton(button: UIButton){
-        button.backgroundColor = UIColor.white
-        button.addTarget(self, action: #selector(pressed), for: .touchUpInside)
-        button.setTitle("Create your List!", for: .normal)
-        button.setTitleColor(UIColor.black, for: .normal)
-        button.contentHorizontalAlignment = .center
-        //List Row
-        let listRowCheckBoxFrame = CGRect(x: 0, y: 0, width:40, height:50)
-        
-        let listRowCheckBoxCG = CIContext().createCGImage(CIImage(color: .white), from: listRowCheckBoxFrame)!
-        
-        let listCheckBox = UIImage(cgImage: listRowCheckBoxCG)
-        button.setImage(self.notClicked, for: .normal)
-        button.setImage(self.animated, for: .selected)
-        button.layer.borderWidth = 1
-        button.layer.borderColor = UIColor.black.cgColor
-        button.contentHorizontalAlignment = .left
-        button.titleEdgeInsets.left = 10
-        button.isHidden = true
-        
-        
-    }
-    
     func showUser(username: String) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         
@@ -112,8 +84,6 @@ class HomeViewController: UIViewController {
             nav?.view.layer.add(CATransition().segueFromLeft(), forKey: nil)
             nav?.pushViewController(profile_view, animated: false)
         }
-        
-        
         self.present(profile_view, animated: true, completion: nil)
     }
     
@@ -164,14 +134,14 @@ class HomeViewController: UIViewController {
     
     func sortTableView(sortBy: String){
         let db = Firestore.firestore()
-        db.collection("users").whereField("username", isEqualTo: Auth.auth().currentUser?.displayName)
+        db.collection("users").whereField("username", isEqualTo: Auth.auth().currentUser!.displayName!)
             .getDocuments() { (querySnapshot, err) in
                 if let err = err {
                     print("Error getting documents: \(err)")
                 } else {
                     for document in querySnapshot!.documents {
                         //let x = self.event?.username
-                        var followers = document.get("following") as! [String]
+                        let followers = document.get("following") as! [String]
                         db.collection("events").order(by: sortBy).addSnapshotListener { (querySnapshot, error) in
                             if error == nil && querySnapshot != nil {
                                 //clear event array to remove dupes
@@ -181,19 +151,15 @@ class HomeViewController: UIViewController {
                                     let eventDate = (document.get("start_date") as! Timestamp).dateValue()
                                     let currentDate = NSDate() as Date
                                     let eventUsername = document.get("username") as! String
-                                    print("I am getting events")
-                                    print(self.viewAll)
-                                    print(eventData)
-                                    if(self.viewAll || (eventDate > currentDate && (followers.contains(eventUsername) || eventUsername == Auth.auth().currentUser?.displayName))){
-                                        print("am I getting here?")
+                                    if((eventDate > currentDate && (self.viewAll || followers.contains(eventUsername) || eventUsername == Auth.auth().currentUser?.displayName))){
                                         if let event = Event(eventDict: eventData) {
                                             self.eventArray.events.append(event)
                                         }
-                                        print(self.eventArray.events)
+                                        
                                     }
                                 }
                                 self.tableView.reloadData()
-                                print(self.eventArray.events.count)
+                                
                                 if self.eventArray.events.count == 0 {
                                     self.zeroStateView.isHidden = false
                                 }

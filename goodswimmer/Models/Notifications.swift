@@ -76,4 +76,28 @@ class Notifications: UIView {
         _sender.addSubview(button)
     }
     
+    // Adds a  pop up with given input as message
+    func searchShowAll(_sender: UIView, message: String) {
+        //Initialize frame
+        let xPos = 48
+        let yPos = 144
+        let width = 318
+        let height = 130
+        let button = UIButton(type: UIButton.ButtonType.system)
+        button.frame = CGRect(x: xPos, y: yPos, width:width, height:height)
+        
+        //Customize Notification Display
+        button.setTitle(message, for: .normal)
+        button.titleLabel?.font = UIFont(name: "CutiveMono-Regular", size: 21)
+        button.setTitleColor(Utilities.getRedUI(), for: .normal)
+        button.contentHorizontalAlignment = .center
+        button.contentVerticalAlignment = .top
+        button.backgroundColor = UIColor.white
+        button.titleLabel?.numberOfLines = 100
+        button.titleLabel?.textAlignment = .center
+               
+        //Add view to viewcontroller view
+        _sender.addSubview(button)
+    }
+    
 }
