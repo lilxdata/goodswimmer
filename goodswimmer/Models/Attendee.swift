@@ -9,7 +9,6 @@
 import Foundation
 
 struct Attendee: Codable {
-    
     var userId: String?
     var profileUrl: String?
 }

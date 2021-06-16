@@ -12,8 +12,13 @@ import SDWebImage
 import FirebaseFirestore
 import FirebaseAuth
 
+// This class is the model for the Events displayed on
+// the homescreen. Each event shown is represented by
+// one event cell.
+
 class EventCell: UITableViewCell {
     
+    // Outlets connected to elements on storyboard
     @IBOutlet weak var eventImage: UIImageView!
     @IBOutlet weak var eventName: UILabel!
     @IBOutlet weak var eventLocation: UILabel!
@@ -25,12 +30,13 @@ class EventCell: UITableViewCell {
     @IBOutlet weak var addToListButton: UIButton!
     @IBOutlet weak var addToCalendarButton: UIButton!
     
+    // Reference to HomeViewController
     weak var viewcontroller: HomeViewController?
     
-    
-    
+    // Event contains the information displayed for a given cell
     var eventToDisplay: Event?
-    //TODO: ADD START DATE / END DATE, START TIME / END TIME
+    
+    // The programattic aspect of the home screen is done here
     func displayEvent(_ event: Event) {
         eventToDisplay = event
         usernameButton.setTitle(eventToDisplay?.username, for: .normal)
@@ -70,6 +76,8 @@ class EventCell: UITableViewCell {
         customizeElements()
     }
     
+    
+    // Style's elements in the event cell
     func customizeElements() {
         Utilities.styleLabel(eventName, size: 35,  uppercase: false)
         Utilities.styleLabel(eventLocation, size: 15, uppercase: false)
@@ -79,6 +87,8 @@ class EventCell: UITableViewCell {
         usernameButton.setTitleColor(.black, for: .normal)
     }
     
+    
+    // Adds the event to logged in user's calendar
     @IBAction func addToCalendar(_ sender: Any) {
         //print(self.eventName.text)
         //print(self.tableView.hashValue)
@@ -97,18 +107,9 @@ class EventCell: UITableViewCell {
         }      
     }
     
-    @IBAction func addToList(_ sender: Any) {
-        print("I pressed list")
-        let xPos = ((self.superview?.superview?.superview?.frame.width)!)*0.1
-        let yPos = ((self.superview?.superview?.superview?.frame.height)!)*0.3
-        let testView = UIView(frame: CGRect(x: xPos, y: yPos, width:320, height:400))
-        for view in self.superview?.superview?.subviews as [UIView] {
-            if(view.frame == testView.frame) {
-                view.isHidden = false
-            }
-        }
-        
-    }
+    
+    
+    // Adds the event creator to logged in user's following list
     @IBAction func addToFollowing(_ sender: Any) {
         let db = Firestore.firestore()
         let curUser = db.collection("users").document(Auth.auth().currentUser!.uid)
@@ -123,8 +124,8 @@ class EventCell: UITableViewCell {
         }
     }
     
+    // Brings Up user's profile view when the username element is tapped on the event cell.
     @IBAction func usernamePressed(_ sender: Any) {
-        print("i tapped user")
         viewcontroller?.showUser(username: (usernameButton.titleLabel?.text)!) 
     }
 }

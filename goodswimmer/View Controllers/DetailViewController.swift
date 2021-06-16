@@ -10,6 +10,10 @@ import UIKit
 import FirebaseFirestore
 import FirebaseAuth
 
+// JUNE 2021 TODO: Connect the buttons here to the same functions used by the event cell
+// model. Consolidate the functionality of theses buttons into a calendar helper class
+// then assign the target of each button to a static function in calender helper.
+
 class DetailViewController: UIViewController, UICollectionViewDelegate,
                             UICollectionViewDataSource {
         
@@ -32,8 +36,6 @@ class DetailViewController: UIViewController, UICollectionViewDelegate,
         
         attendeeGrid.delegate = self
         attendeeGrid.dataSource = self
-        
-        
         
         if let event = selectedEvent {
             let df = DateFormatter()
@@ -67,10 +69,7 @@ class DetailViewController: UIViewController, UICollectionViewDelegate,
     }
     
     @IBAction func addToCal(_ sender: Any) {
-        let username = selectedEvent?.username
-             print("add to cal button tapped")
-             CalendarHelper.addToCalendar(event: selectedEvent!, userid: username!)
-             CalendarHelper.attendEvent(event: selectedEvent!, userid: username!)
+        print("add to calendar tapped")
     }
 
     @IBAction func shareEvent(_ sender: Any) {
@@ -80,8 +79,8 @@ class DetailViewController: UIViewController, UICollectionViewDelegate,
         print("add to list button tapped")
     }
     
+    // Adds visual style to elements in the Detail View Controller
     func setUpElements() {
-        
         let eventHeader = navBar.topItem?.title ?? "EVENT"
         Utilities.styleEventHeader(eventHeader)
         Utilities.styleLabel(eventTitle, size: 35, uppercase: false)
@@ -92,7 +91,6 @@ class DetailViewController: UIViewController, UICollectionViewDelegate,
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-     //   return selectedEvent?.attendees?.count ?? 0 //number of attendees
         return 3
     }
     

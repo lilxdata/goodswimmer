@@ -10,15 +10,11 @@ import UIKit
 import SDWebImage
 
 class AttendeeCell: UICollectionViewCell {
-    
     @IBOutlet weak var attendeePic: UIImageView!
     var attendeeToDisplay: Attendee?
     override func layoutSubviews() {
         //everytime cell gets loaded this runs
         let attendeePicUrl = URL(string: attendeeToDisplay?.profileUrl ?? Constants.Placeholders.placeholderURL)
         attendeePic.sd_setImage(with: attendeePicUrl, completed: nil)
-        
     }
-    
-    
 }

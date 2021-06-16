@@ -52,7 +52,6 @@
 		8661EB0E25E8E14A00F080B1 /* MyTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8661EB0D25E8E14A00F080B1 /* MyTabBarController.swift */; };
 		86706D2D2599D6FA0040EAFA /* List.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86706D2C2599D6FA0040EAFA /* List.swift */; };
 		86706D512599E5CD0040EAFA /* ListService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86706D502599E5CD0040EAFA /* ListService.swift */; };
-		86908789254F8E3A00E3ED49 /* myEventsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86908788254F8E3A00E3ED49 /* myEventsCell.swift */; };
 		86915C8725400869002BE724 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86915C8625400869002BE724 /* UserService.swift */; };
 		86A16C90257DF56D00C390C6 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A16C8F257DF56D00C390C6 /* CalendarViewController.swift */; };
 		86CD670E25AC377F0099EA48 /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CD670D25AC377F0099EA48 /* Menu.swift */; };
@@ -110,7 +109,6 @@
 		8661EB0D25E8E14A00F080B1 /* MyTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTabBarController.swift; sourceTree = "<group>"; };
 		86706D2C2599D6FA0040EAFA /* List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = List.swift; sourceTree = "<group>"; };
 		86706D502599E5CD0040EAFA /* ListService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ListService.swift; path = goodswimmer/Services/ListService.swift; sourceTree = "<group>"; };
-		86908788254F8E3A00E3ED49 /* myEventsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = myEventsCell.swift; sourceTree = "<group>"; };
 		86915C8625400869002BE724 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		86A16C8F257DF56D00C390C6 /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		86CD670D25AC377F0099EA48 /* Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
@@ -147,7 +145,6 @@
 				04B7505124DB68BF00DE4B98 /* EventArray.swift */,
 				046E1C7C252E5B07004D7A4D /* Attendee.swift */,
 				046E1C7F252E60DF004D7A4D /* AttendeeCell.swift */,
-				86908788254F8E3A00E3ED49 /* myEventsCell.swift */,
 				86706D2C2599D6FA0040EAFA /* List.swift */,
 				8657328325FAE85300456426 /* UserSearchCell.swift */,
 				865FDAB0263014490015F428 /* CalendarModel.swift */,
@@ -449,7 +446,6 @@
 				04B7505224DB68BF00DE4B98 /* EventArray.swift in Sources */,
 				8657328725FAEE9D00456426 /* SearchResultsViewController.swift in Sources */,
 				86CD670E25AC377F0099EA48 /* Menu.swift in Sources */,
-				86908789254F8E3A00E3ED49 /* myEventsCell.swift in Sources */,
 				047CF3DD2493ED1A002ADFE8 /* EventCell.swift in Sources */,
 				865FDAB1263014490015F428 /* CalendarModel.swift in Sources */,
 				04BB10F9244CFD4D00BFF9A2 /* Constants.swift in Sources */,

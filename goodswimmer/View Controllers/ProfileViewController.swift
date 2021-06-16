@@ -372,17 +372,7 @@ class ProfileViewController: UIViewController, UICollectionViewDelegate,
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
-        //let attendee = selectedEvent?.attendees?[indexPath.item]
-        //guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "myEventsCell", for: indexPath) as? myEventsCell else {
             return UICollectionViewCell()
-        //}
-        
-        //cell.myEventsT
-            //.attendeeToDisplay = attendee
-        //return cell
-        
-        
     }
     
     fileprivate lazy var dateFormatter2: DateFormatter = {
