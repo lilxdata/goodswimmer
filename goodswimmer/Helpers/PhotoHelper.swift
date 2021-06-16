@@ -13,7 +13,7 @@ import FirebaseStorage
 import UIKit
 
 class PhotoHelper: NSObject {
-
+    
     // MARK: - Properties
     var completionHandler: ((UIImage) -> Void)?
     
@@ -50,6 +50,7 @@ class PhotoHelper: NSObject {
         viewController.present(alertController, animated: true)
     }
     
+    // Function brings apple pop up asking to choose from camera roll or to take a new photo
     func presentImagePickerController(with sourceType: UIImagePickerController.SourceType, from viewController: UIViewController) {
         let imagePickerController = UIImagePickerController()
         imagePickerController.sourceType =  sourceType
@@ -58,19 +59,23 @@ class PhotoHelper: NSObject {
         viewController.present(imagePickerController, animated: true)
     }
     
+    
+    // Helper function resize UIImage object
     func resizeImage(image: UIImage, newWidth: CGFloat) -> UIImage {
-
+        
         let scale = newWidth / image.size.width
         let newHeight = image.size.height * scale
         //UIGraphicsBeginImageContext(CGSizeMake(newWidth, newHeight))
         image.draw(in: CGRect(x: 0, y: 0, width: newWidth, height: newHeight))
         let newImage = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
-
+        
         return newImage
     }
 }
 
+
+// Extension added to help bring up Apple "Select photo from what source" pop up
 extension PhotoHelper: UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
         if let selectedImage = info[.originalImage] as? UIImage {

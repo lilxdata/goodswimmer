@@ -32,6 +32,8 @@ class Validators {
         return usernamePred.evaluate(with: username)
         
     }
+    
+    /* helper function used to check if a date is valid based on leap year, month, etc */
     static func isDateValidHelper(month: String, day: String, year: String, is_leap: Bool) -> Bool{
         if(["2"].contains(month)){
             //If not a leap year, return false
@@ -58,8 +60,8 @@ class Validators {
         return false
     }
     /* date validation
-       TODO: Implement mm/d/yyyy, m/d/yyyy, mm/dd/yy, mm/dd/yy, m/dd/yy, m/d/yy
-    */
+     TODO: Implement mm/d/yyyy, m/d/yyyy, mm/dd/yy, mm/dd/yy, m/dd/yy, m/d/yy
+     */
     static func isDateValid(_ date: String) -> Bool {
         //Let's check if the date is m/dd/yyyy
         let dateRegEx1 = "([1-9])[-\\/](0[1-9]|[12][0-9]|3[01])[-\\/.](19|20|21|22|23|24)[0-9][0-9]"
@@ -67,7 +69,7 @@ class Validators {
         //Let's check if the date is mm/dd/yyyy
         let dateRegEx2 = "(0[1-9]|1[012])[-\\/.](0[1-9]|[12][0-9]|3[01])[-\\/.](19|20|21|22|23|24)[0-9][0-9]"
         let datePred2 = NSPredicate(format:"SELF MATCHES %@", dateRegEx2)
-         
+        
         //Tester
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MM/dd/yyyy"
@@ -85,7 +87,7 @@ class Validators {
         else { return false }
         
     }
-    
+    /* helper function used to check if a year is a leap year */
     static func isLeap(year: Int) -> Bool {
         let year_int = Int(year)
         if(year_int % 400 == 0) {

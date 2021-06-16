@@ -8,6 +8,8 @@
 
 import Foundation
 
+// Page to keep track of constants used throughout the app
+
 struct Constants {
     
     struct Storyboard {

@@ -14,10 +14,9 @@ class FirestoreHelper {
     
     private let db = Firestore.firestore()
     
+    // Current user follows user based on userID.
     func followUser(_ otherUserId: String) {
-        
         guard let currentUserId = Auth.auth().currentUser?.uid else {
-            //todo: add print statement
             return
         }
         // Get new write batch

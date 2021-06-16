@@ -30,16 +30,16 @@ class ListService {
 }
 
 ///EXAMPLE OF HOW TO USE
-/*let listDict = [
- "username" : [Auth.auth().currentUser!.displayName],
- "userId" : Auth.auth().currentUser!.uid,
- "followers" : [],
- "listName" : "two",
- "description" : "Even another list",
- "events" : [],
- "places" : [],
- "createdDate": NSDate(timeIntervalSince1970:(NSDate().timeIntervalSince1970)) ,
- ] as [String : Any]
- let service = ListService()
- service.createList(dictionary: listDict, uuid: UUID().uuidString)*/
-
+//let listDict = [
+// "username" : [Auth.auth().currentUser!.displayName],
+// "userId" : Auth.auth().currentUser!.uid,
+// "followers" : [],
+// "listName" : "two",
+// "description" : "Even another list",
+// "events" : [],
+// "places" : [],
+// "createdDate": NSDate(timeIntervalSince1970:(NSDate().timeIntervalSince1970)) ,
+// ] as [String : Any]
+// let service = ListService()
+// service.createList(dictionary: listDict, uuid: UUID().uuidString)
+//

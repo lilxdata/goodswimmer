@@ -36,7 +36,7 @@ class EventCell: UITableViewCell {
         usernameButton.setTitle(eventToDisplay?.username, for: .normal)
         eventName.text = eventToDisplay?.name ?? Constants.Placeholders.placeholderTitle
         eventLocation.text = eventToDisplay?.venue ?? Constants.Placeholders.placeholderText
-                    
+        
         //TODO: check if same month / diff month, same day diff day
         if let startDate = eventToDisplay?.startDate, let endDate = eventToDisplay?.endDate {
             let dateFormatter = DateFormatter()
@@ -63,7 +63,7 @@ class EventCell: UITableViewCell {
             print("in else")
             eventDate.text = Constants.Placeholders.placeholderText
         }
-                
+        
         let imageURL = URL(string: eventToDisplay?.photoURL ?? Constants.Placeholders.placeholderURL)
         
         eventImage.sd_setImage(with: imageURL, completed: nil)

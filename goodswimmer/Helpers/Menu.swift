@@ -10,6 +10,12 @@ import Foundation
 import UIKit
 import Firebase
 
+
+// This is a class of helper functions made to help manage pop ups.
+// JUNE 2021 TODO: Like with the style functions, this needs to be planned
+// out before making anymore new screens so that everything happens
+// programatically.
+
 class Menu {
     static let sharedInstance = Menu()
     

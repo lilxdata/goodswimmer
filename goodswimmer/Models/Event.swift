@@ -10,8 +10,6 @@ import Foundation
 import FirebaseDatabase
 import FirebaseFirestore
 
-//event structure featuring all of the event data we need, title, date etc from firebase data
-//TODO: update struct after db design implemented for events
 struct Event {
     
     var name:String?

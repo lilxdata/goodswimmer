@@ -8,7 +8,6 @@
 
 import Foundation
 
-//TODO: update with full db fields
 struct User {
     
     var username:String?
@@ -19,6 +18,6 @@ struct User {
     var photoURL:String?
     var events:[String?]
     var profileLink:String?
-
+    
 }
 

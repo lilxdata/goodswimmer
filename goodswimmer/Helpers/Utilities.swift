@@ -9,6 +9,15 @@
 import Foundation
 import UIKit
 
+
+// JUNE 2021 TODO: The style functions here are fairly self explanatory,
+// the biggest lingering need here is to map out how these should be done
+// There isn't a uniform way that we use Textfields, Textview, Labels, etc.
+// It may be helpful to go through the XD screens and see what similarities
+// and differences elements have so that they can be styled in as automated
+// way as possible. Everything that sort of changes like size can be inputs
+// to create a specific element for a specfic use.
+
 class Utilities {
     
     static func styleTextField(_ textfield: UITextField, size: Int) {
@@ -84,9 +93,6 @@ class Utilities {
     
     static func styleEventHeader(_ header: String) {
         let fontSize = CGFloat(15)
-      //  header.
-        
-       // font = UIFont(name: "Standard-Book", size: fontSize)
         header.uppercased()
     }
     
@@ -114,10 +120,12 @@ class Utilities {
         return passwordTest.evaluate(with: password)
     }
     
+    // Removes text from UITextField
     static func cleanData(_ field: UITextField) -> String {
         return field.text!.trimmingCharacters(in: .whitespacesAndNewlines)
     }
     
+    // Checks if UITextField is empty
     static func isFilledIn(_ fields: [UITextField]) -> Bool {
         for field in fields {
             if field == nil {
@@ -130,46 +138,41 @@ class Utilities {
         return false
     }
     
+    // Function used to programatically format the UISearchController
     static func customizeSearchBar(_ controller: UISearchController){
-        
         let bar = controller.searchBar
-       // bar.barStyle = .black
         bar.barTintColor = getRedUI()
         bar.tintColor = UIColor.white
-        
-//        UITextField.appearance().defaultTextAttributes = [NSAttributedString.Key.foregroundColor.rawValue: UIColor.white]
-        
         if let text = bar.value(forKey: "searchField") as? UITextField {
-                text.textColor = UIColor.white
-            }
-                
-//        let placeholder = bar.placeholder as? UITextField
-//        placeholder?.textColor = UIColor.white
-//
-
+            text.textColor = UIColor.white
+        }
     }
     
+    // Get goodswimmer specific red color as a CGColor
     static func getRedCG() -> CGColor{
         return CGColor(red: 1.0, green: 0.3, blue: 0.0, alpha: 1.0)
     }
     
+    // Get goodswimmer specific red color as a UIColor
     static func getRedUI() -> UIColor{
         return UIColor(red: 1.0, green: 0.3, blue: 0.0, alpha: 1.0)
     }
     
+    // Get goodswimmer specific grey color as a CGColor
     static func getGreyCG() -> CGColor{
         return CGColor(red: 0.74, green: 0.74, blue: 0.74, alpha: 1.0)
     }
     
+    // Get goodswimmer specific grey color as a UIColor
     static func getGreyUI() -> UIColor{
         return UIColor(red: 0.74, green: 0.74, blue: 0.74, alpha: 1.0)
     }
 }
 
 extension UIImageView {
-
+    
+    // Makes a UIImageView object rounded based on a given corner radius
     func makeRounded(_cornerRadius: CGFloat) {
-        
         self.layer.borderWidth = 1
         self.layer.masksToBounds = false
         self.layer.borderColor = UIColor.black.cgColor
@@ -179,13 +182,15 @@ extension UIImageView {
 }
 
 extension UIImage{
+    
+    // Makes a UIImage object rounded
     var roundedImage: UIImage {
         let rect = CGRect(origin:CGPoint(x: 0, y: 0), size: self.size)
         UIGraphicsBeginImageContextWithOptions(self.size, false, 1)
         UIBezierPath(
             roundedRect: rect,
             cornerRadius: self.size.height 
-            ).addClip()
+        ).addClip()
         self.draw(in: rect)
         return UIGraphicsGetImageFromCurrentImageContext()!
     }
