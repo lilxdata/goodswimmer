@@ -254,7 +254,6 @@ extension SearchViewController: UISearchResultsUpdating {
                 hideSearchResults(isHidden: true)
             }
             else {
-                //hideSearchResults(isHidden: false) if the view to show results isn't done hide this feature entirely
                 hideSearchResults(isHidden: true)
             }
             filterEvents(searchText,false)
